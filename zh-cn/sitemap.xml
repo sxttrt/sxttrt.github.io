@@ -2,6 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://sxttrt.github.io/zh-cn/</loc>
+    <lastmod>2025-10-16T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://sxttrt.github.io/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://sxttrt.github.io/zh-cn/"
+                />
+  </url><url>
     <loc>https://sxttrt.github.io/zh-cn/post/</loc>
     <lastmod>2025-10-16T00:00:00+00:00</lastmod>
   </url><url>
@@ -10,7 +23,7 @@
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://sxttrt.github.io/en/tags/"
+                href="https://sxttrt.github.io/tags/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -27,19 +40,6 @@
     <loc>https://sxttrt.github.io/zh-cn/tags/%E7%A7%91%E7%A0%94/</loc>
     <lastmod>2025-10-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://sxttrt.github.io/zh-cn/</loc>
-    <lastmod>2025-10-16T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://sxttrt.github.io/en/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://sxttrt.github.io/zh-cn/"
-                />
-  </url><url>
     <loc>https://sxttrt.github.io/zh-cn/p/%E6%88%91%E7%9A%84%E7%A7%91%E7%A0%94%E4%B8%8E%E7%AB%9E%E8%B5%9B%E6%88%90%E6%9E%9C%E6%80%BB%E8%A7%88/</loc>
     <lastmod>2025-10-16T00:00:00+00:00</lastmod>
   </url><url>
@@ -48,7 +48,7 @@
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://sxttrt.github.io/en/categories/"
+                href="https://sxttrt.github.io/categories/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -88,5 +88,29 @@
   </url><url>
     <loc>https://sxttrt.github.io/zh-cn/p/four-wheel-car-modeling/</loc>
     <lastmod>2024-06-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://sxttrt.github.io/zh-cn/page/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://sxttrt.github.io/page/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://sxttrt.github.io/zh-cn/page/"
+                />
+  </url><url>
+    <loc>https://sxttrt.github.io/zh-cn/%E5%85%B3%E4%BA%8E/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://sxttrt.github.io/about/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://sxttrt.github.io/zh-cn/%E5%85%B3%E4%BA%8E/"
+                />
   </url>
 </urlset>
