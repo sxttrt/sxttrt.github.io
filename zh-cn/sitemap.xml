@@ -81,6 +81,9 @@
     <loc>http://localhost:1313/zh-cn/categories/%E7%AB%9E%E8%B5%9B%E6%88%90%E6%9E%9C/</loc>
     <lastmod>2025-01-27T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/zh-cn/p/ur-robot/</loc>
+    <lastmod>2024-12-30T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/zh-cn/p/gomoku-recognition/</loc>
     <lastmod>2024-12-20T00:00:00+00:00</lastmod>
   </url><url>
@@ -95,8 +98,6 @@
   </url><url>
     <loc>http://localhost:1313/zh-cn/p/four-wheel-car-modeling/</loc>
     <lastmod>2024-06-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/zh-cn/p/</loc>
   </url><url>
     <loc>http://localhost:1313/zh-cn/page/</loc>
     <xhtml:link

@@ -725,6 +725,268 @@ $$\Delta z = K_p e_f + K_d \dot{e}&lt;em&gt;f$$
 </description>
         </item>
         <item>
+        <title>声控协作式机器人系统设计与实现</title>
+        <link>http://localhost:1313/zh-cn/p/ur-robot/</link>
+        <pubDate>Mon, 30 Dec 2024 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh-cn/p/ur-robot/</guid>
+        <description>&lt;img src="http://localhost:1313/UR-Robot/fengmian.png" alt="Featured image of post 声控协作式机器人系统设计与实现" /&gt;&lt;h2 id=&#34;一项目核心信息&#34;&gt;一、项目核心信息
+&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;信息类别&lt;/th&gt;
+&lt;th&gt;具体内容&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;项目名称&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;声控协作式机器人系统设计与实现&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;负责角色&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;项目负责人&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;项目周期&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;2024年10月-2024年12月&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;核心成员&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;刘承韬（本人）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;指导教师&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;熊异（智能控制科学创新实践II课程指导）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;核心任务&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;1. DTW算法语音识别（工具关键词识别）&lt;br&gt;2. YOLOv8工具物体检测（5类工具）&lt;br&gt;3. GRCNN平面抓取点生成&lt;br&gt;4. UR机器人+夹爪控制（ur-rtde/minimalmodbus）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;关键工具&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Python（核心逻辑）、OpenCV（图像处理）、YOLOv8（目标检测）、GRCNN（抓取规划）、ur-rtde（机器人控制）、MinimalModbus（夹爪控制）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;项目产出&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;1. 可运行声控抓取系统&lt;br&gt;2. 工具识别模型（YOLOv8权重）&lt;br&gt;3. 实物抓取演示视频&lt;br&gt;4. 完整项目代码（含UI界面）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;二项目背景与目标&#34;&gt;二、项目背景与目标
+&lt;/h2&gt;&lt;h3 id=&#34;1-项目背景&#34;&gt;1. 项目背景
+&lt;/h3&gt;&lt;p&gt;在工业装配、仓储分拣等场景中，传统机器人需手动设定坐标，操作繁琐且灵活性低。声控作为自然的人机交互方式，可实现“语音指令→自动识别→精准抓取”的全流程自动化，既能提升生产效率，又能降低工人操作门槛。本项目以“工具抓取”为核心场景，融合语音识别（DTW）、计算机视觉（YOLOv8/GRCNN）与机器人控制技术，开发适用于工业场景的轻量级声控协作系统，避免深度学习黑箱依赖，兼顾实时性与可控性。&lt;/p&gt;
+&lt;h3 id=&#34;2-核心目标&#34;&gt;2. 核心目标
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;语音识别：实现“锤子、扳手、螺丝刀、钳子、卷尺”5类工具关键词识别，单词识别准确率≥90%，支持短句关键词提取（关键词位于句首时准确率≥85%）。&lt;/li&gt;
+&lt;li&gt;物体识别：YOLOv8模型对5类工具的检测精度（mAP50）≥93%，泛化性覆盖不同光照、摆放角度的实物场景。&lt;/li&gt;
+&lt;li&gt;抓取控制：GRCNN生成有效抓取点准确率≥90%，UR机器人抓取成功率≥85%，夹爪可根据工具材质自适应调整力度（如卷尺40%力度、金属工具80%力度）。&lt;/li&gt;
+&lt;li&gt;交互体验：开发可视化UI界面，支持“语音录入→图像识别→抓取执行”一键操作，配套实物抓取演示视频。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;三核心任务实现&#34;&gt;三、核心任务实现
+&lt;/h2&gt;&lt;h3 id=&#34;任务一基于dtw算法的语音识别模块&#34;&gt;任务一：基于DTW算法的语音识别模块
+&lt;/h3&gt;&lt;h4 id=&#34;1-算法流程与预处理&#34;&gt;1. 算法流程与预处理
+&lt;/h4&gt;&lt;p&gt;采用“模板录制→信号预处理→DTW匹配”三步流程，核心是通过动态时间规整解决语音信号长度不一致问题：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;模板录制&lt;/strong&gt;：对5类工具关键词，每种以不同声调和语速录制6条音频（采样率16000Hz、单声道、2字节采样），生成30条模板音频（如图1）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;信号预处理&lt;/strong&gt;：
+&lt;ol&gt;
+&lt;li&gt;分帧（帧长20ms、帧移10ms）、预加重（提升高频信号）；&lt;/li&gt;
+&lt;li&gt;双门限法端点检测，分离语音有效部分与静音；&lt;/li&gt;
+&lt;li&gt;提取MFCC特征（13维系数），将音频信号转化为特征向量（如图2）。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;DTW匹配&lt;/strong&gt;：实时录音（2.5秒时长、CHUNK=1024采样块），提取MFCC后与模板特征计算欧氏距离，选择距离最小的模板作为识别结果（如“锤子”匹配距离≈7585，如图3）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-关键图片与识别结果&#34;&gt;2. 关键图片与识别结果
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;预处理与模板存储&lt;/strong&gt;：&lt;/p&gt;
+  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;http://localhost:1313/UR-Robot/图1.png&#34; alt=&#34;音频模板与MFCC特征文件&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图1：音频模板（上）与MFCC特征文件（下）&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;识别结果与分析&lt;/strong&gt;：&lt;/p&gt;
+&lt;div style=&#34;text-align: center; margin: 15px 0;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/UR-Robot/图3.png&#34; alt=&#34;DTW匹配距离与识别结果&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+  &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图3：DTW匹配距离计算（最小距离对应“锤子”，识别成功）&lt;/p&gt;
+&lt;/div&gt;
+&lt;div style=&#34;text-align: center; margin: 10px 0;&#34;&gt;
+  &lt;table style=&#34;max-width: 80%; margin: 0 auto; border-collapse: collapse; border: 1px solid #eee;&#34;&gt;
+    &lt;tr style=&#34;background-color: #f5f5f5;&#34;&gt;
+      &lt;th style=&#34;padding: 8px; border: 1px solid #eee; text-align: center;&#34;&gt;识别类型&lt;/th&gt;
+      &lt;th style=&#34;padding: 8px; border: 1px solid #eee; text-align: center;&#34;&gt;锤子&lt;/th&gt;
+      &lt;th style=&#34;padding: 8px; border: 1px solid #eee; text-align: center;&#34;&gt;扳手&lt;/th&gt;
+      &lt;th style=&#34;padding: 8px; border: 1px solid #eee; text-align: center;&#34;&gt;螺丝刀&lt;/th&gt;
+      &lt;th style=&#34;padding: 8px; border: 1px solid #eee; text-align: center;&#34;&gt;钳子&lt;/th&gt;
+      &lt;th style=&#34;padding: 8px; border: 1px solid #eee; text-align: center;&#34;&gt;卷尺&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&#34;padding: 8px; border: 1px solid #eee; text-align: center;&#34;&gt;单词识别（30次）&lt;/td&gt;
+      &lt;td style=&#34;padding: 8px; border: 1px solid #eee; text-align: center;&#34;&gt;30/30&lt;/td&gt;
+      &lt;td style=&#34;padding: 8px; border: 1px solid #eee; text-align: center;&#34;&gt;30/30&lt;/td&gt;
+      &lt;td style=&#34;padding: 8px; border: 1px solid #eee; text-align: center;&#34;&gt;30/30&lt;/td&gt;
+      &lt;td style=&#34;padding: 8px; border: 1px solid #eee; text-align: center;&#34;&gt;28/30&lt;/td&gt;
+      &lt;td style=&#34;padding: 8px; border: 1px solid #eee; text-align: center;&#34;&gt;29/30&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&#34;padding: 8px; border: 1px solid #eee; text-align: center;&#34;&gt;短句识别（关键词句首）&lt;/td&gt;
+      &lt;td style=&#34;padding: 8px; border: 1px solid #eee; text-align: center;&#34;&gt;28/30&lt;/td&gt;
+      &lt;td style=&#34;padding: 8px; border: 1px solid #eee; text-align: center;&#34;&gt;29/30&lt;/td&gt;
+      &lt;td style=&#34;padding: 8px; border: 1px solid #eee; text-align: center;&#34;&gt;29/30&lt;/td&gt;
+      &lt;td style=&#34;padding: 8px; border: 1px solid #eee; text-align: center;&#34;&gt;-/30&lt;/td&gt;
+      &lt;td style=&#34;padding: 8px; border: 1px solid #eee; text-align: center;&#34;&gt;-/30&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+  &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;表1：语音识别准确率统计（误差源于“钳子/卷尺”发音相似性）&lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;任务二基于yolov8的工具物体识别&#34;&gt;任务二：基于YOLOv8的工具物体识别
+&lt;/h3&gt;&lt;h4 id=&#34;1-模型开发与数据集优化&#34;&gt;1. 模型开发与数据集优化
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;模型选择&lt;/strong&gt;：选用YOLOv8（对比YOLOv5精度提升12%、YOLOv11社区支持更成熟），聚焦5类工具（锤子、扳手、螺丝刀、钳子、卷尺）检测。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数据集迭代&lt;/strong&gt;：
+&lt;ol&gt;
+&lt;li&gt;初始数据集：200张图像（含椒盐噪声、旋转增强），训练100轮后mAP50=88%，但实物检测漏检率高；&lt;/li&gt;
+&lt;li&gt;优化数据集：剔除卡通/手持工具图像，补充实验室实物图像（300张），采用“小模型预训练+增量训练”策略（先100轮小数据集，再分两次50轮增量训练）；&lt;/li&gt;
+&lt;li&gt;知识蒸馏：用大模型（YOLOv8-L）作为教师模型，将工具特征传递给学生模型（YOLOv8-N），提升小模型泛化性。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;训练结果&lt;/strong&gt;：优化后模型mAP50=95.2%，各类工具检测精度均≥93%，实物场景漏检率降低至10%以下（如图4、5）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-关键图片与检测效果&#34;&gt;2. 关键图片与检测效果
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;训练损失与精度曲线&lt;/strong&gt;：&lt;/p&gt;
+  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;http://localhost:1313/UR-Robot/图4.png&#34; alt=&#34;YOLOv8训练损失曲线&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图4：首次200轮训练损失曲线（train/val loss收敛至0.5）&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;http://localhost:1313/UR-Robot/图5.png&#34; alt=&#34;YOLOv8验证集指标&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图5：最终验证集指标（mAP50=95.2%，precision=93.1%）&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;实物检测效果&lt;/strong&gt;：&lt;/p&gt;
+&lt;div style=&#34;text-align: center; margin: 15px 0;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/UR-Robot/图6.png&#34; alt=&#34;工具实物检测结果&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+  &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图6：实物工具检测（标注置信度与类别，无漏检）&lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;任务三grcnn抓取规划与机器人控制&#34;&gt;任务三：GRCNN抓取规划与机器人控制
+&lt;/h3&gt;&lt;h4 id=&#34;1-平面抓取点生成grcnn&#34;&gt;1. 平面抓取点生成（GRCNN）
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;核心逻辑&lt;/strong&gt;：结合Realsense双目相机的RGB+深度信息，GRCNN生成全局抓取置信度图，再根据YOLOv8检测框裁剪局部区域，提取最优抓取点（位置、角度、宽度）：
+&lt;ol&gt;
+&lt;li&gt;图像预处理：裁剪YOLOv8检测框区域（置信度≥0.5），添加20px边缘避免漏裁工具；&lt;/li&gt;
+&lt;li&gt;抓取参数生成：输出抓取质量图（q_img）、角度图（ang_img）、宽度图（width_img），寻找局部最大值作为最优抓取点（如图7）；&lt;/li&gt;
+&lt;li&gt;适配性优化：对扁平工具（如扳手）增加深度信息权重，减少无效抓取点。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-坐标变换与机器人控制&#34;&gt;2. 坐标变换与机器人控制
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;坐标映射&lt;/strong&gt;：
+&lt;ol&gt;
+&lt;li&gt;像素→相机坐标：利用Realsense内参（fx、fy、cx、cy），结合深度值Z，通过相机投影公式计算三维坐标（如图8）；&lt;/li&gt;
+&lt;li&gt;相机→机器人坐标：用5×5棋盘格标定（24个标定 points，移动步距5cm），计算手眼变换矩阵T，实现坐标转换。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;UR机器人控制&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;采用&lt;code&gt;ur-rtde&lt;/code&gt;库，通过TCP/IP协议控制机器人，用&lt;code&gt;move_L&lt;/code&gt;/&lt;code&gt;move_J&lt;/code&gt;函数实现线性/关节运动（速度=0.2m/s，加速度=0.1m/s²，误差容忍2mm/0.01rad）；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;夹爪控制&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;用&lt;code&gt;MinimalModbus&lt;/code&gt;库通过串口控制夹爪，根据识别到的不同工具，实现自适应力度：金属工具（锤子/扳手）用80%力度，塑料工具（卷尺）用40%力度，避免损坏或掉落。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;3-关键图片与控制效果&#34;&gt;3. 关键图片与控制效果
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;GRCNN抓取点与坐标变换&lt;/strong&gt;：&lt;/p&gt;
+  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;http://localhost:1313/UR-Robot/图7.png&#34; alt=&#34;GRCNN抓取点生成&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图7：钳子抓取点（蓝色框为最优抓取位置，角度=0.57rad）&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;http://localhost:1313/UR-Robot/图8.png&#34; alt=&#34;相机-机器人坐标变换公式&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图8：像素坐标→机器人坐标变换公式&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;UI界面与抓取流程&lt;/strong&gt;：&lt;/p&gt;
+&lt;div style=&#34;text-align: center; margin: 15px 0;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/UR-Robot/图9.png&#34; alt=&#34;系统UI界面&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+  &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图9：系统UI界面（含“语音识别、图像识别、按标签筛选、语音抓取”功能）&lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;任务四实物抓取视频展示&#34;&gt;任务四：实物抓取视频展示
+&lt;/h3&gt;&lt;p&gt;项目配套实物抓取演示视频，记录“语音指令→工具识别→机器人抓取”全流程，视频包含3个关键场景：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;场景1：语音输入“锤子”→YOLOv8检测锤子→GRCNN生成抓取点→UR机器人移动抓取；&lt;/li&gt;
+&lt;li&gt;场景2：语音输入“卷尺”→夹爪自动切换40%力度→平稳抓取无损坏；&lt;/li&gt;
+&lt;li&gt;场景3：多工具混合摆放→按语音标签筛选目标→精准抓取无误触。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;div&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;style&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;text-align: center; margin: 20px 0;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;video&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;width&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;80%&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;controls&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;poster&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;/project/robot/video-cover.png&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;source&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;src&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;/UR-Robot/video1.mp4&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;video/mp4&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   您的浏览器不支持HTML5视频播放，请下载视频查看：&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;href&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;UR-Robot/视频1.mp4&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;target&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;_blank&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;下载演示视频&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;video&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;style&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;font-size: 14px; color: #666; margin-top: 8px;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;视频1：声控机器人实物抓取演示（时长1分20秒）&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;div&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;四项目成果与附件&#34;&gt;四、项目成果与附件
+&lt;/h2&gt;&lt;h3 id=&#34;核心成果&#34;&gt;核心成果
+&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;成果类型&lt;/th&gt;
+&lt;th&gt;具体指标&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;语音识别&lt;/td&gt;
+&lt;td&gt;单词准确率≥93%，短句（关键词句首）准确率≥85%&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;物体检测&lt;/td&gt;
+&lt;td&gt;YOLOv8 模型 mAP50=95.2%，实物检测漏检率≤10%&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;抓取控制&lt;/td&gt;
+&lt;td&gt;GRCNN 抓取点有效率≥80%，UR 机器人抓取成功率≥75%，夹爪力度自适应&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;系统响应&lt;/td&gt;
+&lt;td&gt;从语音指令到抓取完成≤10 秒，无人工干预&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+        </item>
+        <item>
         <title>基于传统机器学习算法的分类与图像处理研究</title>
         <link>http://localhost:1313/zh-cn/p/ai-research/</link>
         <pubDate>Sat, 30 Nov 2024 00:00:00 +0000</pubDate>
