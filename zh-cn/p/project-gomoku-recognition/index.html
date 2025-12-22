@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="2024年10-12月五子棋系统完整记录，含高斯滤波/Canny/霍夫变换识别、HSV棋子分类、棋型分数预测及UI界面开发（兼容标准/手绘棋盘）">
+<title>基于传统图像处理的五子棋识别与预测系统</title>
+
+<link rel='canonical' href='http://localhost:1313/zh-cn/p/project-gomoku-recognition/'>
+
+<link rel="stylesheet" href="/scss/style.min.0304c6baf04e01a8fe70693791cb744d56a3578a3120a8796cefc66825aa39c7.css"><meta property='og:title' content="基于传统图像处理的五子棋识别与预测系统">
+<meta property='og:description' content="2024年10-12月五子棋系统完整记录，含高斯滤波/Canny/霍夫变换识别、HSV棋子分类、棋型分数预测及UI界面开发（兼容标准/手绘棋盘）">
+<meta property='og:url' content='http://localhost:1313/zh-cn/p/project-gomoku-recognition/'>
+<meta property='og:site_name' content='刘承韬'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-12-20T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-12-20T00:00:00&#43;00:00'/><meta property='og:image' content='http://localhost:1313/project/gomoku-cover.png' />
+<meta name="twitter:title" content="基于传统图像处理的五子棋识别与预测系统">
+<meta name="twitter:description" content="2024年10-12月五子棋系统完整记录，含高斯滤波/Canny/霍夫变换识别、HSV棋子分类、棋型分数预测及UI界面开发（兼容标准/手绘棋盘）"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='http://localhost:1313/project/gomoku-cover.png' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/zh-cn/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu2071873778164182045.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/zh-cn">刘承韬</a></h1>
+            <h2 class="site-description">Liu Chengtao | Undergraduate Works</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://space.bilibili.com/499786362?spm_id_from=333.1007.0.0'
+                        target="_blank"
+                        title="Bilibili"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.0.0-beta2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M488.6 104.1C505.3 122.2 513 143.8 511.9 169.8V372.2C511.5 398.6 502.7 420.3 485.4 437.3C468.2 454.3 446.3 463.2 419.9 464H92.02C65.57 463.2 43.81 454.2 26.74 436.8C9.682 419.4 .7667 396.5 0 368.2V169.8C.7667 143.8 9.682 122.2 26.74 104.1C43.81 87.75 65.57 78.77 92.02 78H121.4L96.05 52.19C90.3 46.46 87.42 39.19 87.42 30.4C87.42 21.6 90.3 14.34 96.05 8.603C101.8 2.868 109.1 0 117.9 0C126.7 0 134 2.868 139.8 8.603L213.1 78H301.1L375.6 8.603C381.7 2.868 389.2 0 398 0C406.8 0 414.1 2.868 419.9 8.603C425.6 14.34 428.5 21.6 428.5 30.4C428.5 39.19 425.6 46.46 419.9 52.19L394.6 78L423.9 78C450.3 78.77 471.9 87.75 488.6 104.1H488.6zM449.8 173.8C449.4 164.2 446.1 156.4 439.1 150.3C433.9 144.2 425.1 140.9 416.4 140.5H96.05C86.46 140.9 78.6 144.2 72.47 150.3C66.33 156.4 63.07 164.2 62.69 173.8V368.2C62.69 377.4 65.95 385.2 72.47 391.7C78.99 398.2 86.85 401.5 96.05 401.5H416.4C425.6 401.5 433.4 398.2 439.7 391.7C446 385.2 449.4 377.4 449.8 368.2L449.8 173.8zM185.5 216.5C191.8 222.8 195.2 230.6 195.6 239.7V273C195.2 282.2 191.9 289.9 185.8 296.2C179.6 302.5 171.8 305.7 162.2 305.7C152.6 305.7 144.7 302.5 138.6 296.2C132.5 289.9 129.2 282.2 128.8 273V239.7C129.2 230.6 132.6 222.8 138.9 216.5C145.2 210.2 152.1 206.9 162.2 206.5C171.4 206.9 179.2 210.2 185.5 216.5H185.5zM377 216.5C383.3 222.8 386.7 230.6 387.1 239.7V273C386.7 282.2 383.4 289.9 377.3 296.2C371.2 302.5 363.3 305.7 353.7 305.7C344.1 305.7 336.3 302.5 330.1 296.2C323.1 289.9 320.7 282.2 320.4 273V239.7C320.7 230.6 324.1 222.8 330.4 216.5C336.7 210.2 344.5 206.9 353.7 206.5C362.9 206.9 370.7 210.2 377 216.5H377z"/></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/sxttrt'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/zh-cn/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/zh-cn/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="http://localhost:1313/" >English</option>
+                                
+                                    <option value="http://localhost:1313/zh-cn/" selected>简体中文</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#一项目核心信息">一、项目核心信息</a></li>
+    <li><a href="#二项目背景与目标">二、项目背景与目标</a>
+      <ol>
+        <li><a href="#1-项目背景">1. 项目背景</a></li>
+        <li><a href="#2-核心目标">2. 核心目标</a></li>
+      </ol>
+    </li>
+    <li><a href="#三核心任务实现">三、核心任务实现</a>
+      <ol>
+        <li><a href="#任务一标准棋盘识别与棋子分类">任务一：标准棋盘识别与棋子分类</a>
+          <ol>
+            <li><a href="#1-方法实现">1. 方法实现</a></li>
+            <li><a href="#2-关键代码与结果">2. 关键代码与结果</a></li>
+          </ol>
+        </li>
+        <li><a href="#任务二手绘棋盘识别与状态建模">任务二：手绘棋盘识别与状态建模</a>
+          <ol>
+            <li><a href="#1-方法实现-1">1. 方法实现</a></li>
+            <li><a href="#2-关键代码与结果-1">2. 关键代码与结果</a></li>
+          </ol>
+        </li>
+        <li><a href="#任务三落子预测与胜负判断">任务三：落子预测与胜负判断</a>
+          <ol>
+            <li><a href="#1-落子预测实现">1. 落子预测实现</a></li>
+            <li><a href="#2-胜负判断实现">2. 胜负判断实现</a></li>
+          </ol>
+        </li>
+        <li><a href="#任务四ui界面开发">任务四：UI界面开发</a>
+          <ol>
+            <li><a href="#1-功能实现">1. 功能实现</a></li>
+            <li><a href="#2-界面展示">2. 界面展示</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#四项目成果与附件">四、项目成果与附件</a>
+      <ol>
+        <li><a href="#1-核心成果">1. 核心成果</a></li>
+        <li><a href="#2-附件文件">2. 附件文件</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/zh-cn/p/project-gomoku-recognition/">
+                
+                    <img src="/project/gomoku-cover.png" loading="lazy" alt="Featured image of post 基于传统图像处理的五子棋识别与预测系统" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/zh-cn/categories/%E9%A1%B9%E7%9B%AE%E6%88%90%E6%9E%9C/" >
+                项目成果
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/zh-cn/p/project-gomoku-recognition/">基于传统图像处理的五子棋识别与预测系统</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            2024年10-12月五子棋系统完整记录，含高斯滤波/Canny/霍夫变换识别、HSV棋子分类、棋型分数预测及UI界面开发（兼容标准/手绘棋盘）
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2024-12-20</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="一项目核心信息">一、项目核心信息
+</h2><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>信息类别</th>
+<th>具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>项目名称</strong></td>
+<td>基于传统图像处理的五子棋识别与预测系统</td>
+</tr>
+<tr>
+<td><strong>负责角色</strong></td>
+<td>项目负责人</td>
+</tr>
+<tr>
+<td><strong>项目周期</strong></td>
+<td>2024年10月-2024年12月</td>
+</tr>
+<tr>
+<td><strong>核心成员</strong></td>
+<td>刘承韬（本人）、吴嘉铭、吴丰扬、万文博</td>
+</tr>
+<tr>
+<td><strong>核心任务</strong></td>
+<td>1. 标准/手绘棋盘识别与棋子分类<br>2. 棋盘状态建模与坐标归一化<br>3. 智能落子预测与胜负判断<br>4. 交互式UI界面开发</td>
+</tr>
+<tr>
+<td><strong>关键工具</strong></td>
+<td>OpenCV（图像处理）、Python（核心逻辑）、Tkinter（UI开发）、NumPy（数据计算）</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="二项目背景与目标">二、项目背景与目标
+</h2><h3 id="1-项目背景">1. 项目背景
+</h3><p>五子棋自动识别是计算机视觉的经典应用场景，传统方法因“过程可控、低算力依赖、实现简洁”的优势，更适合轻量型识别需求。本项目摒弃深度学习黑箱模式，采用高斯滤波、Canny边缘检测、霍夫变换等传统技术，解决“标准棋盘高精度识别”与“手绘棋盘鲁棒性识别”两大核心问题，并结合棋型分析实现智能落子预测，形成完整的“识别-建模-预测-交互”系统。</p>
+<h3 id="2-核心目标">2. 核心目标
+</h3><ul>
+<li>实现标准棋盘100%识别率，手绘规整棋盘≥85%识别率，支持黑白棋子精准分类。</li>
+<li>构建15×15棋盘状态模型，完成棋子坐标归一化映射，确保状态数据与实际棋盘对齐。</li>
+<li>开发基于棋型分数的落子预测算法，支持实时胜负判断（横/竖/斜向五子连珠检测）。</li>
+<li>开发兼容多格式棋盘的UI界面，支持图像导入、识别结果可视化及用户交互操作。</li>
+</ul>
+<h2 id="三核心任务实现">三、核心任务实现
+</h2><h3 id="任务一标准棋盘识别与棋子分类">任务一：标准棋盘识别与棋子分类
+</h3><h4 id="1-方法实现">1. 方法实现
+</h4><p>采用“预处理→棋子检测→颜色分类→坐标映射”四步流程，核心技术如下：</p>
+<ul>
+<li><strong>预处理</strong>：输入图像经高斯滤波（5×5核）降噪，转化为灰度图减少计算量。</li>
+<li><strong>棋子检测</strong>：使用<code>cv2.HoughCircles</code>霍夫圆检测，设置半径范围10-18px、圆间距25px，精准提取棋子圆心坐标。</li>
+<li><strong>颜色分类</strong>：将棋子区域（ROI）从RGB转为HSV空间，通过亮度（Value&gt;120为白棋）、色调（Hue&lt;90为黑棋）阈值判断棋子颜色。</li>
+<li><strong>坐标映射</strong>：根据棋盘尺寸计算网格大小，将圆心坐标映射为15×15棋盘的行列索引。</li>
+</ul>
+<h4 id="2-关键代码与结果">2. 关键代码与结果
+</h4><ul>
+<li>
+<p><strong>关键代码（霍夫圆检测与颜色判断）</strong>：</p>
+<div style="text-align: center; margin: 15px 0;">
+  <img src="/project/gomoku/code1.png" alt="标准棋盘识别关键代码" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+  <p style="font-size: 14px; color: #666;">图1：标准棋盘霍夫圆检测与HSV颜色判断代码</p>
+</div>
+</li>
+<li>
+<p><strong>结果展示</strong>：标准棋盘识别率近100%，棋子坐标与颜色无偏差，识别结果可直接转化为字符格式棋盘（X=黑棋，O=白棋）。</p>
+<div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 15px 0;">
+  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/project/gomoku/standard-original.png" alt="标准棋盘原图" style="max-width: 100%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666;">图2：标准棋盘原图</p>
+  </div>
+  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/project/gomoku/standard-result.png" alt="标准棋盘识别结果" style="max-width: 100%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666;">图3：标准棋盘识别结果（标注坐标与棋子颜色）</p>
+  </div>
+</div>
+</li>
+</ul>
+<h3 id="任务二手绘棋盘识别与状态建模">任务二：手绘棋盘识别与状态建模
+</h3><h4 id="1-方法实现-1">1. 方法实现
+</h4><p>针对手绘棋盘“边缘不规则、棋子易粘连”特点，设计四步识别流程：</p>
+<ul>
+<li><strong>棋盘定位</strong>：通过轮廓提取（<code>cv2.findContours</code>）找到最大轮廓，用外接矩形框选棋盘区域，Resize至固定尺寸（1000×1000px）。</li>
+<li><strong>边缘检测</strong>：Canny算子（阈值50-150）提取棋盘边缘，膨胀操作（5×5核）增强线条连续性，分离格子边界。</li>
+<li><strong>格子排序</strong>：对提取的格子外接矩形，按“对角线距离（x+y）”排序，生成15×15网格矩阵，确保坐标与实际格子对齐。</li>
+<li><strong>棋子判断</strong>：计算格子内白色像素占比，结合“面积-周长比”（圆形比值&lt;1.3，叉形比值&gt;1.3）区分空/黑/白棋，中心区域像素检测补充判断叉形棋子。</li>
+</ul>
+<h4 id="2-关键代码与结果-1">2. 关键代码与结果
+</h4><ul>
+<li>
+<p><strong>关键代码（棋盘定位与棋子判断）</strong>：</p>
+<div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 15px 0;">
+  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/project/gomoku/code2.png" alt="手绘棋盘定位代码" style="max-width: 100%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666;">图4：手绘棋盘定位与边缘处理代码</p>
+  </div>
+  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/project/gomoku/code3.png" alt="手绘棋子判断代码" style="max-width: 100%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666;">图5：手绘棋盘棋子判断代码（面积-周长比）</p>
+  </div>
+</div>
+</li>
+<li>
+<p><strong>结果展示</strong>：规整手绘棋盘识别准确，棋子无粘连时分类正确率≥85%；存在边界粘连或线条断裂时，通过形态学操作可部分优化。</p>
+<div style="text-align: center; margin: 15px 0;">
+  <img src="/project/gomoku/hand-drawn-result.png" alt="手绘棋盘识别结果" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+  <p style="font-size: 14px; color: #666;">图6：手绘棋盘识别结果（左：原图，右：识别后字符棋盘）</p>
+</div>
+</li>
+</ul>
+<h3 id="任务三落子预测与胜负判断">任务三：落子预测与胜负判断
+</h3><h4 id="1-落子预测实现">1. 落子预测实现
+</h4><p>基于“棋型分数+双指针扫描”策略，核心逻辑如下：</p>
+<ul>
+<li><strong>棋型分数定义</strong>：预设不同棋型分数（如活四=1000分、活三=300分、死三=150分），通过双指针对棋盘横/竖/斜向进行5-11px区间扫描，匹配棋型并累加分数。</li>
+<li><strong>分数计算</strong>：遍历所有空位，分别计算“落黑棋后黑棋分数增长”与“落白棋后白棋分数增长”，以“黑棋分数×1.1 - 白棋分数”最大化作为最优落子点（1.1系数鼓励进攻）。</li>
+<li><strong>附加分机制</strong>：若棋盘存在“活四+活三”≥2组，附加30分；“活三+死三”≥2组且含活三，附加15分，优化预测策略。</li>
+</ul>
+<h4 id="2-胜负判断实现">2. 胜负判断实现
+</h4><ul>
+<li><strong>检测逻辑</strong>：将棋盘横/竖/斜向（共29个斜向）数据分别存入数组，检测连续5个相同棋子（X或O），存在则判定对应颜色获胜。</li>
+<li><strong>关键代码与结果</strong>：
+<div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 15px 0;">
+  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/project/gomoku/code4.png" alt="胜负判断代码" style="max-width: 100%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666;">图7：横竖斜向胜负判断代码</p>
+  </div>
+  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/project/gomoku/prediction-result.png" alt="落子预测结果" style="max-width: 100%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666;">图8：落子预测结果（红色=黑棋推荐点，绿色=白棋推荐点）</p>
+  </div>
+</div>
+</li>
+</ul>
+<h3 id="任务四ui界面开发">任务四：UI界面开发
+</h3><h4 id="1-功能实现">1. 功能实现
+</h4><p>开发Tkinter交互式界面，支持四大核心功能：</p>
+<ul>
+<li><strong>图像导入</strong>：支持上传标准/手绘棋盘图片（JPG/PNG格式），自动触发识别流程。</li>
+<li><strong>识别可视化</strong>：实时显示识别后的棋盘（标注棋子坐标与颜色），支持切换“原图-灰度图-识别图”视图。</li>
+<li><strong>落子交互</strong>：用户可手动落子（点击棋盘格子），系统自动更新棋盘状态并提示“非法落子”（已有棋子）。</li>
+<li><strong>预测与胜负提示</strong>：点击“预测”按钮显示最优落子点（彩色掩膜），一方获胜时弹窗提示并3秒后重置棋盘。</li>
+</ul>
+<h4 id="2-界面展示">2. 界面展示
+</h4>  <div style="text-align: center; margin: 15px 0;">
+    <img src="/project/gomoku/ui-interface.png" alt="UI界面展示" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666;">图9：五子棋系统UI界面（含识别、预测、落子功能）</p>
+  </div>
+<h2 id="四项目成果与附件">四、项目成果与附件
+</h2><h3 id="1-核心成果">1. 核心成果
+</h3><ul>
+<li><strong>识别精度</strong>：标准棋盘识别率近100%，手绘规整棋盘识别率≥85%，棋子颜色分类正确率≥98%。</li>
+<li><strong>预测性能</strong>：落子预测响应时间≤0.5秒，推荐落子符合五子棋策略（优先活四、活三棋型），胜负判断无延迟。</li>
+<li><strong>兼容性</strong>：UI界面兼容Windows/macOS系统，支持15×15标准棋盘与任意尺寸手绘棋盘（自动扩展至15×15）。</li>
+</ul>
+<h3 id="2-附件文件">2. 附件文件
+</h3><ul>
+<li>
+<ol>
+<li>核心代码：标准棋盘识别.py、手绘棋盘识别.py、落子预测.py、UI界面.py</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>测试数据集：标准棋盘图片（20张）、手绘棋盘图片（30张）</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li>文档：项目设计报告、测试报告（含识别率统计）</li>
+</ol>
+</li>
+<li>
+<ol start="4">
+<li>工程文件：UI界面打包程序（exe格式，可直接运行）</li>
+</ol>
+</li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2025 刘承韬
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

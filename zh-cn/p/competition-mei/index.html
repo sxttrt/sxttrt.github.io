@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="2025年MCM竞赛B题（可持续旅游建模）国际二等奖完整记录，含官方证书、25页参赛论文、多目标优化模型及夏威夷/朱诺两地应用方案">
+<title>2025年美国大学生数学建模竞赛（MCM）B题成果详情（Honorable Mention）</title>
+
+<link rel='canonical' href='http://localhost:1313/zh-cn/p/competition-mei/'>
+
+<link rel="stylesheet" href="/scss/style.min.0304c6baf04e01a8fe70693791cb744d56a3578a3120a8796cefc66825aa39c7.css"><meta property='og:title' content="2025年美国大学生数学建模竞赛（MCM）B题成果详情（Honorable Mention）">
+<meta property='og:description' content="2025年MCM竞赛B题（可持续旅游建模）国际二等奖完整记录，含官方证书、25页参赛论文、多目标优化模型及夏威夷/朱诺两地应用方案">
+<meta property='og:url' content='http://localhost:1313/zh-cn/p/competition-mei/'>
+<meta property='og:site_name' content='刘承韬'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-01-27T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-01-27T00:00:00&#43;00:00'/><meta property='og:image' content='http://localhost:1313/competition/fengmian3.png' />
+<meta name="twitter:title" content="2025年美国大学生数学建模竞赛（MCM）B题成果详情（Honorable Mention）">
+<meta name="twitter:description" content="2025年MCM竞赛B题（可持续旅游建模）国际二等奖完整记录，含官方证书、25页参赛论文、多目标优化模型及夏威夷/朱诺两地应用方案"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='http://localhost:1313/competition/fengmian3.png' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/zh-cn/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu2071873778164182045.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/zh-cn">刘承韬</a></h1>
+            <h2 class="site-description">Liu Chengtao | Undergraduate Works</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://space.bilibili.com/499786362?spm_id_from=333.1007.0.0'
+                        target="_blank"
+                        title="Bilibili"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.0.0-beta2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M488.6 104.1C505.3 122.2 513 143.8 511.9 169.8V372.2C511.5 398.6 502.7 420.3 485.4 437.3C468.2 454.3 446.3 463.2 419.9 464H92.02C65.57 463.2 43.81 454.2 26.74 436.8C9.682 419.4 .7667 396.5 0 368.2V169.8C.7667 143.8 9.682 122.2 26.74 104.1C43.81 87.75 65.57 78.77 92.02 78H121.4L96.05 52.19C90.3 46.46 87.42 39.19 87.42 30.4C87.42 21.6 90.3 14.34 96.05 8.603C101.8 2.868 109.1 0 117.9 0C126.7 0 134 2.868 139.8 8.603L213.1 78H301.1L375.6 8.603C381.7 2.868 389.2 0 398 0C406.8 0 414.1 2.868 419.9 8.603C425.6 14.34 428.5 21.6 428.5 30.4C428.5 39.19 425.6 46.46 419.9 52.19L394.6 78L423.9 78C450.3 78.77 471.9 87.75 488.6 104.1H488.6zM449.8 173.8C449.4 164.2 446.1 156.4 439.1 150.3C433.9 144.2 425.1 140.9 416.4 140.5H96.05C86.46 140.9 78.6 144.2 72.47 150.3C66.33 156.4 63.07 164.2 62.69 173.8V368.2C62.69 377.4 65.95 385.2 72.47 391.7C78.99 398.2 86.85 401.5 96.05 401.5H416.4C425.6 401.5 433.4 398.2 439.7 391.7C446 385.2 449.4 377.4 449.8 368.2L449.8 173.8zM185.5 216.5C191.8 222.8 195.2 230.6 195.6 239.7V273C195.2 282.2 191.9 289.9 185.8 296.2C179.6 302.5 171.8 305.7 162.2 305.7C152.6 305.7 144.7 302.5 138.6 296.2C132.5 289.9 129.2 282.2 128.8 273V239.7C129.2 230.6 132.6 222.8 138.9 216.5C145.2 210.2 152.1 206.9 162.2 206.5C171.4 206.9 179.2 210.2 185.5 216.5H185.5zM377 216.5C383.3 222.8 386.7 230.6 387.1 239.7V273C386.7 282.2 383.4 289.9 377.3 296.2C371.2 302.5 363.3 305.7 353.7 305.7C344.1 305.7 336.3 302.5 330.1 296.2C323.1 289.9 320.7 282.2 320.4 273V239.7C320.7 230.6 324.1 222.8 330.4 216.5C336.7 210.2 344.5 206.9 353.7 206.5C362.9 206.9 370.7 210.2 377 216.5H377z"/></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/sxttrt'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/zh-cn/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/zh-cn/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="http://localhost:1313/" >English</option>
+                                
+                                    <option value="http://localhost:1313/zh-cn/" selected>简体中文</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#一竞赛与团队核心信息">一、竞赛与团队核心信息</a></li>
+    <li><a href="#二核心成果文件参赛论文25页完整版">二、核心成果文件：参赛论文（25页完整版）</a>
+      <ol>
+        <li><a href="#1-论文预览与下载">1. 论文预览与下载</a></li>
+        <li><a href="#2-论文结构与核心图表区">2. 论文结构与核心图表区</a>
+          <ol>
+            <li><a href="#1论文整体框架图">（1）论文整体框架图</a></li>
+            <li><a href="#2研究区域问题对比图">（2）研究区域问题对比图</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#三建模核心逻辑">三、建模核心逻辑</a>
+      <ol>
+        <li><a href="#1-朱诺多目标优化模型">1. 朱诺多目标优化模型</a>
+          <ol>
+            <li><a href="#1四大目标函数公式图">（1）四大目标函数公式图</a></li>
+            <li><a href="#2朱诺模型最优解可视化">（2）朱诺模型最优解可视化</a></li>
+          </ol>
+        </li>
+        <li><a href="#2-夏威夷模型适配">2. 夏威夷模型适配</a>
+          <ol>
+            <li><a href="#1朱诺-夏威夷参数对比图">（1）朱诺-夏威夷参数对比图</a></li>
+            <li><a href="#2夏威夷四岛最优游客量图">（2）夏威夷四岛最优游客量图</a></li>
+            <li><a href="#3夏威夷吸引力模型措施效果图">（3）夏威夷吸引力模型措施效果图</a></li>
+          </ol>
+        </li>
+        <li><a href="#3-敏感性分析图表">3. 敏感性分析图表</a></li>
+      </ol>
+    </li>
+    <li><a href="#四成果价值与政策建议">四、成果价值与政策建议</a>
+      <ol>
+        <li><a href="#1-政策建议三级措施体系">1. 政策建议（三级措施体系）</a>
+          <ol>
+            <li><a href="#1短期措施1-2年缓解核心矛盾">（1）短期措施（1-2年）：缓解核心矛盾</a></li>
+            <li><a href="#2中期措施3-5年平衡多方利益">（2）中期措施（3-5年）：平衡多方利益</a></li>
+            <li><a href="#3长期措施5年以上实现可持续升级">（3）长期措施（5年以上）：实现可持续升级</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/zh-cn/p/competition-mei/">
+                
+                    <img src="/competition/fengmian3.png" loading="lazy" alt="Featured image of post 2025年美国大学生数学建模竞赛（MCM）B题成果详情（Honorable Mention）" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/zh-cn/categories/%E7%AB%9E%E8%B5%9B%E6%88%90%E6%9E%9C/" >
+                竞赛成果
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/zh-cn/p/competition-mei/">2025年美国大学生数学建模竞赛（MCM）B题成果详情（Honorable Mention）</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            2025年MCM竞赛B题（可持续旅游建模）国际二等奖完整记录，含官方证书、25页参赛论文、多目标优化模型及夏威夷/朱诺两地应用方案
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025-01-27</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <ul>
+<li></li>
+</ul>
+<h2 id="一竞赛与团队核心信息">一、竞赛与团队核心信息
+</h2><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>信息类别</th>
+<th>具体内容（源自论文Summary Sheet及正文）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>竞赛名称</strong></td>
+<td>2025年美国大学生数学建模竞赛（Mathematical Contest in Modeling, MCM）</td>
+</tr>
+<tr>
+<td><strong>参赛题目</strong></td>
+<td>B题 可持续旅游建模（聚焦阿拉斯加朱诺冰川保护、夏威夷四岛游客分配）</td>
+</tr>
+<tr>
+<td><strong>获奖等级</strong></td>
+<td>国际二等奖（Honorable Mention）- 全球前20%-30%</td>
+</tr>
+<tr>
+<td><strong>团队信息</strong></td>
+<td>团队编号：2509436<br>成员：Wang Bobin、Liu Chengtao（本人）、Liu Yijin<br>指导教师：Zhang Wei（南方科技大学）</td>
+</tr>
+<tr>
+<td><strong>所属院校</strong></td>
+<td>南方科技大学（Southern University of Science and Technology）</td>
+</tr>
+<tr>
+<td><strong>核心成果</strong></td>
+<td>25页全英文参赛论文（含完整建模逻辑、MATLAB求解、13篇权威参考文献）</td>
+</tr>
+<tr>
+<td><strong>竞赛周期</strong></td>
+<td>2025年2月6日-10日（4天内完成问题拆解→建模→论文撰写）</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="二核心成果文件参赛论文25页完整版">二、核心成果文件：参赛论文（25页完整版）
+</h2><h3 id="1-论文预览与下载">1. 论文预览与下载
+</h3><iframe src="/competition/An_MCM_Paper_Made_by_Team_2509436.pdf" width="100%" height="700" style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);" title="2025年MCM B题论文：可持续旅游建模">
+</iframe>
+<p>若浏览器加载缓慢或无法预览，可直接下载：</p>
+<p><a href="/competition/An_MCM_Paper_Made_by_Team_2509436.pdf" target="_blank">An_MCM_Paper_Made_by_Team_2509436.pdf 下载链接</a></p>
+<h3 id="2-论文结构与核心图表区">2. 论文结构与核心图表区
+</h3><h4 id="1论文整体框架图">（1）论文整体框架图
+</h4><div style="width: 100%; margin: 20px 0; text-align: center;">
+  <img src="/competition/美赛1.png" alt="2025 MCM B题论文结构框架（6大章节）" style="max-width: 80%; height: auto; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+  <p style="margin-top: 8px; font-size: 14px; color: #666;">图1：论文结构框架（引言→模型准备→朱诺模型→夏威夷模型→优缺点→政策）</p>
+</div>
+<h4 id="2研究区域问题对比图">（2）研究区域问题对比图
+</h4><div style="display: flex; gap: 25px; flex-wrap: wrap; margin: 20px 0;">
+  <!-- 朱诺问题描述（替代图片） -->
+  <div style="flex: 1 1 calc(50% - 12px); text-align: center; padding: 20px; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+    <div style="text-align: left; line-height: 1.8; color: #333; margin-bottom: 10px;">
+      <strong>朱诺核心问题：过度旅游加剧生态与基建矛盾</strong><br>
+      1. 游客规模：2023年接待游客160万人次（含130万+邮轮游客），是本地3.1万居民的51倍，高峰日游客达2万人次；<br>
+      2. 生态危机：门登霍尔冰川年融化面积超35km²，2023-2024年因冰川融水引发两次洪水，近300栋建筑受损；<br>
+      3. 基建压力：交通拥堵（城区拥堵时长增加1.5倍）、直升机观光噪音扰民，供水/垃圾系统濒临过载，当地拟设“无邮轮周六”缓解压力。
+    </div>
+    <p style="margin-top: 8px; font-size: 14px; color: #666;">图2：朱诺过度旅游问题示意图（数据源自论文及2024年朱诺市官方报告）</p>
+  </div>
+  <!-- 夏威夷问题描述（替代图片） -->
+  <div style="flex: 1 1 calc(50% - 12px); text-align: center; padding: 20px; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+    <div style="text-align: left; line-height: 1.8; color: #333; margin-bottom: 10px;">
+      <strong>夏威夷核心问题：游客分布失衡与生态破坏</strong><br>
+      1. 分布不均：2023年四岛游客总量1134万，瓦胡岛承接56%（561万），考艾岛仅14%（142万），承载力闲置与过载并存；<br>
+      2. 生态威胁：游客碳排放致海水升温，2015-2019年珊瑚白化面积增加40%，瓦胡岛近岸珊瑚死亡率达35%；<br>
+      3. 局部压力：瓦胡岛日均游客超3万人次，交通瘫痪率较2019年上升28%，考艾岛却因基础设施不足难以承接更多游客。
+    </div>
+    <p style="margin-top: 8px; font-size: 14px; color: #666;">图3：夏威夷四岛旅游问题示意图（数据源自论文及夏威夷旅游局2023年报）</p>
+  </div>
+</div>
+<h2 id="三建模核心逻辑">三、建模核心逻辑
+</h2><h3 id="1-朱诺多目标优化模型">1. 朱诺多目标优化模型
+</h3><p>以“年游客量（x，万人次）”为决策变量，构建“经济-环境-社会”三维模型，关键结果与图表如下：</p>
+<h4 id="1四大目标函数公式图">（1）四大目标函数公式图
+</h4><div style="width: 100%; margin: 20px 0; text-align: center;">
+  <img src="/competition/公式1.png" alt="朱诺模型四大目标函数公式（收入+基建+环境+满意度）" style="max-width: 90%; height: auto; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+  <p style="margin-top: 8px; font-size: 14px; color: #666;">图4：朱诺模型核心公式</p>
+</div>
+<h4 id="2朱诺模型最优解可视化">（2）朱诺模型最优解可视化
+</h4><div style="display: flex; gap: 25px; flex-wrap: wrap; margin: 20px 0;">
+  <!-- 目标函数曲线 -->
+  <div style="flex: 1 1 calc(50% - 12px); text-align: center;">
+    <img src="/competition/公式2.png" alt="朱诺目标函数Z曲线（最优x=207.94万）" style="max-width: 100%; height: auto; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+    <p style="margin-top: 8px; font-size: 14px; color: #666;">图5：目标函数Z曲线（峰值对应最优游客量）</p>
+  </div>
+  <!-- 最优解指标对比 -->
+  <div style="flex: 1 1 calc(50% - 12px); text-align: center;">
+    <img src="/competition/公式3.png" alt="朱诺最优解指标（收入3.9亿+融冰37.11km²+满意度68%）" style="max-width: 100%; height: auto; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+    <p style="margin-top: 8px; font-size: 14px; color: #666;">图6：最优解对应四大指标值（均满足约束）</p>
+  </div>
+</div>
+<h3 id="2-夏威夷模型适配">2. 夏威夷模型适配
+</h3><p>针对四岛场景调整参数，核心差异与可视化如下：</p>
+<h4 id="1朱诺-夏威夷参数对比图">（1）朱诺-夏威夷参数对比图
+</h4><div style="margin: 20px 0; line-height: 1.6;">
+针对夏威夷过度旅游问题，研究构建了多目标优化模型，重点分析瓦胡岛、毛伊县等四个地区。
+<p>首先调整基建压力相关公式：由于夏威夷港口排名数据缺失，改用海岸区域指标参与基建评估，计算得出夏威夷的基建得分为 1.5998；基于此，进一步构建四地的基建压力公式，其中年游客量最大值设定为 600 万，日游客量最大值为日均游客量的 2 倍。</p>
+<p>收入函数的推导结合了当地旅游支出的总税率（17.962%）。居民满意度通过指数函数拟合失业情况与游客量的关系，瓦胡岛、考艾岛、毛伊县、夏威夷岛这四个地区的拟合参数各有不同。</p>
+<p>环境压力方面聚焦珊瑚白化问题，建立了 “游客量 - 交通碳排放 - 海水升温 - 珊瑚白化率” 的四维动态系统：先通过游客量与交通碳排放的对数关系，得出海水温度上升量与游客量的对数成比例；再结合海水温度与珊瑚白化率的指数关系，利用 2015-2019 年的数据拟合，最终得到珊瑚白化率（即环境压力）的计算公式 —— 为 5.921 乘 10 的负八次方与游客量三次方的乘积。</p>
+<p>最后，将基建压力、收入、居民满意度、环境压力这四项指标纳入多目标优化模型，构建目标函数（权重与朱诺模型保持一致），并结合各目的地的旅游收入上限、基建容量上限、珊瑚白化率可接受上限，分析目标得分与年游客量之间的关系。</p>
+</div>
+<h4 id="2夏威夷四岛最优游客量图">（2）夏威夷四岛最优游客量图
+</h4><div style="width: 100%; margin: 20px 0; text-align: center;"><img src="/competition/公式4.png" alt="夏威夷四岛最优游客量汇总（瓦胡岛329.9万、考艾岛253.0万、毛伊岛303.9万、夏威夷岛275.5万）" style="max-width: 90%; height: auto; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);"><p style="margin-top: 8px; font-size: 14px; color: #666;">图8：夏威夷四岛最优游客量汇总（从左至右/上至下依次为：瓦胡岛x=303.95万、毛伊岛x=303.95万、考艾岛x=253.02万、夏威夷岛x=275.48万）</p></div>
+<h4 id="3夏威夷吸引力模型措施效果图">（3）夏威夷吸引力模型措施效果图
+</h4><div style="display: flex; gap: 25px; flex-wrap: wrap; margin: 20px 0;">
+  <!-- 基建扩容效果 -->
+  <div style="flex: 1 1 calc(33% - 17px); text-align: center;">
+    <img src="/competition/公式5.png" alt="考艾岛基建扩容后游客占比20%→25%" style="max-width: 100%; height: auto; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+    <p style="margin-top: 8px; font-size: 14px; color: #666;">图9a：基建扩容效果</p>
+  </div>
+  <!-- 税率下调效果 -->
+  <div style="flex: 1 1 calc(33% - 17px); text-align: center;">
+    <img src="/competition/公式6.png" alt="考艾岛税率3%后游客占比20%→26%" style="max-width: 100%; height: auto; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+    <p style="margin-top: 8px; font-size: 14px; color: #666;">图9b：税率下调效果</p>
+  </div>
+  <!-- 瓦胡限流效果 -->
+  <div style="flex: 1 1 calc(33% - 17px); text-align: center;">
+    <img src="/competition/公式7.png" alt="瓦胡限流后考艾岛占比14%→21%" style="max-width: 100%; height: auto; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+    <p style="margin-top: 8px; font-size: 14px; color: #666;">图9c：瓦胡限流效果</p>
+  </div>
+</div>
+<h3 id="3-敏感性分析图表">3. 敏感性分析图表
+</h3><div style="display: flex; gap: 25px; flex-wrap: wrap; margin: 20px 0;">
+  <!-- 权重敏感性 -->
+  <div style="flex: 1 1 calc(50% - 12px); text-align: center;">
+    <img src="/competition/公式8.png" alt="权重敏感性分析（w1→游客量线性增长，w3→游客量骤降）" style="max-width: 100%; height: auto; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+    <p style="margin-top: 8px; font-size: 14px; color: #666;">图10：权重敏感性</p>
+  </div>
+  <!-- 参数敏感性 -->
+  <div style="flex: 1 1 calc(50% - 12px); text-align: center;">
+    <img src="/competition/公式9.png" alt="参数敏感性分析（Imax→游客量上限，Emax→线性增长）" style="max-width: 100%; height: auto; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+    <p style="margin-top: 8px; font-size: 14px; color: #666;">图11：参数敏感性</p>
+  </div>
+</div>
+<h2 id="四成果价值与政策建议">四、成果价值与政策建议
+</h2><h3 id="1-政策建议三级措施体系">1. 政策建议（三级措施体系）
+</h3><p>基于模型优化结果，针对朱诺可持续旅游发展提出“短期调控-中期平衡-长期升级”三级政策措施，具体如下：</p>
+<h4 id="1短期措施1-2年缓解核心矛盾">（1）短期措施（1-2年）：缓解核心矛盾
+</h4><ul>
+<li><strong>游客量管控</strong>：设定年总游客量上限210万人次（较2023年增长31%），旺季（6-8月）日接待量不超过2.2万人次；推行“预约制”分流邮轮游客，每周设置1天“无大型邮轮日”。</li>
+<li><strong>应急基建改善</strong>：优先扩容 downtown 区域垃圾处理站（提升30%处理能力），新增2条游客专线巴士，减少主城区交通拥堵。</li>
+<li><strong>生态监测强化</strong>：在门登霍尔冰川周边增设3个温度与消融量监测点，建立“游客量-冰川消融”实时关联数据库。</li>
+</ul>
+<h4 id="2中期措施3-5年平衡多方利益">（2）中期措施（3-5年）：平衡多方利益
+</h4><ul>
+<li><strong>差异化税收调节</strong>：对邮轮游客征收每人次15美元“生态保护税”，对高端酒店加收5%环境附加费，资金专项用于冰川保护（占比60%）和居民福利补贴（40%）。</li>
+<li><strong>基建与社区协同</strong>：在游客集中区与居民区之间设置“缓冲带”（如绿化带、隔音屏障）；用税收收入改善居民供水系统，避免旅游用水挤占民生资源。</li>
+<li><strong>居民参与机制</strong>：每季度召开“旅游-社区”听证会，居民对超过承载力的旅游项目拥有23%的投票否决权。</li>
+</ul>
+<h4 id="3长期措施5年以上实现可持续升级">（3）长期措施（5年以上）：实现可持续升级
+</h4><ul>
+<li><strong>旅游产品多元化</strong>：开发“冰川科学研学”“原住民文化体验”等低环境影响项目，将游客平均停留时间从1.2天延长至2.5天，降低单日客流压力。</li>
+<li><strong>低碳交通转型</strong>：要求2030年前邮轮公司使用生物燃料（减排40%），推广电动观光车替代燃油车，直升机观光路线避开冰川核心区。</li>
+<li><strong>区域协同管理</strong>：与阿拉斯加其他旅游城市（如安克雷奇）建立“游客分流协议”，错峰承接过量客流，避免单一区域压力集中。</li>
+</ul>
+<p>通过三级措施衔接，可在保障年旅游收入稳定增长（预计2030年达5.2亿美元）的同时，将冰川年消融量控制在38平方公里以内，居民满意度提升至75%以上，实现“经济-生态-社会”三重目标平衡。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/zh-cn/p/competition-dian/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/competition/fengmian.png" loading="lazy" data-key="competition-dian" data-hash="/competition/fengmian.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">2024 电子设计竞赛 H 题自动行驶小车（省一等奖）</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2025 刘承韬
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

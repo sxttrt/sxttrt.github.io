@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>层次分析法（AHP） on 刘承韬</title>
+        <link>http://localhost:1313/zh-cn/tags/%E5%B1%82%E6%AC%A1%E5%88%86%E6%9E%90%E6%B3%95ahp/</link>
+        <description>Recent content in 层次分析法（AHP） on 刘承韬</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>刘承韬</copyright>
+        <lastBuildDate>Mon, 27 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/zh-cn/tags/%E5%B1%82%E6%AC%A1%E5%88%86%E6%9E%90%E6%B3%95ahp/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>2025年美国大学生数学建模竞赛（MCM）B题成果详情（Honorable Mention）</title>
+        <link>http://localhost:1313/zh-cn/p/competition-mei/</link>
+        <pubDate>Mon, 27 Jan 2025 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh-cn/p/competition-mei/</guid>
+        <description>&lt;img src="http://localhost:1313/competition/fengmian3.png" alt="Featured image of post 2025年美国大学生数学建模竞赛（MCM）B题成果详情（Honorable Mention）" /&gt;&lt;ul&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;一竞赛与团队核心信息&#34;&gt;一、竞赛与团队核心信息
+&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;信息类别&lt;/th&gt;
+&lt;th&gt;具体内容（源自论文Summary Sheet及正文）&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;竞赛名称&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;2025年美国大学生数学建模竞赛（Mathematical Contest in Modeling, MCM）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;参赛题目&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;B题 可持续旅游建模（聚焦阿拉斯加朱诺冰川保护、夏威夷四岛游客分配）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;获奖等级&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;国际二等奖（Honorable Mention）- 全球前20%-30%&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;团队信息&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;团队编号：2509436&lt;br&gt;成员：Wang Bobin、Liu Chengtao（本人）、Liu Yijin&lt;br&gt;指导教师：Zhang Wei（南方科技大学）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;所属院校&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;南方科技大学（Southern University of Science and Technology）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;核心成果&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;25页全英文参赛论文（含完整建模逻辑、MATLAB求解、13篇权威参考文献）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;竞赛周期&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;2025年2月6日-10日（4天内完成问题拆解→建模→论文撰写）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;二核心成果文件参赛论文25页完整版&#34;&gt;二、核心成果文件：参赛论文（25页完整版）
+&lt;/h2&gt;&lt;h3 id=&#34;1-论文预览与下载&#34;&gt;1. 论文预览与下载
+&lt;/h3&gt;&lt;iframe src=&#34;http://localhost:1313/competition/An_MCM_Paper_Made_by_Team_2509436.pdf&#34; width=&#34;100%&#34; height=&#34;700&#34; style=&#34;border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);&#34; title=&#34;2025年MCM B题论文：可持续旅游建模&#34;&gt;
+&lt;/iframe&gt;
+&lt;p&gt;若浏览器加载缓慢或无法预览，可直接下载：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://localhost:1313/competition/An_MCM_Paper_Made_by_Team_2509436.pdf&#34; target=&#34;_blank&#34;&gt;An_MCM_Paper_Made_by_Team_2509436.pdf 下载链接&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;2-论文结构与核心图表区&#34;&gt;2. 论文结构与核心图表区
+&lt;/h3&gt;&lt;h4 id=&#34;1论文整体框架图&#34;&gt;（1）论文整体框架图
+&lt;/h4&gt;&lt;div style=&#34;width: 100%; margin: 20px 0; text-align: center;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/competition/美赛1.png&#34; alt=&#34;2025 MCM B题论文结构框架（6大章节）&#34; style=&#34;max-width: 80%; height: auto; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);&#34;&gt;
+  &lt;p style=&#34;margin-top: 8px; font-size: 14px; color: #666;&#34;&gt;图1：论文结构框架（引言→模型准备→朱诺模型→夏威夷模型→优缺点→政策）&lt;/p&gt;
+&lt;/div&gt;
+&lt;h4 id=&#34;2研究区域问题对比图&#34;&gt;（2）研究区域问题对比图
+&lt;/h4&gt;&lt;div style=&#34;display: flex; gap: 25px; flex-wrap: wrap; margin: 20px 0;&#34;&gt;
+  &lt;!-- 朱诺问题描述（替代图片） --&gt;
+  &lt;div style=&#34;flex: 1 1 calc(50% - 12px); text-align: center; padding: 20px; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);&#34;&gt;
+    &lt;div style=&#34;text-align: left; line-height: 1.8; color: #333; margin-bottom: 10px;&#34;&gt;
+      &lt;strong&gt;朱诺核心问题：过度旅游加剧生态与基建矛盾&lt;/strong&gt;&lt;br&gt;
+      1. 游客规模：2023年接待游客160万人次（含130万+邮轮游客），是本地3.1万居民的51倍，高峰日游客达2万人次；&lt;br&gt;
+      2. 生态危机：门登霍尔冰川年融化面积超35km²，2023-2024年因冰川融水引发两次洪水，近300栋建筑受损；&lt;br&gt;
+      3. 基建压力：交通拥堵（downtown拥堵时长增加1.5倍）、直升机观光噪音扰民，供水/垃圾系统濒临过载，当地拟设“无邮轮周六”缓解压力。
+    &lt;/div&gt;
+    &lt;p style=&#34;margin-top: 8px; font-size: 14px; color: #666;&#34;&gt;图2：朱诺过度旅游问题示意图（数据源自论文及2024年朱诺市官方报告）&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;!-- 夏威夷问题描述（替代图片） --&gt;
+  &lt;div style=&#34;flex: 1 1 calc(50% - 12px); text-align: center; padding: 20px; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);&#34;&gt;
+    &lt;div style=&#34;text-align: left; line-height: 1.8; color: #333; margin-bottom: 10px;&#34;&gt;
+      &lt;strong&gt;夏威夷核心问题：游客分布失衡与生态破坏&lt;/strong&gt;&lt;br&gt;
+      1. 分布不均：2023年四岛游客总量1134万，瓦胡岛承接56%（561万），考艾岛仅14%（142万），承载力闲置与过载并存；&lt;br&gt;
+      2. 生态威胁：游客碳排放致海水升温，2015-2019年珊瑚白化面积增加40%，瓦胡岛近岸珊瑚死亡率达35%；&lt;br&gt;
+      3. 局部压力：瓦胡岛downtown日均游客超3万人次，交通瘫痪率较2019年上升28%，考艾岛却因基础设施不足难以承接更多游客。
+    &lt;/div&gt;
+    &lt;p style=&#34;margin-top: 8px; font-size: 14px; color: #666;&#34;&gt;图3：夏威夷四岛旅游问题示意图（数据源自论文及夏威夷旅游局2023年报）&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;三建模核心逻辑含多组图表位置&#34;&gt;三、建模核心逻辑（含多组图表位置）
+&lt;/h2&gt;&lt;h3 id=&#34;1-朱诺多目标优化模型论文第3章&#34;&gt;1. 朱诺多目标优化模型（论文第3章）
+&lt;/h3&gt;&lt;p&gt;以“年游客量（x，万人次）”为决策变量，构建“经济-环境-社会”三维模型，关键结果与图表如下：&lt;/p&gt;
+&lt;h4 id=&#34;1四大目标函数公式图对应论文p6-p9公式&#34;&gt;（1）四大目标函数公式图（对应论文P6-P9公式）
+&lt;/h4&gt;&lt;div style=&#34;width: 100%; margin: 20px 0; text-align: center;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/images/mcm-juneau-formulas.png&#34; alt=&#34;朱诺模型四大目标函数公式（收入+基建+环境+满意度）&#34; style=&#34;max-width: 90%; height: auto; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);&#34;&gt;
+  &lt;p style=&#34;margin-top: 8px; font-size: 14px; color: #666;&#34;&gt;图4：朱诺模型核心公式（含人均消费2000美元、基建得分1.492等参数）&lt;/p&gt;
+&lt;/div&gt;
+&lt;h4 id=&#34;2朱诺模型最优解可视化对应论文p10图1&#34;&gt;（2）朱诺模型最优解可视化（对应论文P10图1）
+&lt;/h4&gt;&lt;div style=&#34;display: flex; gap: 25px; flex-wrap: wrap; margin: 20px 0;&#34;&gt;
+  &lt;!-- 目标函数曲线 --&gt;
+  &lt;div style=&#34;flex: 1 1 calc(50% - 12px); text-align: center;&#34;&gt;
+    &lt;img src=&#34;http://localhost:1313/images/mcm-juneau-objective-curve.png&#34; alt=&#34;朱诺目标函数Z曲线（最优x=207.94万）&#34; style=&#34;max-width: 100%; height: auto; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);&#34;&gt;
+    &lt;p style=&#34;margin-top: 8px; font-size: 14px; color: #666;&#34;&gt;图5：目标函数Z曲线（峰值对应最优游客量）&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;!-- 最优解指标对比 --&gt;
+  &lt;div style=&#34;flex: 1 1 calc(50% - 12px); text-align: center;&#34;&gt;
+    &lt;img src=&#34;http://localhost:1313/images/mcm-juneau-optimal-index.png&#34; alt=&#34;朱诺最优解指标（收入3.9亿+融冰37.11km²+满意度68%）&#34; style=&#34;max-width: 100%; height: auto; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);&#34;&gt;
+    &lt;p style=&#34;margin-top: 8px; font-size: 14px; color: #666;&#34;&gt;图6：最优解对应四大指标值（均满足约束）&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 id=&#34;2-夏威夷模型适配论文第4章&#34;&gt;2. 夏威夷模型适配（论文第4章）
+&lt;/h3&gt;&lt;p&gt;针对四岛场景调整参数，核心差异与可视化如下：&lt;/p&gt;
+&lt;h4 id=&#34;1朱诺-夏威夷参数对比图对应论文p15表格&#34;&gt;（1）朱诺-夏威夷参数对比图（对应论文P15表格）
+&lt;/h4&gt;&lt;div style=&#34;width: 100%; margin: 20px 0; text-align: center;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/images/mcm-parameter-comparison.png&#34; alt=&#34;朱诺vs夏威夷模型参数对比（环境指标+税率+基建得分）&#34; style=&#34;max-width: 90%; height: auto; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);&#34;&gt;
+  &lt;p style=&#34;margin-top: 8px; font-size: 14px; color: #666;&#34;&gt;图7：两地模型关键参数差异（珊瑚公式vs冰川公式、税率17.962% vs 5%）&lt;/p&gt;
+&lt;/div&gt;
+&lt;h4 id=&#34;2夏威夷四岛最优游客量图对应论文p16图a-d&#34;&gt;（2）夏威夷四岛最优游客量图（对应论文P16图a-d）
+&lt;/h4&gt;&lt;div style=&#34;display: flex; gap: 20px; flex-wrap: wrap; margin: 20px 0;&#34;&gt;
+  &lt;div style=&#34;flex: 1 1 calc(25% - 15px); text-align: center;&#34;&gt;
+    &lt;img src=&#34;http://localhost:1313/images/mcm-hawaii-oahu.png&#34; alt=&#34;瓦胡岛最优游客量329.9万&#34; style=&#34;max-width: 100%; height: auto; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);&#34;&gt;
+    &lt;p style=&#34;margin-top: 6px; font-size: 13px; color: #666;&#34;&gt;图8a：瓦胡岛（x=329.9万）&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div style=&#34;flex: 1 1 calc(25% - 15px); text-align: center;&#34;&gt;
+    &lt;img src=&#34;http://localhost:1313/images/mcm-hawaii-kauai.png&#34; alt=&#34;考艾岛最优游客量253.0万&#34; style=&#34;max-width: 100%; height: auto; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);&#34;&gt;
+    &lt;p style=&#34;margin-top: 6px; font-size: 13px; color: #666;&#34;&gt;图8b：考艾岛（x=253.0万）&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div style=&#34;flex: 1 1 calc(25% - 15px); text-align: center;&#34;&gt;
+    &lt;img src=&#34;http://localhost:1313/images/mcm-hawaii-maui.png&#34; alt=&#34;毛伊岛最优游客量303.9万&#34; style=&#34;max-width: 100%; height: auto; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);&#34;&gt;
+    &lt;p style=&#34;margin-top: 6px; font-size: 13px; color: #666;&#34;&gt;图8c：毛伊岛（x=303.9万）&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div style=&#34;flex: 1 1 calc(25% - 15px); text-align: center;&#34;&gt;
+    &lt;img src=&#34;http://localhost:1313/images/mcm-hawaii-hawaii.png&#34; alt=&#34;夏威夷岛最优游客量275.5万&#34; style=&#34;max-width: 100%; height: auto; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);&#34;&gt;
+    &lt;p style=&#34;margin-top: 6px; font-size: 13px; color: #666;&#34;&gt;图8d：夏威夷岛（x=275.5万）&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h4 id=&#34;3夏威夷吸引力模型措施效果图对应论文p19-p21&#34;&gt;（3）夏威夷吸引力模型措施效果图（对应论文P19-P21）
+&lt;/h4&gt;&lt;div style=&#34;display: flex; gap: 25px; flex-wrap: wrap; margin: 20px 0;&#34;&gt;
+  &lt;!-- 基建扩容效果 --&gt;
+  &lt;div style=&#34;flex: 1 1 calc(33% - 17px); text-align: center;&#34;&gt;
+    &lt;img src=&#34;http://localhost:1313/images/mcm-hawaii-infra.png&#34; alt=&#34;考艾岛基建扩容后游客占比20%→25%&#34; style=&#34;max-width: 100%; height: auto; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);&#34;&gt;
+    &lt;p style=&#34;margin-top: 8px; font-size: 14px; color: #666;&#34;&gt;图9a：基建扩容效果&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;!-- 税率下调效果 --&gt;
+  &lt;div style=&#34;flex: 1 1 calc(33% - 17px); text-align: center;&#34;&gt;
+    &lt;img src=&#34;http://localhost:1313/images/mcm-hawaii-tax.png&#34; alt=&#34;考艾岛税率3%后游客占比20%→26%&#34; style=&#34;max-width: 100%; height: auto; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);&#34;&gt;
+    &lt;p style=&#34;margin-top: 8px; font-size: 14px; color: #666;&#34;&gt;图9b：税率下调效果&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;!-- 瓦胡限流效果 --&gt;
+  &lt;div style=&#34;flex: 1 1 calc(33% - 17px); text-align: center;&#34;&gt;
+    &lt;img src=&#34;http://localhost:1313/images/mcm-hawaii-cap.png&#34; alt=&#34;瓦胡限流后考艾岛占比14%→21%&#34; style=&#34;max-width: 100%; height: auto; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);&#34;&gt;
+    &lt;p style=&#34;margin-top: 8px; font-size: 14px; color: #666;&#34;&gt;图9c：瓦胡限流效果&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 id=&#34;3-敏感性分析图表对应论文p12-p14p22&#34;&gt;3. 敏感性分析图表（对应论文P12-P14、P22）
+&lt;/h3&gt;&lt;div style=&#34;display: flex; gap: 25px; flex-wrap: wrap; margin: 20px 0;&#34;&gt;
+  &lt;!-- 权重敏感性 --&gt;
+  &lt;div style=&#34;flex: 1 1 calc(50% - 12px); text-align: center;&#34;&gt;
+    &lt;img src=&#34;http://localhost:1313/images/mcm-sensitivity-weight.png&#34; alt=&#34;权重敏感性分析（w1→游客量线性增长，w3→游客量骤降）&#34; style=&#34;max-width: 100%; height: auto; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);&#34;&gt;
+    &lt;p style=&#34;margin-top: 8px; font-size: 14px; color: #666;&#34;&gt;图10：权重敏感性（w1=收入，w3=环境）&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;!-- 参数敏感性 --&gt;
+  &lt;div style=&#34;flex: 1 1 calc(50% - 12px); text-align: center;&#34;&gt;
+    &lt;img src=&#34;http://localhost:1313/images/mcm-sensitivity-param.png&#34; alt=&#34;参数敏感性分析（Imax→游客量上限，Emax→线性增长）&#34; style=&#34;max-width: 100%; height: auto; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);&#34;&gt;
+    &lt;p style=&#34;margin-top: 8px; font-size: 14px; color: #666;&#34;&gt;图11：参数敏感性（Imax=基建容量，Emax=环境容量）&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;四成果价值与政策建议&#34;&gt;四、成果价值与政策建议
+&lt;/h2&gt;&lt;h3 id=&#34;1-政策建议可视化对应论文p24备忘录&#34;&gt;1. 政策建议可视化（对应论文P24备忘录）
+&lt;/h3&gt;&lt;div style=&#34;width: 100%; margin: 20px 0; text-align: center;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/images/mcm-policy.png&#34; alt=&#34;朱诺可持续旅游政策建议（游客控制+税收分配+产品开发）&#34; style=&#34;max-width: 85%; height: auto; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);&#34;&gt;
+  &lt;p style=&#34;margin-top: 8px; font-size: 14px; color: #666;&#34;&gt;图12：朱诺政策建议（3级措施：短期→中期→长期）&lt;/p&gt;
+&lt;/div&gt;
+&lt;h3 id=&#34;2-模型复用性说明图&#34;&gt;2. 模型复用性说明图
+&lt;/h3&gt;&lt;div style=&#34;width: 100%; margin: 20px 0; text-align: center;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/images/mcm-reuse.png&#34; alt=&#34;模型复用逻辑（替换本地化指标适配其他区域）&#34; style=&#34;max-width: 80%; height: auto; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);&#34;&gt;
+  &lt;p style=&#34;margin-top: 8px; font-size: 14px; color: #666;&#34;&gt;图13：模型复用框架（如丽江→替换为古城承载力指标）&lt;/p&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;五后续可扩展方向&#34;&gt;五、后续可扩展方向
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;补充季节性图表&lt;/strong&gt;：新增“朱诺/夏威夷淡旺季游客量对比图”“季节性冰川融化差异图”，优化模型时间维度精度；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;代码可视化嵌入&lt;/strong&gt;：在“建模逻辑”章节新增“MATLAB求解代码截图区”，预留HTML图片位置展示核心迭代脚本；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;实地验证图表&lt;/strong&gt;：添加“模型预测值vs实际数据对比图”，用真实游客量数据验证模型准确性；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;交互图表优化&lt;/strong&gt;：为所有静态图表添加hover交互（如鼠标悬浮显示具体数值），需预留JavaScript代码嵌入位置。&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

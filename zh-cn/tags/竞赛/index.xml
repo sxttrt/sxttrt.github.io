@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>竞赛 on 刘承韬</title>
+        <link>http://localhost:1313/zh-cn/tags/%E7%AB%9E%E8%B5%9B/</link>
+        <description>Recent content in 竞赛 on 刘承韬</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>刘承韬</copyright>
+        <lastBuildDate>Thu, 16 Oct 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/zh-cn/tags/%E7%AB%9E%E8%B5%9B/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>我的科研与竞赛成果总览</title>
+        <link>http://localhost:1313/zh-cn/p/%E6%88%91%E7%9A%84%E7%A7%91%E7%A0%94%E4%B8%8E%E7%AB%9E%E8%B5%9B%E6%88%90%E6%9E%9C%E6%80%BB%E8%A7%88/</link>
+        <pubDate>Thu, 16 Oct 2025 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh-cn/p/%E6%88%91%E7%9A%84%E7%A7%91%E7%A0%94%E4%B8%8E%E7%AB%9E%E8%B5%9B%E6%88%90%E6%9E%9C%E6%80%BB%E8%A7%88/</guid>
+        <description>&lt;h1 id=&#34;我的成果总览&#34;&gt;我的成果总览
+&lt;/h1&gt;&lt;p&gt;点击下方项目/竞赛名称，可跳转到对应详情页查看细节。&lt;/p&gt;
+&lt;h2 id=&#34;一科研项目5项&#34;&gt;一、科研项目（5项）
+&lt;/h2&gt;&lt;h3 id=&#34;1-五子棋&#34;&gt;1. 五子棋
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;核心内容：&lt;/li&gt;
+&lt;li&gt;详情链接：&lt;a class=&#34;link&#34; href=&#34;http://localhost:1313/zh-cn/p/gomoku-recognition/&#34; &gt;查看完整项目文档&lt;/a&gt;  &lt;!-- 替换成你的科研项目1路径 --&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-4轮小车&#34;&gt;2. 4轮小车
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;核心内容：&lt;/li&gt;
+&lt;li&gt;详情链接：&lt;a class=&#34;link&#34; href=&#34;http://localhost:1313/zh-cn/p/four-wheel-car-modeling/&#34; &gt;查看完整项目文档&lt;/a&gt;  &lt;!-- 替换成你的科研项目2路径 --&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;3-便携式健康监测设备开发&#34;&gt;3. 便携式健康监测设备开发
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;核心内容：简述项目（如“设计心率+血氧监测模块，支持蓝牙数据同步”）&lt;/li&gt;
+&lt;li&gt;详情链接：&lt;a class=&#34;link&#34; href=&#34;http://localhost:1313/post/project-health-monitor/&#34; &gt;查看完整项目文档&lt;/a&gt;  &lt;!-- 替换成你的科研项目3路径 --&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;4-工业数据异常检测模型设计&#34;&gt;4. 工业数据异常检测模型设计
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;核心内容：简述项目（如“用LSTM模型识别生产线传感器异常数据，准确率98%”）&lt;/li&gt;
+&lt;li&gt;详情链接：&lt;a class=&#34;link&#34; href=&#34;http://localhost:1313/post/project-data-anomaly/&#34; &gt;查看完整项目文档&lt;/a&gt;  &lt;!-- 替换成你的科研项目4路径 --&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;5-基于区块链的文件加密系统&#34;&gt;5. 基于区块链的文件加密系统
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;核心内容：简述项目（如“用以太坊私钥实现文件加密传输，确保数据安全”）&lt;/li&gt;
+&lt;li&gt;详情链接：&lt;a class=&#34;link&#34; href=&#34;http://localhost:1313/post/project-blockchain-encrypt/&#34; &gt;查看完整项目文档&lt;/a&gt;  &lt;!-- 替换成你的科研项目5路径 --&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;s&lt;/p&gt;
+&lt;h2 id=&#34;二竞赛经历2项&#34;&gt;二、竞赛经历（2项）
+&lt;/h2&gt;&lt;h3 id=&#34;1-2024全国大学生电子设计竞赛h题省一等奖&#34;&gt;1. 2024全国大学生电子设计竞赛H题（省一等奖）
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;核心成果：简述竞赛（如“设计自动行驶小车，实现路径巡线、精准停车、多任务切换”）&lt;/li&gt;
+&lt;li&gt;详情链接：&lt;a class=&#34;link&#34; href=&#34;http://localhost:1313/zh-cn/p/competition-dian/&#34; &gt;查看竞赛技术文档&lt;/a&gt;  &lt;!-- 这是你现有的竞赛页路径，不用改！ --&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-2025美国大学生数学建模竞赛省二等奖&#34;&gt;2. 2025美国大学生数学建模竞赛（省二等奖）
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;核心成果：简述竞赛（如“建立城市交通流量预测模型，优化早晚高峰疏导方案”）&lt;/li&gt;
+&lt;li&gt;详情链接：&lt;a class=&#34;link&#34; href=&#34;http://localhost:1313/zh-cn/p/competition-mei/&#34; &gt;查看竞赛论文文档&lt;/a&gt;  &lt;!-- 替换成你的第2个比赛路径 --&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;说明&#34;&gt;说明
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;所有项目/竞赛均包含完整技术文档、代码开源链接（若有）、成果展示；&lt;/li&gt;
+&lt;li&gt;点击“查看完整文档”即可跳转到对应详情页，返回总览页可刷新当前页面。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

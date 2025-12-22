@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="机械臂绘画项目完整记录，含图像扫描识别、路径规划、力控轨迹跟踪全流程，实现从图像输入到实物绘画的自动化执行">
+<title>基于Gen3-lite机械臂的绘画机器人系统</title>
+
+<link rel='canonical' href='http://localhost:1313/zh-cn/p/painting-robot/'>
+
+<link rel="stylesheet" href="/scss/style.min.0304c6baf04e01a8fe70693791cb744d56a3578a3120a8796cefc66825aa39c7.css"><meta property='og:title' content="基于Gen3-lite机械臂的绘画机器人系统">
+<meta property='og:description' content="机械臂绘画项目完整记录，含图像扫描识别、路径规划、力控轨迹跟踪全流程，实现从图像输入到实物绘画的自动化执行">
+<meta property='og:url' content='http://localhost:1313/zh-cn/p/painting-robot/'>
+<meta property='og:site_name' content='刘承韬'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-06-04T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-06-04T00:00:00&#43;00:00'/><meta property='og:image' content='http://localhost:1313/gen3/fengmian.png' />
+<meta name="twitter:title" content="基于Gen3-lite机械臂的绘画机器人系统">
+<meta name="twitter:description" content="机械臂绘画项目完整记录，含图像扫描识别、路径规划、力控轨迹跟踪全流程，实现从图像输入到实物绘画的自动化执行"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='http://localhost:1313/gen3/fengmian.png' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/zh-cn/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu2071873778164182045.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/zh-cn">刘承韬</a></h1>
+            <h2 class="site-description">Liu Chengtao | Undergraduate Works</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://space.bilibili.com/499786362?spm_id_from=333.1007.0.0'
+                        target="_blank"
+                        title="Bilibili"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.0.0-beta2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M488.6 104.1C505.3 122.2 513 143.8 511.9 169.8V372.2C511.5 398.6 502.7 420.3 485.4 437.3C468.2 454.3 446.3 463.2 419.9 464H92.02C65.57 463.2 43.81 454.2 26.74 436.8C9.682 419.4 .7667 396.5 0 368.2V169.8C.7667 143.8 9.682 122.2 26.74 104.1C43.81 87.75 65.57 78.77 92.02 78H121.4L96.05 52.19C90.3 46.46 87.42 39.19 87.42 30.4C87.42 21.6 90.3 14.34 96.05 8.603C101.8 2.868 109.1 0 117.9 0C126.7 0 134 2.868 139.8 8.603L213.1 78H301.1L375.6 8.603C381.7 2.868 389.2 0 398 0C406.8 0 414.1 2.868 419.9 8.603C425.6 14.34 428.5 21.6 428.5 30.4C428.5 39.19 425.6 46.46 419.9 52.19L394.6 78L423.9 78C450.3 78.77 471.9 87.75 488.6 104.1H488.6zM449.8 173.8C449.4 164.2 446.1 156.4 439.1 150.3C433.9 144.2 425.1 140.9 416.4 140.5H96.05C86.46 140.9 78.6 144.2 72.47 150.3C66.33 156.4 63.07 164.2 62.69 173.8V368.2C62.69 377.4 65.95 385.2 72.47 391.7C78.99 398.2 86.85 401.5 96.05 401.5H416.4C425.6 401.5 433.4 398.2 439.7 391.7C446 385.2 449.4 377.4 449.8 368.2L449.8 173.8zM185.5 216.5C191.8 222.8 195.2 230.6 195.6 239.7V273C195.2 282.2 191.9 289.9 185.8 296.2C179.6 302.5 171.8 305.7 162.2 305.7C152.6 305.7 144.7 302.5 138.6 296.2C132.5 289.9 129.2 282.2 128.8 273V239.7C129.2 230.6 132.6 222.8 138.9 216.5C145.2 210.2 152.1 206.9 162.2 206.5C171.4 206.9 179.2 210.2 185.5 216.5H185.5zM377 216.5C383.3 222.8 386.7 230.6 387.1 239.7V273C386.7 282.2 383.4 289.9 377.3 296.2C371.2 302.5 363.3 305.7 353.7 305.7C344.1 305.7 336.3 302.5 330.1 296.2C323.1 289.9 320.7 282.2 320.4 273V239.7C320.7 230.6 324.1 222.8 330.4 216.5C336.7 210.2 344.5 206.9 353.7 206.5C362.9 206.9 370.7 210.2 377 216.5H377z"/></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/sxttrt'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/zh-cn/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/zh-cn/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="http://localhost:1313/" >English</option>
+                                
+                                    <option value="http://localhost:1313/zh-cn/" selected>简体中文</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#一项目核心信息">一、项目核心信息</a></li>
+    <li><a href="#二项目背景与目标">二、项目背景与目标</a>
+      <ol>
+        <li><a href="#1-项目背景">1. 项目背景</a></li>
+        <li><a href="#2-核心目标">2. 核心目标</a></li>
+      </ol>
+    </li>
+    <li><a href="#三核心任务实现">三、核心任务实现</a>
+      <ol>
+        <li><a href="#任务一图像扫描与预处理基于opencv">任务一：图像扫描与预处理（基于OpenCV）</a>
+          <ol>
+            <li><a href="#1-完整处理流程">1. 完整处理流程</a></li>
+            <li><a href="#2-处理效果展示">2. 处理效果展示</a></li>
+          </ol>
+        </li>
+        <li><a href="#任务二轨迹规划图像机械路径">任务二：轨迹规划（图像→机械路径）</a>
+          <ol>
+            <li><a href="#1-核心实现步骤">1. 核心实现步骤</a></li>
+            <li><a href="#2-轨迹规划效果展示">2. 轨迹规划效果展示</a></li>
+          </ol>
+        </li>
+        <li><a href="#任务三机械臂控制基于ros与kortex-sdk">任务三：机械臂控制（基于ROS与Kortex SDK）</a>
+          <ol>
+            <li><a href="#1-力控核心实现">1. 力控核心实现</a></li>
+            <li><a href="#2-路径执行与ros节点设计">2. 路径执行与ROS节点设计</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#四项目成果与演示">四、项目成果与演示</a>
+      <ol>
+        <li><a href="#1-绘画效果对比">1. 绘画效果对比</a></li>
+        <li><a href="#2-论文预览与下载">2. 论文预览与下载</a></li>
+        <li><a href="#3-核心结论与优化方向">3. 核心结论与优化方向</a>
+          <ol>
+            <li><a href="#1-核心结论">1. 核心结论</a></li>
+            <li><a href="#2-后续优化方向">2. 后续优化方向</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/zh-cn/p/painting-robot/">
+                
+                    <img src="/gen3/fengmian.png" loading="lazy" alt="Featured image of post 基于Gen3-lite机械臂的绘画机器人系统" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/zh-cn/categories/%E9%A1%B9%E7%9B%AE%E6%88%90%E6%9E%9C/" >
+                项目成果
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/zh-cn/p/painting-robot/">基于Gen3-lite机械臂的绘画机器人系统</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            机械臂绘画项目完整记录，含图像扫描识别、路径规划、力控轨迹跟踪全流程，实现从图像输入到实物绘画的自动化执行
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025-06-04</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <!-- MathJax配置 -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+MathJax.config = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    processEscapes: true
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<h2 id="一项目核心信息">一、项目核心信息
+</h2><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>信息类别</th>
+<th>具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>项目名称</strong></td>
+<td>基于Kinova Gen3-lite机械臂的绘画机器人系统构建</td>
+</tr>
+<tr>
+<td><strong>核心成员</strong></td>
+<td>李育昆、刘承韬、王博彬</td>
+</tr>
+<tr>
+<td><strong>项目周期</strong></td>
+<td>2025年3月-2025年6月</td>
+</tr>
+<tr>
+<td><strong>核心任务</strong></td>
+<td>1. 图像扫描：基于OpenCV完成摄像头采集、预处理、边缘检测与轮廓提取<br>2. 轨迹规划：图像二值化、骨架提取、路径合并简化、坐标归一化<br>3. 机械臂控制：ROS框架下力控轨迹跟踪、坐标转换、抬笔/落笔动作模拟</td>
+</tr>
+<tr>
+<td><strong>关键工具</strong></td>
+<td>Python、OpenCV（图像处理）、NumPy（数值计算）、ROS（机器人操作系统）、Kinova Gen3-lite机械臂、Kortex SDK（机械臂控制接口）、skimage（骨架提取）</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="二项目背景与目标">二、项目背景与目标
+</h2><h3 id="1-项目背景">1. 项目背景
+</h3><p>传统人工绘画依赖经验与熟练度，复刻复杂线描图案时易出现偏差，且批量复刻效率极低；而Kinova Gen3-lite机械臂作为轻量级协作机械臂，具备±0.1mm的重复定位精度，结合计算机视觉与机器人控制技术，可实现“视觉感知→路径规划→机械执行”的全自动化闭环。</p>
+<p>本项目针对教育演示、小型创意工坊等轻量化场景，规避复杂的工业级视觉标定与力控方案，通过开源工具链（OpenCV+ROS）实现低成本、易部署的机械臂绘画系统，解决“图像如何转化为机械臂可执行轨迹”“无专用力传感器时如何维持画笔与纸张稳定接触”两大核心问题。</p>
+<h3 id="2-核心目标">2. 核心目标
+</h3><ul>
+<li><strong>图像处理目标</strong>：针对不同光照、不同复杂度的简单线描图像（如动物简笔画、几何图案），实现轮廓精准提取，通过形态学操作增强边缘连续性，去除纸张纹理、拍摄噪声等干扰因素；</li>
+<li><strong>路径规划目标</strong>：将图像轮廓转化为连续、无冗余的机械臂运动轨迹，通过抬笔/落笔节点标记，减少机械臂无效动作，确保绘画流畅性；</li>
+<li><strong>机械臂控制目标</strong>：基于雅可比转置法实现末端执行器力估计，通过PD控制器维持13N的稳定接触力，适配不同厚度纸张的绘画需求；</li>
+<li><strong>系统集成目标</strong>：完成“图像扫描→轨迹生成→机械绘画”全流程自动化，单幅200个路径点以内的线描图绘画耗时≤5分钟，复刻偏差≤1mm。</li>
+</ul>
+<h2 id="三核心任务实现">三、核心任务实现
+</h2><h3 id="任务一图像扫描与预处理基于opencv">任务一：图像扫描与预处理（基于OpenCV）
+</h3><h4 id="1-完整处理流程">1. 完整处理流程
+</h4><ol>
+<li>
+<p><strong>硬件与参数初始化</strong>：</p>
+<ul>
+<li>摄像头适配：调用<code>cv2.VideoCapture(6)</code>启用工业摄像头（设备号根据实际硬件调整），设置图像分辨率为480×640（兼顾处理效率与细节保留）；</li>
+<li>参数校准：通过<code>cap.set(10, 160)</code>调整摄像头亮度，适配室内常规光照环境；</li>
+<li>工具函数准备：自定义<code>stackImages</code>函数实现多图拼接可视化，<code>valTrackbars</code>函数创建阈值调节轨迹栏，便于实时调整边缘检测参数。</li>
+</ul>
+</li>
+<li>
+<p><strong>图像优化处理</strong>：</p>
+<ul>
+<li>灰度转换：将彩色图像转为灰度图（<code>cv2.COLOR_BGR2GRAY</code>），减少3/4的计算量，聚焦线条轮廓特征；</li>
+<li>高斯降噪：采用5×5卷积核执行高斯模糊（<code>cv2.GaussianBlur(imgGray, (5, 5), 1)</code>），平滑图像并降低椒盐噪声、拍摄抖动带来的干扰；</li>
+<li>边缘检测：通过轨迹栏实时调整Canny算法的高低阈值，提取图像边缘轮廓；</li>
+<li>形态学增强：用5×5矩形核执行膨胀操作（<code>cv2.dilate</code>）连接断开的边缘线条，再执行腐蚀操作（<code>cv2.erode</code>）去除小面积噪声点，强化轮廓完整性。</li>
+</ul>
+</li>
+<li>
+<p><strong>轮廓提取与可视化</strong>：</p>
+<ul>
+<li>轮廓检测：采用<code>cv2.findContours</code>函数，设置<code>RETR_EXTERNAL</code>参数仅提取最外层轮廓，<code>CHAIN_APPROX_SIMPLE</code>参数压缩冗余轮廓点，减少后续轨迹计算量；</li>
+<li>结果展示：将原始图、灰度图、阈值图、轮廓图通过<code>stackImages</code>函数拼接为2×2阵列，实时显示处理效果，便于参数调试。</li>
+</ul>
+</li>
+<li>
+<p><strong>交互与保存</strong>：</p>
+<ul>
+<li>触发机制：按下键盘<code>s</code>键保存当前扫描的处理结果，文件名格式为<code>scan_result_计数器.jpg</code>（计数器自增），确保文件唯一性；</li>
+<li>反馈提示：在拼接图像上绘制绿色背景的提示框，显示红色“Scan Saved”文字，持续300毫秒后恢复原图显示，提升操作交互性。</li>
+</ul>
+</li>
+</ol>
+<h4 id="2-处理效果展示">2. 处理效果展示
+</h4><div style="flex: 1 1 30%; text-align: center;">
+  <img src="/gen3/图1.png" alt="原始拍摄图" style="max-width: 100%; border: 1px solid #eee; border-radius: 4px;">
+  <p style="font-size: 14px; color: #666; margin-top: 8px;">图1：3种不同图片的处理效果</p>
+</div>
+<h3 id="任务二轨迹规划图像机械路径">任务二：轨迹规划（图像→机械路径）
+</h3><h4 id="1-核心实现步骤">1. 核心实现步骤
+</h4><ol>
+<li>
+<p><strong>图像二值化与边界处理</strong>：</p>
+<ul>
+<li>阈值分割：将预处理后的灰度图通过<code>cv2.threshold</code>转为黑白二值图，设置线条（前景）为白色、背景为黑色，简化后续骨架提取逻辑；</li>
+<li>边界补充：通过<code>cv2.copyMakeBorder</code>在图像四周添加5像素白色边框，避免图像边缘的线条在骨架提取时被截断，保证路径完整性。</li>
+</ul>
+</li>
+<li>
+<p><strong>骨架提取与断点修复</strong>：</p>
+<ul>
+<li>中心线提取：调用<code>skimage.morphology.skeletonize</code>函数将宽线条细化为单像素中心线，降低机械臂轨迹复杂度；</li>
+<li>断点连接：遍历骨架图像像素，检测8邻域内的对称断点（如上下/左右成对的孤立点），自动填充断点，提升路径连续性。</li>
+</ul>
+</li>
+<li>
+<p><strong>路径提取与优化</strong>：</p>
+<ul>
+<li>端点检测：遍历骨架像素，识别仅含1个邻域像素的端点，作为轨迹追踪的起始点；</li>
+<li>轨迹追踪：从端点出发，沿8邻域遍历有效骨架像素，提取完整的线条路径；</li>
+<li>闭环补充：扫描未被访问的骨架像素，补充圆形、多边形等闭环路径，避免遗漏内部轮廓；</li>
+<li>路径合并：计算相邻路径端点的欧氏距离，若小于10像素则拼接为长路径，减少机械臂抬笔次数；</li>
+<li>路径简化：调用<code>cv2.approxPolyDP</code>函数，设置合适的epsilon参数（2像素），保留路径关键转折点，丢弃冗余中间点，路径点数量平均减少60%以上。</li>
+</ul>
+</li>
+<li>
+<p><strong>坐标归一化与文件输出</strong>：</p>
+<ul>
+<li>空间映射：将像素坐标（x,y）按图像宽高映射至[0,1]区间，消除不同图像尺寸的影响，适配机械臂0.5×0.5m的工作空间；</li>
+<li>格式定义：将归一化后的坐标写入文本文件，路径间用“BREAK”字符串标记（表示机械臂抬笔动作），便于后续控制程序解析。</li>
+</ul>
+</li>
+</ol>
+<h4 id="2-轨迹规划效果展示">2. 轨迹规划效果展示
+</h4><div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 20px 0;">
+  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/gen3/图2.png" alt="骨架提取效果" style="max-width: 100%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666; margin-top: 8px;">图2：骨架提取后的单像素中心线</p>
+  </div>
+  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/gen3/图3.png" alt="优化后路径" style="max-width: 100%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666; margin-top: 8px;">图3：合并简化后的机械臂执行路径</p>
+  </div>
+</div>
+<h3 id="任务三机械臂控制基于ros与kortex-sdk">任务三：机械臂控制（基于ROS与Kortex SDK）
+</h3><h4 id="1-力控核心实现">1. 力控核心实现
+</h4><ol>
+<li>
+<p><strong>末端力估计（无专用力传感器）</strong>：</p>
+<ul>
+<li>原理：基于机器人学雅可比转置关系，通过关节力矩测量值估计末端执行器的力/力矩，核心公式：
+$$F_{ee} = J^T \tau$$
+其中$F_{ee} \in \mathbb{R}^6$为末端执行器估计力/力矩，$J \in \mathbb{R}^{6×6}$为Gen3-lite机械臂雅可比矩阵，$\tau \in \mathbb{R}^6$为关节力矩测量值；</li>
+<li>雅可比计算：基于Gen3-lite的DH参数，通过连杆变换矩阵与叉积公式求解雅可比矩阵，实时发布至ROS话题。</li>
+</ul>
+</li>
+<li>
+<p><strong>PD力控轨迹跟踪</strong>：</p>
+<ul>
+<li>控制目标：维持画笔与纸张的Z轴接触力稳定在13N（适配普通A4纸的承压能力）；</li>
+<li>控制律设计：通过Z轴位置补偿消除力误差，公式如下：
+$$\Delta z = K_p e_f + K_d \dot{e}<em>f$$
+其中$e_f = F</em>{desired} - F_z$（力误差），$K_p=0.005$（比例增益），$K_d=0.001$（微分增益）；</li>
+<li>鲁棒性设计：
+<ul>
+<li>接触检测：仅当$|F_z|&gt;1N$时激活力控制器，避免自由空间内的控制震荡；</li>
+<li>饱和限制：单周期Z轴调整量不超过0.01m，确保机械臂运动平滑；</li>
+<li>稳态补偿：累积位置偏移量，消除静态力误差，适配纸张厚度变化。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="2-路径执行与ros节点设计">2. 路径执行与ROS节点设计
+</h4><ol>
+<li>
+<p><strong>坐标映射</strong>：</p>
+<ul>
+<li>将归一化坐标（[0,1]）通过缩放（$x=(x_{norm}+0.1)/2.5$，$y=(y_{norm}+0.1)/2.5$）与旋转（$\phi=-50°$），映射至机械臂基坐标系，适配画笔安装位置；</li>
+<li>动作定义：正常路径点执行时，Z轴标称高度为0.028m（落笔状态），检测到“BREAK”标记时，抬笔至0.15m安全高度移动。</li>
+</ul>
+</li>
+<li>
+<p><strong>ROS节点架构</strong>：</p>
+<ul>
+<li>Jacobian节点（jacobian.py）：订阅关节状态话题，实时计算并发布雅可比矩阵、末端力估计值；</li>
+<li>Painting Control节点（painting.cpp）：订阅力反馈话题，解析路径文件，发布笛卡尔运动指令，控制夹爪抬笔/落笔动作；</li>
+<li>执行流程：初始化→归位至安全起点→移动取笔→逐点执行路径（力控补偿）→归位放笔。</li>
+</ul>
+</li>
+</ol>
+<h2 id="四项目成果与演示">四、项目成果与演示
+</h2><h3 id="1-绘画效果对比">1. 绘画效果对比
+</h3><div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 20px 0;">
+  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/gen3/图4.png" alt="鲸鱼原始图" style="max-width: 100%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666; margin-top: 8px;">图4：鲸鱼简笔画原始输入图</p>
+  </div>
+  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/gen3/图5.png" alt="鲸鱼绘画成果" style="max-width: 100%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666; margin-top: 8px;">图5：机械臂绘画成果图</p>
+  </div>
+</div>
+<h3 id="2-论文预览与下载">2. 论文预览与下载
+</h3><iframe src="/gen3/The Final Project.pdf" width="100%" height="700" style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);" title="机械臂绘画论文">
+</iframe>
+<p>若浏览器加载缓慢或无法预览，可直接下载：</p>
+<p><a href="/gen3/The Final Project.pdf" target="_blank">The Final Project.pdf 下载链接</a></p>
+<h3 id="3-核心结论与优化方向">3. 核心结论与优化方向
+</h3><h4 id="1-核心结论">1. 核心结论
+</h4><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>技术维度</th>
+<th>关键结论</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>图像预处理</td>
+<td>高斯模糊（5×5核）+膨胀-腐蚀（迭代2/1次）的组合策略，可有效去除90%以上的拍摄噪声，边缘提取准确率≥95%</td>
+</tr>
+<tr>
+<td>路径规划</td>
+<td>骨架提取+端点合并+approxPolyDP简化的流程，可将路径点数量减少60%-70%，机械臂执行效率提升50%以上</td>
+</tr>
+<tr>
+<td>力控控制</td>
+<td>基于雅可比转置的力估计方法，在无专用力传感器时，接触力波动可控制在±1.5N以内，满足绘画稳定性要求</td>
+</tr>
+<tr>
+<td>系统整体</td>
+<td>单幅200点以内的线描图，全流程自动化执行耗时3-5分钟，复刻偏差≤1mm，适配A4纸范围内的绘画需求</td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="2-后续优化方向">2. 后续优化方向
+</h4><ul>
+<li>图像适配：增加透视变换校正功能，适配非正拍的图像输入场景；</li>
+<li>路径优化：引入贝塞尔曲线平滑路径，减少机械臂运动拐点处的抖动；</li>
+<li>力控升级：融合视觉反馈（画笔接触状态）与力反馈，提升复杂曲面绘画的稳定性；</li>
+<li>交互拓展：开发Web端控制界面，支持图像上传、路径预览、绘画进度实时显示。</li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/zh-cn/p/rl-control-project/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/RL/fengmian.png" loading="lazy" data-key="rl-control-project" data-hash="/RL/fengmian.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">基于强化学习的倒立摆控制与双足机器人系统构建</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/zh-cn/p/ai-research/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/ai/fengmian.png" loading="lazy" data-key="ai-research" data-hash="/ai/fengmian.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">基于传统机器学习算法的分类与图像处理研究</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2025 刘承韬
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

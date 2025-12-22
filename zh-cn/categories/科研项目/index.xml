@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>科研项目 on 刘承韬</title>
+        <link>http://localhost:1313/zh-cn/categories/%E7%A7%91%E7%A0%94%E9%A1%B9%E7%9B%AE/</link>
+        <description>Recent content in 科研项目 on 刘承韬</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>刘承韬</copyright>
+        <lastBuildDate>Fri, 20 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/zh-cn/categories/%E7%A7%91%E7%A0%94%E9%A1%B9%E7%9B%AE/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>基于传统图像处理的五子棋识别与预测系统</title>
+        <link>http://localhost:1313/zh-cn/p/gomoku-recognition/</link>
+        <pubDate>Fri, 20 Dec 2024 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh-cn/p/gomoku-recognition/</guid>
+        <description>&lt;img src="http://localhost:1313/gomoku/fengmian.png" alt="Featured image of post 基于传统图像处理的五子棋识别与预测系统" /&gt;&lt;h2 id=&#34;一项目核心信息&#34;&gt;一、项目核心信息
+&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;信息类别&lt;/th&gt;
+&lt;th&gt;具体内容&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;项目名称&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;基于传统图像处理的五子棋识别与预测系统&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;负责角色&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;项目负责人&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;项目周期&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;2024年10月-2024年12月&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;核心成员&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;刘承韬（本人）、吴嘉铭、吴丰扬、万文博&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;核心任务&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;1. 标准/手绘棋盘识别与棋子分类&lt;br&gt;2. 棋盘状态建模与坐标归一化&lt;br&gt;3. 智能落子预测与胜负判断&lt;br&gt;4. 交互式UI界面开发&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;关键工具&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;OpenCV（图像处理）、Python（核心逻辑）、Tkinter（UI开发）、NumPy（数据计算）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;二项目背景与目标&#34;&gt;二、项目背景与目标
+&lt;/h2&gt;&lt;h3 id=&#34;1-项目背景&#34;&gt;1. 项目背景
+&lt;/h3&gt;&lt;p&gt;五子棋自动识别是计算机视觉的经典应用场景，传统方法因“过程可控、低算力依赖、实现简洁”的优势，更适合轻量型识别需求。本项目摒弃深度学习黑箱模式，采用高斯滤波、Canny边缘检测、霍夫变换等传统技术，解决“标准棋盘高精度识别”与“手绘棋盘鲁棒性识别”两大核心问题，并结合棋型分析实现智能落子预测，形成完整的“识别-建模-预测-交互”系统。&lt;/p&gt;
+&lt;h3 id=&#34;2-核心目标&#34;&gt;2. 核心目标
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;实现标准棋盘100%识别率，手绘规整棋盘≥85%识别率，支持黑白棋子精准分类。&lt;/li&gt;
+&lt;li&gt;构建15×15棋盘状态模型，完成棋子坐标归一化映射，确保状态数据与实际棋盘对齐。&lt;/li&gt;
+&lt;li&gt;开发基于棋型分数的落子预测算法，支持实时胜负判断（横/竖/斜向五子连珠检测）。&lt;/li&gt;
+&lt;li&gt;开发兼容多格式棋盘的UI界面，支持图像导入、识别结果可视化及用户交互操作。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;三核心任务实现&#34;&gt;三、核心任务实现
+&lt;/h2&gt;&lt;h3 id=&#34;任务一标准棋盘识别与棋子分类&#34;&gt;任务一：标准棋盘识别与棋子分类
+&lt;/h3&gt;&lt;h4 id=&#34;1-方法实现&#34;&gt;1. 方法实现
+&lt;/h4&gt;&lt;p&gt;采用“预处理→棋子检测→颜色分类→坐标映射”四步流程，核心技术如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;预处理&lt;/strong&gt;：输入图像经高斯滤波（5×5核）降噪，转化为灰度图减少计算量。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;棋子检测&lt;/strong&gt;：使用&lt;code&gt;cv2.HoughCircles&lt;/code&gt;霍夫圆检测，设置半径范围10-18px、圆间距25px，精准提取棋子圆心坐标。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;颜色分类&lt;/strong&gt;：将棋子区域（ROI）从RGB转为HSV空间，通过亮度（Value&amp;gt;120为白棋）、色调（Hue&amp;lt;90为黑棋）阈值判断棋子颜色。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;坐标映射&lt;/strong&gt;：根据棋盘尺寸计算网格大小，将圆心坐标映射为15×15棋盘的行列索引。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-关键代码与结果&#34;&gt;2. 关键代码与结果
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;关键代码（霍夫圆检测与颜色判断）&lt;/strong&gt;：&lt;/p&gt;
+&lt;div style=&#34;text-align: center; margin: 15px 0;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/gomoku/图1.png&#34; alt=&#34;标准棋盘识别关键代码1&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/gomoku/图2.png&#34; alt=&#34;标准棋盘识别关键代码2&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+  &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图1：标准棋盘霍夫圆检测与HSV颜色判断代码&lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;结果展示&lt;/strong&gt;：标准棋盘识别率近100%，棋子坐标与颜色无偏差，识别结果可直接转化为字符格式棋盘（X=黑棋，O=白棋）。&lt;/p&gt;
+&lt;div style=&#34;display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 15px 0;&#34;&gt;
+  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;http://localhost:1313/gomoku/图3.png&#34; alt=&#34;标准棋盘原图&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图2：标准棋盘原图&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;http://localhost:1313/gomoku/图4.png&#34; alt=&#34;标准棋盘识别结果&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图3：标准棋盘识别结果（标注坐标与棋子颜色）&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;任务二手绘棋盘识别与状态建模&#34;&gt;任务二：手绘棋盘识别与状态建模
+&lt;/h3&gt;&lt;h4 id=&#34;1-方法实现-1&#34;&gt;1. 方法实现
+&lt;/h4&gt;&lt;p&gt;针对手绘棋盘“边缘不规则、棋子易粘连”特点，设计四步识别流程：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;棋盘定位&lt;/strong&gt;：通过轮廓提取（&lt;code&gt;cv2.findContours&lt;/code&gt;）找到最大轮廓，用外接矩形框选棋盘区域，Resize至固定尺寸（1000×1000px）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;边缘检测&lt;/strong&gt;：Canny算子（阈值50-150）提取棋盘边缘，膨胀操作（5×5核）增强线条连续性，分离格子边界。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;格子排序&lt;/strong&gt;：对提取的格子外接矩形，按“对角线距离（x+y）”排序，生成15×15网格矩阵，确保坐标与实际格子对齐。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;棋子判断&lt;/strong&gt;：计算格子内白色像素占比，结合“面积-周长比”（圆形比值&amp;lt;1.3，叉形比值&amp;gt;1.3）区分空/黑/白棋，中心区域像素检测补充判断叉形棋子。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-关键代码与结果-1&#34;&gt;2. 关键代码与结果
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;关键代码（棋盘定位与棋子判断）&lt;/strong&gt;：&lt;/p&gt;
+&lt;div style=&#34;display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 15px 0;&#34;&gt;
+  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;http://localhost:1313/gomoku/图5.png&#34; alt=&#34;手绘棋盘定位代码&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图4：手绘棋盘定位与边缘处理代码&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;http://localhost:1313/gomoku/图6.png&#34; alt=&#34;手绘棋子判断代码&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图5：手绘棋盘棋子判断代码（面积-周长比）&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;结果展示&lt;/strong&gt;：规整手绘棋盘识别准确，棋子无粘连时分类正确率≥85%；存在边界粘连或线条断裂时，通过形态学操作可部分优化。&lt;/p&gt;
+&lt;div style=&#34;text-align: center; margin: 15px 0;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/gomoku/图7.png&#34; alt=&#34;手绘棋盘识别结果&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+  &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图6：手绘棋盘识别结果（左：原图，右：识别后字符棋盘）&lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;任务三落子预测与胜负判断&#34;&gt;任务三：落子预测与胜负判断
+&lt;/h3&gt;&lt;h4 id=&#34;1-落子预测实现&#34;&gt;1. 落子预测实现
+&lt;/h4&gt;&lt;p&gt;落子预测是系统核心功能之一，采用“&lt;strong&gt;棋型扫描-分数计算-最优决策&lt;/strong&gt;”三级架构，结合文档中“双指针区间扫描”与“附加分机制”，确保预测策略符合五子棋攻防逻辑，具体实现如下：&lt;/p&gt;
+&lt;h5 id=&#34;1棋型识别双指针区间扫描&#34;&gt;（1）棋型识别：双指针区间扫描
+&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;扫描逻辑&lt;/strong&gt;：针对棋盘横、竖、正斜（x+y固定）、反斜（x-y固定）四个方向，采用双指针对每行/每列/每斜向进行“滑动窗口”扫描，窗口长度从5（五子连珠最小单位）到11（覆盖多棋型组合），避免遗漏复杂棋型（如“活三+活四”组合）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;过滤规则&lt;/strong&gt;：
+&lt;ol&gt;
+&lt;li&gt;跳过目标棋子（如黑棋“X”）数量＜2的行/列/斜向，减少无效计算；&lt;/li&gt;
+&lt;li&gt;扫描时若匹配到“特殊棋型”（如活四、双活三），设置&lt;code&gt;skipCount=1&lt;/code&gt;，避免重复计数（如连续两个活三重叠时，仅统计一次有效分数）；&lt;/li&gt;
+&lt;li&gt;按窗口位置区分棋型集合：窗口在边缘（i=0或i+length=行长度）时匹配“边缘棋型”，在中间时匹配“中间棋型”，提升识别准确性。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;2分数计算棋型权重附加分&#34;&gt;（2）分数计算：棋型权重+附加分
+&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;基础分数定义&lt;/strong&gt;：参考文档中“valueModel”模型，预设典型棋型分数（核心分数逻辑源自报告代码）：
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;棋型&lt;/th&gt;
+&lt;th&gt;定义（以黑棋“X”为例）&lt;/th&gt;
+&lt;th&gt;分数&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;活四&lt;/td&gt;
+&lt;td&gt;“XXXX ”或“ XXXX”（两端空位）&lt;/td&gt;
+&lt;td&gt;1000&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;死四&lt;/td&gt;
+&lt;td&gt;“XXXXO”或“OXXXX”（一端被挡）&lt;/td&gt;
+&lt;td&gt;500&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;活三&lt;/td&gt;
+&lt;td&gt;“XXX  ”或“ XXX ”（两端空位）&lt;/td&gt;
+&lt;td&gt;300&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;死三&lt;/td&gt;
+&lt;td&gt;“XXXO ”或“ OXXX ”（一端被挡）&lt;/td&gt;
+&lt;td&gt;150&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;活二&lt;/td&gt;
+&lt;td&gt;“XX   ”或“ XX  ”（两端空位）&lt;/td&gt;
+&lt;td&gt;100&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;全方向分数累加&lt;/strong&gt;：通过&lt;code&gt;value_all&lt;/code&gt;函数计算四个方向的基础分数，公式如下（源自报告关键代码）：&lt;br&gt;
+&lt;code&gt;总基础分 = 横向分数 + 纵向分数 + 正斜向分数 + 反斜向分数&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;附加分机制&lt;/strong&gt;：依据报告中“additional”函数逻辑，若棋盘满足以下条件，额外加分以优化决策优先级：
+&lt;ol&gt;
+&lt;li&gt;若“活四+活三”组合数量≥2，附加30分（鼓励进攻绝杀）；&lt;/li&gt;
+&lt;li&gt;若“活三+死三”组合数量≥2且含活三，附加15分（优先巩固优势棋型）。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;3最优落子决策攻防平衡逻辑&#34;&gt;（3）最优落子决策：攻防平衡逻辑
+&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;搜索范围优化&lt;/strong&gt;：为减少计算量，仅在“已落子区域±2格”内搜索空位，例如已落子集中在x=5-8、y=6-9，则搜索范围限定为x=3-10、y=4-11，兼顾效率与覆盖性。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;决策公式&lt;/strong&gt;：以黑棋视角为例，遍历所有空位，计算“落子后收益差”，选择收益差最大的位置，公式如下（报告核心决策逻辑）：&lt;br&gt;
+&lt;code&gt;收益差 = 1.1×(落黑棋后黑棋总分数 - 原黑棋分数) + (原白棋分数 - 落白棋后白棋分数)&lt;/code&gt;&lt;br&gt;
+（注：1.1系数用于“鼓励进攻”，符合报告中“进攻优先”的策略设定）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;绝杀优先判断&lt;/strong&gt;：若某空位落子后可直接形成活四（分数≥1000），则跳过其他计算，直接选择该位置（报告“score_x2≥1000”判断逻辑）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;4关键代码与效果验证&#34;&gt;（4）关键代码与效果验证
+&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;棋型分数计算代码&lt;/strong&gt;：
+&lt;div style=&#34;text-align: center; margin: 15px 0;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/gomoku/图8.png&#34; alt=&#34;棋形分数计算代码&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+  &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图7：棋型分数计算核心代码&lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;预测效果展示&lt;/strong&gt;：预测落子点通过“彩色掩膜”在UI界面标注，黑棋推荐点用红色掩膜、白棋推荐点用绿色掩膜，用户点击“预测”按钮即可实时显示；落子后掩膜自动消失，更新棋盘状态（效果符合报告中“落子预测交互”描述）：
+&lt;div style=&#34;text-align: center; margin: 15px 0;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/gomoku/图10.png&#34; alt=&#34;落子预测结果&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+  &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图8：落子预测结果&lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-胜负判断实现&#34;&gt;2. 胜负判断实现
+&lt;/h4&gt;&lt;h5 id=&#34;1全方向检测架构&#34;&gt;（1）全方向检测架构
+&lt;/h5&gt;&lt;p&gt;针对五子棋“横、竖、正斜、反斜”四个获胜方向，构建29个斜向检测数组（报告中“board_c”“board_d”定义），确保无死角覆盖：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;横向检测&lt;/strong&gt;：直接遍历15行棋盘数组，每行作为独立检测单元；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;纵向检测&lt;/strong&gt;：对棋盘数组转置后，遍历15列转置数组；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;正斜向检测&lt;/strong&gt;：构建&lt;code&gt;board_c&lt;/code&gt;数组（共29个元素），按“x+y”值分组（x、y为棋盘行列索引，范围0-14），x+y从0到28对应29个斜向；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;反斜向检测&lt;/strong&gt;：构建&lt;code&gt;board_d&lt;/code&gt;数组（共29个元素），按“x-y”值分组（x-y从-14到14，偏移14后对应0-28索引），覆盖所有反斜向。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;2检测逻辑与胜利处理&#34;&gt;（2）检测逻辑与胜利处理
+&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;核心判断&lt;/strong&gt;：对每个检测单元（行/列/斜向数组），将其转为字符串后检测是否包含“XXXXX”（黑棋获胜）或“OOOOO”（白棋获胜），检测逻辑源自报告“check_win”函数；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;胜利交互&lt;/strong&gt;：若检测到获胜，UI界面实时弹窗提示“黑棋获胜”或“白棋获胜”，并在3秒后自动重置棋盘（清空棋子状态、重置落子顺序），符合报告中“胜负后重置”的功能设计。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;3关键代码与效果&#34;&gt;（3）关键代码与效果
+&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;胜负判断代码&lt;/strong&gt;：
+&lt;div style=&#34;text-align: center; margin: 15px 0;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/gomoku/图9.png&#34; alt=&#34;胜负判断代码&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+  &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图9：全方向胜负判断代码（&lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;胜利提示效果&lt;/strong&gt;：
+&lt;div style=&#34;text-align: center; margin: 15px 0;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/gomoku/图11.png&#34; alt=&#34;胜利提示界面&#34; style=&#34;max-width: 60%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+  &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图10：白棋获胜提示界面&lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;任务四ui界面开发&#34;&gt;任务四：UI界面开发
+&lt;/h3&gt;&lt;h4 id=&#34;1-功能实现&#34;&gt;1. 功能实现
+&lt;/h4&gt;&lt;p&gt;开发Tkinter交互式界面，支持四大核心功能：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;图像导入&lt;/strong&gt;：支持上传标准/手绘棋盘图片（JPG/PNG格式），自动触发识别流程。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;识别可视化&lt;/strong&gt;：实时显示识别后的棋盘（标注棋子坐标与颜色），支持切换“原图-灰度图-识别图”视图。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;落子交互&lt;/strong&gt;：用户可手动落子（点击棋盘格子），系统自动更新棋盘状态并提示“非法落子”（已有棋子）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;预测与胜负提示&lt;/strong&gt;：点击“预测”按钮显示最优落子点（彩色掩膜），一方获胜时弹窗提示并3秒后重置棋盘。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-界面展示&#34;&gt;2. 界面展示
+&lt;/h4&gt;  &lt;div style=&#34;text-align: center; margin: 15px 0;&#34;&gt;
+    &lt;img src=&#34;http://localhost:1313/gomoku/图11.png&#34; alt=&#34;UI界面展示&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图10：五子棋系统UI界面（含识别、预测、落子功能）&lt;/p&gt;
+  &lt;/div&gt;
+&lt;h2 id=&#34;四项目成果&#34;&gt;四、项目成果
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;识别精度&lt;/strong&gt;：标准棋盘识别率近100%，手绘规整棋盘识别率≥85%，棋子颜色分类正确率≥98%。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;预测性能&lt;/strong&gt;：落子预测响应时间≤0.5秒，推荐落子符合五子棋策略（优先活四、活三棋型），胜负判断无延迟。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;兼容性&lt;/strong&gt;：支持15×15标准棋盘与任意尺寸手绘棋盘（自动扩展至15×15）。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>基于实验辨识与仿真的四轮小车运动控制系统设计</title>
+        <link>http://localhost:1313/zh-cn/p/four-wheel-car-modeling/</link>
+        <pubDate>Sat, 01 Jun 2024 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh-cn/p/four-wheel-car-modeling/</guid>
+        <description>&lt;img src="http://localhost:1313/four-wheel-car/fengmian.png" alt="Featured image of post 基于实验辨识与仿真的四轮小车运动控制系统设计" /&gt;&lt;h2 id=&#34;一项目核心信息&#34;&gt;一、项目核心信息
+&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;信息类别&lt;/th&gt;
+&lt;th&gt;具体内容&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;项目名称&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;四轮小车的实验建模&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;负责角色&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;项目负责人&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;项目周期&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;2024年03月-2024年05月&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;核心成员&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;刘承韬（本人）、吴丰杨&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;核心任务&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;1. 开环控制系统搭建与数据采集&lt;br&gt;2. 开环模型实验辨识&lt;br&gt;3. Simulink仿真验证与PID调优&lt;br&gt;4. Arduino PID闭环控制部署&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;关键工具&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Arduino IDE（控制编程）、MATLAB（系统辨识）、Simulink（仿真调优）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;二项目背景与目标&#34;&gt;二、项目背景与目标
+&lt;/h2&gt;&lt;h3 id=&#34;1-项目背景&#34;&gt;1. 项目背景
+&lt;/h3&gt;&lt;p&gt;依据课程项目四轮小车的实验建模要求，本项目以实验室四轮小车（2个直流有刷电机）为研究对象，通过实验建模方法探索“数据采集→模型建立→仿真验证→实物控制”的完整流程，深化对PID控制理论、系统辨识技术的实践应用，解决小车运动控制精度低、响应滞后问题。&lt;/p&gt;
+&lt;h3 id=&#34;2-核心目标&#34;&gt;2. 核心目标
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;完成基于Arduino的开环控制系统搭建，实现PWM指令对小车速度的精准控制。&lt;/li&gt;
+&lt;li&gt;利用MATLAB辨识工具箱建立小车直线运动开环模型，确保模型拟合度达标。&lt;/li&gt;
+&lt;li&gt;通过Simulink完成开环仿真验证与PID参数离线调优，最终部署到Arduino实现闭环控制。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;三核心任务实现&#34;&gt;三、核心任务实现
+&lt;/h2&gt;&lt;h3 id=&#34;任务一开环系统搭建与模型辨识&#34;&gt;任务一：开环系统搭建与模型辨识
+&lt;/h3&gt;&lt;h4 id=&#34;1-开环控制系统搭建&#34;&gt;1. 开环控制系统搭建
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;硬件基础&lt;/strong&gt;：依据课程项目四轮小车的实验建模要求，原计划使用创园1栋实验室四轮小车（4个直流有刷电机），实际因设备适配性调整，采用“智能传感与信号处理项目的Arduino两轮小车”替代，功能一致，均通过编码器采集车轮转速数据。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;控制逻辑&lt;/strong&gt;：编写Arduino开环控制代码，定义电机引脚（Motor_AIN1=6、Motor_AIN2=3等）与编码器引脚（ENCODER_A=2等），通过10ms定时中断更新转速计数，串口调试助手发送PWM值（100、150、250、255）控制电机，实时接收转速反馈数据。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;关键图片&lt;/strong&gt;：
+&lt;div style=&#34;text-align: center; margin: 15px 0;&#34;&gt;
+  &lt;img src=&#34;http://localhost:1313/four-wheel-car/图1.png&#34; alt=&#34;开环控制系统部分控制代码&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+  &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图1：左右轮测试数据&lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-开环模型实验辨识&#34;&gt;2. 开环模型实验辨识
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;数据预处理&lt;/strong&gt;：将4组PWM值（255、250、150、100）的测试数据（每组3次重复）整理为Excel表格，去除异常值后导入MATLAB，得到“PWM输入-转速输出”数据集。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;建模过程&lt;/strong&gt;：使用MATLAB系统辨识工具箱，选择“阶跃响应法”，设定初始模型为二阶传递函数，融合8组有效数据（4组PWM×2轮）进行拟合，最终得到如图三传递函数：&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;精度验证&lt;/strong&gt;：模型平均拟合度达&lt;strong&gt;85.55%&lt;/strong&gt;，单组数据拟合度范围76.24%-92.52%，满足项目中“模型辨识精度”要求。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;关键图片&lt;/strong&gt;：
+&lt;div style=&#34;text-align: center; margin: 15px 0;&#34;&gt;
+    &lt;img src=&#34;http://localhost:1313/four-wheel-car/图2.png&#34; alt=&#34;整合数据进行传递函数参数辨识&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图2：整合数据进行传递函数参数辨识&lt;/p&gt;
+  &lt;/div&gt;
+&lt;div style=&#34;text-align: center; margin: 15px 0;&#34;&gt;
+    &lt;img src=&#34;http://localhost:1313/four-wheel-car/图3.png&#34; alt=&#34;得到传递函数与拟合程度&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图3：传递函数与各组数据拟合程度 &lt;/p&gt;
+  &lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;3-simulink开环仿真验证&#34;&gt;3. Simulink开环仿真验证
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;仿真模型搭建&lt;/strong&gt;：在Simulink中搭建开环仿真模型，核心模块包括“Step（阶跃输入，PWM=175对应转速37）”“Transfer Fcn（导入二阶传递函数）”“Scope（观测输出）”，模块参数配置依据项目报告中记录。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;验证结果&lt;/strong&gt;：3组重复仿真的拟合度分别为91.83%、92.58%、92.83%，仿真输出曲线与实测转速曲线高度重合，验证模型对小车运动的预测准确性。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;关键图片&lt;/strong&gt;：
+&lt;div style=&#34;text-align: center; margin: 15px 0;&#34;&gt;
+    &lt;img src=&#34;http://localhost:1313/four-wheel-car/图4.png&#34; alt=&#34;开环函数simulink模型&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图4：开环函数Simulink模型&lt;/p&gt;
+  &lt;/div&gt;
+    &lt;div style=&#34;text-align: center; margin: 15px 0;&#34;&gt;
+    &lt;img src=&#34;http://localhost:1313/four-wheel-car/图5.png&#34; alt=&#34;175PWM数据仿真验证&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图5：175PWM数据仿真-实测对比&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;4-pid闭环控制调试4分&#34;&gt;4. PID闭环控制调试（4分）
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;闭环模型搭建&lt;/strong&gt;：在Simulink开环模型基础上，添加“PID Controller”模块，构建“输入→PID调节→传递函数→输出”闭环系统，设置输出上限为45（对应电机最大转速，避免过载）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;参数调优&lt;/strong&gt;：使用Simulink PID Tuner工具，以“响应快、超调小”为目标，自动调优得到参数：&lt;strong&gt;P=1.117，I=13.04，D=-0.003613&lt;/strong&gt;；因D值极小，后续实物部署时简化为PI控制。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;关键图片&lt;/strong&gt;：
+&lt;div style=&#34;display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 15px 0;&#34;&gt;
+  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;http://localhost:1313/four-wheel-car/图6.png&#34; alt=&#34;PID控制系统simulink模型&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图6：PID控制系统Simulink模型&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;http://localhost:1313/four-wheel-car/图7.png&#34; alt=&#34;调节PID参数与输出限制&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图7：PID参数调节与输出限制设置&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;任务二pid参数部署与实测2分&#34;&gt;任务二：PID参数部署与实测（2分）
+&lt;/h3&gt;&lt;h4 id=&#34;1-参数转换与代码编写&#34;&gt;1. 参数转换与代码编写
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;参数转换&lt;/strong&gt;：依据“PWM-转速线性拟合”结果（拟合系数6.4677，偏置-37.1855），将Simulink调优的PID参数转换为Arduino适用值：&lt;strong&gt;KP=7.04，KI=0.8&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;PI控制代码&lt;/strong&gt;：编写增量式PI控制函数，核心逻辑为“计算转速偏差（目标-实测）→累加积分项→限制PWM输出→驱动电机”，通过10ms定时中断更新转速数据与控制指令。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;关键图片&lt;/strong&gt;：
+&lt;div style=&#34;display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 15px 0;&#34;&gt;
+  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;http://localhost:1313/four-wheel-car/图8.png&#34; alt=&#34;pwm和目标速度的线性拟合&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图8：PWM与目标速度的线性拟合&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;http://localhost:1313/four-wheel-car/图9.png&#34; alt=&#34;增量式PID控制部分代码&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图9：增量式PI控制部分代码&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-实测验证&#34;&gt;2. 实测验证
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;测试方案&lt;/strong&gt;：选取3组典型目标转速（37、31、21），分别进行“开环控制”与“PI闭环控制”对比测试，记录两组控制方式的响应曲线；同时对比“Simulink仿真结果”与“实物实测结果”，验证建模精度。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;核心结论&lt;/strong&gt;：闭环控制响应速度较开环提升显著，稳态误差有效下降；仿真与实测误差较小，满足项目中“控制器实用性”要求。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;关键图片&lt;/strong&gt;：
+&lt;div style=&#34;display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 15px 0;&#34;&gt;
+  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;http://localhost:1313/four-wheel-car/图10.png&#34; alt=&#34;目标速度37开环-闭环对比&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图10：目标速度37开环-闭环对比&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;http://localhost:1313/four-wheel-car/图11.png&#34; alt=&#34;目标速度37仿真-实测对比&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图11：目标速度37仿真-实测对比&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;四项目成果与附件&#34;&gt;四、项目成果与附件
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;成果概述&lt;/strong&gt;：本项目严格依据课程项目的任务要求，完成“开环搭建→模型辨识→仿真调优→实物部署”全流程，核心成果包括：①二阶传递函数模型（平均拟合度85.55%），实现小车运动的精准数学描述；②Simulink闭环仿真方案，完成PID参数优化（最终简化为PI控制：KP=7.04，KI=0.8）；③Arduino PI闭环控制器，闭环控制响应速度较开环提升显著，稳态误差有效下降；仿真与实测误差较小，验证了建模精度与控制器实用性。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

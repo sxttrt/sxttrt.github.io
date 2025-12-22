@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>实验建模项目 on 刘承韬</title>
+        <link>http://localhost:1313/zh-cn/categories/%E5%AE%9E%E9%AA%8C%E5%BB%BA%E6%A8%A1%E9%A1%B9%E7%9B%AE/</link>
+        <description>Recent content in 实验建模项目 on 刘承韬</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>刘承韬</copyright>
+        <lastBuildDate>Sat, 01 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/zh-cn/categories/%E5%AE%9E%E9%AA%8C%E5%BB%BA%E6%A8%A1%E9%A1%B9%E7%9B%AE/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>基于实验辨识与仿真的四轮小车运动控制系统设计</title>
+        <link>http://localhost:1313/zh-cn/p/project-four-wheel-car-modeling/</link>
+        <pubDate>Sat, 01 Jun 2024 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/zh-cn/p/project-four-wheel-car-modeling/</guid>
+        <description>&lt;img src="http://localhost:1313/project/car-modeling-cover.png" alt="Featured image of post 基于实验辨识与仿真的四轮小车运动控制系统设计" /&gt;&lt;h2 id=&#34;一项目核心信息&#34;&gt;一、项目核心信息
+&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;信息类别&lt;/th&gt;
+&lt;th&gt;具体内容&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;项目名称&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;四轮小车的实验建模&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;负责角色&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;项目负责人&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;项目周期&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;2024年03月-2024年05月&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;核心成员&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;刘承韬（本人）、吴丰杨&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;所属单位&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;系统设计与智能制造学院&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;核心任务&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;1. 开环控制系统搭建与数据采集&lt;br&gt;2. 开环模型实验辨识&lt;br&gt;3. Simulink仿真验证与PID调优&lt;br&gt;4. Arduino PID闭环控制部署&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;关键工具&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Arduino IDE（控制编程）、MATLAB（系统辨识）、Simulink（仿真调优）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;参考文档&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;1. 《系统建模与仿真项目报告(2).doc》&lt;br&gt;2. 《题目2(实验建模)-四轮小车的实验建模.docx》&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;二项目背景与目标&#34;&gt;二、项目背景与目标
+&lt;/h2&gt;&lt;h3 id=&#34;1-项目背景&#34;&gt;1. 项目背景
+&lt;/h3&gt;&lt;p&gt;依据《题目2(实验建模)-四轮小车的实验建模.docx》要求，本项目以实验室四轮小车（4个直流有刷电机）为研究对象，通过实验建模方法探索“数据采集→模型建立→仿真验证→实物控制”的完整流程，深化对PID控制理论、系统辨识技术的实践应用，解决小车运动控制精度低、响应滞后问题。&lt;/p&gt;
+&lt;h3 id=&#34;2-核心目标&#34;&gt;2. 核心目标
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;完成基于Arduino的开环控制系统搭建，实现PWM指令对小车速度的精准控制。&lt;/li&gt;
+&lt;li&gt;利用MATLAB辨识工具箱建立小车直线运动开环模型，确保模型拟合度达标。&lt;/li&gt;
+&lt;li&gt;通过Simulink完成开环仿真验证与PID参数离线调优，最终部署到Arduino实现闭环控制。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;三核心任务实现依据文档要求&#34;&gt;三、核心任务实现（依据文档要求）
+&lt;/h2&gt;&lt;h3 id=&#34;任务一开环系统搭建与模型辨识14分&#34;&gt;任务一：开环系统搭建与模型辨识（14分）
+&lt;/h3&gt;&lt;h4 id=&#34;1-开环控制系统搭建4分&#34;&gt;1. 开环控制系统搭建（4分）
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;硬件基础&lt;/strong&gt;：使用实验室四轮小车（因设备调整，实际用智能传感与信号处理项目的Arduino两轮小车替代，功能一致），通过编码器采集车轮转速数据。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;控制逻辑&lt;/strong&gt;：编写Arduino代码（含引脚定义、定时中断、串口通信），通过串口调试助手发送PWM值（100、150、250、255），控制电机正反转及转速，实时接收并记录转速反馈数据（代码见附件）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-开环模型实验辨识4分&#34;&gt;2. 开环模型实验辨识（4分）
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;数据预处理&lt;/strong&gt;：将采集的8组数据（4组PWM×2轮）整理为Excel数据集，去除异常值后导入MATLAB。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;建模过程&lt;/strong&gt;：使用MATLAB系统辨识工具箱，选择“阶跃响应法”，设定初始模型为二阶传递函数，融合数据后拟合，最终得到传递函数：&lt;br&gt;
+$$G(s) = \frac{7.413s + 33.55}{s^2 + 17.04s + 33.23}$$&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;精度验证&lt;/strong&gt;：模型平均拟合度达&lt;strong&gt;85.55%&lt;/strong&gt;，单组数据拟合度范围76.24%-92.52%，满足辨识要求。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;3-simulink开环仿真验证2分&#34;&gt;3. Simulink开环仿真验证（2分）
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;仿真模型搭建&lt;/strong&gt;：在Simulink中导入上述传递函数，以PWM=175（对应目标转速37）为阶跃输入，搭建开环仿真模型（含Step模块、Transfer Fcn模块、Scope模块）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;验证结果&lt;/strong&gt;：3组重复仿真的拟合度分别为91.83%、92.58%、92.83%，仿真输出与实测数据高度一致，验证模型准确性。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;4-pid闭环控制调试4分&#34;&gt;4. PID闭环控制调试（4分）
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;闭环模型搭建&lt;/strong&gt;：在Simulink中添加PID Controller模块，构建“输入→PID→传递函数→输出”闭环系统。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;参数调优&lt;/strong&gt;：使用Simulink PID Tuner工具，以“响应快、超调小”为目标，调优得到参数：&lt;br&gt;
+&lt;strong&gt;P=1.117，I=13.04，D=-0.003613&lt;/strong&gt;（因D值极小，后续简化为PI控制）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;输出限制&lt;/strong&gt;：设置PID输出上限为45（对应电机最大转速），避免过载。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;任务二pid参数部署与实测2分&#34;&gt;任务二：PID参数部署与实测（2分）
+&lt;/h3&gt;&lt;h4 id=&#34;1-参数转换与代码编写&#34;&gt;1. 参数转换与代码编写
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;参数转换&lt;/strong&gt;：通过PWM-转速线性拟合（拟合系数6.4677，偏置-37.1855），将Simulink参数转换为Arduino适用值：&lt;strong&gt;KP=7.04，KI=0.8&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;PI控制代码&lt;/strong&gt;：编写增量式PI控制函数，核心逻辑为“计算转速偏差→累加积分项→限制PWM输出→驱动电机”，通过10ms定时中断更新数据（关键代码见附件）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-实测验证&#34;&gt;2. 实测验证
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;测试方案&lt;/strong&gt;：选取3组目标转速（37、31、21），对比开环与PI闭环控制的响应曲线。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;结果&lt;/strong&gt;：闭环控制响应速度提升30%，稳态误差从12%降至3%，实测与仿真误差≤8%，验证控制器实用性。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;四项目成果与附件&#34;&gt;四、项目成果与附件
+&lt;/h2&gt;&lt;h3 id=&#34;1-核心成果&#34;&gt;1. 核心成果
+&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;成果类型&lt;/th&gt;
+&lt;th&gt;具体内容&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;模型成果&lt;/td&gt;
+&lt;td&gt;二阶传递函数模型（平均拟合度85.55%）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;控制成果&lt;/td&gt;
+&lt;td&gt;Arduino PI闭环控制器（响应时间≤0.5s，超调量≤5%）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;仿真成果&lt;/td&gt;
+&lt;td&gt;Simulink开环/闭环仿真工程（含参数配置）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;数据成果&lt;/td&gt;
+&lt;td&gt;PWM-转速采集表、实测-仿真对比报告&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;2-附件文件&#34;&gt;2. 附件文件
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;开环控制代码（Arduino IDE格式）&lt;/li&gt;
+&lt;li&gt;PI闭环控制代码（Arduino IDE格式）&lt;/li&gt;
+&lt;li&gt;MATLAB数据辨识脚本（.m格式）&lt;/li&gt;
+&lt;li&gt;Simulink仿真工程（.slx格式）&lt;/li&gt;
+&lt;li&gt;PWM-转速采集Excel表&lt;/li&gt;
+&lt;li&gt;项目测试报告（含拟合图、仿真图、实测图）&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

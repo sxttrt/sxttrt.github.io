@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="声控协作机器人项目完整记录，含DTW语音识别、YOLOv8物体检测、GRCNN抓取规划及UR机器人控制（附实物抓取视频）">
+<title>声控协作式机器人系统设计与实现</title>
+
+<link rel='canonical' href='http://localhost:1313/zh-cn/p/ur-robot/'>
+
+<link rel="stylesheet" href="/scss/style.min.0304c6baf04e01a8fe70693791cb744d56a3578a3120a8796cefc66825aa39c7.css"><meta property='og:title' content="声控协作式机器人系统设计与实现">
+<meta property='og:description' content="声控协作机器人项目完整记录，含DTW语音识别、YOLOv8物体检测、GRCNN抓取规划及UR机器人控制（附实物抓取视频）">
+<meta property='og:url' content='http://localhost:1313/zh-cn/p/ur-robot/'>
+<meta property='og:site_name' content='刘承韬'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-12-30T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-12-30T00:00:00&#43;00:00'/><meta property='og:image' content='http://localhost:1313/UR-Robot/fengmian.png' />
+<meta name="twitter:title" content="声控协作式机器人系统设计与实现">
+<meta name="twitter:description" content="声控协作机器人项目完整记录，含DTW语音识别、YOLOv8物体检测、GRCNN抓取规划及UR机器人控制（附实物抓取视频）"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='http://localhost:1313/UR-Robot/fengmian.png' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/zh-cn/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu2071873778164182045.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/zh-cn">刘承韬</a></h1>
+            <h2 class="site-description">Liu Chengtao | Undergraduate Works</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://space.bilibili.com/499786362?spm_id_from=333.1007.0.0'
+                        target="_blank"
+                        title="Bilibili"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.0.0-beta2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M488.6 104.1C505.3 122.2 513 143.8 511.9 169.8V372.2C511.5 398.6 502.7 420.3 485.4 437.3C468.2 454.3 446.3 463.2 419.9 464H92.02C65.57 463.2 43.81 454.2 26.74 436.8C9.682 419.4 .7667 396.5 0 368.2V169.8C.7667 143.8 9.682 122.2 26.74 104.1C43.81 87.75 65.57 78.77 92.02 78H121.4L96.05 52.19C90.3 46.46 87.42 39.19 87.42 30.4C87.42 21.6 90.3 14.34 96.05 8.603C101.8 2.868 109.1 0 117.9 0C126.7 0 134 2.868 139.8 8.603L213.1 78H301.1L375.6 8.603C381.7 2.868 389.2 0 398 0C406.8 0 414.1 2.868 419.9 8.603C425.6 14.34 428.5 21.6 428.5 30.4C428.5 39.19 425.6 46.46 419.9 52.19L394.6 78L423.9 78C450.3 78.77 471.9 87.75 488.6 104.1H488.6zM449.8 173.8C449.4 164.2 446.1 156.4 439.1 150.3C433.9 144.2 425.1 140.9 416.4 140.5H96.05C86.46 140.9 78.6 144.2 72.47 150.3C66.33 156.4 63.07 164.2 62.69 173.8V368.2C62.69 377.4 65.95 385.2 72.47 391.7C78.99 398.2 86.85 401.5 96.05 401.5H416.4C425.6 401.5 433.4 398.2 439.7 391.7C446 385.2 449.4 377.4 449.8 368.2L449.8 173.8zM185.5 216.5C191.8 222.8 195.2 230.6 195.6 239.7V273C195.2 282.2 191.9 289.9 185.8 296.2C179.6 302.5 171.8 305.7 162.2 305.7C152.6 305.7 144.7 302.5 138.6 296.2C132.5 289.9 129.2 282.2 128.8 273V239.7C129.2 230.6 132.6 222.8 138.9 216.5C145.2 210.2 152.1 206.9 162.2 206.5C171.4 206.9 179.2 210.2 185.5 216.5H185.5zM377 216.5C383.3 222.8 386.7 230.6 387.1 239.7V273C386.7 282.2 383.4 289.9 377.3 296.2C371.2 302.5 363.3 305.7 353.7 305.7C344.1 305.7 336.3 302.5 330.1 296.2C323.1 289.9 320.7 282.2 320.4 273V239.7C320.7 230.6 324.1 222.8 330.4 216.5C336.7 210.2 344.5 206.9 353.7 206.5C362.9 206.9 370.7 210.2 377 216.5H377z"/></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/sxttrt'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/zh-cn/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/zh-cn/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="http://localhost:1313/" >English</option>
+                                
+                                    <option value="http://localhost:1313/zh-cn/" selected>简体中文</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#一项目核心信息">一、项目核心信息</a></li>
+    <li><a href="#二项目背景与目标">二、项目背景与目标</a>
+      <ol>
+        <li><a href="#1-项目背景">1. 项目背景</a></li>
+        <li><a href="#2-核心目标">2. 核心目标</a></li>
+      </ol>
+    </li>
+    <li><a href="#三核心任务实现">三、核心任务实现</a>
+      <ol>
+        <li><a href="#任务一基于dtw算法的语音识别模块">任务一：基于DTW算法的语音识别模块</a>
+          <ol>
+            <li><a href="#1-算法流程与预处理">1. 算法流程与预处理</a></li>
+            <li><a href="#2-关键图片与识别结果">2. 关键图片与识别结果</a></li>
+          </ol>
+        </li>
+        <li><a href="#任务二基于yolov8的工具物体识别">任务二：基于YOLOv8的工具物体识别</a>
+          <ol>
+            <li><a href="#1-模型开发与数据集优化">1. 模型开发与数据集优化</a></li>
+            <li><a href="#2-关键图片与检测效果">2. 关键图片与检测效果</a></li>
+          </ol>
+        </li>
+        <li><a href="#任务三grcnn抓取规划与机器人控制">任务三：GRCNN抓取规划与机器人控制</a>
+          <ol>
+            <li><a href="#1-平面抓取点生成grcnn">1. 平面抓取点生成（GRCNN）</a></li>
+            <li><a href="#2-坐标变换与机器人控制">2. 坐标变换与机器人控制</a></li>
+            <li><a href="#3-关键图片与控制效果">3. 关键图片与控制效果</a></li>
+          </ol>
+        </li>
+        <li><a href="#任务四实物抓取视频展示">任务四：实物抓取视频展示</a></li>
+      </ol>
+    </li>
+    <li><a href="#四项目成果与附件">四、项目成果与附件</a>
+      <ol>
+        <li><a href="#核心成果">核心成果</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/zh-cn/p/ur-robot/">
+                
+                    <img src="/UR-Robot/fengmian.png" loading="lazy" alt="Featured image of post 声控协作式机器人系统设计与实现" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/zh-cn/categories/%E9%A1%B9%E7%9B%AE%E6%88%90%E6%9E%9C/" >
+                项目成果
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/zh-cn/p/ur-robot/">声控协作式机器人系统设计与实现</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            声控协作机器人项目完整记录，含DTW语音识别、YOLOv8物体检测、GRCNN抓取规划及UR机器人控制（附实物抓取视频）
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2024-12-30</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="一项目核心信息">一、项目核心信息
+</h2><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>信息类别</th>
+<th>具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>项目名称</strong></td>
+<td>声控协作式机器人系统设计与实现</td>
+</tr>
+<tr>
+<td><strong>负责角色</strong></td>
+<td>项目负责人</td>
+</tr>
+<tr>
+<td><strong>项目周期</strong></td>
+<td>2024年10月-2024年12月</td>
+</tr>
+<tr>
+<td><strong>核心成员</strong></td>
+<td>刘承韬（本人）</td>
+</tr>
+<tr>
+<td><strong>指导教师</strong></td>
+<td>熊异（智能控制科学创新实践II课程指导）</td>
+</tr>
+<tr>
+<td><strong>核心任务</strong></td>
+<td>1. DTW算法语音识别（工具关键词识别）<br>2. YOLOv8工具物体检测（5类工具）<br>3. GRCNN平面抓取点生成<br>4. UR机器人+夹爪控制（ur-rtde/minimalmodbus）</td>
+</tr>
+<tr>
+<td><strong>关键工具</strong></td>
+<td>Python（核心逻辑）、OpenCV（图像处理）、YOLOv8（目标检测）、GRCNN（抓取规划）、ur-rtde（机器人控制）、MinimalModbus（夹爪控制）</td>
+</tr>
+<tr>
+<td><strong>项目产出</strong></td>
+<td>1. 可运行声控抓取系统<br>2. 工具识别模型（YOLOv8权重）<br>3. 实物抓取演示视频<br>4. 完整项目代码（含UI界面）</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="二项目背景与目标">二、项目背景与目标
+</h2><h3 id="1-项目背景">1. 项目背景
+</h3><p>在工业装配、仓储分拣等场景中，传统机器人需手动设定坐标，操作繁琐且灵活性低。声控作为自然的人机交互方式，可实现“语音指令→自动识别→精准抓取”的全流程自动化，既能提升生产效率，又能降低工人操作门槛。本项目以“工具抓取”为核心场景，融合语音识别（DTW）、计算机视觉（YOLOv8/GRCNN）与机器人控制技术，开发适用于工业场景的轻量级声控协作系统，避免深度学习黑箱依赖，兼顾实时性与可控性。</p>
+<h3 id="2-核心目标">2. 核心目标
+</h3><ul>
+<li>语音识别：实现“锤子、扳手、螺丝刀、钳子、卷尺”5类工具关键词识别，单词识别准确率≥90%，支持短句关键词提取（关键词位于句首时准确率≥85%）。</li>
+<li>物体识别：YOLOv8模型对5类工具的检测精度（mAP50）≥93%，泛化性覆盖不同光照、摆放角度的实物场景。</li>
+<li>抓取控制：GRCNN生成有效抓取点准确率≥90%，UR机器人抓取成功率≥85%，夹爪可根据工具材质自适应调整力度（如卷尺40%力度、金属工具80%力度）。</li>
+<li>交互体验：开发可视化UI界面，支持“语音录入→图像识别→抓取执行”一键操作，配套实物抓取演示视频。</li>
+</ul>
+<h2 id="三核心任务实现">三、核心任务实现
+</h2><h3 id="任务一基于dtw算法的语音识别模块">任务一：基于DTW算法的语音识别模块
+</h3><h4 id="1-算法流程与预处理">1. 算法流程与预处理
+</h4><p>采用“模板录制→信号预处理→DTW匹配”三步流程，核心是通过动态时间规整解决语音信号长度不一致问题：</p>
+<ul>
+<li><strong>模板录制</strong>：对5类工具关键词，每种以不同声调和语速录制6条音频（采样率16000Hz、单声道、2字节采样），生成30条模板音频（如图1）。</li>
+<li><strong>信号预处理</strong>：
+<ol>
+<li>分帧（帧长20ms、帧移10ms）、预加重（提升高频信号）；</li>
+<li>双门限法端点检测，分离语音有效部分与静音；</li>
+<li>提取MFCC特征（13维系数），将音频信号转化为特征向量（如图2）。</li>
+</ol>
+</li>
+<li><strong>DTW匹配</strong>：实时录音（2.5秒时长、CHUNK=1024采样块），提取MFCC后与模板特征计算欧氏距离，选择距离最小的模板作为识别结果（如“锤子”匹配距离≈7585，如图3）。</li>
+</ul>
+<h4 id="2-关键图片与识别结果">2. 关键图片与识别结果
+</h4><ul>
+<li>
+<p><strong>预处理与模板存储</strong>：</p>
+  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/UR-Robot/图1.png" alt="音频模板与MFCC特征文件" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666;">图1：音频模板（上）与MFCC特征文件（下）</p>
+  </div>
+</li>
+<li>
+<p><strong>识别结果与分析</strong>：</p>
+<div style="text-align: center; margin: 15px 0;">
+  <img src="/UR-Robot/图3.png" alt="DTW匹配距离与识别结果" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+  <p style="font-size: 14px; color: #666;">图3：DTW匹配距离计算（最小距离对应“锤子”，识别成功）</p>
+</div>
+<div style="text-align: center; margin: 10px 0;">
+  <table style="max-width: 80%; margin: 0 auto; border-collapse: collapse; border: 1px solid #eee;">
+    <tr style="background-color: #f5f5f5;">
+      <th style="padding: 8px; border: 1px solid #eee; text-align: center;">识别类型</th>
+      <th style="padding: 8px; border: 1px solid #eee; text-align: center;">锤子</th>
+      <th style="padding: 8px; border: 1px solid #eee; text-align: center;">扳手</th>
+      <th style="padding: 8px; border: 1px solid #eee; text-align: center;">螺丝刀</th>
+      <th style="padding: 8px; border: 1px solid #eee; text-align: center;">钳子</th>
+      <th style="padding: 8px; border: 1px solid #eee; text-align: center;">卷尺</th>
+    </tr>
+    <tr>
+      <td style="padding: 8px; border: 1px solid #eee; text-align: center;">单词识别（30次）</td>
+      <td style="padding: 8px; border: 1px solid #eee; text-align: center;">30/30</td>
+      <td style="padding: 8px; border: 1px solid #eee; text-align: center;">30/30</td>
+      <td style="padding: 8px; border: 1px solid #eee; text-align: center;">30/30</td>
+      <td style="padding: 8px; border: 1px solid #eee; text-align: center;">28/30</td>
+      <td style="padding: 8px; border: 1px solid #eee; text-align: center;">29/30</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px; border: 1px solid #eee; text-align: center;">短句识别（关键词句首）</td>
+      <td style="padding: 8px; border: 1px solid #eee; text-align: center;">28/30</td>
+      <td style="padding: 8px; border: 1px solid #eee; text-align: center;">29/30</td>
+      <td style="padding: 8px; border: 1px solid #eee; text-align: center;">29/30</td>
+      <td style="padding: 8px; border: 1px solid #eee; text-align: center;">-/30</td>
+      <td style="padding: 8px; border: 1px solid #eee; text-align: center;">-/30</td>
+    </tr>
+  </table>
+  <p style="font-size: 14px; color: #666; margin-top: 8px;">表1：语音识别准确率统计（误差源于“钳子/卷尺”发音相似性）</p>
+</div>
+</li>
+</ul>
+<h3 id="任务二基于yolov8的工具物体识别">任务二：基于YOLOv8的工具物体识别
+</h3><h4 id="1-模型开发与数据集优化">1. 模型开发与数据集优化
+</h4><ul>
+<li><strong>模型选择</strong>：选用YOLOv8（对比YOLOv5精度提升12%、YOLOv11社区支持更成熟），聚焦5类工具（锤子、扳手、螺丝刀、钳子、卷尺）检测。</li>
+<li><strong>数据集迭代</strong>：
+<ol>
+<li>初始数据集：200张图像（含椒盐噪声、旋转增强），训练100轮后mAP50=88%，但实物检测漏检率高；</li>
+<li>优化数据集：剔除卡通/手持工具图像，补充实验室实物图像（300张），采用“小模型预训练+增量训练”策略（先100轮小数据集，再分两次50轮增量训练）；</li>
+<li>知识蒸馏：用大模型（YOLOv8-L）作为教师模型，将工具特征传递给学生模型（YOLOv8-N），提升小模型泛化性。</li>
+</ol>
+</li>
+<li><strong>训练结果</strong>：优化后模型mAP50=95.2%，各类工具检测精度均≥93%，实物场景漏检率降低至10%以下（如图4、5）。</li>
+</ul>
+<h4 id="2-关键图片与检测效果">2. 关键图片与检测效果
+</h4><ul>
+<li>
+<p><strong>训练损失与精度曲线</strong>：</p>
+  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/UR-Robot/图4.png" alt="YOLOv8训练损失曲线" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666;">图4：首次200轮训练损失曲线（train/val loss收敛至0.5）</p>
+  </div>
+  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/UR-Robot/图5.png" alt="YOLOv8验证集指标" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666;">图5：最终验证集指标（mAP50=95.2%，precision=93.1%）</p>
+  </div>
+</li>
+<li>
+<p><strong>实物检测效果</strong>：</p>
+<div style="text-align: center; margin: 15px 0;">
+  <img src="/UR-Robot/图6.png" alt="工具实物检测结果" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+  <p style="font-size: 14px; color: #666;">图6：实物工具检测（标注置信度与类别，无漏检）</p>
+</div>
+</li>
+</ul>
+<h3 id="任务三grcnn抓取规划与机器人控制">任务三：GRCNN抓取规划与机器人控制
+</h3><h4 id="1-平面抓取点生成grcnn">1. 平面抓取点生成（GRCNN）
+</h4><ul>
+<li><strong>核心逻辑</strong>：结合Realsense双目相机的RGB+深度信息，GRCNN生成全局抓取置信度图，再根据YOLOv8检测框裁剪局部区域，提取最优抓取点（位置、角度、宽度）：
+<ol>
+<li>图像预处理：裁剪YOLOv8检测框区域（置信度≥0.5），添加20px边缘避免漏裁工具；</li>
+<li>抓取参数生成：输出抓取质量图（q_img）、角度图（ang_img）、宽度图（width_img），寻找局部最大值作为最优抓取点（如图7）；</li>
+<li>适配性优化：对扁平工具（如扳手）增加深度信息权重，减少无效抓取点。</li>
+</ol>
+</li>
+</ul>
+<h4 id="2-坐标变换与机器人控制">2. 坐标变换与机器人控制
+</h4><ul>
+<li><strong>坐标映射</strong>：
+<ol>
+<li>像素→相机坐标：利用Realsense内参（fx、fy、cx、cy），结合深度值Z，通过相机投影公式计算三维坐标（如图8）；</li>
+<li>相机→机器人坐标：用5×5棋盘格标定（24个标定 points，移动步距5cm），计算手眼变换矩阵T，实现坐标转换。</li>
+</ol>
+</li>
+<li><strong>UR机器人控制</strong>：
+<ul>
+<li>采用<code>ur-rtde</code>库，通过TCP/IP协议控制机器人，用<code>move_L</code>/<code>move_J</code>函数实现线性/关节运动（速度=0.2m/s，加速度=0.1m/s²，误差容忍2mm/0.01rad）；</li>
+</ul>
+</li>
+<li><strong>夹爪控制</strong>：
+<ul>
+<li>用<code>MinimalModbus</code>库通过串口控制夹爪，根据识别到的不同工具，实现自适应力度：金属工具（锤子/扳手）用80%力度，塑料工具（卷尺）用40%力度，避免损坏或掉落。</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-关键图片与控制效果">3. 关键图片与控制效果
+</h4><ul>
+<li>
+<p><strong>GRCNN抓取点与坐标变换</strong>：</p>
+  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/UR-Robot/图7.png" alt="GRCNN抓取点生成" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666;">图7：钳子抓取点（蓝色框为最优抓取位置，角度=0.57rad）</p>
+  </div>
+  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/UR-Robot/图8.png" alt="相机-机器人坐标变换公式" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666;">图8：像素坐标→机器人坐标变换公式</p>
+  </div>
+</li>
+<li>
+<p><strong>UI界面与抓取流程</strong>：</p>
+<div style="text-align: center; margin: 15px 0;">
+  <img src="/UR-Robot/图9.png" alt="系统UI界面" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+  <p style="font-size: 14px; color: #666;">图9：系统UI界面（含“语音识别、图像识别、按标签筛选、语音抓取”功能）</p>
+</div>
+</li>
+</ul>
+<h3 id="任务四实物抓取视频展示">任务四：实物抓取视频展示
+</h3><p>项目配套实物抓取演示视频，记录“语音指令→工具识别→机器人抓取”全流程，视频包含3个关键场景：</p>
+<ol>
+<li>场景1：语音输入“锤子”→YOLOv8检测锤子→GRCNN生成抓取点→UR机器人移动抓取；</li>
+<li>场景2：语音输入“卷尺”→夹爪自动切换40%力度→平稳抓取无损坏；</li>
+<li>场景3：多工具混合摆放→按语音标签筛选目标→精准抓取无误触。</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;text-align: center; margin: 20px 0;&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"> <span class="p">&lt;</span><span class="nt">video</span> <span class="na">width</span><span class="o">=</span><span class="s">&#34;80%&#34;</span> <span class="na">controls</span> <span class="na">poster</span><span class="o">=</span><span class="s">&#34;/project/robot/video-cover.png&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">   <span class="p">&lt;</span><span class="nt">source</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;/UR-Robot/video1.mp4&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;video/mp4&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">   您的浏览器不支持HTML5视频播放，请下载视频查看：<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;UR-Robot/视频1.mp4&#34;</span> <span class="na">target</span><span class="o">=</span><span class="s">&#34;_blank&#34;</span><span class="p">&gt;</span>下载演示视频<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"> <span class="p">&lt;/</span><span class="nt">video</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"> <span class="p">&lt;</span><span class="nt">p</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;</span><span class="p">&gt;</span>视频1：声控机器人实物抓取演示（时长1分20秒）<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="四项目成果与附件">四、项目成果与附件
+</h2><h3 id="核心成果">核心成果
+</h3><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>成果类型</th>
+<th>具体指标</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>语音识别</td>
+<td>单词准确率≥93%，短句（关键词句首）准确率≥85%</td>
+</tr>
+<tr>
+<td>物体检测</td>
+<td>YOLOv8 模型 mAP50=95.2%，实物检测漏检率≤10%</td>
+</tr>
+<tr>
+<td>抓取控制</td>
+<td>GRCNN 抓取点有效率≥80%，UR 机器人抓取成功率≥75%，夹爪力度自适应</td>
+</tr>
+<tr>
+<td>系统响应</td>
+<td>从语音指令到抓取完成≤10 秒，无人工干预</td>
+</tr>
+</tbody>
+</table></div>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/zh-cn/p/rl-control-project/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/RL/fengmian.png" loading="lazy" data-key="rl-control-project" data-hash="/RL/fengmian.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">基于强化学习的倒立摆控制与双足机器人系统构建</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/zh-cn/p/painting-robot/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/gen3/fengmian.png" loading="lazy" data-key="painting-robot" data-hash="/gen3/fengmian.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">基于Gen3-lite机械臂的绘画机器人系统</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/zh-cn/p/ai-research/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/ai/fengmian.png" loading="lazy" data-key="ai-research" data-hash="/ai/fengmian.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">基于传统机器学习算法的分类与图像处理研究</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2025 刘承韬
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

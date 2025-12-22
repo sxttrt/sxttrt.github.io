@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="强化学习项目完整记录，含倒立摆LQR控制与REINFORCE控制、双足机器人PPO训练体系搭建及复杂地形自适应行走（附源码与仿真动态素材）">
+<title>基于强化学习的倒立摆控制与双足机器人系统构建</title>
+
+<link rel='canonical' href='http://localhost:1313/zh-cn/p/rl-control-project/'>
+
+<link rel="stylesheet" href="/scss/style.min.0304c6baf04e01a8fe70693791cb744d56a3578a3120a8796cefc66825aa39c7.css"><meta property='og:title' content="基于强化学习的倒立摆控制与双足机器人系统构建">
+<meta property='og:description' content="强化学习项目完整记录，含倒立摆LQR控制与REINFORCE控制、双足机器人PPO训练体系搭建及复杂地形自适应行走（附源码与仿真动态素材）">
+<meta property='og:url' content='http://localhost:1313/zh-cn/p/rl-control-project/'>
+<meta property='og:site_name' content='刘承韬'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-06-20T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-06-20T00:00:00&#43;00:00'/><meta property='og:image' content='http://localhost:1313/RL/fengmian.png' />
+<meta name="twitter:title" content="基于强化学习的倒立摆控制与双足机器人系统构建">
+<meta name="twitter:description" content="强化学习项目完整记录，含倒立摆LQR控制与REINFORCE控制、双足机器人PPO训练体系搭建及复杂地形自适应行走（附源码与仿真动态素材）"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='http://localhost:1313/RL/fengmian.png' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/zh-cn/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu2071873778164182045.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/zh-cn">刘承韬</a></h1>
+            <h2 class="site-description">Liu Chengtao | Undergraduate Works</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://space.bilibili.com/499786362?spm_id_from=333.1007.0.0'
+                        target="_blank"
+                        title="Bilibili"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.0.0-beta2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M488.6 104.1C505.3 122.2 513 143.8 511.9 169.8V372.2C511.5 398.6 502.7 420.3 485.4 437.3C468.2 454.3 446.3 463.2 419.9 464H92.02C65.57 463.2 43.81 454.2 26.74 436.8C9.682 419.4 .7667 396.5 0 368.2V169.8C.7667 143.8 9.682 122.2 26.74 104.1C43.81 87.75 65.57 78.77 92.02 78H121.4L96.05 52.19C90.3 46.46 87.42 39.19 87.42 30.4C87.42 21.6 90.3 14.34 96.05 8.603C101.8 2.868 109.1 0 117.9 0C126.7 0 134 2.868 139.8 8.603L213.1 78H301.1L375.6 8.603C381.7 2.868 389.2 0 398 0C406.8 0 414.1 2.868 419.9 8.603C425.6 14.34 428.5 21.6 428.5 30.4C428.5 39.19 425.6 46.46 419.9 52.19L394.6 78L423.9 78C450.3 78.77 471.9 87.75 488.6 104.1H488.6zM449.8 173.8C449.4 164.2 446.1 156.4 439.1 150.3C433.9 144.2 425.1 140.9 416.4 140.5H96.05C86.46 140.9 78.6 144.2 72.47 150.3C66.33 156.4 63.07 164.2 62.69 173.8V368.2C62.69 377.4 65.95 385.2 72.47 391.7C78.99 398.2 86.85 401.5 96.05 401.5H416.4C425.6 401.5 433.4 398.2 439.7 391.7C446 385.2 449.4 377.4 449.8 368.2L449.8 173.8zM185.5 216.5C191.8 222.8 195.2 230.6 195.6 239.7V273C195.2 282.2 191.9 289.9 185.8 296.2C179.6 302.5 171.8 305.7 162.2 305.7C152.6 305.7 144.7 302.5 138.6 296.2C132.5 289.9 129.2 282.2 128.8 273V239.7C129.2 230.6 132.6 222.8 138.9 216.5C145.2 210.2 152.1 206.9 162.2 206.5C171.4 206.9 179.2 210.2 185.5 216.5H185.5zM377 216.5C383.3 222.8 386.7 230.6 387.1 239.7V273C386.7 282.2 383.4 289.9 377.3 296.2C371.2 302.5 363.3 305.7 353.7 305.7C344.1 305.7 336.3 302.5 330.1 296.2C323.1 289.9 320.7 282.2 320.4 273V239.7C320.7 230.6 324.1 222.8 330.4 216.5C336.7 210.2 344.5 206.9 353.7 206.5C362.9 206.9 370.7 210.2 377 216.5H377z"/></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/sxttrt'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/zh-cn/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/zh-cn/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="http://localhost:1313/" >English</option>
+                                
+                                    <option value="http://localhost:1313/zh-cn/" selected>简体中文</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#一项目核心信息">一、项目核心信息</a></li>
+    <li><a href="#二项目背景与目标">二、项目背景与目标</a>
+      <ol>
+        <li><a href="#1-项目背景">1. 项目背景</a></li>
+        <li><a href="#2-核心目标">2. 核心目标</a></li>
+      </ol>
+    </li>
+    <li><a href="#三核心任务实现">三、核心任务实现</a>
+      <ol>
+        <li><a href="#任务一倒立摆控制lqr线性控制--reinforce强化学习控制">任务一：倒立摆控制（LQR线性控制 + REINFORCE强化学习控制）</a>
+          <ol>
+            <li><a href="#1-基于lqr的倒立摆线性控制文档2最优projectdocx">1. 基于LQR的倒立摆线性控制（文档2：最优project.docx）</a></li>
+            <li><a href="#2-基于reinforce的倒立摆强化学习控制文档1最优控制与设计final-project">2. 基于REINFORCE的倒立摆强化学习控制（文档1：《最优控制与设计》Final Project）</a></li>
+          </ol>
+        </li>
+        <li><a href="#任务二双足机器人ppo强化学习控制文档1最优控制与设计final-project">任务二：双足机器人PPO强化学习控制（文档1：《最优控制与设计》Final Project）</a>
+          <ol>
+            <li><a href="#1-系统架构与核心模块">1. 系统架构与核心模块</a></li>
+            <li><a href="#2-分层奖励函数设计">2. 分层奖励函数设计</a></li>
+          </ol>
+        </li>
+        <li><a href="#1-姿态控制奖励">1. 姿态控制奖励</a></li>
+        <li><a href="#2-垂直速度惩罚">2. 垂直速度惩罚</a></li>
+        <li><a href="#3-脚部离地时间奖励">3. 脚部离地时间奖励</a></li>
+        <li><a href="#4-指令追踪奖励">4. 指令追踪奖励</a></li>
+        <li><a href="#5-静止保持奖励">5. 静止保持奖励</a></li>
+        <li><a href="#6-碰撞关节极限惩罚">6. 碰撞/关节极限惩罚</a>
+          <ol>
+            <li><a href="#3-三级训练链路构建解决训练发散与步态问题">3. 三级训练链路构建（解决训练发散与步态问题）</a></li>
+            <li><a href="#4-关键问题解决与实验结果">4. 关键问题解决与实验结果</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#四项目成果与附件">四、项目成果与附件</a>
+      <ol>
+        <li><a href="#1-仿真动态素材">1. 仿真动态素材</a>
+          <ol>
+            <li><a href="#11-倒立摆控制仿真素材">1.1 倒立摆控制仿真素材</a></li>
+            <li><a href="#12-双足机器人行走仿真素材">1.2 双足机器人行走仿真素材</a></li>
+          </ol>
+        </li>
+        <li><a href="#2-核心探索结论">2. 核心探索结论</a></li>
+        <li><a href="#3-附件文件">3. 附件文件</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/zh-cn/p/rl-control-project/">
+                
+                    <img src="/RL/fengmian.png" loading="lazy" alt="Featured image of post 基于强化学习的倒立摆控制与双足机器人系统构建" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/zh-cn/categories/%E9%A1%B9%E7%9B%AE%E6%88%90%E6%9E%9C/" >
+                项目成果
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/zh-cn/p/rl-control-project/">基于强化学习的倒立摆控制与双足机器人系统构建</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            强化学习项目完整记录，含倒立摆LQR控制与REINFORCE控制、双足机器人PPO训练体系搭建及复杂地形自适应行走（附源码与仿真动态素材）
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025-06-20</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <!-- 完整MathJax配置（加载+识别规则），复制到文章开头即可 -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+// 明确MathJax的公式识别规则，避免冲突
+MathJax.config = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],  // 行内公式：$...$ 或 \(...\)
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],  // 行间公式：$$...$$ 或 \[...\]
+    processEscapes: true,  // 允许反斜杠转义（比如 \sum、\mu 正常生效）
+    processEnvironments: true  // 支持复杂公式环境（如矩阵、分段函数）
+  },
+  svg: {
+    fontCache: 'global'  // 缓存字体，加快渲染速度
+  }
+};
+</script>
+<h2 id="一项目核心信息">一、项目核心信息
+</h2><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>信息类别</th>
+<th>具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>项目名称</strong></td>
+<td>基于强化学习的倒立摆控制与双足机器人系统构建</td>
+</tr>
+<tr>
+<td><strong>核心成员</strong></td>
+<td>刘承韬、张皓佳、马博涵</td>
+</tr>
+<tr>
+<td><strong>核心任务</strong></td>
+<td>1. 倒立摆：① 基于LQR的线性控制（动力学建模、线性化、离散化）；② 基于REINFORCE的强化学习控制（策略梯度算法部署、奖励函数设计）；<br>2. 双足机器人：① Isaac Gym/MuJoCo仿真环境搭建；② PPO算法训练框架部署；③ 分层奖励函数设计；④ 平衡-步态稳定-复杂地形适配三级训练链路构建；⑤ 非结构化地形自适应行走实现</td>
+</tr>
+<tr>
+<td><strong>关键工具</strong></td>
+<td>Python、PyTorch（强化学习框架）、NumPy（矩阵计算）、Isaac Gym（并行仿真）、MuJoCo（高精度仿真）、Gymnasium（倒立摆REINFORCE环境）、Matplotlib（可视化）</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="二项目背景与目标">二、项目背景与目标
+</h2><h3 id="1-项目背景">1. 项目背景
+</h3><ul>
+<li><strong>倒立摆系统</strong>：作为经典非线性、不稳定控制对象，其平衡控制是验证控制算法有效性的典型场景。传统线性控制（如LQR）依赖精确建模，鲁棒性有限；强化学习（如REINFORCE）通过智能体与环境交互试错，可自主学习最优策略，无需依赖显式模型。</li>
+<li><strong>双足机器人</strong>：具备卓越的地形适应能力，在搜救、勘探、物流等领域潜力巨大，但高维、非线性的动态特性导致其步态稳定与复杂环境适配成为核心挑战。传统控制（如ZMP）需精确建模与复杂计算，对环境变化鲁棒性不足；深度强化学习（DRL）可发现非直观且高效的控制策略，适配高维系统需求。</li>
+</ul>
+<p>本项目分别针对两类系统，通过传统控制与强化学习方法，解决倒立摆平衡控制与双足机器人行走控制问题。</p>
+<h3 id="2-核心目标">2. 核心目标
+</h3><ul>
+<li><strong>倒立摆控制目标</strong>：① 基于LQR实现倒立摆线性控制（完成变量替换、线性化、离散化全流程，验证多初始角稳定控制）；② 基于REINFORCE实现倒立摆强化学习控制（设计多维度奖励函数，实现微扰下长时间平衡）；</li>
+<li><strong>双足机器人目标</strong>：① 搭建Isaac Gym并行仿真训练框架，部署PPO算法；② 设计分层奖励函数，解决默认训练5000轮后策略崩溃、小碎步步态、零指令下滑动等问题；③ 构建三级训练链路，实现平地行走、抗扰动、复杂地形（斜坡、非平整地面）自适应行走；④ 完成Sim-to-Sim迁移（Isaac Gym训练策略迁移至MuJoCo验证）；</li>
+<li><strong>工程化目标</strong>：所有算法模块化封装，配套仿真可视化素材，确保实验过程可复现。</li>
+</ul>
+<h2 id="三核心任务实现">三、核心任务实现
+</h2><h3 id="任务一倒立摆控制lqr线性控制--reinforce强化学习控制">任务一：倒立摆控制（LQR线性控制 + REINFORCE强化学习控制）
+</h3><h4 id="1-基于lqr的倒立摆线性控制文档2最优projectdocx">1. 基于LQR的倒立摆线性控制（文档2：最优project.docx）
+</h4><h5 id="1动力学建模与线性化离散化">（1）动力学建模与线性化、离散化
+</h5><ul>
+<li>
+<p><strong>变量替换</strong>：定义状态变量以简化动力学方程：
+$$x_1=z \quad (\text{小车位置}),\quad x_2=\pi-\theta \quad (\text{摆杆角度转换}),\quad x_3=\dot{z} \quad (\text{小车速度}),\quad x_4=\dot{\theta} \quad (\text{摆杆角速度})$$
+通过三角函数变换：
+$$\sin\theta = \sin(\pi-x_2) = \sin x_2,\quad \cos\theta = \cos(\pi-x_2) = -\cos x_2$$
+代入系统参数（$m_p=1$、$m_c=10$、$L=0.5$、$g=9.81$），推导状态方程：
+$$\dot{x_3} = \frac{u + \sin x_2 \cdot (0.5x_4^2) - 9.81\cos x_2}{10 + (\sin x_2)^2}$$
+$$\dot{x_4} = \frac{u\cos x_2 + 0.5x_4^2 \cdot \cos x_2 \sin x_2 - 107.9\sin x_2}{0.5 \cdot (10 + (\sin x_2)^2)}$$</p>
+</li>
+<li>
+<p><strong>线性化</strong>：在平衡点 $x_0=[0,0,0,0]$ 处泰勒展开，忽略高阶项（$\sin x_2 \approx x_2$、$\cos x_2 \approx 1$），得到线性化模型：
+$$\dot{x_3} \approx \frac{u - 9.81x_2}{10}$$
+$$\dot{x_4} \approx \frac{u - 107.91x_2}{5}$$</p>
+</li>
+<li>
+<p><strong>离散化</strong>：基于离散化公式转换为离散时间模型，用于LQR设计：
+$$A_d = I + AT,\quad B_d = BT$$
+（$A$、$B$ 为线性化后的状态矩阵与输入矩阵，$T$ 为采样时间）</p>
+</li>
+</ul>
+<h5 id="2lqr控制器设计与实验结果">（2）LQR控制器设计与实验结果
+</h5><ul>
+<li>
+<p><strong>参数配置</strong>：定义状态权重矩阵 $Q$ 与控制输入权重矩阵 $R$，平衡状态误差与控制能耗：
+$$Q = \text{np.diag}([2.0, 10.0, 0.5, 1.0]),\quad R = \text{np.array}([[0.1]])$$
+通过求解离散代数黎卡提方程得到最优反馈增益 $K$：
+$$K = [[-4.4267, 262.3615, -12.0165, 57.0248]]$$</p>
+</li>
+<li>
+<p><strong>实验结果</strong>：</p>
+<ul>
+<li>初始角2.7rad：小车从倾斜状态逐步调整，最终维持倒立摆竖直平衡，无明显持续晃动；</li>
+<li>多初始角验证：对2.6rad、2.7rad、2.9rad初始角均能实现稳定控制；</li>
+<li>不同Q/R对比：</li>
+</ul>
+</li>
+</ul>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>配置</th>
+<th>稳定时间</th>
+<th>最大超调</th>
+<th>控制能量（N²·s）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Baseline（Q如上，R=0.1）</td>
+<td>0.27s</td>
+<td>5.0°</td>
+<td>414654.0</td>
+</tr>
+<tr>
+<td>High Q（Q=np.diag([5.0,20.0,2.0,5.0])）</td>
+<td>0.25s</td>
+<td>5.8°</td>
+<td>451955.5</td>
+</tr>
+<tr>
+<td>High R（R=np.array([[1]])）</td>
+<td>0.31s</td>
+<td>3.3°</td>
+<td>355800.3</td>
+</tr>
+</tbody>
+</table></div>
+<div style="text-align: center; margin: 15px 0;">
+  <img src="/RL/图2.png" alt="Soft K-means不同聚类数重建效果" style="max-width: 100%; border: 1px solid #eee; border-radius: 4px;">
+  <p style="font-size: 14px; color: #666;">图1：不同初始角效果</p>
+</div>
+<h4 id="2-基于reinforce的倒立摆强化学习控制文档1最优控制与设计final-project">2. 基于REINFORCE的倒立摆强化学习控制（文档1：《最优控制与设计》Final Project）
+</h4><h5 id="1算法设计与环境搭建">（1）算法设计与环境搭建
+</h5><ul>
+<li><strong>仿真环境</strong>：基于Gymnasium的CartPole-v1环境，状态空间含4个连续变量（小车位置、小车速度、摆杆角度、摆杆角速度），动作空间为2个离散动作（向左/向右施力）；中止条件：小车位置超±2.4m或摆杆角度超±12°。</li>
+<li><strong>策略网络</strong>：两层全连接神经网络，输入为4维状态，输出为动作概率分布（Softmax归一化），优化器选用AdamW。</li>
+<li><strong>奖励函数</strong>：综合5个维度设计，引导策略稳定平衡：
+<ul>
+<li>存活奖励：每一步固定奖励，鼓励长时间维持平衡；</li>
+<li>角度奖励：惩罚摆杆偏离竖直方向，偏移越小奖励越高；</li>
+<li>位置奖励：鼓励小车接近中心，偏离越远奖励越低；</li>
+<li>速度惩罚：限制小车水平速度与摆杆角速度，避免剧烈运动；</li>
+<li>综合奖励：上述子项加权组合，以存活、角度、位置奖励为主导。</li>
+</ul>
+</li>
+</ul>
+<h5 id="2训练流程与结果">（2）训练流程与结果
+</h5><ul>
+<li><strong>训练流程</strong>：
+<ol>
+<li>环境重置：每个回合初始状态含微小扰动；</li>
+<li>轨迹采样：智能体按策略与环境交互，记录状态、动作对数概率、即时奖励；</li>
+<li>回报计算：计算累计折扣回报 $G_t = \sum_{k=t}^T \gamma^{k-t} r_k$（$\gamma$ 为折扣因子）；</li>
+<li>策略更新：通过梯度上升最大化累计回报，每个回合结束后更新一次参数。</li>
+</ol>
+</li>
+<li><strong>实验结果</strong>：训练2325轮后，策略可实现倒立摆在微扰下长时间平衡，鲁棒性良好，无早期崩溃现象。</li>
+</ul>
+<div style="text-align: center; margin: 15px 0;">
+  <img src="/RL/图3.png" alt="Soft K-means不同聚类数重建效果" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+  <p style="font-size: 14px; color: #666;">图2：倒立摆REINFORCE训练奖励曲线</p>
+</div>
+<div style="text-align: center; margin: 15px 0;">
+  <img src="/RL/图1.png" alt="Soft K-means不同聚类数重建效果" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+  <p style="font-size: 14px; color: #666;">图3：mujoco中仿真效果</p>
+</div>
+<h3 id="任务二双足机器人ppo强化学习控制文档1最优控制与设计final-project">任务二：双足机器人PPO强化学习控制（文档1：《最优控制与设计》Final Project）
+</h3><h4 id="1-系统架构与核心模块">1. 系统架构与核心模块
+</h4><ul>
+<li><strong>仿真平台</strong>：
+<ul>
+<li>Isaac Gym：GPU加速物理仿真与图形渲染，支持上千个独立环境并行训练，提升采样效率；支持物理域随机化（摩擦系数、质量、重心位置随机扰动），增强策略鲁棒性；</li>
+<li>MuJoCo：高精度物理引擎，用于Sim-to-Sim迁移验证（Isaac Gym训练的策略导出为ONNX格式，部署至MuJoCo验证）。</li>
+</ul>
+</li>
+<li><strong>PPO训练框架核心模块</strong>：</li>
+</ul>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>模块</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>train.py</td>
+<td>训练入口，调用task_registry创建环境（env）与PPO训练器（ppo_runner），启动训练（learn方法）</td>
+</tr>
+<tr>
+<td>task_registry</td>
+<td>含make_env（创建环境与env_cfg）、make_alg_runner（创建PPO算法训练器）、register（读取地形/机器人/算法参数）</td>
+</tr>
+<tr>
+<td>terrain.py</td>
+<td>地形生成：__init__初始化地形参数、curiculum调用make_terrain生成地形、make_alg_runner调用Isaac Gym的terrain_utils生成地形</td>
+</tr>
+<tr>
+<td>pointfoot_rough_config.py</td>
+<td>配置类：LeggedRobotCfg（环境参数：num_envs、地形类型、指令参数、奖励权重等）；LeggedRobotCfgPPO（PPO参数：Actor/Critic隐藏层维度（512,256,128）、ELU激活函数、训练周期等）</td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="2-分层奖励函数设计">2. 分层奖励函数设计
+</h4><p>针对机器人平衡、步态、指令响应需求，设计多维度奖励函数，各类型详细说明如下：</p>
+<h3 id="1-姿态控制奖励">1. 姿态控制奖励
+</h3><ul>
+<li><strong>核心作用</strong>：维持躯干水平，避免前倾/后仰/侧倾</li>
+<li><strong>实现逻辑与公式</strong>：通过惩罚重力向量在XY平面的投影实现，投影越小说明躯干越接近水平，奖励越高，公式如下：
+$$\text{reward_orientation} = \sum \text{torch.square}(\text{projected_gravity}[:,:2])$$</li>
+</ul>
+<h3 id="2-垂直速度惩罚">2. 垂直速度惩罚
+</h3><ul>
+<li><strong>核心作用</strong>：抑制竖直方向大幅运动，稳定机器人重心</li>
+<li><strong>实现逻辑与公式</strong>：直接惩罚机身Z轴方向的速度，避免上下剧烈晃动，公式如下：
+$$\text{reward_lin_vel_z} = \text{torch.square}(\text{base_lin_vel}[:,2])$$</li>
+</ul>
+<h3 id="3-脚部离地时间奖励">3. 脚部离地时间奖励
+</h3><ul>
+<li><strong>核心作用</strong>：打破小碎步步态，引导机器人生成自然、稳定的行走节奏</li>
+<li><strong>实现逻辑</strong>：
+<ol>
+<li>记录脚部接触状态（定义<code>contact = 接触力&gt;1.0</code>，接触力大于1.0时判定为着地，否则为离地）；</li>
+<li>设定目标离地时间区间：0.3~0.6s（最优目标值0.5s），计算实际离地时间与目标值的偏差，超出区间则施加惩罚；</li>
+<li>奖励仅在有速度指令时生效（零指令静止状态下不触发），避免干扰静止平衡。</li>
+</ol>
+</li>
+</ul>
+<h3 id="4-指令追踪奖励">4. 指令追踪奖励
+</h3><ul>
+<li><strong>核心作用</strong>：让机器人精准响应速度、方向类指令，提升运动可控性</li>
+<li><strong>实现逻辑与公式</strong>：包含3类细分奖励，均通过指数函数惩罚误差，误差越小奖励越高：
+<ol>
+<li>线速度追踪奖励（针对XY平面速度指令）：
+$$\text{reward_tracking_lin_vel} = \exp(-\text{lin_vel_error}/\text{tracking_sigma})$$
+其中lin_vel_error$为XY平面实际速度与目标速度的误差，tracking_sigma为误差调节系数；</li>
+<li>角速度追踪奖励（针对Yaw轴转向指令）：
+$$\text{reward_tracking_ang_vel} = \exp(-\text{ang_vel_error}/\text{tracking_sigma})$$
+其中ang_vel_error为Yaw轴实际角速度与目标角速度的误差；</li>
+<li>航向角追踪奖励（针对朝向指令）：
+$$\text{reward_heading_tracking} = \exp(-\text{heading_error}^2/\text{tracking_sigma})$$
+其中heading_error为实际朝向与目标朝向的偏差。</li>
+</ol>
+</li>
+</ul>
+<h3 id="5-静止保持奖励">5. 静止保持奖励
+</h3><ul>
+<li><strong>核心作用</strong>：零指令时让机器人稳定站立，避免无意义滑动或姿态偏移</li>
+<li><strong>实现逻辑与公式</strong>：通过双重惩罚引导静止状态，公式如下：
+<ol>
+<li>姿态误差计算：惩罚关节姿态偏离默认初始值：
+$$\text{pose_error} = \sum \text{torch.square}(\text{dof_pos}-\text{default_dof_pos})$$</li>
+<li>运动误差计算：惩罚机身非必要的线速度和角速度：
+$$\text{vel_error} = \sum \text{torch.square}(\text{base_lin_vel}) + \sum \text{torch.square}(\text{base_ang_vel})$$</li>
+<li>综合奖励：仅在指令速度接近0时生效，误差越小奖励越高：
+$$\text{reward_stand_still} = \exp(-(\text{pose_error} + 0.5\cdot\text{vel_error})) \cdot (\text{指令速度接近0})$$</li>
+</ol>
+</li>
+</ul>
+<h3 id="6-碰撞关节极限惩罚">6. 碰撞/关节极限惩罚
+</h3><ul>
+<li><strong>核心作用</strong>：避免机器人出现碰撞、关节超程等异常动作，保护仿真模型</li>
+<li><strong>实现逻辑</strong>：
+<ol>
+<li>碰撞惩罚：检测到机器人与环境或自身碰撞时，施加固定惩罚值-3.0；</li>
+<li>关节极限惩罚：当关节角度接近物理极限（reward_dof_pos_limits）、关节速度接近最大阈值（eward_dof_vel_limits）时，施加梯度式惩罚（偏差越大惩罚越强）。</li>
+</ol>
+</li>
+</ul>
+<div style="text-align: center; margin: 15px 0;">
+  <img src="/RL/图4.png" alt="Soft K-means不同聚类数重建效果" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+  <p style="font-size: 14px; color: #666;">图4：相关的奖励函数</p>
+</div>
+<h4 id="3-三级训练链路构建解决训练发散与步态问题">3. 三级训练链路构建（解决训练发散与步态问题）
+</h4><p>采用循序渐进策略，避免高维系统训练崩溃，具体流程如下：</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>训练阶段</th>
+<th>核心目标</th>
+<th>关键操作与优化效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>第一阶段：平地平衡训练</td>
+<td>实现稳定站立与基础移动，解决5000轮策略崩溃</td>
+<td>操作：仅平地环境，无扰动；引入姿态控制奖励、关节极限惩罚；<br>效果：训练崩溃节点从5000轮延后至55000轮，躯干保持水平，减少倒地</td>
+</tr>
+<tr>
+<td>第二阶段：步态与指令训练</td>
+<td>生成自然步态，提升指令响应精度，解决小碎步</td>
+<td>操作：① 强化脚部离地时间奖励；② 调整惩罚参数（action rate惩罚从-0.05降至-0.01，碰撞惩罚从-100降至-3.0）；③ 加入指令追踪奖励；<br>效果：步幅增大，左右脚交替规律，指令响应误差降低</td>
+</tr>
+<tr>
+<td>第三阶段：抗扰与复杂地形训练</td>
+<td>提升抗扰动能力与地形适配性</td>
+<td>操作：① 开启随机推力扰动；② 启用地形课程学习（mesh_type设为trimesh，curriculum=True，从缓坡/简单非平整地形逐步升级至复杂地形）；<br>效果：扰动下1.2~2.0s恢复平衡，斜坡/非平整地形行走成功率超88%</td>
+</tr>
+</tbody>
+</table></div>
+<div style="text-align: center; margin: 15px 0;">
+  <img src="/RL/图5.png" alt="Soft K-means不同聚类数重建效果" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+  <p style="font-size: 14px; color: #666;">图5：刚开始训练失败部分</p>
+</div>
+<div style="text-align: center; margin: 15px 0;">
+  <img src="/RL/fengmian.png" alt="Soft K-means不同聚类数重建效果" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+  <p style="font-size: 14px; color: #666;">图6：后续训练效果较好部分</p>
+</div>
+<h4 id="4-关键问题解决与实验结果">4. 关键问题解决与实验结果
+</h4><h5 id="1核心问题与解决方案">（1）核心问题与解决方案
+</h5><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>核心问题</th>
+<th>产生原因</th>
+<th>解决方案</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PPO默认训练5000轮后策略崩溃</td>
+<td>原始奖励仅含生存/速度追踪，无姿态约束，策略过度追求“不倒地”而非“正常行走”</td>
+<td>引入姿态控制奖励（重力投影惩罚）、关节角度/速度极限惩罚，增强姿态稳定性</td>
+</tr>
+<tr>
+<td>小碎步步态</td>
+<td>action rate惩罚过强（-0.05），机器人不敢抬腿；无步态节奏引导</td>
+<td>削弱action rate惩罚至-0.01；加入脚部离地时间奖励（0.3~0.6s目标区间）</td>
+</tr>
+<tr>
+<td>零指令下滑动</td>
+<td>无静止状态专属奖励，策略无“保持静止”引导</td>
+<td>新增静止保持奖励，显式惩罚姿态偏离与非必要运动</td>
+</tr>
+<tr>
+<td>Sim-to-Sim迁移无指令响应</td>
+<td>训练无明确指令追踪奖励，策略未学习“响应命令”</td>
+<td>加入线速度/角速度/航向角追踪奖励，引导策略匹配目标指令</td>
+</tr>
+</tbody>
+</table></div>
+<div style="text-align: center; margin: 15px 0;">
+  <img src="/RL/图6.png" alt="Soft K-means不同聚类数重建效果" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+  <p style="font-size: 14px; color: #666;">图6：mujoco仿真中较好的步态</p>
+</div>
+<h5 id="2实验结果">（2）实验结果
+</h5><ul>
+<li><strong>平地行走</strong>：步态自然（左右脚交替，离地时间0.4~0.6s），指令响应误差&lt;5%，无倒地现象；</li>
+<li><strong>抗扰动能力</strong>：随机推力扰动下，1.2~2.0s恢复平衡，生存奖励稳定；</li>
+<li><strong>复杂地形适配</strong>：</li>
+</ul>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>地形类型</th>
+<th>行走成功率</th>
+<th>姿态波动幅度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>平坦地形（无扰动）</td>
+<td>100%</td>
+<td>＜5°</td>
+</tr>
+<tr>
+<td>非平整地形（trimesh）</td>
+<td>90%</td>
+<td>＜8°</td>
+</tr>
+<tr>
+<td>斜坡（缓坡）</td>
+<td>92%</td>
+<td>＜8°</td>
+</tr>
+<tr>
+<td>平地+随机扰动</td>
+<td>95%</td>
+<td>＜7°</td>
+</tr>
+</tbody>
+</table></div>
+<p><img src="/RL/%e5%8f%8c%e8%b6%b3%e6%9c%ba%e5%99%a8%e4%ba%ba%e5%a4%8d%e6%9d%82%e5%9c%b0%e5%bd%a2%e4%bb%bf%e7%9c%9f%e5%9b%be.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="双足机器人复杂地形行走仿真效果"
+	
+	
+><br>
+<em>图4：双足机器人在平坦地形、非平整地形、斜坡的行走仿真效果（基于文档1）</em></p>
+<h2 id="四项目成果与附件">四、项目成果与附件
+</h2><h3 id="1-仿真动态素材">1. 仿真动态素材
+</h3><h4 id="11-倒立摆控制仿真素材">1.1 倒立摆控制仿真素材
+</h4><ul>
+<li>LQR控制：含2.6rad、2.7rad、2.9rad初始角稳定控制GIF，展示从小车倾斜到平衡的动态过程；</li>
+<li>REINFORCE控制：含训练2325轮后微扰下长时间平衡GIF，展示摆杆维持竖直的稳定状态。</li>
+</ul>
+<p>下载链接：<a class="link" href="/RL/%e5%80%92%e7%ab%8b%e6%91%86%e4%bb%bf%e7%9c%9fGIF%e5%90%88%e9%9b%86.zip" >倒立摆LQR+REINFORCE仿真GIF合集.zip</a></p>
+<h4 id="12-双足机器人行走仿真素材">1.2 双足机器人行走仿真素材
+</h4><ul>
+<li>平地行走：展示自然步态（左右脚交替、无小碎步）；</li>
+<li>抗扰动行走：展示随机推力下的平衡恢复过程；</li>
+<li>复杂地形行走：展示非平整地形、斜坡的适配行走。</li>
+</ul>
+<p>下载链接：<a class="link" href="/RL/%e5%8f%8c%e8%b6%b3%e6%9c%ba%e5%99%a8%e4%ba%ba%e4%bb%bf%e7%9c%9fGIF%e5%90%88%e9%9b%86.zip" >双足机器人多场景仿真GIF合集.zip</a></p>
+<h3 id="2-核心探索结论">2. 核心探索结论
+</h3><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>系统类型</th>
+<th>关键结论</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>倒立摆LQR控制</td>
+<td>1. Q/R矩阵权重影响控制效果：High Q（大状态权重）响应更快但超调更大、能耗更高；High R（大控制权重）响应更慢但超调更小、能耗更低；<br>2. 离散化模型是LQR适用于数字控制的关键，需基于线性化模型推导</td>
+</tr>
+<tr>
+<td>倒立摆REINFORCE控制</td>
+<td>1. 多维度奖励函数（含存活、角度、位置、速度）是避免策略“钻空子”（如仅追求存活不保持平衡）的核心；<br>2. 训练2325轮后策略收敛，可实现微扰下长时间平衡，验证策略梯度算法对低维非线性系统的适配性</td>
+</tr>
+<tr>
+<td>双足机器人PPO控制</td>
+<td>1. 三级训练链路（平衡→步态→复杂地形）是避免高维系统训练发散的关键，直接训练复杂地形会导致策略崩溃；<br>2. 物理域随机化与Sim-to-Sim迁移可显著提升策略泛化能力，适配不同仿真环境差异；<br>3. 脚部离地时间控制在0.4~0.6s时，步态最接近自然行走，能耗与稳定性平衡最优</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="3-附件文件">3. 附件文件
+</h3><ul>
+<li>
+<ol>
+<li><strong>项目源码仓库</strong>：含所有核心模块代码（train.py、task_registry.py、terrain.py、pointfoot_rough_config.py等），详见：<a class="link" href="https://github.com/xxx/RL-Robot-Control"  target="_blank" rel="noopener"
+    >RL-Robot-Control（示例链接，需替换为实际仓库）</a>；</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li><strong>模型文件</strong>：双足机器人PPO策略ONNX格式文件（Isaac Gym训练导出，用于MuJoCo迁移）、倒立摆REINFORCE模型权重文件；</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li><strong>实验配置文件</strong>：Isaac Gym/MuJoCo环境参数配置（含terrain.py参数、pointfoot_rough_config.py完整代码）；</li>
+</ol>
+</li>
+<li>
+<ol start="4">
+<li><strong>实验图表素材</strong>：所有训练奖励曲线、LQR参数对比图、机器人步态轨迹图的原始文件。</li>
+</ol>
+</li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/zh-cn/p/painting-robot/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/gen3/fengmian.png" loading="lazy" data-key="painting-robot" data-hash="/gen3/fengmian.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">基于Gen3-lite机械臂的绘画机器人系统</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/zh-cn/p/ai-research/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/ai/fengmian.png" loading="lazy" data-key="ai-research" data-hash="/ai/fengmian.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">基于传统机器学习算法的分类与图像处理研究</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2025 刘承韬
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

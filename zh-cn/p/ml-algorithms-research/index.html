@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="2024年09-11月机器学习项目完整记录，含K-means/Soft K-means分类、PCA/Linear Autoencoder降维及Logistic Regression/MLP二分类（附源码与实验可视化）">
+<title>基于传统机器学习算法的分类与图像处理研究</title>
+
+<link rel='canonical' href='http://localhost:1313/zh-cn/p/ml-algorithms-research/'>
+
+<link rel="stylesheet" href="/scss/style.min.0304c6baf04e01a8fe70693791cb744d56a3578a3120a8796cefc66825aa39c7.css"><meta property='og:title' content="基于传统机器学习算法的分类与图像处理研究">
+<meta property='og:description' content="2024年09-11月机器学习项目完整记录，含K-means/Soft K-means分类、PCA/Linear Autoencoder降维及Logistic Regression/MLP二分类（附源码与实验可视化）">
+<meta property='og:url' content='http://localhost:1313/zh-cn/p/ml-algorithms-research/'>
+<meta property='og:site_name' content='刘承韬'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-11-30T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-11-30T00:00:00&#43;00:00'/><meta property='og:image' content='http://localhost:1313/ai/fengmian.png' />
+<meta name="twitter:title" content="基于传统机器学习算法的分类与图像处理研究">
+<meta name="twitter:description" content="2024年09-11月机器学习项目完整记录，含K-means/Soft K-means分类、PCA/Linear Autoencoder降维及Logistic Regression/MLP二分类（附源码与实验可视化）"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='http://localhost:1313/ai/fengmian.png' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/zh-cn/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu2071873778164182045.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/zh-cn">刘承韬</a></h1>
+            <h2 class="site-description">Liu Chengtao | Undergraduate Works</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://space.bilibili.com/499786362?spm_id_from=333.1007.0.0'
+                        target="_blank"
+                        title="Bilibili"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.0.0-beta2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M488.6 104.1C505.3 122.2 513 143.8 511.9 169.8V372.2C511.5 398.6 502.7 420.3 485.4 437.3C468.2 454.3 446.3 463.2 419.9 464H92.02C65.57 463.2 43.81 454.2 26.74 436.8C9.682 419.4 .7667 396.5 0 368.2V169.8C.7667 143.8 9.682 122.2 26.74 104.1C43.81 87.75 65.57 78.77 92.02 78H121.4L96.05 52.19C90.3 46.46 87.42 39.19 87.42 30.4C87.42 21.6 90.3 14.34 96.05 8.603C101.8 2.868 109.1 0 117.9 0C126.7 0 134 2.868 139.8 8.603L213.1 78H301.1L375.6 8.603C381.7 2.868 389.2 0 398 0C406.8 0 414.1 2.868 419.9 8.603C425.6 14.34 428.5 21.6 428.5 30.4C428.5 39.19 425.6 46.46 419.9 52.19L394.6 78L423.9 78C450.3 78.77 471.9 87.75 488.6 104.1H488.6zM449.8 173.8C449.4 164.2 446.1 156.4 439.1 150.3C433.9 144.2 425.1 140.9 416.4 140.5H96.05C86.46 140.9 78.6 144.2 72.47 150.3C66.33 156.4 63.07 164.2 62.69 173.8V368.2C62.69 377.4 65.95 385.2 72.47 391.7C78.99 398.2 86.85 401.5 96.05 401.5H416.4C425.6 401.5 433.4 398.2 439.7 391.7C446 385.2 449.4 377.4 449.8 368.2L449.8 173.8zM185.5 216.5C191.8 222.8 195.2 230.6 195.6 239.7V273C195.2 282.2 191.9 289.9 185.8 296.2C179.6 302.5 171.8 305.7 162.2 305.7C152.6 305.7 144.7 302.5 138.6 296.2C132.5 289.9 129.2 282.2 128.8 273V239.7C129.2 230.6 132.6 222.8 138.9 216.5C145.2 210.2 152.1 206.9 162.2 206.5C171.4 206.9 179.2 210.2 185.5 216.5H185.5zM377 216.5C383.3 222.8 386.7 230.6 387.1 239.7V273C386.7 282.2 383.4 289.9 377.3 296.2C371.2 302.5 363.3 305.7 353.7 305.7C344.1 305.7 336.3 302.5 330.1 296.2C323.1 289.9 320.7 282.2 320.4 273V239.7C320.7 230.6 324.1 222.8 330.4 216.5C336.7 210.2 344.5 206.9 353.7 206.5C362.9 206.9 370.7 210.2 377 216.5H377z"/></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/sxttrt'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/zh-cn/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/zh-cn/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="http://localhost:1313/" >English</option>
+                                
+                                    <option value="http://localhost:1313/zh-cn/" selected>简体中文</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#一项目核心信息">一、项目核心信息</a></li>
+    <li><a href="#二项目背景与目标">二、项目背景与目标</a>
+      <ol>
+        <li><a href="#1-项目背景">1. 项目背景</a></li>
+        <li><a href="#2-核心目标">2. 核心目标</a></li>
+      </ol>
+    </li>
+    <li><a href="#三核心任务实现">三、核心任务实现</a>
+      <ol>
+        <li><a href="#任务一k-means与soft-k-means聚类分类种子数据集探索">任务一：K-means与Soft K-means聚类分类（种子数据集探索）</a>
+          <ol>
+            <li><a href="#1-探索方向与算法设计">1. 探索方向与算法设计</a></li>
+            <li><a href="#2-探索实验与结果分析">2. 探索实验与结果分析</a></li>
+          </ol>
+        </li>
+        <li><a href="#任务二pcalinear-autoencoder与soft-k-means图像重建探索">任务二：PCA、Linear Autoencoder与Soft K-means图像重建探索</a>
+          <ol>
+            <li><a href="#1-探索方向与算法实现">1. 探索方向与算法实现</a></li>
+            <li><a href="#2-探索实验与结果分析-1">2. 探索实验与结果分析</a></li>
+          </ol>
+        </li>
+        <li><a href="#任务三logistic-regression与mlp二分类探索x型分布数据">任务三：Logistic Regression与MLP二分类探索（X型分布数据）</a>
+          <ol>
+            <li><a href="#1-探索方向与算法实现-1">1. 探索方向与算法实现</a></li>
+            <li><a href="#2-探索实验与结果分析-2">2. 探索实验与结果分析</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#四项目成果与附件">四、项目成果与附件</a>
+      <ol>
+        <li><a href="#1-论文预览与下载">1. 论文预览与下载</a>
+          <ol>
+            <li><a href="#11-论文1基于k-meanspca与linear-autoencoder的分类与图像处理研究">1.1 论文1：基于K-means、PCA与Linear Autoencoder的分类与图像处理研究</a></li>
+            <li><a href="#12-论文2基于logistic-regression与mlp的二分类算法探索">1.2 论文2：基于Logistic Regression与MLP的二分类算法探索</a></li>
+          </ol>
+        </li>
+        <li><a href="#2-核心探索成果规律总结">2. 核心探索成果（规律总结）</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/zh-cn/p/ml-algorithms-research/">
+                
+                    <img src="/ai/fengmian.png" loading="lazy" alt="Featured image of post 基于传统机器学习算法的分类与图像处理研究" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/zh-cn/categories/%E9%A1%B9%E7%9B%AE%E6%88%90%E6%9E%9C/" >
+                项目成果
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/zh-cn/p/ml-algorithms-research/">基于传统机器学习算法的分类与图像处理研究</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            2024年09-11月机器学习项目完整记录，含K-means/Soft K-means分类、PCA/Linear Autoencoder降维及Logistic Regression/MLP二分类（附源码与实验可视化）
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2024-11-30</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <!-- 完整MathJax配置（加载+识别规则），复制到文章开头即可 -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+// 明确MathJax的公式识别规则，避免冲突
+MathJax.config = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],  // 行内公式：$...$ 或 \(...\)
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],  // 行间公式：$$...$$ 或 \[...\]
+    processEscapes: true,  // 允许反斜杠转义（比如 \sum、\mu 正常生效）
+    processEnvironments: true  // 支持复杂公式环境（如矩阵、分段函数）
+  },
+  svg: {
+    fontCache: 'global'  // 缓存字体，加快渲染速度
+  }
+};
+</script>
+<h2 id="一项目核心信息">一、项目核心信息
+</h2><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>信息类别</th>
+<th>具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>项目名称</strong></td>
+<td>基于传统机器学习算法的分类与图像处理研究</td>
+</tr>
+<tr>
+<td><strong>负责角色</strong></td>
+<td>项目负责人</td>
+</tr>
+<tr>
+<td><strong>项目周期</strong></td>
+<td>2024年09月-2024年11月</td>
+</tr>
+<tr>
+<td><strong>核心成员</strong></td>
+<td>刘承韬（本人）</td>
+</tr>
+<tr>
+<td><strong>核心任务</strong></td>
+<td>1. K-means/Soft K-means种子数据集分类（优化分裂合并策略）<br>2. PCA/Linear Autoencoder/Soft K-means图像重建（不同维度/聚类数对比）<br>3. Logistic Regression/MLP二分类（超参数调优：隐藏层/神经元/容忍度）</td>
+</tr>
+<tr>
+<td><strong>关键工具</strong></td>
+<td>Python（核心逻辑）、NumPy（矩阵计算）、Matplotlib（实验可视化）、Pandas（数据处理）</td>
+</tr>
+<tr>
+<td><strong>项目产出</strong></td>
+<td>1. 8个自研算法模块（K-means/Soft K-means/PCA等）<br>2. 种子数据集+WWI士兵图像实验报告<br>3. 完整项目源码（含注释）<br>4. 20+实验对比图（分类准确率/图像重建效果）</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="二项目背景与目标">二、项目背景与目标
+</h2><h3 id="1-项目背景">1. 项目背景
+</h3><p>深度学习虽在大规模复杂任务中表现突出，但存在参数冗余、可解释性弱、依赖高算力的局限；而传统机器学习算法（如K-means、PCA、Logistic Regression）因原理透明、轻量化、易复现，在中小规模数据场景（如种子分类、图像降维）中仍具重要研究价值。</p>
+<p>本项目以“<strong>探索传统算法的性能边界与参数影响规律</strong>”为核心，聚焦两类典型任务：</p>
+<ul>
+<li><strong>分类任务</strong>：包含“种子数据集聚类”（K-means/Soft K-means）与“X型分布数据二分类”（Logistic Regression/MLP），探索算法类型、超参数对分类效果的影响；</li>
+<li><strong>图像处理任务</strong>：基于PCA、Linear Autoencoder、Soft K-means实现图像重建，探索“保留维度/聚类数”与“重建质量”的关联。</li>
+</ul>
+<p>所有算法均通过纯Python/NumPy实现，不依赖第三方机器学习库，旨在深入理解算法底层逻辑，并通过对比实验总结可复用的参数调优规律。</p>
+<h3 id="2-核心目标">2. 核心目标
+</h3><ul>
+<li><strong>聚类分类探索</strong>：以种子数据集为对象，探索K-means与Soft K-means在“不同聚类数、分裂合并策略、迭代数、容忍度”下的聚类效果，对比两类算法的准确率稳定性与抗局部最优能力，总结参数对聚类性能的影响规律；</li>
+<li><strong>图像重建探索</strong>：以WWI士兵图像为处理对象，分别用PCA、Linear Autoencoder、Soft K-means进行重建，探索“保留维度（PCA/AE）、聚类数（Soft K-means）”对图像色彩还原、细节保留的影响，明确不同算法在图像处理中的优劣场景；</li>
+<li><strong>二分类探索</strong>：针对X型分布的人工生成数据，对比线性模型（Logistic Regression）与非线性模型（MLP）的拟合能力，重点探索MLP中“隐藏层数量、神经元数、容忍度”对收敛速度、拟合精度的影响，明确非线性模型适配复杂数据的关键条件；</li>
+<li><strong>工程化支撑</strong>：将所有算法模块化封装，配套实验可视化脚本（准确率曲线、重建效果对比图），确保实验过程可复现、结果可直观解读，为后续传统算法应用提供参考模板。</li>
+</ul>
+<h2 id="三核心任务实现">三、核心任务实现
+</h2><h3 id="任务一k-means与soft-k-means聚类分类种子数据集探索">任务一：K-means与Soft K-means聚类分类（种子数据集探索）
+</h3><h4 id="1-探索方向与算法设计">1. 探索方向与算法设计
+</h4><p>本次探索聚焦“<strong>算法类型（K-means/Soft K-means）、超参数（聚类数、分裂合并、迭代数、容忍度）对聚类准确率的影响</strong>”，为匹配探索目标，对两类算法进行针对性设计：</p>
+<ul>
+<li>
+<p><strong>K-means设计（服务探索目标）</strong>：</p>
+<ul>
+<li>核心逻辑：通过最小化簇内平方误差<br>
+$$J=\sum_{i=1}^{k} \sum_{x \in C_{i}}\left| x-\mu_{i}\right| ^{2}$$<br>
+（$C_i$为第$i$个簇，$\mu_i$为簇中心）实现聚类；</li>
+<li>关键优化：针对“分裂合并策略对聚类稳定性的影响”，设计“拆分最大距离簇+合并最近簇”的动态调整方案（替代原阈值法，避免聚类数爆炸），便于探索策略有效性；</li>
+<li>标签校准：通过“簇内真实标签占比最高者修正预测标签”，确保准确率计算可用于横向对比。</li>
+</ul>
+</li>
+<li>
+<p><strong>Soft K-means设计（服务探索目标）</strong>：</p>
+<ul>
+<li>核心逻辑：引入概率权重 $w_{ij}$（数据$x_i$属于簇$j$的概率），目标函数优化为<br>
+$$J=\sum_{i=1}^{n} \sum_{j=1}^{k} w_{ij}\left| x_{i}-\mu_{j}\right| ^{2}$$<br>
+探索“概率化聚类”对准确率稳定性的提升；</li>
+<li>关键优化：针对“初始质心对收敛的影响”，设计“按距离平方概率分布选质心”的策略（先随机选1个质心，后续质心优先选择与已有质心距离远的样本），对比K-means随机初始化的效果；</li>
+<li>参数固定：β=0.7（经预实验确定，避免参数过多干扰探索结论）。</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-探索实验与结果分析">2. 探索实验与结果分析
+</h4><p>基于种子数据集（含3类种子，共210个样本），设计4组对比实验，探索核心参数影响：</p>
+<h5 id="1容忍度影响探索k3无分裂合并">（1）容忍度影响探索（k=3，无分裂合并）
+</h5><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>模型</th>
+<th>最大迭代</th>
+<th>容忍度</th>
+<th>准确率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>K-means</td>
+<td>300</td>
+<td>1e-3</td>
+<td>79.52%</td>
+</tr>
+<tr>
+<td>K-means</td>
+<td>300</td>
+<td>1e-4</td>
+<td>79.52%</td>
+</tr>
+<tr>
+<td>K-means</td>
+<td>300</td>
+<td>1e-5</td>
+<td>79.52%</td>
+</tr>
+<tr>
+<td>Soft K-means</td>
+<td>300</td>
+<td>1e-3</td>
+<td>89.52%</td>
+</tr>
+<tr>
+<td>Soft K-means</td>
+<td>300</td>
+<td>1e-4</td>
+<td>89.52%</td>
+</tr>
+<tr>
+<td>Soft K-means</td>
+<td>300</td>
+<td>1e-5</td>
+<td>89.52%</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>探索结论</strong>：容忍度在$1e-3~1e-5$范围内，两类算法准确率均无变化，说明此参数对种子数据集聚类结果影响极小，后续实验可固定容忍度=1e-5（兼顾迭代效率与精度）。</p>
+<h5 id="2迭代数影响探索k3容忍度1e-5">（2）迭代数影响探索（k=3，容忍度=1e-5）
+</h5><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>模型</th>
+<th>最大迭代</th>
+<th>容忍度</th>
+<th>准确率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>K-means</td>
+<td>100</td>
+<td>1e-5</td>
+<td>73.33%</td>
+</tr>
+<tr>
+<td>K-means</td>
+<td>200</td>
+<td>1e-5</td>
+<td>89.05%</td>
+</tr>
+<tr>
+<td>K-means</td>
+<td>300</td>
+<td>1e-5</td>
+<td>79.52%</td>
+</tr>
+<tr>
+<td>K-means</td>
+<td>400</td>
+<td>1e-5</td>
+<td>76.19%</td>
+</tr>
+<tr>
+<td>K-means</td>
+<td>500</td>
+<td>1e-5</td>
+<td>76.67%</td>
+</tr>
+<tr>
+<td>Soft K-means</td>
+<td>50</td>
+<td>1e-5</td>
+<td>89.52%</td>
+</tr>
+<tr>
+<td>Soft K-means</td>
+<td>100</td>
+<td>1e-5</td>
+<td>89.52%</td>
+</tr>
+<tr>
+<td>Soft K-means</td>
+<td>200</td>
+<td>1e-5</td>
+<td>89.52%</td>
+</tr>
+<tr>
+<td>Soft K-means</td>
+<td>300</td>
+<td>1e-5</td>
+<td>89.52%</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>探索结论</strong>：</p>
+<ul>
+<li>K-means：迭代数=200时准确率最高（89.05%），超200次后准确率下降（可能过拟合）；</li>
+<li>Soft K-means：迭代数≥50时准确率稳定在89.52%，无明显波动，说明其对迭代数敏感度更低，收敛更稳定。</li>
+</ul>
+<h5 id="3聚类数与分裂合并策略影响探索迭代数200容忍度1e-5">（3）聚类数与分裂合并策略影响探索（迭代数=200，容忍度=1e-5）
+</h5><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>模型</th>
+<th>聚类数</th>
+<th>分裂合并</th>
+<th>准确率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>K-means</td>
+<td>3</td>
+<td>False</td>
+<td>89.05%</td>
+</tr>
+<tr>
+<td>K-means</td>
+<td>10</td>
+<td>False</td>
+<td>86.19%</td>
+</tr>
+<tr>
+<td>K-means</td>
+<td>10</td>
+<td>True</td>
+<td>86.19%</td>
+</tr>
+<tr>
+<td>Soft K-means</td>
+<td>3</td>
+<td>False</td>
+<td>89.52%</td>
+</tr>
+<tr>
+<td>Soft K-means</td>
+<td>10</td>
+<td>False</td>
+<td>90.00%</td>
+</tr>
+<tr>
+<td>Soft K-means</td>
+<td>10</td>
+<td>True</td>
+<td>89.05%</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>探索结论</strong>：</p>
+<ul>
+<li>聚类数影响：K-means聚类数从3增至10时准确率下降3%，Soft K-means则提升0.48%，说明Soft K-means更适配多聚类场景；</li>
+<li>分裂合并策略影响：仅Soft K-means启用策略后准确率下降0.95%（种子数据簇分布紧凑，策略反而干扰聚类），K-means无变化，说明策略需结合数据分布使用。</li>
+</ul>
+<h3 id="任务二pcalinear-autoencoder与soft-k-means图像重建探索">任务二：PCA、Linear Autoencoder与Soft K-means图像重建探索
+</h3><h4 id="1-探索方向与算法实现">1. 探索方向与算法实现
+</h4><p>本次探索聚焦“<strong>算法类型、关键参数（保留维度/聚类数）对图像重建质量的影响</strong>”，选择WWI士兵图像（256×256像素，低色彩复杂度，避免RGB通道干扰）为处理对象，三类算法实现均服务于探索目标：</p>
+<ul>
+<li>
+<p><strong>PCA实现（探索“保留维度”影响）</strong>：<br>
+步骤：数据中心化→协方差矩阵计算<br>
+$$C=\frac{1}{n} X_{centered }^{T} X_{centered }$$<br>
+→SVD分解<br>
+$$C=U \sum V^{T}$$<br>
+→投影到前$k$主成分（$$X_{projected }=X_{centered } V[:,:k]$$）；<br>
+重建：通过<br>
+$$X_{recovered }=X_{projected } V[:,:k]^{T}+\mu$$<br>
+还原图像，重点探索$k=1/2/3$时的效果差异。</p>
+</li>
+<li>
+<p><strong>Linear Autoencoder实现（探索“编码维度”影响）</strong>：<br>
+结构：输入层（图像像素）→编码层（$$E=X \cdot W_e$$）→解码层（$$D=E \cdot W_d$$）（无激活函数，纯线性变换）；<br>
+训练：MSE损失<br>
+$$loss =\frac{1}{m} \sum_{i=1}^{m}(D-X)^{2}$$<br>
+，梯度裁剪避免爆炸（初始权重×0.00001防对称问题），重点探索编码维度=1/2/3时的重建误差。</p>
+</li>
+<li>
+<p><strong>Soft K-means实现（探索“聚类数”影响）</strong>：<br>
+逻辑：将图像像素视为样本，按聚类数$k$分配权重，用簇中心像素值替换原像素实现重建，重点探索$k=1/3/5/7/9$时的色彩与细节还原效果。</p>
+</li>
+</ul>
+<h4 id="2-探索实验与结果分析-1">2. 探索实验与结果分析
+</h4><h5 id="1pca与linear-autoencoder重建对比按维度">（1）PCA与Linear Autoencoder重建对比（按维度）
+</h5><div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 15px 0;">
+  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/ai/图1.png" alt="PCA图像重建效果" style="max-width: 100%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666;">图2：PCA重建效果（左→右：原图、n_components=1/2/3）</p>
+  </div>
+  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/ai/图2.png" alt="Linear Autoencoder重建效果" style="max-width: 100%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666;">图3：Linear Autoencoder重建效果（左→右：原图、encoding_size=1/2/3）</p>
+  </div>
+</div>
+<p><strong>探索结论</strong>：</p>
+<ul>
+<li>维度=1时：两类算法均输出灰度图（丢失色彩信息），Linear Autoencoder重建误差（0.015）略低于PCA（0.018）；</li>
+<li>维度=2时：Linear Autoencoder已呈现明显色彩（误差0.008），PCA仅轻微色彩（误差0.012），说明AE线性变换对特征保留更优；</li>
+<li>维度=3时：均与原图一致（RGB三通道完全保留），误差均为0。</li>
+</ul>
+<h5 id="2soft-k-means重建对比按聚类数">（2）Soft K-means重建对比（按聚类数）
+</h5><div style="text-align: center; margin: 15px 0;">
+  <img src="/ai/图3.png" alt="Soft K-means不同聚类数重建效果" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+  <p style="font-size: 14px; color: #666;">图4：Soft K-means重建效果（上→下：k=1/3/5/7/9）</p>
+</div>
+<p><strong>探索结论</strong>：</p>
+<ul>
+<li>$k≤5$时：色彩断层明显（如$k=1$为单色图，$k=3$仅3种主色），细节模糊（士兵衣物纹理丢失）；</li>
+<li>$k=7~9$时：色彩逐渐丰富，$k=9$时覆盖所有像素主色，边缘细节（如帽子、衣领）基本还原，说明聚类数需匹配图像色彩复杂度（此图$k=9$为最优）。</li>
+</ul>
+<h3 id="任务三logistic-regression与mlp二分类探索x型分布数据">任务三：Logistic Regression与MLP二分类探索（X型分布数据）
+</h3><h4 id="1-探索方向与算法实现-1">1. 探索方向与算法实现
+</h4><p>本次探索聚焦“<strong>模型类型（线性/非线性）、MLP超参数（隐藏层/神经元/容忍度）对二分类效果的影响</strong>”，基于人工生成的X型分布数据（2维特征，两类样本呈交叉分布）设计实验：</p>
+<ul>
+<li>
+<p><strong>Logistic Regression实现（线性模型基准）</strong>：<br>
+激活函数：Sigmoid<br>
+$$\sigma(z)=\frac{1}{1+e^{-(w^T x + w_0)}}$$<br>
+；<br>
+训练：交叉熵损失<br>
+$$loss =-\frac{1}{m} \sum_{i=1}^{m}[y_i log(h_i)+(1-y_i)log(1-h_i)]$$<br>
+，梯度下降更新权重（$lr=0.01$，迭代=10000），探索线性模型对非线性数据的拟合局限。</p>
+</li>
+<li>
+<p><strong>MLP实现（非线性模型探索）</strong>：<br>
+结构：输入层（2维特征）→隐藏层（1-6层）→输出层（Sigmoid激活），支持自定义神经元数；<br>
+优化：梯度裁剪控制梯度范围，重点探索“隐藏层数量（1/2/6）、神经元数（2/4/8/20）、容忍度（1e-5~1e-8）”对收敛与准确率的影响；<br>
+停止条件：当两次迭代损失差绝对值＜容忍度时停止，记录收敛次数与最终准确率。</p>
+</li>
+</ul>
+<h4 id="2-探索实验与结果分析-2">2. 探索实验与结果分析
+</h4><h5 id="1线性vs非线性模型对比基础探索">（1）线性vs非线性模型对比（基础探索）
+</h5><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>模型</th>
+<th>隐藏层/神经元</th>
+<th>容忍度</th>
+<th>准确率</th>
+<th>收敛次数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Logistic Regression</td>
+<td>-</td>
+<td>1e-5</td>
+<td>59.60%</td>
+<td>10000（未收敛）</td>
+</tr>
+<tr>
+<td>MLP</td>
+<td>1/8</td>
+<td>1e-7</td>
+<td>100.00%</td>
+<td>8320</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>探索结论</strong>：X型分布数据（非线性边界）无法被Logistic Regression有效拟合（准确率仅59.6%），而MLP（1隐藏层+8神经元）可完全拟合，说明非线性模型对复杂数据的适配优势。</p>
+<h5 id="2mlp超参数影响探索">（2）MLP超参数影响探索
+</h5><h6 id="-隐藏层与神经元数影响容忍度1e-7">① 隐藏层与神经元数影响（容忍度=1e-7）
+</h6><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>模型配置（隐藏层/神经元）</th>
+<th>收敛次数</th>
+<th>最终损失</th>
+<th>损失变化趋势（对应图5曲线）</th>
+<th>准确率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1隐藏层+2神经元</td>
+<td>1215</td>
+<td>0.1523</td>
+<td>快速收敛后停滞，损失居高不下</td>
+<td>78.67%</td>
+</tr>
+<tr>
+<td>1隐藏层+4神经元</td>
+<td>8546</td>
+<td>0.0253</td>
+<td>缓慢收敛，损失逐步下降</td>
+<td>98.67%</td>
+</tr>
+<tr>
+<td>1隐藏层+8神经元</td>
+<td>8320</td>
+<td>0.0132</td>
+<td>收敛速度中等，损失逼近最小值</td>
+<td>100.00%</td>
+</tr>
+<tr>
+<td>2隐藏层+3+6神经元</td>
+<td>7264</td>
+<td>0.0050</td>
+<td>收敛平稳，损失最低且无波动</td>
+<td>99.67%</td>
+</tr>
+<tr>
+<td>6隐藏层+2神经元</td>
+<td>17</td>
+<td>0.1628</td>
+<td>瞬间收敛（未充分训练），损失高</td>
+<td>77.00%</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>探索结论</strong>：</p>
+<ul>
+<li>1隐藏层：神经元≥8时可完全拟合，神经元过少（2个）则拟合不足；</li>
+<li>2隐藏层：3+6神经元即可实现99.67%准确率，无需过多神经元；</li>
+<li>6隐藏层：即使神经元足够，仍因层数过多陷入局部最优（准确率77%），说明隐藏层并非越多越好。</li>
+</ul>
+<h6 id="-容忍度影响2隐藏层36神经元">② 容忍度影响（2隐藏层+3/6神经元）
+</h6><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>容忍度</th>
+<th>收敛次数</th>
+<th>损失</th>
+<th>准确率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1e-5</td>
+<td>149</td>
+<td>0.2489</td>
+<td>53.67%</td>
+</tr>
+<tr>
+<td>1e-6</td>
+<td>43</td>
+<td>0.2493</td>
+<td>59.00%</td>
+</tr>
+<tr>
+<td>1e-7</td>
+<td>7264</td>
+<td>0.0050</td>
+<td>99.67%</td>
+</tr>
+<tr>
+<td>1e-8</td>
+<td>8120</td>
+<td>0.0048</td>
+<td>99.50%</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>探索结论</strong>：</p>
+<ul>
+<li>容忍度≥1e-6时：损失早停（未充分拟合），准确率仅53.67%~59%；</li>
+<li>容忍度=1e-7~1e-8时：损失充分收敛，准确率≥99.5%，但1e-8时因过度迭代出现轻微过拟合（准确率微降0.17%），最优容忍度为1e-7。</li>
+</ul>
+<h2 id="四项目成果与附件">四、项目成果与附件
+</h2><h3 id="1-论文预览与下载">1. 论文预览与下载
+</h3><h4 id="11-论文1基于k-meanspca与linear-autoencoder的分类与图像处理研究">1.1 论文1：基于K-means、PCA与Linear Autoencoder的分类与图像处理研究
+</h4><iframe src="/ai/K-means_PCA_LinearAutoencoder_Research.pdf" width="100%" height="700" style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);" title="论文1：基于K-means、PCA与Linear Autoencoder的分类与图像处理研究">
+</iframe>
+<p>若浏览器加载缓慢或无法预览，可直接下载：
+<a href="/ai/K-means_PCA_LinearAutoencoder_Research.pdf" target="_blank">K-means_PCA_LinearAutoencoder_Research.pdf 下载链接</a></p>
+<h4 id="12-论文2基于logistic-regression与mlp的二分类算法探索">1.2 论文2：基于Logistic Regression与MLP的二分类算法探索
+</h4><iframe src="/ai/LogisticRegression_MLP_BinaryClassification.pdf" width="100%" height="700" style="border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); margin-top: 30px;" title="论文2：基于Logistic Regression与MLP的二分类算法探索">
+</iframe>
+<p>若浏览器加载缓慢或无法预览，可直接下载：
+<a href="/ai/LogisticRegression_MLP_BinaryClassification.pdf" target="_blank">LogisticRegression_MLP_BinaryClassification.pdf 下载链接</a></p>
+<h3 id="2-核心探索成果规律总结">2. 核心探索成果（规律总结）
+</h3><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>探索方向</th>
+<th>关键结论</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>聚类分类</td>
+<td>1. Soft K-means比K-means更稳定（准确率波动≤0.5% vs 3%），多聚类场景（k=10）更优；<br>2. 分裂合并策略仅适用于簇分布松散数据，种子数据（紧凑分布）启用后准确率下降0.95%；<br>3. 容忍度（1e-3~1e-5）对聚类结果影响极小，迭代数需匹配算法（K-means=200，Soft K-means≥50）</td>
+</tr>
+<tr>
+<td>图像重建</td>
+<td>1. PCA需保留3维（RGB通道）才能完全还原图像，Linear Autoencoder 2维即可实现低误差（0.008）；<br>2. Soft K-means聚类数需匹配图像色彩复杂度，WWI士兵图k=9时细节还原最佳；<br>3. Linear Autoencoder对初始权重敏感，随机权重易导致重建失败</td>
+</tr>
+<tr>
+<td>二分类</td>
+<td>1. 非线性数据（X型分布）需用MLP（非线性模型），Logistic Regression（线性）准确率仅59.6%；<br>2. MLP最优配置：1~2隐藏层+8/3+6神经元，容忍度=1e-7（平衡收敛与过拟合）；<br>3. 隐藏层≥6时易陷入局部最优，准确率骤降22%+</td>
+</tr>
+</tbody>
+</table></div>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/zh-cn/p/ur-robot/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/UR-Robot/fengmian.png" loading="lazy" data-key="UR-Robot" data-hash="/UR-Robot/fengmian.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">声控协作式机器人系统设计与实现</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2025 刘承韬
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

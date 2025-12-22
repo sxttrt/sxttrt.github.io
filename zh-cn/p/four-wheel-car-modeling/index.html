@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="四轮小车实验建模项目完整记录，含开环系统搭建、二阶传递函数建模、Simulink仿真验证及Arduino PID闭环控制部署">
+<title>基于实验辨识与仿真的四轮小车运动控制系统设计</title>
+
+<link rel='canonical' href='http://localhost:1313/zh-cn/p/four-wheel-car-modeling/'>
+
+<link rel="stylesheet" href="/scss/style.min.0304c6baf04e01a8fe70693791cb744d56a3578a3120a8796cefc66825aa39c7.css"><meta property='og:title' content="基于实验辨识与仿真的四轮小车运动控制系统设计">
+<meta property='og:description' content="四轮小车实验建模项目完整记录，含开环系统搭建、二阶传递函数建模、Simulink仿真验证及Arduino PID闭环控制部署">
+<meta property='og:url' content='http://localhost:1313/zh-cn/p/four-wheel-car-modeling/'>
+<meta property='og:site_name' content='刘承韬'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-06-01T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-06-01T00:00:00&#43;00:00'/><meta property='og:image' content='http://localhost:1313/four-wheel-car/fengmian.png' />
+<meta name="twitter:title" content="基于实验辨识与仿真的四轮小车运动控制系统设计">
+<meta name="twitter:description" content="四轮小车实验建模项目完整记录，含开环系统搭建、二阶传递函数建模、Simulink仿真验证及Arduino PID闭环控制部署"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='http://localhost:1313/four-wheel-car/fengmian.png' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/zh-cn/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu2071873778164182045.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/zh-cn">刘承韬</a></h1>
+            <h2 class="site-description">Liu Chengtao | Undergraduate Works</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://space.bilibili.com/499786362?spm_id_from=333.1007.0.0'
+                        target="_blank"
+                        title="Bilibili"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.0.0-beta2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M488.6 104.1C505.3 122.2 513 143.8 511.9 169.8V372.2C511.5 398.6 502.7 420.3 485.4 437.3C468.2 454.3 446.3 463.2 419.9 464H92.02C65.57 463.2 43.81 454.2 26.74 436.8C9.682 419.4 .7667 396.5 0 368.2V169.8C.7667 143.8 9.682 122.2 26.74 104.1C43.81 87.75 65.57 78.77 92.02 78H121.4L96.05 52.19C90.3 46.46 87.42 39.19 87.42 30.4C87.42 21.6 90.3 14.34 96.05 8.603C101.8 2.868 109.1 0 117.9 0C126.7 0 134 2.868 139.8 8.603L213.1 78H301.1L375.6 8.603C381.7 2.868 389.2 0 398 0C406.8 0 414.1 2.868 419.9 8.603C425.6 14.34 428.5 21.6 428.5 30.4C428.5 39.19 425.6 46.46 419.9 52.19L394.6 78L423.9 78C450.3 78.77 471.9 87.75 488.6 104.1H488.6zM449.8 173.8C449.4 164.2 446.1 156.4 439.1 150.3C433.9 144.2 425.1 140.9 416.4 140.5H96.05C86.46 140.9 78.6 144.2 72.47 150.3C66.33 156.4 63.07 164.2 62.69 173.8V368.2C62.69 377.4 65.95 385.2 72.47 391.7C78.99 398.2 86.85 401.5 96.05 401.5H416.4C425.6 401.5 433.4 398.2 439.7 391.7C446 385.2 449.4 377.4 449.8 368.2L449.8 173.8zM185.5 216.5C191.8 222.8 195.2 230.6 195.6 239.7V273C195.2 282.2 191.9 289.9 185.8 296.2C179.6 302.5 171.8 305.7 162.2 305.7C152.6 305.7 144.7 302.5 138.6 296.2C132.5 289.9 129.2 282.2 128.8 273V239.7C129.2 230.6 132.6 222.8 138.9 216.5C145.2 210.2 152.1 206.9 162.2 206.5C171.4 206.9 179.2 210.2 185.5 216.5H185.5zM377 216.5C383.3 222.8 386.7 230.6 387.1 239.7V273C386.7 282.2 383.4 289.9 377.3 296.2C371.2 302.5 363.3 305.7 353.7 305.7C344.1 305.7 336.3 302.5 330.1 296.2C323.1 289.9 320.7 282.2 320.4 273V239.7C320.7 230.6 324.1 222.8 330.4 216.5C336.7 210.2 344.5 206.9 353.7 206.5C362.9 206.9 370.7 210.2 377 216.5H377z"/></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/sxttrt'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/zh-cn/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/zh-cn/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="http://localhost:1313/" >English</option>
+                                
+                                    <option value="http://localhost:1313/zh-cn/" selected>简体中文</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#一项目核心信息">一、项目核心信息</a></li>
+    <li><a href="#二项目背景与目标">二、项目背景与目标</a>
+      <ol>
+        <li><a href="#1-项目背景">1. 项目背景</a></li>
+        <li><a href="#2-核心目标">2. 核心目标</a></li>
+      </ol>
+    </li>
+    <li><a href="#三核心任务实现">三、核心任务实现</a>
+      <ol>
+        <li><a href="#任务一开环系统搭建与模型辨识">任务一：开环系统搭建与模型辨识</a>
+          <ol>
+            <li><a href="#1-开环控制系统搭建">1. 开环控制系统搭建</a></li>
+            <li><a href="#2-开环模型实验辨识">2. 开环模型实验辨识</a></li>
+            <li><a href="#3-simulink开环仿真验证">3. Simulink开环仿真验证</a></li>
+            <li><a href="#4-pid闭环控制调试4分">4. PID闭环控制调试（4分）</a></li>
+          </ol>
+        </li>
+        <li><a href="#任务二pid参数部署与实测2分">任务二：PID参数部署与实测（2分）</a>
+          <ol>
+            <li><a href="#1-参数转换与代码编写">1. 参数转换与代码编写</a></li>
+            <li><a href="#2-实测验证">2. 实测验证</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#四项目成果与附件">四、项目成果与附件</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/zh-cn/p/four-wheel-car-modeling/">
+                
+                    <img src="/four-wheel-car/fengmian.png" loading="lazy" alt="Featured image of post 基于实验辨识与仿真的四轮小车运动控制系统设计" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/zh-cn/categories/%E7%A7%91%E7%A0%94%E9%A1%B9%E7%9B%AE/" >
+                科研项目
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/zh-cn/p/four-wheel-car-modeling/">基于实验辨识与仿真的四轮小车运动控制系统设计</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            四轮小车实验建模项目完整记录，含开环系统搭建、二阶传递函数建模、Simulink仿真验证及Arduino PID闭环控制部署
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2024-06-01</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="一项目核心信息">一、项目核心信息
+</h2><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>信息类别</th>
+<th>具体内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>项目名称</strong></td>
+<td>四轮小车的实验建模</td>
+</tr>
+<tr>
+<td><strong>负责角色</strong></td>
+<td>项目负责人</td>
+</tr>
+<tr>
+<td><strong>项目周期</strong></td>
+<td>2024年03月-2024年05月</td>
+</tr>
+<tr>
+<td><strong>核心成员</strong></td>
+<td>刘承韬（本人）、吴丰杨</td>
+</tr>
+<tr>
+<td><strong>核心任务</strong></td>
+<td>1. 开环控制系统搭建与数据采集<br>2. 开环模型实验辨识<br>3. Simulink仿真验证与PID调优<br>4. Arduino PID闭环控制部署</td>
+</tr>
+<tr>
+<td><strong>关键工具</strong></td>
+<td>Arduino IDE（控制编程）、MATLAB（系统辨识）、Simulink（仿真调优）</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="二项目背景与目标">二、项目背景与目标
+</h2><h3 id="1-项目背景">1. 项目背景
+</h3><p>依据课程项目四轮小车的实验建模要求，本项目以实验室四轮小车（2个直流有刷电机）为研究对象，通过实验建模方法探索“数据采集→模型建立→仿真验证→实物控制”的完整流程，深化对PID控制理论、系统辨识技术的实践应用，解决小车运动控制精度低、响应滞后问题。</p>
+<h3 id="2-核心目标">2. 核心目标
+</h3><ul>
+<li>完成基于Arduino的开环控制系统搭建，实现PWM指令对小车速度的精准控制。</li>
+<li>利用MATLAB辨识工具箱建立小车直线运动开环模型，确保模型拟合度达标。</li>
+<li>通过Simulink完成开环仿真验证与PID参数离线调优，最终部署到Arduino实现闭环控制。</li>
+</ul>
+<h2 id="三核心任务实现">三、核心任务实现
+</h2><h3 id="任务一开环系统搭建与模型辨识">任务一：开环系统搭建与模型辨识
+</h3><h4 id="1-开环控制系统搭建">1. 开环控制系统搭建
+</h4><ul>
+<li><strong>硬件基础</strong>：依据课程项目四轮小车的实验建模要求，原计划使用创园1栋实验室四轮小车（4个直流有刷电机），实际因设备适配性调整，采用“智能传感与信号处理项目的Arduino两轮小车”替代，功能一致，均通过编码器采集车轮转速数据。</li>
+<li><strong>控制逻辑</strong>：编写Arduino开环控制代码，定义电机引脚（Motor_AIN1=6、Motor_AIN2=3等）与编码器引脚（ENCODER_A=2等），通过10ms定时中断更新转速计数，串口调试助手发送PWM值（100、150、250、255）控制电机，实时接收转速反馈数据。</li>
+<li><strong>关键图片</strong>：
+<div style="text-align: center; margin: 15px 0;">
+  <img src="/four-wheel-car/图1.png" alt="开环控制系统部分控制代码" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+  <p style="font-size: 14px; color: #666;">图1：左右轮测试数据</p>
+</div>
+</li>
+</ul>
+<h4 id="2-开环模型实验辨识">2. 开环模型实验辨识
+</h4><ul>
+<li><strong>数据预处理</strong>：将4组PWM值（255、250、150、100）的测试数据（每组3次重复）整理为Excel表格，去除异常值后导入MATLAB，得到“PWM输入-转速输出”数据集。</li>
+<li><strong>建模过程</strong>：使用MATLAB系统辨识工具箱，选择“阶跃响应法”，设定初始模型为二阶传递函数，融合8组有效数据（4组PWM×2轮）进行拟合，最终得到如图三传递函数：</li>
+<li><strong>精度验证</strong>：模型平均拟合度达<strong>85.55%</strong>，单组数据拟合度范围76.24%-92.52%，满足项目中“模型辨识精度”要求。</li>
+<li><strong>关键图片</strong>：
+<div style="text-align: center; margin: 15px 0;">
+    <img src="/four-wheel-car/图2.png" alt="整合数据进行传递函数参数辨识" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666;">图2：整合数据进行传递函数参数辨识</p>
+  </div>
+<div style="text-align: center; margin: 15px 0;">
+    <img src="/four-wheel-car/图3.png" alt="得到传递函数与拟合程度" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666;">图3：传递函数与各组数据拟合程度 </p>
+  </div>
+</li>
+</ul>
+<h4 id="3-simulink开环仿真验证">3. Simulink开环仿真验证
+</h4><ul>
+<li><strong>仿真模型搭建</strong>：在Simulink中搭建开环仿真模型，核心模块包括“Step（阶跃输入，PWM=175对应转速37）”“Transfer Fcn（导入二阶传递函数）”“Scope（观测输出）”，模块参数配置依据项目报告中记录。</li>
+<li><strong>验证结果</strong>：3组重复仿真的拟合度分别为91.83%、92.58%、92.83%，仿真输出曲线与实测转速曲线高度重合，验证模型对小车运动的预测准确性。</li>
+<li><strong>关键图片</strong>：
+<div style="text-align: center; margin: 15px 0;">
+    <img src="/four-wheel-car/图4.png" alt="开环函数simulink模型" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666;">图4：开环函数Simulink模型</p>
+  </div>
+    <div style="text-align: center; margin: 15px 0;">
+    <img src="/four-wheel-car/图5.png" alt="175PWM数据仿真验证" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666;">图5：175PWM数据仿真-实测对比</p>
+  </div>
+</li>
+</ul>
+<h4 id="4-pid闭环控制调试4分">4. PID闭环控制调试（4分）
+</h4><ul>
+<li><strong>闭环模型搭建</strong>：在Simulink开环模型基础上，添加“PID Controller”模块，构建“输入→PID调节→传递函数→输出”闭环系统，设置输出上限为45（对应电机最大转速，避免过载）。</li>
+<li><strong>参数调优</strong>：使用Simulink PID Tuner工具，以“响应快、超调小”为目标，自动调优得到参数：<strong>P=1.117，I=13.04，D=-0.003613</strong>；因D值极小，后续实物部署时简化为PI控制。</li>
+<li><strong>关键图片</strong>：
+<div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 15px 0;">
+  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/four-wheel-car/图6.png" alt="PID控制系统simulink模型" style="max-width: 100%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666;">图6：PID控制系统Simulink模型</p>
+  </div>
+  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/four-wheel-car/图7.png" alt="调节PID参数与输出限制" style="max-width: 100%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666;">图7：PID参数调节与输出限制设置</p>
+  </div>
+</div>
+</li>
+</ul>
+<h3 id="任务二pid参数部署与实测2分">任务二：PID参数部署与实测（2分）
+</h3><h4 id="1-参数转换与代码编写">1. 参数转换与代码编写
+</h4><ul>
+<li><strong>参数转换</strong>：依据“PWM-转速线性拟合”结果（拟合系数6.4677，偏置-37.1855），将Simulink调优的PID参数转换为Arduino适用值：<strong>KP=7.04，KI=0.8</strong>。</li>
+<li><strong>PI控制代码</strong>：编写增量式PI控制函数，核心逻辑为“计算转速偏差（目标-实测）→累加积分项→限制PWM输出→驱动电机”，通过10ms定时中断更新转速数据与控制指令。</li>
+<li><strong>关键图片</strong>：
+<div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 15px 0;">
+  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/four-wheel-car/图8.png" alt="pwm和目标速度的线性拟合" style="max-width: 100%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666;">图8：PWM与目标速度的线性拟合</p>
+  </div>
+  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/four-wheel-car/图9.png" alt="增量式PID控制部分代码" style="max-width: 100%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666;">图9：增量式PI控制部分代码</p>
+  </div>
+</div>
+</li>
+</ul>
+<h4 id="2-实测验证">2. 实测验证
+</h4><ul>
+<li><strong>测试方案</strong>：选取3组典型目标转速（37、31、21），分别进行“开环控制”与“PI闭环控制”对比测试，记录两组控制方式的响应曲线；同时对比“Simulink仿真结果”与“实物实测结果”，验证建模精度。</li>
+<li><strong>核心结论</strong>：闭环控制响应速度较开环提升显著，稳态误差有效下降；仿真与实测误差较小，满足项目中“控制器实用性”要求。</li>
+<li><strong>关键图片</strong>：
+<div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 15px 0;">
+  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/four-wheel-car/图10.png" alt="目标速度37开环-闭环对比" style="max-width: 100%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666;">图10：目标速度37开环-闭环对比</p>
+  </div>
+  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/four-wheel-car/图11.png" alt="目标速度37仿真-实测对比" style="max-width: 100%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666;">图11：目标速度37仿真-实测对比</p>
+  </div>
+</div>
+</li>
+</ul>
+<h2 id="四项目成果与附件">四、项目成果与附件
+</h2><ul>
+<li><strong>成果概述</strong>：本项目严格依据课程项目的任务要求，完成“开环搭建→模型辨识→仿真调优→实物部署”全流程，核心成果包括：①二阶传递函数模型（平均拟合度85.55%），实现小车运动的精准数学描述；②Simulink闭环仿真方案，完成PID参数优化（最终简化为PI控制：KP=7.04，KI=0.8）；③Arduino PI闭环控制器，闭环控制响应速度较开环提升显著，稳态误差有效下降；仿真与实测误差较小，验证了建模精度与控制器实用性。</li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/zh-cn/p/gomoku-recognition/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/gomoku/fengmian.png" loading="lazy" data-key="gomoku-recognition" data-hash="/gomoku/fengmian.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">基于传统图像处理的五子棋识别与预测系统</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2025 刘承韬
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
