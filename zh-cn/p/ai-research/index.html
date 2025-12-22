@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+    <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="2024年09-11月机器学习项目完整记录，含K-means/Soft K-means分类、PCA/Linear Autoencoder降维及Logistic Regression/MLP二分类（附源码与实验可视化）">
 <title>基于传统机器学习算法的分类与图像处理研究</title>
 
-<link rel='canonical' href='http://localhost:1313/zh-cn/p/ai-research/'>
+<link rel='canonical' href='https://sxttrt.github.io/zh-cn/p/ai-research/'>
 
-<link rel="stylesheet" href="/scss/style.min.0304c6baf04e01a8fe70693791cb744d56a3578a3120a8796cefc66825aa39c7.css"><meta property='og:title' content="基于传统机器学习算法的分类与图像处理研究">
+<link rel="stylesheet" href="/scss/style.min.c91073e1bef24baf3131464aee14e30bb1335275cee51563e55fb2a5e03eca69.css"><meta property='og:title' content="基于传统机器学习算法的分类与图像处理研究">
 <meta property='og:description' content="2024年09-11月机器学习项目完整记录，含K-means/Soft K-means分类、PCA/Linear Autoencoder降维及Logistic Regression/MLP二分类（附源码与实验可视化）">
-<meta property='og:url' content='http://localhost:1313/zh-cn/p/ai-research/'>
+<meta property='og:url' content='https://sxttrt.github.io/zh-cn/p/ai-research/'>
 <meta property='og:site_name' content='刘承韬'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-11-30T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-11-30T00:00:00&#43;00:00'/><meta property='og:image' content='http://localhost:1313/ai/fengmian.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-11-30T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-11-30T00:00:00&#43;00:00'/><meta property='og:image' content='https://sxttrt.github.io/ai/fengmian.png' />
 <meta name="twitter:title" content="基于传统机器学习算法的分类与图像处理研究">
 <meta name="twitter:description" content="2024年09-11月机器学习项目完整记录，含K-means/Soft K-means分类、PCA/Linear Autoencoder降维及Logistic Regression/MLP二分类（附源码与实验可视化）"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='http://localhost:1313/ai/fengmian.png' />
+    <meta name="twitter:image" content='https://sxttrt.github.io/ai/fengmian.png' />
     <link rel="shortcut icon" href="/favicon.ico" />
-
-  
-
 
     </head>
     <body class="
@@ -62,7 +59,7 @@
                     
                     
                         
-                        <img src="/img/avatar_hu2071873778164182045.png" width="300"
+                        <img src="/img/avatar_hu_5fea35c5e8a8c4ea.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -115,45 +112,6 @@
         </ol><ol class="menu" id="main-menu">
         
         
-        
-        <li >
-            <a href='/zh-cn/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <polyline points="5 12 3 12 12 3 21 12 19 12" />
-  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
-  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
-</svg>
-
-
-
-                
-                <span>主页</span>
-            </a>
-        </li>
-        
-        
-        <li >
-            <a href='/zh-cn/%E5%85%B3%E4%BA%8E/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-</svg>
-
-
-
-                
-                <span>关于</span>
-            </a>
-        </li>
-        
         <li class="menu-bottom-section">
             <ol class="menu">
                     
@@ -171,9 +129,9 @@
 
                             <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
                                 
-                                    <option value="http://localhost:1313/" >English</option>
+                                    <option value="https://sxttrt.github.io/en/" >English</option>
                                 
-                                    <option value="http://localhost:1313/zh-cn/" selected>简体中文</option>
+                                    <option value="https://sxttrt.github.io/zh-cn/" selected>简体中文</option>
                                 
                             </select>
                         </li>
@@ -364,38 +322,38 @@ MathJax.config = {
 </script>
 <h2 id="一项目核心信息">一、项目核心信息
 </h2><div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>信息类别</th>
-<th>具体内容</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>项目名称</strong></td>
-<td>基于传统机器学习算法的分类与图像处理研究</td>
-</tr>
-<tr>
-<td><strong>负责角色</strong></td>
-<td>项目负责人</td>
-</tr>
-<tr>
-<td><strong>项目周期</strong></td>
-<td>2024年09月-2024年11月</td>
-</tr>
-<tr>
-<td><strong>核心成员</strong></td>
-<td>刘承韬（本人）</td>
-</tr>
-<tr>
-<td><strong>核心任务</strong></td>
-<td>1. K-means/Soft K-means种子数据集分类（优化分裂合并策略）<br>2. PCA/Linear Autoencoder/Soft K-means图像重建（不同维度/聚类数对比）<br>3. Logistic Regression/MLP二分类（超参数调优：隐藏层/神经元/容忍度）</td>
-</tr>
-<tr>
-<td><strong>关键工具</strong></td>
-<td>Python（核心逻辑）、NumPy（矩阵计算）、Matplotlib（实验可视化）、Pandas（数据处理）</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>信息类别</th>
+          <th>具体内容</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>项目名称</strong></td>
+          <td>基于传统机器学习算法的分类与图像处理研究</td>
+      </tr>
+      <tr>
+          <td><strong>负责角色</strong></td>
+          <td>项目负责人</td>
+      </tr>
+      <tr>
+          <td><strong>项目周期</strong></td>
+          <td>2024年09月-2024年11月</td>
+      </tr>
+      <tr>
+          <td><strong>核心成员</strong></td>
+          <td>刘承韬（本人）</td>
+      </tr>
+      <tr>
+          <td><strong>核心任务</strong></td>
+          <td>1. K-means/Soft K-means种子数据集分类（优化分裂合并策略）<br>2. PCA/Linear Autoencoder/Soft K-means图像重建（不同维度/聚类数对比）<br>3. Logistic Regression/MLP二分类（超参数调优：隐藏层/神经元/容忍度）</td>
+      </tr>
+      <tr>
+          <td><strong>关键工具</strong></td>
+          <td>Python（核心逻辑）、NumPy（矩阵计算）、Matplotlib（实验可视化）、Pandas（数据处理）</td>
+      </tr>
+  </tbody>
 </table></div>
 <h2 id="二项目背景与目标">二、项目背景与目标
 </h2><h3 id="1-项目背景">1. 项目背景
@@ -443,120 +401,120 @@ $$J=\sum_{i=1}^{n} \sum_{j=1}^{k} w_{ij}\left| x_{i}-\mu_{j}\right| ^{2}$$<br>
 </h4><p>基于种子数据集（含3类种子，共210个样本），设计4组对比实验，探索核心参数影响：</p>
 <h5 id="1容忍度影响探索k3无分裂合并">（1）容忍度影响探索（k=3，无分裂合并）
 </h5><div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>模型</th>
-<th>最大迭代</th>
-<th>容忍度</th>
-<th>准确率</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>K-means</td>
-<td>300</td>
-<td>1e-3</td>
-<td>79.52%</td>
-</tr>
-<tr>
-<td>K-means</td>
-<td>300</td>
-<td>1e-4</td>
-<td>79.52%</td>
-</tr>
-<tr>
-<td>K-means</td>
-<td>300</td>
-<td>1e-5</td>
-<td>79.52%</td>
-</tr>
-<tr>
-<td>Soft K-means</td>
-<td>300</td>
-<td>1e-3</td>
-<td>89.52%</td>
-</tr>
-<tr>
-<td>Soft K-means</td>
-<td>300</td>
-<td>1e-4</td>
-<td>89.52%</td>
-</tr>
-<tr>
-<td>Soft K-means</td>
-<td>300</td>
-<td>1e-5</td>
-<td>89.52%</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>模型</th>
+          <th>最大迭代</th>
+          <th>容忍度</th>
+          <th>准确率</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>K-means</td>
+          <td>300</td>
+          <td>1e-3</td>
+          <td>79.52%</td>
+      </tr>
+      <tr>
+          <td>K-means</td>
+          <td>300</td>
+          <td>1e-4</td>
+          <td>79.52%</td>
+      </tr>
+      <tr>
+          <td>K-means</td>
+          <td>300</td>
+          <td>1e-5</td>
+          <td>79.52%</td>
+      </tr>
+      <tr>
+          <td>Soft K-means</td>
+          <td>300</td>
+          <td>1e-3</td>
+          <td>89.52%</td>
+      </tr>
+      <tr>
+          <td>Soft K-means</td>
+          <td>300</td>
+          <td>1e-4</td>
+          <td>89.52%</td>
+      </tr>
+      <tr>
+          <td>Soft K-means</td>
+          <td>300</td>
+          <td>1e-5</td>
+          <td>89.52%</td>
+      </tr>
+  </tbody>
 </table></div>
 <p><strong>探索结论</strong>：容忍度在$1e-3~1e-5$范围内，两类算法准确率均无变化，说明此参数对种子数据集聚类结果影响极小，后续实验可固定容忍度=1e-5（兼顾迭代效率与精度）。</p>
 <h5 id="2迭代数影响探索k3容忍度1e-5">（2）迭代数影响探索（k=3，容忍度=1e-5）
 </h5><div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>模型</th>
-<th>最大迭代</th>
-<th>容忍度</th>
-<th>准确率</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>K-means</td>
-<td>100</td>
-<td>1e-5</td>
-<td>73.33%</td>
-</tr>
-<tr>
-<td>K-means</td>
-<td>200</td>
-<td>1e-5</td>
-<td>89.05%</td>
-</tr>
-<tr>
-<td>K-means</td>
-<td>300</td>
-<td>1e-5</td>
-<td>79.52%</td>
-</tr>
-<tr>
-<td>K-means</td>
-<td>400</td>
-<td>1e-5</td>
-<td>76.19%</td>
-</tr>
-<tr>
-<td>K-means</td>
-<td>500</td>
-<td>1e-5</td>
-<td>76.67%</td>
-</tr>
-<tr>
-<td>Soft K-means</td>
-<td>50</td>
-<td>1e-5</td>
-<td>89.52%</td>
-</tr>
-<tr>
-<td>Soft K-means</td>
-<td>100</td>
-<td>1e-5</td>
-<td>89.52%</td>
-</tr>
-<tr>
-<td>Soft K-means</td>
-<td>200</td>
-<td>1e-5</td>
-<td>89.52%</td>
-</tr>
-<tr>
-<td>Soft K-means</td>
-<td>300</td>
-<td>1e-5</td>
-<td>89.52%</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>模型</th>
+          <th>最大迭代</th>
+          <th>容忍度</th>
+          <th>准确率</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>K-means</td>
+          <td>100</td>
+          <td>1e-5</td>
+          <td>73.33%</td>
+      </tr>
+      <tr>
+          <td>K-means</td>
+          <td>200</td>
+          <td>1e-5</td>
+          <td>89.05%</td>
+      </tr>
+      <tr>
+          <td>K-means</td>
+          <td>300</td>
+          <td>1e-5</td>
+          <td>79.52%</td>
+      </tr>
+      <tr>
+          <td>K-means</td>
+          <td>400</td>
+          <td>1e-5</td>
+          <td>76.19%</td>
+      </tr>
+      <tr>
+          <td>K-means</td>
+          <td>500</td>
+          <td>1e-5</td>
+          <td>76.67%</td>
+      </tr>
+      <tr>
+          <td>Soft K-means</td>
+          <td>50</td>
+          <td>1e-5</td>
+          <td>89.52%</td>
+      </tr>
+      <tr>
+          <td>Soft K-means</td>
+          <td>100</td>
+          <td>1e-5</td>
+          <td>89.52%</td>
+      </tr>
+      <tr>
+          <td>Soft K-means</td>
+          <td>200</td>
+          <td>1e-5</td>
+          <td>89.52%</td>
+      </tr>
+      <tr>
+          <td>Soft K-means</td>
+          <td>300</td>
+          <td>1e-5</td>
+          <td>89.52%</td>
+      </tr>
+  </tbody>
 </table></div>
 <p><strong>探索结论</strong>：</p>
 <ul>
@@ -565,52 +523,52 @@ $$J=\sum_{i=1}^{n} \sum_{j=1}^{k} w_{ij}\left| x_{i}-\mu_{j}\right| ^{2}$$<br>
 </ul>
 <h5 id="3聚类数与分裂合并策略影响探索迭代数200容忍度1e-5">（3）聚类数与分裂合并策略影响探索（迭代数=200，容忍度=1e-5）
 </h5><div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>模型</th>
-<th>聚类数</th>
-<th>分裂合并</th>
-<th>准确率</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>K-means</td>
-<td>3</td>
-<td>False</td>
-<td>89.05%</td>
-</tr>
-<tr>
-<td>K-means</td>
-<td>10</td>
-<td>False</td>
-<td>86.19%</td>
-</tr>
-<tr>
-<td>K-means</td>
-<td>10</td>
-<td>True</td>
-<td>86.19%</td>
-</tr>
-<tr>
-<td>Soft K-means</td>
-<td>3</td>
-<td>False</td>
-<td>89.52%</td>
-</tr>
-<tr>
-<td>Soft K-means</td>
-<td>10</td>
-<td>False</td>
-<td>90.00%</td>
-</tr>
-<tr>
-<td>Soft K-means</td>
-<td>10</td>
-<td>True</td>
-<td>89.05%</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>模型</th>
+          <th>聚类数</th>
+          <th>分裂合并</th>
+          <th>准确率</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>K-means</td>
+          <td>3</td>
+          <td>False</td>
+          <td>89.05%</td>
+      </tr>
+      <tr>
+          <td>K-means</td>
+          <td>10</td>
+          <td>False</td>
+          <td>86.19%</td>
+      </tr>
+      <tr>
+          <td>K-means</td>
+          <td>10</td>
+          <td>True</td>
+          <td>86.19%</td>
+      </tr>
+      <tr>
+          <td>Soft K-means</td>
+          <td>3</td>
+          <td>False</td>
+          <td>89.52%</td>
+      </tr>
+      <tr>
+          <td>Soft K-means</td>
+          <td>10</td>
+          <td>False</td>
+          <td>90.00%</td>
+      </tr>
+      <tr>
+          <td>Soft K-means</td>
+          <td>10</td>
+          <td>True</td>
+          <td>89.05%</td>
+      </tr>
+  </tbody>
 </table></div>
 <p><strong>探索结论</strong>：</p>
 <ul>
@@ -695,82 +653,82 @@ $$loss =-\frac{1}{m} \sum_{i=1}^{m}[y_i log(h_i)+(1-y_i)log(1-h_i)]$$<br>
 <h4 id="2-探索实验与结果分析-2">2. 探索实验与结果分析
 </h4><h5 id="1线性vs非线性模型对比基础探索">（1）线性vs非线性模型对比（基础探索）
 </h5><div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>模型</th>
-<th>隐藏层/神经元</th>
-<th>容忍度</th>
-<th>准确率</th>
-<th>收敛次数</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Logistic Regression</td>
-<td>-</td>
-<td>1e-5</td>
-<td>59.60%</td>
-<td>10000（未收敛）</td>
-</tr>
-<tr>
-<td>MLP</td>
-<td>1/8</td>
-<td>1e-7</td>
-<td>100.00%</td>
-<td>8320</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>模型</th>
+          <th>隐藏层/神经元</th>
+          <th>容忍度</th>
+          <th>准确率</th>
+          <th>收敛次数</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Logistic Regression</td>
+          <td>-</td>
+          <td>1e-5</td>
+          <td>59.60%</td>
+          <td>10000（未收敛）</td>
+      </tr>
+      <tr>
+          <td>MLP</td>
+          <td>1/8</td>
+          <td>1e-7</td>
+          <td>100.00%</td>
+          <td>8320</td>
+      </tr>
+  </tbody>
 </table></div>
 <p><strong>探索结论</strong>：X型分布数据（非线性边界）无法被Logistic Regression有效拟合（准确率仅59.6%），而MLP（1隐藏层+8神经元）可完全拟合，说明非线性模型对复杂数据的适配优势。</p>
 <h5 id="2mlp超参数影响探索">（2）MLP超参数影响探索
 </h5><h6 id="-隐藏层与神经元数影响容忍度1e-7">① 隐藏层与神经元数影响（容忍度=1e-7）
 </h6><div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>模型配置（隐藏层/神经元）</th>
-<th>收敛次数</th>
-<th>最终损失</th>
-<th>损失变化趋势（对应图5曲线）</th>
-<th>准确率</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1隐藏层+2神经元</td>
-<td>1215</td>
-<td>0.1523</td>
-<td>快速收敛后停滞，损失居高不下</td>
-<td>78.67%</td>
-</tr>
-<tr>
-<td>1隐藏层+4神经元</td>
-<td>8546</td>
-<td>0.0253</td>
-<td>缓慢收敛，损失逐步下降</td>
-<td>98.67%</td>
-</tr>
-<tr>
-<td>1隐藏层+8神经元</td>
-<td>8320</td>
-<td>0.0132</td>
-<td>收敛速度中等，损失逼近最小值</td>
-<td>100.00%</td>
-</tr>
-<tr>
-<td>2隐藏层+3+6神经元</td>
-<td>7264</td>
-<td>0.0050</td>
-<td>收敛平稳，损失最低且无波动</td>
-<td>99.67%</td>
-</tr>
-<tr>
-<td>6隐藏层+2神经元</td>
-<td>17</td>
-<td>0.1628</td>
-<td>瞬间收敛（未充分训练），损失高</td>
-<td>77.00%</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>模型配置（隐藏层/神经元）</th>
+          <th>收敛次数</th>
+          <th>最终损失</th>
+          <th>损失变化趋势（对应图5曲线）</th>
+          <th>准确率</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1隐藏层+2神经元</td>
+          <td>1215</td>
+          <td>0.1523</td>
+          <td>快速收敛后停滞，损失居高不下</td>
+          <td>78.67%</td>
+      </tr>
+      <tr>
+          <td>1隐藏层+4神经元</td>
+          <td>8546</td>
+          <td>0.0253</td>
+          <td>缓慢收敛，损失逐步下降</td>
+          <td>98.67%</td>
+      </tr>
+      <tr>
+          <td>1隐藏层+8神经元</td>
+          <td>8320</td>
+          <td>0.0132</td>
+          <td>收敛速度中等，损失逼近最小值</td>
+          <td>100.00%</td>
+      </tr>
+      <tr>
+          <td>2隐藏层+3+6神经元</td>
+          <td>7264</td>
+          <td>0.0050</td>
+          <td>收敛平稳，损失最低且无波动</td>
+          <td>99.67%</td>
+      </tr>
+      <tr>
+          <td>6隐藏层+2神经元</td>
+          <td>17</td>
+          <td>0.1628</td>
+          <td>瞬间收敛（未充分训练），损失高</td>
+          <td>77.00%</td>
+      </tr>
+  </tbody>
 </table></div>
 <p><strong>探索结论</strong>：</p>
 <ul>
@@ -780,40 +738,40 @@ $$loss =-\frac{1}{m} \sum_{i=1}^{m}[y_i log(h_i)+(1-y_i)log(1-h_i)]$$<br>
 </ul>
 <h6 id="-容忍度影响2隐藏层36神经元">② 容忍度影响（2隐藏层+3/6神经元）
 </h6><div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>容忍度</th>
-<th>收敛次数</th>
-<th>损失</th>
-<th>准确率</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1e-5</td>
-<td>149</td>
-<td>0.2489</td>
-<td>53.67%</td>
-</tr>
-<tr>
-<td>1e-6</td>
-<td>43</td>
-<td>0.2493</td>
-<td>59.00%</td>
-</tr>
-<tr>
-<td>1e-7</td>
-<td>7264</td>
-<td>0.0050</td>
-<td>99.67%</td>
-</tr>
-<tr>
-<td>1e-8</td>
-<td>8120</td>
-<td>0.0048</td>
-<td>99.50%</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>容忍度</th>
+          <th>收敛次数</th>
+          <th>损失</th>
+          <th>准确率</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1e-5</td>
+          <td>149</td>
+          <td>0.2489</td>
+          <td>53.67%</td>
+      </tr>
+      <tr>
+          <td>1e-6</td>
+          <td>43</td>
+          <td>0.2493</td>
+          <td>59.00%</td>
+      </tr>
+      <tr>
+          <td>1e-7</td>
+          <td>7264</td>
+          <td>0.0050</td>
+          <td>99.67%</td>
+      </tr>
+      <tr>
+          <td>1e-8</td>
+          <td>8120</td>
+          <td>0.0048</td>
+          <td>99.50%</td>
+      </tr>
+  </tbody>
 </table></div>
 <p><strong>探索结论</strong>：</p>
 <ul>
@@ -834,26 +792,26 @@ $$loss =-\frac{1}{m} \sum_{i=1}^{m}[y_i log(h_i)+(1-y_i)log(1-h_i)]$$<br>
 <a href="/ai/LogisticRegression_MLP_BinaryClassification.pdf" target="_blank">LogisticRegression_MLP_BinaryClassification.pdf 下载链接</a></p>
 <h3 id="2-核心探索成果规律总结">2. 核心探索成果（规律总结）
 </h3><div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>探索方向</th>
-<th>关键结论</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>聚类分类</td>
-<td>1. Soft K-means比K-means更稳定（准确率波动≤0.5% vs 3%），多聚类场景（k=10）更优；<br>2. 分裂合并策略仅适用于簇分布松散数据，种子数据（紧凑分布）启用后准确率下降0.95%；<br>3. 容忍度（1e-3~1e-5）对聚类结果影响极小，迭代数需匹配算法（K-means=200，Soft K-means≥50）</td>
-</tr>
-<tr>
-<td>图像重建</td>
-<td>1. PCA需保留3维（RGB通道）才能完全还原图像，Linear Autoencoder 2维即可实现低误差（0.008）；<br>2. Soft K-means聚类数需匹配图像色彩复杂度，WWI士兵图k=9时细节还原最佳；<br>3. Linear Autoencoder对初始权重敏感，随机权重易导致重建失败</td>
-</tr>
-<tr>
-<td>二分类</td>
-<td>1. 非线性数据（X型分布）需用MLP（非线性模型），Logistic Regression（线性）准确率仅59.6%；<br>2. MLP最优配置：1~2隐藏层+8/3+6神经元，容忍度=1e-7（平衡收敛与过拟合）；<br>3. 隐藏层≥6时易陷入局部最优，准确率骤降22%+</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>探索方向</th>
+          <th>关键结论</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>聚类分类</td>
+          <td>1. Soft K-means比K-means更稳定（准确率波动≤0.5% vs 3%），多聚类场景（k=10）更优；<br>2. 分裂合并策略仅适用于簇分布松散数据，种子数据（紧凑分布）启用后准确率下降0.95%；<br>3. 容忍度（1e-3~1e-5）对聚类结果影响极小，迭代数需匹配算法（K-means=200，Soft K-means≥50）</td>
+      </tr>
+      <tr>
+          <td>图像重建</td>
+          <td>1. PCA需保留3维（RGB通道）才能完全还原图像，Linear Autoencoder 2维即可实现低误差（0.008）；<br>2. Soft K-means聚类数需匹配图像色彩复杂度，WWI士兵图k=9时细节还原最佳；<br>3. Linear Autoencoder对初始权重敏感，随机权重易导致重建失败</td>
+      </tr>
+      <tr>
+          <td>二分类</td>
+          <td>1. 非线性数据（X型分布）需用MLP（非线性模型），Logistic Regression（线性）准确率仅59.6%；<br>2. MLP最优配置：1~2隐藏层+8/3+6神经元，容忍度=1e-7（平衡收敛与过拟合）；<br>3. 隐藏层≥6时易陷入局部最优，准确率骤降22%+</td>
+      </tr>
+  </tbody>
 </table></div>
 
 </section>

@@ -2,51 +2,51 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>科研项目 on 刘承韬</title>
-        <link>http://localhost:1313/zh-cn/categories/%E7%A7%91%E7%A0%94%E9%A1%B9%E7%9B%AE/</link>
+        <link>https://sxttrt.github.io/zh-cn/categories/%E7%A7%91%E7%A0%94%E9%A1%B9%E7%9B%AE/</link>
         <description>Recent content in 科研项目 on 刘承韬</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>刘承韬</copyright>
-        <lastBuildDate>Fri, 20 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/zh-cn/categories/%E7%A7%91%E7%A0%94%E9%A1%B9%E7%9B%AE/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 20 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://sxttrt.github.io/zh-cn/categories/%E7%A7%91%E7%A0%94%E9%A1%B9%E7%9B%AE/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>基于传统图像处理的五子棋识别与预测系统</title>
-        <link>http://localhost:1313/zh-cn/p/gomoku-recognition/</link>
+        <link>https://sxttrt.github.io/zh-cn/p/gomoku-recognition/</link>
         <pubDate>Fri, 20 Dec 2024 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/zh-cn/p/gomoku-recognition/</guid>
-        <description>&lt;img src="http://localhost:1313/gomoku/fengmian.png" alt="Featured image of post 基于传统图像处理的五子棋识别与预测系统" /&gt;&lt;h2 id=&#34;一项目核心信息&#34;&gt;一、项目核心信息
+        <guid>https://sxttrt.github.io/zh-cn/p/gomoku-recognition/</guid>
+        <description>&lt;img src="https://sxttrt.github.io/gomoku/fengmian.png" alt="Featured image of post 基于传统图像处理的五子棋识别与预测系统" /&gt;&lt;h2 id=&#34;一项目核心信息&#34;&gt;一、项目核心信息
 &lt;/h2&gt;&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;信息类别&lt;/th&gt;
-&lt;th&gt;具体内容&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;项目名称&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;基于传统图像处理的五子棋识别与预测系统&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;负责角色&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;项目负责人&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;项目周期&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;2024年10月-2024年12月&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;核心成员&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;刘承韬（本人）、吴嘉铭、吴丰扬、万文博&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;核心任务&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;1. 标准/手绘棋盘识别与棋子分类&lt;br&gt;2. 棋盘状态建模与坐标归一化&lt;br&gt;3. 智能落子预测与胜负判断&lt;br&gt;4. 交互式UI界面开发&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;关键工具&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;OpenCV（图像处理）、Python（核心逻辑）、Tkinter（UI开发）、NumPy（数据计算）&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;信息类别&lt;/th&gt;
+          &lt;th&gt;具体内容&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;项目名称&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;基于传统图像处理的五子棋识别与预测系统&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;负责角色&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;项目负责人&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;项目周期&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;2024年10月-2024年12月&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;核心成员&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;刘承韬（本人）、吴嘉铭、吴丰扬、万文博&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;核心任务&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;1. 标准/手绘棋盘识别与棋子分类&lt;br&gt;2. 棋盘状态建模与坐标归一化&lt;br&gt;3. 智能落子预测与胜负判断&lt;br&gt;4. 交互式UI界面开发&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;关键工具&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;OpenCV（图像处理）、Python（核心逻辑）、Tkinter（UI开发）、NumPy（数据计算）&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h2 id=&#34;二项目背景与目标&#34;&gt;二、项目背景与目标
 &lt;/h2&gt;&lt;h3 id=&#34;1-项目背景&#34;&gt;1. 项目背景
@@ -73,8 +73,8 @@
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;关键代码（霍夫圆检测与颜色判断）&lt;/strong&gt;：&lt;/p&gt;
 &lt;div style=&#34;text-align: center; margin: 15px 0;&#34;&gt;
-  &lt;img src=&#34;http://localhost:1313/gomoku/图1.png&#34; alt=&#34;标准棋盘识别关键代码1&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
-  &lt;img src=&#34;http://localhost:1313/gomoku/图2.png&#34; alt=&#34;标准棋盘识别关键代码2&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+  &lt;img src=&#34;https://sxttrt.github.io/gomoku/图1.png&#34; alt=&#34;标准棋盘识别关键代码1&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+  &lt;img src=&#34;https://sxttrt.github.io/gomoku/图2.png&#34; alt=&#34;标准棋盘识别关键代码2&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
   &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图1：标准棋盘霍夫圆检测与HSV颜色判断代码&lt;/p&gt;
 &lt;/div&gt;
 &lt;/li&gt;
@@ -82,11 +82,11 @@
 &lt;p&gt;&lt;strong&gt;结果展示&lt;/strong&gt;：标准棋盘识别率近100%，棋子坐标与颜色无偏差，识别结果可直接转化为字符格式棋盘（X=黑棋，O=白棋）。&lt;/p&gt;
 &lt;div style=&#34;display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 15px 0;&#34;&gt;
   &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
-    &lt;img src=&#34;http://localhost:1313/gomoku/图3.png&#34; alt=&#34;标准棋盘原图&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/gomoku/图3.png&#34; alt=&#34;标准棋盘原图&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
     &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图2：标准棋盘原图&lt;/p&gt;
   &lt;/div&gt;
   &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
-    &lt;img src=&#34;http://localhost:1313/gomoku/图4.png&#34; alt=&#34;标准棋盘识别结果&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/gomoku/图4.png&#34; alt=&#34;标准棋盘识别结果&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
     &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图3：标准棋盘识别结果（标注坐标与棋子颜色）&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;
@@ -107,11 +107,11 @@
 &lt;p&gt;&lt;strong&gt;关键代码（棋盘定位与棋子判断）&lt;/strong&gt;：&lt;/p&gt;
 &lt;div style=&#34;display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 15px 0;&#34;&gt;
   &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
-    &lt;img src=&#34;http://localhost:1313/gomoku/图5.png&#34; alt=&#34;手绘棋盘定位代码&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/gomoku/图5.png&#34; alt=&#34;手绘棋盘定位代码&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
     &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图4：手绘棋盘定位与边缘处理代码&lt;/p&gt;
   &lt;/div&gt;
   &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
-    &lt;img src=&#34;http://localhost:1313/gomoku/图6.png&#34; alt=&#34;手绘棋子判断代码&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/gomoku/图6.png&#34; alt=&#34;手绘棋子判断代码&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
     &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图5：手绘棋盘棋子判断代码（面积-周长比）&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;
@@ -119,7 +119,7 @@
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;结果展示&lt;/strong&gt;：规整手绘棋盘识别准确，棋子无粘连时分类正确率≥85%；存在边界粘连或线条断裂时，通过形态学操作可部分优化。&lt;/p&gt;
 &lt;div style=&#34;text-align: center; margin: 15px 0;&#34;&gt;
-  &lt;img src=&#34;http://localhost:1313/gomoku/图7.png&#34; alt=&#34;手绘棋盘识别结果&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+  &lt;img src=&#34;https://sxttrt.github.io/gomoku/图7.png&#34; alt=&#34;手绘棋盘识别结果&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
   &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图6：手绘棋盘识别结果（左：原图，右：识别后字符棋盘）&lt;/p&gt;
 &lt;/div&gt;
 &lt;/li&gt;
@@ -142,40 +142,40 @@
 &lt;/h5&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;基础分数定义&lt;/strong&gt;：参考文档中“valueModel”模型，预设典型棋型分数（核心分数逻辑源自报告代码）：
 &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;棋型&lt;/th&gt;
-&lt;th&gt;定义（以黑棋“X”为例）&lt;/th&gt;
-&lt;th&gt;分数&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;活四&lt;/td&gt;
-&lt;td&gt;“XXXX ”或“ XXXX”（两端空位）&lt;/td&gt;
-&lt;td&gt;1000&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;死四&lt;/td&gt;
-&lt;td&gt;“XXXXO”或“OXXXX”（一端被挡）&lt;/td&gt;
-&lt;td&gt;500&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;活三&lt;/td&gt;
-&lt;td&gt;“XXX  ”或“ XXX ”（两端空位）&lt;/td&gt;
-&lt;td&gt;300&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;死三&lt;/td&gt;
-&lt;td&gt;“XXXO ”或“ OXXX ”（一端被挡）&lt;/td&gt;
-&lt;td&gt;150&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;活二&lt;/td&gt;
-&lt;td&gt;“XX   ”或“ XX  ”（两端空位）&lt;/td&gt;
-&lt;td&gt;100&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;棋型&lt;/th&gt;
+          &lt;th&gt;定义（以黑棋“X”为例）&lt;/th&gt;
+          &lt;th&gt;分数&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;活四&lt;/td&gt;
+          &lt;td&gt;“XXXX ”或“ XXXX”（两端空位）&lt;/td&gt;
+          &lt;td&gt;1000&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;死四&lt;/td&gt;
+          &lt;td&gt;“XXXXO”或“OXXXX”（一端被挡）&lt;/td&gt;
+          &lt;td&gt;500&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;活三&lt;/td&gt;
+          &lt;td&gt;“XXX  ”或“ XXX ”（两端空位）&lt;/td&gt;
+          &lt;td&gt;300&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;死三&lt;/td&gt;
+          &lt;td&gt;“XXXO ”或“ OXXX ”（一端被挡）&lt;/td&gt;
+          &lt;td&gt;150&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;活二&lt;/td&gt;
+          &lt;td&gt;“XX   ”或“ XX  ”（两端空位）&lt;/td&gt;
+          &lt;td&gt;100&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;全方向分数累加&lt;/strong&gt;：通过&lt;code&gt;value_all&lt;/code&gt;函数计算四个方向的基础分数，公式如下（源自报告关键代码）：&lt;br&gt;
@@ -199,13 +199,13 @@
 &lt;/h5&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;棋型分数计算代码&lt;/strong&gt;：
 &lt;div style=&#34;text-align: center; margin: 15px 0;&#34;&gt;
-  &lt;img src=&#34;http://localhost:1313/gomoku/图8.png&#34; alt=&#34;棋形分数计算代码&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+  &lt;img src=&#34;https://sxttrt.github.io/gomoku/图8.png&#34; alt=&#34;棋形分数计算代码&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
   &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图7：棋型分数计算核心代码&lt;/p&gt;
 &lt;/div&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;预测效果展示&lt;/strong&gt;：预测落子点通过“彩色掩膜”在UI界面标注，黑棋推荐点用红色掩膜、白棋推荐点用绿色掩膜，用户点击“预测”按钮即可实时显示；落子后掩膜自动消失，更新棋盘状态（效果符合报告中“落子预测交互”描述）：
 &lt;div style=&#34;text-align: center; margin: 15px 0;&#34;&gt;
-  &lt;img src=&#34;http://localhost:1313/gomoku/图10.png&#34; alt=&#34;落子预测结果&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+  &lt;img src=&#34;https://sxttrt.github.io/gomoku/图10.png&#34; alt=&#34;落子预测结果&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
   &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图8：落子预测结果&lt;/p&gt;
 &lt;/div&gt;
 &lt;/li&gt;
@@ -228,13 +228,13 @@
 &lt;/h5&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;胜负判断代码&lt;/strong&gt;：
 &lt;div style=&#34;text-align: center; margin: 15px 0;&#34;&gt;
-  &lt;img src=&#34;http://localhost:1313/gomoku/图9.png&#34; alt=&#34;胜负判断代码&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+  &lt;img src=&#34;https://sxttrt.github.io/gomoku/图9.png&#34; alt=&#34;胜负判断代码&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
   &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图9：全方向胜负判断代码（&lt;/p&gt;
 &lt;/div&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;胜利提示效果&lt;/strong&gt;：
 &lt;div style=&#34;text-align: center; margin: 15px 0;&#34;&gt;
-  &lt;img src=&#34;http://localhost:1313/gomoku/图11.png&#34; alt=&#34;胜利提示界面&#34; style=&#34;max-width: 60%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+  &lt;img src=&#34;https://sxttrt.github.io/gomoku/图11.png&#34; alt=&#34;胜利提示界面&#34; style=&#34;max-width: 60%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
   &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图10：白棋获胜提示界面&lt;/p&gt;
 &lt;/div&gt;
 &lt;/li&gt;
@@ -250,7 +250,7 @@
 &lt;/ul&gt;
 &lt;h4 id=&#34;2-界面展示&#34;&gt;2. 界面展示
 &lt;/h4&gt;  &lt;div style=&#34;text-align: center; margin: 15px 0;&#34;&gt;
-    &lt;img src=&#34;http://localhost:1313/gomoku/图11.png&#34; alt=&#34;UI界面展示&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/gomoku/图11.png&#34; alt=&#34;UI界面展示&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
     &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图10：五子棋系统UI界面（含识别、预测、落子功能）&lt;/p&gt;
   &lt;/div&gt;
 &lt;h2 id=&#34;四项目成果&#34;&gt;四、项目成果
@@ -263,44 +263,44 @@
         </item>
         <item>
         <title>基于实验辨识与仿真的四轮小车运动控制系统设计</title>
-        <link>http://localhost:1313/zh-cn/p/four-wheel-car-modeling/</link>
+        <link>https://sxttrt.github.io/zh-cn/p/four-wheel-car-modeling/</link>
         <pubDate>Sat, 01 Jun 2024 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/zh-cn/p/four-wheel-car-modeling/</guid>
-        <description>&lt;img src="http://localhost:1313/four-wheel-car/fengmian.png" alt="Featured image of post 基于实验辨识与仿真的四轮小车运动控制系统设计" /&gt;&lt;h2 id=&#34;一项目核心信息&#34;&gt;一、项目核心信息
+        <guid>https://sxttrt.github.io/zh-cn/p/four-wheel-car-modeling/</guid>
+        <description>&lt;img src="https://sxttrt.github.io/four-wheel-car/fengmian.png" alt="Featured image of post 基于实验辨识与仿真的四轮小车运动控制系统设计" /&gt;&lt;h2 id=&#34;一项目核心信息&#34;&gt;一、项目核心信息
 &lt;/h2&gt;&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;信息类别&lt;/th&gt;
-&lt;th&gt;具体内容&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;项目名称&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;四轮小车的实验建模&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;负责角色&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;项目负责人&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;项目周期&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;2024年03月-2024年05月&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;核心成员&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;刘承韬（本人）、吴丰杨&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;核心任务&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;1. 开环控制系统搭建与数据采集&lt;br&gt;2. 开环模型实验辨识&lt;br&gt;3. Simulink仿真验证与PID调优&lt;br&gt;4. Arduino PID闭环控制部署&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;关键工具&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;Arduino IDE（控制编程）、MATLAB（系统辨识）、Simulink（仿真调优）&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;信息类别&lt;/th&gt;
+          &lt;th&gt;具体内容&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;项目名称&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;四轮小车的实验建模&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;负责角色&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;项目负责人&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;项目周期&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;2024年03月-2024年05月&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;核心成员&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;刘承韬（本人）、吴丰杨&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;核心任务&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;1. 开环控制系统搭建与数据采集&lt;br&gt;2. 开环模型实验辨识&lt;br&gt;3. Simulink仿真验证与PID调优&lt;br&gt;4. Arduino PID闭环控制部署&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;关键工具&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;Arduino IDE（控制编程）、MATLAB（系统辨识）、Simulink（仿真调优）&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h2 id=&#34;二项目背景与目标&#34;&gt;二、项目背景与目标
 &lt;/h2&gt;&lt;h3 id=&#34;1-项目背景&#34;&gt;1. 项目背景
@@ -319,7 +319,7 @@
 &lt;li&gt;&lt;strong&gt;控制逻辑&lt;/strong&gt;：编写Arduino开环控制代码，定义电机引脚（Motor_AIN1=6、Motor_AIN2=3等）与编码器引脚（ENCODER_A=2等），通过10ms定时中断更新转速计数，串口调试助手发送PWM值（100、150、250、255）控制电机，实时接收转速反馈数据。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;关键图片&lt;/strong&gt;：
 &lt;div style=&#34;text-align: center; margin: 15px 0;&#34;&gt;
-  &lt;img src=&#34;http://localhost:1313/four-wheel-car/图1.png&#34; alt=&#34;开环控制系统部分控制代码&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+  &lt;img src=&#34;https://sxttrt.github.io/four-wheel-car/图1.png&#34; alt=&#34;开环控制系统部分控制代码&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
   &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图1：左右轮测试数据&lt;/p&gt;
 &lt;/div&gt;
 &lt;/li&gt;
@@ -331,11 +331,11 @@
 &lt;li&gt;&lt;strong&gt;精度验证&lt;/strong&gt;：模型平均拟合度达&lt;strong&gt;85.55%&lt;/strong&gt;，单组数据拟合度范围76.24%-92.52%，满足项目中“模型辨识精度”要求。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;关键图片&lt;/strong&gt;：
 &lt;div style=&#34;text-align: center; margin: 15px 0;&#34;&gt;
-    &lt;img src=&#34;http://localhost:1313/four-wheel-car/图2.png&#34; alt=&#34;整合数据进行传递函数参数辨识&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/four-wheel-car/图2.png&#34; alt=&#34;整合数据进行传递函数参数辨识&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
     &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图2：整合数据进行传递函数参数辨识&lt;/p&gt;
   &lt;/div&gt;
 &lt;div style=&#34;text-align: center; margin: 15px 0;&#34;&gt;
-    &lt;img src=&#34;http://localhost:1313/four-wheel-car/图3.png&#34; alt=&#34;得到传递函数与拟合程度&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/four-wheel-car/图3.png&#34; alt=&#34;得到传递函数与拟合程度&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
     &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图3：传递函数与各组数据拟合程度 &lt;/p&gt;
   &lt;/div&gt;
 &lt;/li&gt;
@@ -346,11 +346,11 @@
 &lt;li&gt;&lt;strong&gt;验证结果&lt;/strong&gt;：3组重复仿真的拟合度分别为91.83%、92.58%、92.83%，仿真输出曲线与实测转速曲线高度重合，验证模型对小车运动的预测准确性。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;关键图片&lt;/strong&gt;：
 &lt;div style=&#34;text-align: center; margin: 15px 0;&#34;&gt;
-    &lt;img src=&#34;http://localhost:1313/four-wheel-car/图4.png&#34; alt=&#34;开环函数simulink模型&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/four-wheel-car/图4.png&#34; alt=&#34;开环函数simulink模型&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
     &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图4：开环函数Simulink模型&lt;/p&gt;
   &lt;/div&gt;
     &lt;div style=&#34;text-align: center; margin: 15px 0;&#34;&gt;
-    &lt;img src=&#34;http://localhost:1313/four-wheel-car/图5.png&#34; alt=&#34;175PWM数据仿真验证&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/four-wheel-car/图5.png&#34; alt=&#34;175PWM数据仿真验证&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
     &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图5：175PWM数据仿真-实测对比&lt;/p&gt;
   &lt;/div&gt;
 &lt;/li&gt;
@@ -362,11 +362,11 @@
 &lt;li&gt;&lt;strong&gt;关键图片&lt;/strong&gt;：
 &lt;div style=&#34;display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 15px 0;&#34;&gt;
   &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
-    &lt;img src=&#34;http://localhost:1313/four-wheel-car/图6.png&#34; alt=&#34;PID控制系统simulink模型&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/four-wheel-car/图6.png&#34; alt=&#34;PID控制系统simulink模型&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
     &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图6：PID控制系统Simulink模型&lt;/p&gt;
   &lt;/div&gt;
   &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
-    &lt;img src=&#34;http://localhost:1313/four-wheel-car/图7.png&#34; alt=&#34;调节PID参数与输出限制&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/four-wheel-car/图7.png&#34; alt=&#34;调节PID参数与输出限制&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
     &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图7：PID参数调节与输出限制设置&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;
@@ -380,11 +380,11 @@
 &lt;li&gt;&lt;strong&gt;关键图片&lt;/strong&gt;：
 &lt;div style=&#34;display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 15px 0;&#34;&gt;
   &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
-    &lt;img src=&#34;http://localhost:1313/four-wheel-car/图8.png&#34; alt=&#34;pwm和目标速度的线性拟合&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/four-wheel-car/图8.png&#34; alt=&#34;pwm和目标速度的线性拟合&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
     &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图8：PWM与目标速度的线性拟合&lt;/p&gt;
   &lt;/div&gt;
   &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
-    &lt;img src=&#34;http://localhost:1313/four-wheel-car/图9.png&#34; alt=&#34;增量式PID控制部分代码&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/four-wheel-car/图9.png&#34; alt=&#34;增量式PID控制部分代码&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
     &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图9：增量式PI控制部分代码&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;
@@ -397,11 +397,11 @@
 &lt;li&gt;&lt;strong&gt;关键图片&lt;/strong&gt;：
 &lt;div style=&#34;display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 15px 0;&#34;&gt;
   &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
-    &lt;img src=&#34;http://localhost:1313/four-wheel-car/图10.png&#34; alt=&#34;目标速度37开环-闭环对比&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/four-wheel-car/图10.png&#34; alt=&#34;目标速度37开环-闭环对比&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
     &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图10：目标速度37开环-闭环对比&lt;/p&gt;
   &lt;/div&gt;
   &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
-    &lt;img src=&#34;http://localhost:1313/four-wheel-car/图11.png&#34; alt=&#34;目标速度37仿真-实测对比&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/four-wheel-car/图11.png&#34; alt=&#34;目标速度37仿真-实测对比&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
     &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图11：目标速度37仿真-实测对比&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;

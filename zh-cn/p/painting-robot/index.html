@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+    <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="机械臂绘画项目完整记录，含图像扫描识别、路径规划、力控轨迹跟踪全流程，实现从图像输入到实物绘画的自动化执行">
 <title>基于Gen3-lite机械臂的绘画机器人系统</title>
 
-<link rel='canonical' href='http://localhost:1313/zh-cn/p/painting-robot/'>
+<link rel='canonical' href='https://sxttrt.github.io/zh-cn/p/painting-robot/'>
 
-<link rel="stylesheet" href="/scss/style.min.0304c6baf04e01a8fe70693791cb744d56a3578a3120a8796cefc66825aa39c7.css"><meta property='og:title' content="基于Gen3-lite机械臂的绘画机器人系统">
+<link rel="stylesheet" href="/scss/style.min.c91073e1bef24baf3131464aee14e30bb1335275cee51563e55fb2a5e03eca69.css"><meta property='og:title' content="基于Gen3-lite机械臂的绘画机器人系统">
 <meta property='og:description' content="机械臂绘画项目完整记录，含图像扫描识别、路径规划、力控轨迹跟踪全流程，实现从图像输入到实物绘画的自动化执行">
-<meta property='og:url' content='http://localhost:1313/zh-cn/p/painting-robot/'>
+<meta property='og:url' content='https://sxttrt.github.io/zh-cn/p/painting-robot/'>
 <meta property='og:site_name' content='刘承韬'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-06-04T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-06-04T00:00:00&#43;00:00'/><meta property='og:image' content='http://localhost:1313/gen3/fengmian.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-06-04T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-06-04T00:00:00&#43;00:00'/><meta property='og:image' content='https://sxttrt.github.io/gen3/fengmian.png' />
 <meta name="twitter:title" content="基于Gen3-lite机械臂的绘画机器人系统">
 <meta name="twitter:description" content="机械臂绘画项目完整记录，含图像扫描识别、路径规划、力控轨迹跟踪全流程，实现从图像输入到实物绘画的自动化执行"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='http://localhost:1313/gen3/fengmian.png' />
+    <meta name="twitter:image" content='https://sxttrt.github.io/gen3/fengmian.png' />
     <link rel="shortcut icon" href="/favicon.ico" />
-
-  
-
 
     </head>
     <body class="
@@ -62,7 +59,7 @@
                     
                     
                         
-                        <img src="/img/avatar_hu2071873778164182045.png" width="300"
+                        <img src="/img/avatar_hu_5fea35c5e8a8c4ea.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -115,45 +112,6 @@
         </ol><ol class="menu" id="main-menu">
         
         
-        
-        <li >
-            <a href='/zh-cn/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <polyline points="5 12 3 12 12 3 21 12 19 12" />
-  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
-  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
-</svg>
-
-
-
-                
-                <span>主页</span>
-            </a>
-        </li>
-        
-        
-        <li >
-            <a href='/zh-cn/%E5%85%B3%E4%BA%8E/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-</svg>
-
-
-
-                
-                <span>关于</span>
-            </a>
-        </li>
-        
         <li class="menu-bottom-section">
             <ol class="menu">
                     
@@ -171,9 +129,9 @@
 
                             <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
                                 
-                                    <option value="http://localhost:1313/" >English</option>
+                                    <option value="https://sxttrt.github.io/en/" >English</option>
                                 
-                                    <option value="http://localhost:1313/zh-cn/" selected>简体中文</option>
+                                    <option value="https://sxttrt.github.io/zh-cn/" selected>简体中文</option>
                                 
                             </select>
                         </li>
@@ -363,34 +321,34 @@ MathJax.config = {
 </script>
 <h2 id="一项目核心信息">一、项目核心信息
 </h2><div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>信息类别</th>
-<th>具体内容</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>项目名称</strong></td>
-<td>基于Kinova Gen3-lite机械臂的绘画机器人系统构建</td>
-</tr>
-<tr>
-<td><strong>核心成员</strong></td>
-<td>李育昆、刘承韬、王博彬</td>
-</tr>
-<tr>
-<td><strong>项目周期</strong></td>
-<td>2025年3月-2025年6月</td>
-</tr>
-<tr>
-<td><strong>核心任务</strong></td>
-<td>1. 图像扫描：基于OpenCV完成摄像头采集、预处理、边缘检测与轮廓提取<br>2. 轨迹规划：图像二值化、骨架提取、路径合并简化、坐标归一化<br>3. 机械臂控制：ROS框架下力控轨迹跟踪、坐标转换、抬笔/落笔动作模拟</td>
-</tr>
-<tr>
-<td><strong>关键工具</strong></td>
-<td>Python、OpenCV（图像处理）、NumPy（数值计算）、ROS（机器人操作系统）、Kinova Gen3-lite机械臂、Kortex SDK（机械臂控制接口）、skimage（骨架提取）</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>信息类别</th>
+          <th>具体内容</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>项目名称</strong></td>
+          <td>基于Kinova Gen3-lite机械臂的绘画机器人系统构建</td>
+      </tr>
+      <tr>
+          <td><strong>核心成员</strong></td>
+          <td>李育昆、刘承韬、王博彬</td>
+      </tr>
+      <tr>
+          <td><strong>项目周期</strong></td>
+          <td>2025年3月-2025年6月</td>
+      </tr>
+      <tr>
+          <td><strong>核心任务</strong></td>
+          <td>1. 图像扫描：基于OpenCV完成摄像头采集、预处理、边缘检测与轮廓提取<br>2. 轨迹规划：图像二值化、骨架提取、路径合并简化、坐标归一化<br>3. 机械臂控制：ROS框架下力控轨迹跟踪、坐标转换、抬笔/落笔动作模拟</td>
+      </tr>
+      <tr>
+          <td><strong>关键工具</strong></td>
+          <td>Python、OpenCV（图像处理）、NumPy（数值计算）、ROS（机器人操作系统）、Kinova Gen3-lite机械臂、Kortex SDK（机械臂控制接口）、skimage（骨架提取）</td>
+      </tr>
+  </tbody>
 </table></div>
 <h2 id="二项目背景与目标">二、项目背景与目标
 </h2><h3 id="1-项目背景">1. 项目背景
@@ -557,30 +515,30 @@ $$\Delta z = K_p e_f + K_d \dot{e}<em>f$$
 <h3 id="3-核心结论与优化方向">3. 核心结论与优化方向
 </h3><h4 id="1-核心结论">1. 核心结论
 </h4><div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>技术维度</th>
-<th>关键结论</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>图像预处理</td>
-<td>高斯模糊（5×5核）+膨胀-腐蚀（迭代2/1次）的组合策略，可有效去除90%以上的拍摄噪声，边缘提取准确率≥95%</td>
-</tr>
-<tr>
-<td>路径规划</td>
-<td>骨架提取+端点合并+approxPolyDP简化的流程，可将路径点数量减少60%-70%，机械臂执行效率提升50%以上</td>
-</tr>
-<tr>
-<td>力控控制</td>
-<td>基于雅可比转置的力估计方法，在无专用力传感器时，接触力波动可控制在±1.5N以内，满足绘画稳定性要求</td>
-</tr>
-<tr>
-<td>系统整体</td>
-<td>单幅200点以内的线描图，全流程自动化执行耗时3-5分钟，复刻偏差≤1mm，适配A4纸范围内的绘画需求</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>技术维度</th>
+          <th>关键结论</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>图像预处理</td>
+          <td>高斯模糊（5×5核）+膨胀-腐蚀（迭代2/1次）的组合策略，可有效去除90%以上的拍摄噪声，边缘提取准确率≥95%</td>
+      </tr>
+      <tr>
+          <td>路径规划</td>
+          <td>骨架提取+端点合并+approxPolyDP简化的流程，可将路径点数量减少60%-70%，机械臂执行效率提升50%以上</td>
+      </tr>
+      <tr>
+          <td>力控控制</td>
+          <td>基于雅可比转置的力估计方法，在无专用力传感器时，接触力波动可控制在±1.5N以内，满足绘画稳定性要求</td>
+      </tr>
+      <tr>
+          <td>系统整体</td>
+          <td>单幅200点以内的线描图，全流程自动化执行耗时3-5分钟，复刻偏差≤1mm，适配A4纸范围内的绘画需求</td>
+      </tr>
+  </tbody>
 </table></div>
 <h4 id="2-后续优化方向">2. 后续优化方向
 </h4><ul>

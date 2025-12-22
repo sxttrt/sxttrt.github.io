@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+    <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="声控协作机器人项目完整记录，含DTW语音识别、YOLOv8物体检测、GRCNN抓取规划及UR机器人控制（附实物抓取视频）">
 <title>声控协作式机器人系统设计与实现</title>
 
-<link rel='canonical' href='http://localhost:1313/zh-cn/p/ur-robot/'>
+<link rel='canonical' href='https://sxttrt.github.io/zh-cn/p/ur-robot/'>
 
-<link rel="stylesheet" href="/scss/style.min.0304c6baf04e01a8fe70693791cb744d56a3578a3120a8796cefc66825aa39c7.css"><meta property='og:title' content="声控协作式机器人系统设计与实现">
+<link rel="stylesheet" href="/scss/style.min.c91073e1bef24baf3131464aee14e30bb1335275cee51563e55fb2a5e03eca69.css"><meta property='og:title' content="声控协作式机器人系统设计与实现">
 <meta property='og:description' content="声控协作机器人项目完整记录，含DTW语音识别、YOLOv8物体检测、GRCNN抓取规划及UR机器人控制（附实物抓取视频）">
-<meta property='og:url' content='http://localhost:1313/zh-cn/p/ur-robot/'>
+<meta property='og:url' content='https://sxttrt.github.io/zh-cn/p/ur-robot/'>
 <meta property='og:site_name' content='刘承韬'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-12-30T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-12-30T00:00:00&#43;00:00'/><meta property='og:image' content='http://localhost:1313/UR-Robot/fengmian.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-12-30T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-12-30T00:00:00&#43;00:00'/><meta property='og:image' content='https://sxttrt.github.io/UR-Robot/fengmian.png' />
 <meta name="twitter:title" content="声控协作式机器人系统设计与实现">
 <meta name="twitter:description" content="声控协作机器人项目完整记录，含DTW语音识别、YOLOv8物体检测、GRCNN抓取规划及UR机器人控制（附实物抓取视频）"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='http://localhost:1313/UR-Robot/fengmian.png' />
+    <meta name="twitter:image" content='https://sxttrt.github.io/UR-Robot/fengmian.png' />
     <link rel="shortcut icon" href="/favicon.ico" />
-
-  
-
 
     </head>
     <body class="
@@ -62,7 +59,7 @@
                     
                     
                         
-                        <img src="/img/avatar_hu2071873778164182045.png" width="300"
+                        <img src="/img/avatar_hu_5fea35c5e8a8c4ea.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -115,45 +112,6 @@
         </ol><ol class="menu" id="main-menu">
         
         
-        
-        <li >
-            <a href='/zh-cn/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <polyline points="5 12 3 12 12 3 21 12 19 12" />
-  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
-  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
-</svg>
-
-
-
-                
-                <span>主页</span>
-            </a>
-        </li>
-        
-        
-        <li >
-            <a href='/zh-cn/%E5%85%B3%E4%BA%8E/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-</svg>
-
-
-
-                
-                <span>关于</span>
-            </a>
-        </li>
-        
         <li class="menu-bottom-section">
             <ol class="menu">
                     
@@ -171,9 +129,9 @@
 
                             <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
                                 
-                                    <option value="http://localhost:1313/" >English</option>
+                                    <option value="https://sxttrt.github.io/en/" >English</option>
                                 
-                                    <option value="http://localhost:1313/zh-cn/" selected>简体中文</option>
+                                    <option value="https://sxttrt.github.io/zh-cn/" selected>简体中文</option>
                                 
                             </select>
                         </li>
@@ -343,46 +301,46 @@
     
     <h2 id="一项目核心信息">一、项目核心信息
 </h2><div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>信息类别</th>
-<th>具体内容</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>项目名称</strong></td>
-<td>声控协作式机器人系统设计与实现</td>
-</tr>
-<tr>
-<td><strong>负责角色</strong></td>
-<td>项目负责人</td>
-</tr>
-<tr>
-<td><strong>项目周期</strong></td>
-<td>2024年10月-2024年12月</td>
-</tr>
-<tr>
-<td><strong>核心成员</strong></td>
-<td>刘承韬（本人）</td>
-</tr>
-<tr>
-<td><strong>指导教师</strong></td>
-<td>熊异（智能控制科学创新实践II课程指导）</td>
-</tr>
-<tr>
-<td><strong>核心任务</strong></td>
-<td>1. DTW算法语音识别（工具关键词识别）<br>2. YOLOv8工具物体检测（5类工具）<br>3. GRCNN平面抓取点生成<br>4. UR机器人+夹爪控制（ur-rtde/minimalmodbus）</td>
-</tr>
-<tr>
-<td><strong>关键工具</strong></td>
-<td>Python（核心逻辑）、OpenCV（图像处理）、YOLOv8（目标检测）、GRCNN（抓取规划）、ur-rtde（机器人控制）、MinimalModbus（夹爪控制）</td>
-</tr>
-<tr>
-<td><strong>项目产出</strong></td>
-<td>1. 可运行声控抓取系统<br>2. 工具识别模型（YOLOv8权重）<br>3. 实物抓取演示视频<br>4. 完整项目代码（含UI界面）</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>信息类别</th>
+          <th>具体内容</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>项目名称</strong></td>
+          <td>声控协作式机器人系统设计与实现</td>
+      </tr>
+      <tr>
+          <td><strong>负责角色</strong></td>
+          <td>项目负责人</td>
+      </tr>
+      <tr>
+          <td><strong>项目周期</strong></td>
+          <td>2024年10月-2024年12月</td>
+      </tr>
+      <tr>
+          <td><strong>核心成员</strong></td>
+          <td>刘承韬（本人）</td>
+      </tr>
+      <tr>
+          <td><strong>指导教师</strong></td>
+          <td>熊异（智能控制科学创新实践II课程指导）</td>
+      </tr>
+      <tr>
+          <td><strong>核心任务</strong></td>
+          <td>1. DTW算法语音识别（工具关键词识别）<br>2. YOLOv8工具物体检测（5类工具）<br>3. GRCNN平面抓取点生成<br>4. UR机器人+夹爪控制（ur-rtde/minimalmodbus）</td>
+      </tr>
+      <tr>
+          <td><strong>关键工具</strong></td>
+          <td>Python（核心逻辑）、OpenCV（图像处理）、YOLOv8（目标检测）、GRCNN（抓取规划）、ur-rtde（机器人控制）、MinimalModbus（夹爪控制）</td>
+      </tr>
+      <tr>
+          <td><strong>项目产出</strong></td>
+          <td>1. 可运行声控抓取系统<br>2. 工具识别模型（YOLOv8权重）<br>3. 实物抓取演示视频<br>4. 完整项目代码（含UI界面）</td>
+      </tr>
+  </tbody>
 </table></div>
 <h2 id="二项目背景与目标">二、项目背景与目标
 </h2><h3 id="1-项目背景">1. 项目背景
@@ -570,30 +528,30 @@
 </div><h2 id="四项目成果与附件">四、项目成果与附件
 </h2><h3 id="核心成果">核心成果
 </h3><div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>成果类型</th>
-<th>具体指标</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>语音识别</td>
-<td>单词准确率≥93%，短句（关键词句首）准确率≥85%</td>
-</tr>
-<tr>
-<td>物体检测</td>
-<td>YOLOv8 模型 mAP50=95.2%，实物检测漏检率≤10%</td>
-</tr>
-<tr>
-<td>抓取控制</td>
-<td>GRCNN 抓取点有效率≥80%，UR 机器人抓取成功率≥75%，夹爪力度自适应</td>
-</tr>
-<tr>
-<td>系统响应</td>
-<td>从语音指令到抓取完成≤10 秒，无人工干预</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>成果类型</th>
+          <th>具体指标</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>语音识别</td>
+          <td>单词准确率≥93%，短句（关键词句首）准确率≥85%</td>
+      </tr>
+      <tr>
+          <td>物体检测</td>
+          <td>YOLOv8 模型 mAP50=95.2%，实物检测漏检率≤10%</td>
+      </tr>
+      <tr>
+          <td>抓取控制</td>
+          <td>GRCNN 抓取点有效率≥80%，UR 机器人抓取成功率≥75%，夹爪力度自适应</td>
+      </tr>
+      <tr>
+          <td>系统响应</td>
+          <td>从语音指令到抓取完成≤10 秒，无人工干预</td>
+      </tr>
+  </tbody>
 </table></div>
 
 </section>

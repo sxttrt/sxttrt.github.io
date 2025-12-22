@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+    <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="强化学习项目完整记录，含倒立摆LQR控制与REINFORCE控制、双足机器人PPO训练体系搭建及复杂地形自适应行走（附源码与仿真动态素材）">
 <title>基于强化学习的倒立摆控制与双足机器人系统构建</title>
 
-<link rel='canonical' href='http://localhost:1313/zh-cn/p/rl-control-project/'>
+<link rel='canonical' href='https://sxttrt.github.io/zh-cn/p/rl-control-project/'>
 
-<link rel="stylesheet" href="/scss/style.min.0304c6baf04e01a8fe70693791cb744d56a3578a3120a8796cefc66825aa39c7.css"><meta property='og:title' content="基于强化学习的倒立摆控制与双足机器人系统构建">
+<link rel="stylesheet" href="/scss/style.min.c91073e1bef24baf3131464aee14e30bb1335275cee51563e55fb2a5e03eca69.css"><meta property='og:title' content="基于强化学习的倒立摆控制与双足机器人系统构建">
 <meta property='og:description' content="强化学习项目完整记录，含倒立摆LQR控制与REINFORCE控制、双足机器人PPO训练体系搭建及复杂地形自适应行走（附源码与仿真动态素材）">
-<meta property='og:url' content='http://localhost:1313/zh-cn/p/rl-control-project/'>
+<meta property='og:url' content='https://sxttrt.github.io/zh-cn/p/rl-control-project/'>
 <meta property='og:site_name' content='刘承韬'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-06-20T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-06-20T00:00:00&#43;00:00'/><meta property='og:image' content='http://localhost:1313/RL/fengmian.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-06-20T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-06-20T00:00:00&#43;00:00'/><meta property='og:image' content='https://sxttrt.github.io/RL/fengmian.png' />
 <meta name="twitter:title" content="基于强化学习的倒立摆控制与双足机器人系统构建">
 <meta name="twitter:description" content="强化学习项目完整记录，含倒立摆LQR控制与REINFORCE控制、双足机器人PPO训练体系搭建及复杂地形自适应行走（附源码与仿真动态素材）"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='http://localhost:1313/RL/fengmian.png' />
+    <meta name="twitter:image" content='https://sxttrt.github.io/RL/fengmian.png' />
     <link rel="shortcut icon" href="/favicon.ico" />
-
-  
-
 
     </head>
     <body class="
@@ -62,7 +59,7 @@
                     
                     
                         
-                        <img src="/img/avatar_hu2071873778164182045.png" width="300"
+                        <img src="/img/avatar_hu_5fea35c5e8a8c4ea.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -115,45 +112,6 @@
         </ol><ol class="menu" id="main-menu">
         
         
-        
-        <li >
-            <a href='/zh-cn/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <polyline points="5 12 3 12 12 3 21 12 19 12" />
-  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
-  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
-</svg>
-
-
-
-                
-                <span>主页</span>
-            </a>
-        </li>
-        
-        
-        <li >
-            <a href='/zh-cn/%E5%85%B3%E4%BA%8E/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-</svg>
-
-
-
-                
-                <span>关于</span>
-            </a>
-        </li>
-        
         <li class="menu-bottom-section">
             <ol class="menu">
                     
@@ -171,9 +129,9 @@
 
                             <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
                                 
-                                    <option value="http://localhost:1313/" >English</option>
+                                    <option value="https://sxttrt.github.io/en/" >English</option>
                                 
-                                    <option value="http://localhost:1313/zh-cn/" selected>简体中文</option>
+                                    <option value="https://sxttrt.github.io/zh-cn/" selected>简体中文</option>
                                 
                             </select>
                         </li>
@@ -370,30 +328,30 @@ MathJax.config = {
 </script>
 <h2 id="一项目核心信息">一、项目核心信息
 </h2><div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>信息类别</th>
-<th>具体内容</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>项目名称</strong></td>
-<td>基于强化学习的倒立摆控制与双足机器人系统构建</td>
-</tr>
-<tr>
-<td><strong>核心成员</strong></td>
-<td>刘承韬、张皓佳、马博涵</td>
-</tr>
-<tr>
-<td><strong>核心任务</strong></td>
-<td>1. 倒立摆：① 基于LQR的线性控制（动力学建模、线性化、离散化）；② 基于REINFORCE的强化学习控制（策略梯度算法部署、奖励函数设计）；<br>2. 双足机器人：① Isaac Gym/MuJoCo仿真环境搭建；② PPO算法训练框架部署；③ 分层奖励函数设计；④ 平衡-步态稳定-复杂地形适配三级训练链路构建；⑤ 非结构化地形自适应行走实现</td>
-</tr>
-<tr>
-<td><strong>关键工具</strong></td>
-<td>Python、PyTorch（强化学习框架）、NumPy（矩阵计算）、Isaac Gym（并行仿真）、MuJoCo（高精度仿真）、Gymnasium（倒立摆REINFORCE环境）、Matplotlib（可视化）</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>信息类别</th>
+          <th>具体内容</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>项目名称</strong></td>
+          <td>基于强化学习的倒立摆控制与双足机器人系统构建</td>
+      </tr>
+      <tr>
+          <td><strong>核心成员</strong></td>
+          <td>刘承韬、张皓佳、马博涵</td>
+      </tr>
+      <tr>
+          <td><strong>核心任务</strong></td>
+          <td>1. 倒立摆：① 基于LQR的线性控制（动力学建模、线性化、离散化）；② 基于REINFORCE的强化学习控制（策略梯度算法部署、奖励函数设计）；<br>2. 双足机器人：① Isaac Gym/MuJoCo仿真环境搭建；② PPO算法训练框架部署；③ 分层奖励函数设计；④ 平衡-步态稳定-复杂地形适配三级训练链路构建；⑤ 非结构化地形自适应行走实现</td>
+      </tr>
+      <tr>
+          <td><strong>关键工具</strong></td>
+          <td>Python、PyTorch（强化学习框架）、NumPy（矩阵计算）、Isaac Gym（并行仿真）、MuJoCo（高精度仿真）、Gymnasium（倒立摆REINFORCE环境）、Matplotlib（可视化）</td>
+      </tr>
+  </tbody>
 </table></div>
 <h2 id="二项目背景与目标">二、项目背景与目标
 </h2><h3 id="1-项目背景">1. 项目背景
@@ -451,34 +409,34 @@ $$K = [[-4.4267, 262.3615, -12.0165, 57.0248]]$$</p>
 </li>
 </ul>
 <div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>配置</th>
-<th>稳定时间</th>
-<th>最大超调</th>
-<th>控制能量（N²·s）</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Baseline（Q如上，R=0.1）</td>
-<td>0.27s</td>
-<td>5.0°</td>
-<td>414654.0</td>
-</tr>
-<tr>
-<td>High Q（Q=np.diag([5.0,20.0,2.0,5.0])）</td>
-<td>0.25s</td>
-<td>5.8°</td>
-<td>451955.5</td>
-</tr>
-<tr>
-<td>High R（R=np.array([[1]])）</td>
-<td>0.31s</td>
-<td>3.3°</td>
-<td>355800.3</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>配置</th>
+          <th>稳定时间</th>
+          <th>最大超调</th>
+          <th>控制能量（N²·s）</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Baseline（Q如上，R=0.1）</td>
+          <td>0.27s</td>
+          <td>5.0°</td>
+          <td>414654.0</td>
+      </tr>
+      <tr>
+          <td>High Q（Q=np.diag([5.0,20.0,2.0,5.0])）</td>
+          <td>0.25s</td>
+          <td>5.8°</td>
+          <td>451955.5</td>
+      </tr>
+      <tr>
+          <td>High R（R=np.array([[1]])）</td>
+          <td>0.31s</td>
+          <td>3.3°</td>
+          <td>355800.3</td>
+      </tr>
+  </tbody>
 </table></div>
 <div style="text-align: center; margin: 15px 0;">
   <img src="/RL/图2.png" alt="Soft K-means不同聚类数重建效果" style="max-width: 100%; border: 1px solid #eee; border-radius: 4px;">
@@ -531,30 +489,30 @@ $$K = [[-4.4267, 262.3615, -12.0165, 57.0248]]$$</p>
 <li><strong>PPO训练框架核心模块</strong>：</li>
 </ul>
 <div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>模块</th>
-<th>功能描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>train.py</td>
-<td>训练入口，调用task_registry创建环境（env）与PPO训练器（ppo_runner），启动训练（learn方法）</td>
-</tr>
-<tr>
-<td>task_registry</td>
-<td>含make_env（创建环境与env_cfg）、make_alg_runner（创建PPO算法训练器）、register（读取地形/机器人/算法参数）</td>
-</tr>
-<tr>
-<td>terrain.py</td>
-<td>地形生成：__init__初始化地形参数、curiculum调用make_terrain生成地形、make_alg_runner调用Isaac Gym的terrain_utils生成地形</td>
-</tr>
-<tr>
-<td>pointfoot_rough_config.py</td>
-<td>配置类：LeggedRobotCfg（环境参数：num_envs、地形类型、指令参数、奖励权重等）；LeggedRobotCfgPPO（PPO参数：Actor/Critic隐藏层维度（512,256,128）、ELU激活函数、训练周期等）</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>模块</th>
+          <th>功能描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>train.py</td>
+          <td>训练入口，调用task_registry创建环境（env）与PPO训练器（ppo_runner），启动训练（learn方法）</td>
+      </tr>
+      <tr>
+          <td>task_registry</td>
+          <td>含make_env（创建环境与env_cfg）、make_alg_runner（创建PPO算法训练器）、register（读取地形/机器人/算法参数）</td>
+      </tr>
+      <tr>
+          <td>terrain.py</td>
+          <td>地形生成：__init__初始化地形参数、curiculum调用make_terrain生成地形、make_alg_runner调用Isaac Gym的terrain_utils生成地形</td>
+      </tr>
+      <tr>
+          <td>pointfoot_rough_config.py</td>
+          <td>配置类：LeggedRobotCfg（环境参数：num_envs、地形类型、指令参数、奖励权重等）；LeggedRobotCfgPPO（PPO参数：Actor/Critic隐藏层维度（512,256,128）、ELU激活函数、训练周期等）</td>
+      </tr>
+  </tbody>
 </table></div>
 <h4 id="2-分层奖励函数设计">2. 分层奖励函数设计
 </h4><p>针对机器人平衡、步态、指令响应需求，设计多维度奖励函数，各类型详细说明如下：</p>
@@ -629,30 +587,30 @@ $$\text{reward_stand_still} = \exp(-(\text{pose_error} + 0.5\cdot\text{vel_error
 <h4 id="3-三级训练链路构建解决训练发散与步态问题">3. 三级训练链路构建（解决训练发散与步态问题）
 </h4><p>采用循序渐进策略，避免高维系统训练崩溃，具体流程如下：</p>
 <div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>训练阶段</th>
-<th>核心目标</th>
-<th>关键操作与优化效果</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>第一阶段：平地平衡训练</td>
-<td>实现稳定站立与基础移动，解决5000轮策略崩溃</td>
-<td>操作：仅平地环境，无扰动；引入姿态控制奖励、关节极限惩罚；<br>效果：训练崩溃节点从5000轮延后至55000轮，躯干保持水平，减少倒地</td>
-</tr>
-<tr>
-<td>第二阶段：步态与指令训练</td>
-<td>生成自然步态，提升指令响应精度，解决小碎步</td>
-<td>操作：① 强化脚部离地时间奖励；② 调整惩罚参数（action rate惩罚从-0.05降至-0.01，碰撞惩罚从-100降至-3.0）；③ 加入指令追踪奖励；<br>效果：步幅增大，左右脚交替规律，指令响应误差降低</td>
-</tr>
-<tr>
-<td>第三阶段：抗扰与复杂地形训练</td>
-<td>提升抗扰动能力与地形适配性</td>
-<td>操作：① 开启随机推力扰动；② 启用地形课程学习（mesh_type设为trimesh，curriculum=True，从缓坡/简单非平整地形逐步升级至复杂地形）；<br>效果：扰动下1.2~2.0s恢复平衡，斜坡/非平整地形行走成功率超88%</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>训练阶段</th>
+          <th>核心目标</th>
+          <th>关键操作与优化效果</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>第一阶段：平地平衡训练</td>
+          <td>实现稳定站立与基础移动，解决5000轮策略崩溃</td>
+          <td>操作：仅平地环境，无扰动；引入姿态控制奖励、关节极限惩罚；<br>效果：训练崩溃节点从5000轮延后至55000轮，躯干保持水平，减少倒地</td>
+      </tr>
+      <tr>
+          <td>第二阶段：步态与指令训练</td>
+          <td>生成自然步态，提升指令响应精度，解决小碎步</td>
+          <td>操作：① 强化脚部离地时间奖励；② 调整惩罚参数（action rate惩罚从-0.05降至-0.01，碰撞惩罚从-100降至-3.0）；③ 加入指令追踪奖励；<br>效果：步幅增大，左右脚交替规律，指令响应误差降低</td>
+      </tr>
+      <tr>
+          <td>第三阶段：抗扰与复杂地形训练</td>
+          <td>提升抗扰动能力与地形适配性</td>
+          <td>操作：① 开启随机推力扰动；② 启用地形课程学习（mesh_type设为trimesh，curriculum=True，从缓坡/简单非平整地形逐步升级至复杂地形）；<br>效果：扰动下1.2~2.0s恢复平衡，斜坡/非平整地形行走成功率超88%</td>
+      </tr>
+  </tbody>
 </table></div>
 <div style="text-align: center; margin: 15px 0;">
   <img src="/RL/图5.png" alt="Soft K-means不同聚类数重建效果" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
@@ -665,35 +623,35 @@ $$\text{reward_stand_still} = \exp(-(\text{pose_error} + 0.5\cdot\text{vel_error
 <h4 id="4-关键问题解决与实验结果">4. 关键问题解决与实验结果
 </h4><h5 id="1核心问题与解决方案">（1）核心问题与解决方案
 </h5><div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>核心问题</th>
-<th>产生原因</th>
-<th>解决方案</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>PPO默认训练5000轮后策略崩溃</td>
-<td>原始奖励仅含生存/速度追踪，无姿态约束，策略过度追求“不倒地”而非“正常行走”</td>
-<td>引入姿态控制奖励（重力投影惩罚）、关节角度/速度极限惩罚，增强姿态稳定性</td>
-</tr>
-<tr>
-<td>小碎步步态</td>
-<td>action rate惩罚过强（-0.05），机器人不敢抬腿；无步态节奏引导</td>
-<td>削弱action rate惩罚至-0.01；加入脚部离地时间奖励（0.3~0.6s目标区间）</td>
-</tr>
-<tr>
-<td>零指令下滑动</td>
-<td>无静止状态专属奖励，策略无“保持静止”引导</td>
-<td>新增静止保持奖励，显式惩罚姿态偏离与非必要运动</td>
-</tr>
-<tr>
-<td>Sim-to-Sim迁移无指令响应</td>
-<td>训练无明确指令追踪奖励，策略未学习“响应命令”</td>
-<td>加入线速度/角速度/航向角追踪奖励，引导策略匹配目标指令</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>核心问题</th>
+          <th>产生原因</th>
+          <th>解决方案</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>PPO默认训练5000轮后策略崩溃</td>
+          <td>原始奖励仅含生存/速度追踪，无姿态约束，策略过度追求“不倒地”而非“正常行走”</td>
+          <td>引入姿态控制奖励（重力投影惩罚）、关节角度/速度极限惩罚，增强姿态稳定性</td>
+      </tr>
+      <tr>
+          <td>小碎步步态</td>
+          <td>action rate惩罚过强（-0.05），机器人不敢抬腿；无步态节奏引导</td>
+          <td>削弱action rate惩罚至-0.01；加入脚部离地时间奖励（0.3~0.6s目标区间）</td>
+      </tr>
+      <tr>
+          <td>零指令下滑动</td>
+          <td>无静止状态专属奖励，策略无“保持静止”引导</td>
+          <td>新增静止保持奖励，显式惩罚姿态偏离与非必要运动</td>
+      </tr>
+      <tr>
+          <td>Sim-to-Sim迁移无指令响应</td>
+          <td>训练无明确指令追踪奖励，策略未学习“响应命令”</td>
+          <td>加入线速度/角速度/航向角追踪奖励，引导策略匹配目标指令</td>
+      </tr>
+  </tbody>
 </table></div>
 <div style="text-align: center; margin: 15px 0;">
   <img src="/RL/图6.png" alt="Soft K-means不同聚类数重建效果" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
@@ -706,35 +664,35 @@ $$\text{reward_stand_still} = \exp(-(\text{pose_error} + 0.5\cdot\text{vel_error
 <li><strong>复杂地形适配</strong>：</li>
 </ul>
 <div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>地形类型</th>
-<th>行走成功率</th>
-<th>姿态波动幅度</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>平坦地形（无扰动）</td>
-<td>100%</td>
-<td>＜5°</td>
-</tr>
-<tr>
-<td>非平整地形（trimesh）</td>
-<td>90%</td>
-<td>＜8°</td>
-</tr>
-<tr>
-<td>斜坡（缓坡）</td>
-<td>92%</td>
-<td>＜8°</td>
-</tr>
-<tr>
-<td>平地+随机扰动</td>
-<td>95%</td>
-<td>＜7°</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>地形类型</th>
+          <th>行走成功率</th>
+          <th>姿态波动幅度</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>平坦地形（无扰动）</td>
+          <td>100%</td>
+          <td>＜5°</td>
+      </tr>
+      <tr>
+          <td>非平整地形（trimesh）</td>
+          <td>90%</td>
+          <td>＜8°</td>
+      </tr>
+      <tr>
+          <td>斜坡（缓坡）</td>
+          <td>92%</td>
+          <td>＜8°</td>
+      </tr>
+      <tr>
+          <td>平地+随机扰动</td>
+          <td>95%</td>
+          <td>＜7°</td>
+      </tr>
+  </tbody>
 </table></div>
 <p><img src="/RL/%e5%8f%8c%e8%b6%b3%e6%9c%ba%e5%99%a8%e4%ba%ba%e5%a4%8d%e6%9d%82%e5%9c%b0%e5%bd%a2%e4%bb%bf%e7%9c%9f%e5%9b%be.png"
 	
@@ -764,26 +722,26 @@ $$\text{reward_stand_still} = \exp(-(\text{pose_error} + 0.5\cdot\text{vel_error
 <p>下载链接：<a class="link" href="/RL/%e5%8f%8c%e8%b6%b3%e6%9c%ba%e5%99%a8%e4%ba%ba%e4%bb%bf%e7%9c%9fGIF%e5%90%88%e9%9b%86.zip" >双足机器人多场景仿真GIF合集.zip</a></p>
 <h3 id="2-核心探索结论">2. 核心探索结论
 </h3><div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>系统类型</th>
-<th>关键结论</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>倒立摆LQR控制</td>
-<td>1. Q/R矩阵权重影响控制效果：High Q（大状态权重）响应更快但超调更大、能耗更高；High R（大控制权重）响应更慢但超调更小、能耗更低；<br>2. 离散化模型是LQR适用于数字控制的关键，需基于线性化模型推导</td>
-</tr>
-<tr>
-<td>倒立摆REINFORCE控制</td>
-<td>1. 多维度奖励函数（含存活、角度、位置、速度）是避免策略“钻空子”（如仅追求存活不保持平衡）的核心；<br>2. 训练2325轮后策略收敛，可实现微扰下长时间平衡，验证策略梯度算法对低维非线性系统的适配性</td>
-</tr>
-<tr>
-<td>双足机器人PPO控制</td>
-<td>1. 三级训练链路（平衡→步态→复杂地形）是避免高维系统训练发散的关键，直接训练复杂地形会导致策略崩溃；<br>2. 物理域随机化与Sim-to-Sim迁移可显著提升策略泛化能力，适配不同仿真环境差异；<br>3. 脚部离地时间控制在0.4~0.6s时，步态最接近自然行走，能耗与稳定性平衡最优</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>系统类型</th>
+          <th>关键结论</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>倒立摆LQR控制</td>
+          <td>1. Q/R矩阵权重影响控制效果：High Q（大状态权重）响应更快但超调更大、能耗更高；High R（大控制权重）响应更慢但超调更小、能耗更低；<br>2. 离散化模型是LQR适用于数字控制的关键，需基于线性化模型推导</td>
+      </tr>
+      <tr>
+          <td>倒立摆REINFORCE控制</td>
+          <td>1. 多维度奖励函数（含存活、角度、位置、速度）是避免策略“钻空子”（如仅追求存活不保持平衡）的核心；<br>2. 训练2325轮后策略收敛，可实现微扰下长时间平衡，验证策略梯度算法对低维非线性系统的适配性</td>
+      </tr>
+      <tr>
+          <td>双足机器人PPO控制</td>
+          <td>1. 三级训练链路（平衡→步态→复杂地形）是避免高维系统训练发散的关键，直接训练复杂地形会导致策略崩溃；<br>2. 物理域随机化与Sim-to-Sim迁移可显著提升策略泛化能力，适配不同仿真环境差异；<br>3. 脚部离地时间控制在0.4~0.6s时，步态最接近自然行走，能耗与稳定性平衡最优</td>
+      </tr>
+  </tbody>
 </table></div>
 <h3 id="3-附件文件">3. 附件文件
 </h3><ul>

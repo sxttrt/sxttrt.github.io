@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+    <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="四轮小车实验建模项目完整记录，含开环系统搭建、二阶传递函数建模、Simulink仿真验证及Arduino PID闭环控制部署">
 <title>基于实验辨识与仿真的四轮小车运动控制系统设计</title>
 
-<link rel='canonical' href='http://localhost:1313/zh-cn/p/four-wheel-car-modeling/'>
+<link rel='canonical' href='https://sxttrt.github.io/zh-cn/p/four-wheel-car-modeling/'>
 
-<link rel="stylesheet" href="/scss/style.min.0304c6baf04e01a8fe70693791cb744d56a3578a3120a8796cefc66825aa39c7.css"><meta property='og:title' content="基于实验辨识与仿真的四轮小车运动控制系统设计">
+<link rel="stylesheet" href="/scss/style.min.c91073e1bef24baf3131464aee14e30bb1335275cee51563e55fb2a5e03eca69.css"><meta property='og:title' content="基于实验辨识与仿真的四轮小车运动控制系统设计">
 <meta property='og:description' content="四轮小车实验建模项目完整记录，含开环系统搭建、二阶传递函数建模、Simulink仿真验证及Arduino PID闭环控制部署">
-<meta property='og:url' content='http://localhost:1313/zh-cn/p/four-wheel-car-modeling/'>
+<meta property='og:url' content='https://sxttrt.github.io/zh-cn/p/four-wheel-car-modeling/'>
 <meta property='og:site_name' content='刘承韬'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-06-01T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-06-01T00:00:00&#43;00:00'/><meta property='og:image' content='http://localhost:1313/four-wheel-car/fengmian.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-06-01T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-06-01T00:00:00&#43;00:00'/><meta property='og:image' content='https://sxttrt.github.io/four-wheel-car/fengmian.png' />
 <meta name="twitter:title" content="基于实验辨识与仿真的四轮小车运动控制系统设计">
 <meta name="twitter:description" content="四轮小车实验建模项目完整记录，含开环系统搭建、二阶传递函数建模、Simulink仿真验证及Arduino PID闭环控制部署"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='http://localhost:1313/four-wheel-car/fengmian.png' />
+    <meta name="twitter:image" content='https://sxttrt.github.io/four-wheel-car/fengmian.png' />
     <link rel="shortcut icon" href="/favicon.ico" />
-
-  
-
 
     </head>
     <body class="
@@ -62,7 +59,7 @@
                     
                     
                         
-                        <img src="/img/avatar_hu2071873778164182045.png" width="300"
+                        <img src="/img/avatar_hu_5fea35c5e8a8c4ea.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -115,45 +112,6 @@
         </ol><ol class="menu" id="main-menu">
         
         
-        
-        <li >
-            <a href='/zh-cn/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <polyline points="5 12 3 12 12 3 21 12 19 12" />
-  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
-  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
-</svg>
-
-
-
-                
-                <span>主页</span>
-            </a>
-        </li>
-        
-        
-        <li >
-            <a href='/zh-cn/%E5%85%B3%E4%BA%8E/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="7" r="4" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-</svg>
-
-
-
-                
-                <span>关于</span>
-            </a>
-        </li>
-        
         <li class="menu-bottom-section">
             <ol class="menu">
                     
@@ -171,9 +129,9 @@
 
                             <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
                                 
-                                    <option value="http://localhost:1313/" >English</option>
+                                    <option value="https://sxttrt.github.io/en/" >English</option>
                                 
-                                    <option value="http://localhost:1313/zh-cn/" selected>简体中文</option>
+                                    <option value="https://sxttrt.github.io/zh-cn/" selected>简体中文</option>
                                 
                             </select>
                         </li>
@@ -333,38 +291,38 @@
     
     <h2 id="一项目核心信息">一、项目核心信息
 </h2><div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>信息类别</th>
-<th>具体内容</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>项目名称</strong></td>
-<td>四轮小车的实验建模</td>
-</tr>
-<tr>
-<td><strong>负责角色</strong></td>
-<td>项目负责人</td>
-</tr>
-<tr>
-<td><strong>项目周期</strong></td>
-<td>2024年03月-2024年05月</td>
-</tr>
-<tr>
-<td><strong>核心成员</strong></td>
-<td>刘承韬（本人）、吴丰杨</td>
-</tr>
-<tr>
-<td><strong>核心任务</strong></td>
-<td>1. 开环控制系统搭建与数据采集<br>2. 开环模型实验辨识<br>3. Simulink仿真验证与PID调优<br>4. Arduino PID闭环控制部署</td>
-</tr>
-<tr>
-<td><strong>关键工具</strong></td>
-<td>Arduino IDE（控制编程）、MATLAB（系统辨识）、Simulink（仿真调优）</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>信息类别</th>
+          <th>具体内容</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>项目名称</strong></td>
+          <td>四轮小车的实验建模</td>
+      </tr>
+      <tr>
+          <td><strong>负责角色</strong></td>
+          <td>项目负责人</td>
+      </tr>
+      <tr>
+          <td><strong>项目周期</strong></td>
+          <td>2024年03月-2024年05月</td>
+      </tr>
+      <tr>
+          <td><strong>核心成员</strong></td>
+          <td>刘承韬（本人）、吴丰杨</td>
+      </tr>
+      <tr>
+          <td><strong>核心任务</strong></td>
+          <td>1. 开环控制系统搭建与数据采集<br>2. 开环模型实验辨识<br>3. Simulink仿真验证与PID调优<br>4. Arduino PID闭环控制部署</td>
+      </tr>
+      <tr>
+          <td><strong>关键工具</strong></td>
+          <td>Arduino IDE（控制编程）、MATLAB（系统辨识）、Simulink（仿真调优）</td>
+      </tr>
+  </tbody>
 </table></div>
 <h2 id="二项目背景与目标">二、项目背景与目标
 </h2><h3 id="1-项目背景">1. 项目背景

@@ -2,125 +2,91 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/zh-cn/</loc>
+    <loc>https://sxttrt.github.io/zh-cn/post/</loc>
+    <lastmod>2025-10-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://sxttrt.github.io/zh-cn/tags/</loc>
     <lastmod>2025-10-16T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/"
+                href="https://sxttrt.github.io/en/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="http://localhost:1313/zh-cn/"
+                href="https://sxttrt.github.io/zh-cn/tags/"
                 />
   </url><url>
-    <loc>http://localhost:1313/zh-cn/post/</loc>
+    <loc>https://sxttrt.github.io/zh-cn/tags/%E6%88%90%E6%9E%9C%E6%B1%87%E6%80%BB/</loc>
+    <lastmod>2025-10-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://sxttrt.github.io/zh-cn/tags/%E7%AB%9E%E8%B5%9B/</loc>
+    <lastmod>2025-10-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://sxttrt.github.io/zh-cn/tags/%E7%A7%91%E7%A0%94/</loc>
+    <lastmod>2025-10-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://sxttrt.github.io/zh-cn/</loc>
     <lastmod>2025-10-16T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/post/"
+                href="https://sxttrt.github.io/en/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="http://localhost:1313/zh-cn/post/"
+                href="https://sxttrt.github.io/zh-cn/"
                 />
   </url><url>
-    <loc>http://localhost:1313/zh-cn/tags/</loc>
-    <lastmod>2025-10-16T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="http://localhost:1313/zh-cn/tags/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/zh-cn/tags/%E6%88%90%E6%9E%9C%E6%B1%87%E6%80%BB/</loc>
+    <loc>https://sxttrt.github.io/zh-cn/p/%E6%88%91%E7%9A%84%E7%A7%91%E7%A0%94%E4%B8%8E%E7%AB%9E%E8%B5%9B%E6%88%90%E6%9E%9C%E6%80%BB%E8%A7%88/</loc>
     <lastmod>2025-10-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/zh-cn/tags/%E7%AB%9E%E8%B5%9B/</loc>
-    <lastmod>2025-10-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/zh-cn/tags/%E7%A7%91%E7%A0%94/</loc>
-    <lastmod>2025-10-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/zh-cn/p/%E6%88%91%E7%9A%84%E7%A7%91%E7%A0%94%E4%B8%8E%E7%AB%9E%E8%B5%9B%E6%88%90%E6%9E%9C%E6%80%BB%E8%A7%88/</loc>
-    <lastmod>2025-10-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/zh-cn/categories/</loc>
+    <loc>https://sxttrt.github.io/zh-cn/categories/</loc>
     <lastmod>2025-06-20T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/categories/"
+                href="https://sxttrt.github.io/en/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="http://localhost:1313/zh-cn/categories/"
+                href="https://sxttrt.github.io/zh-cn/categories/"
                 />
   </url><url>
-    <loc>http://localhost:1313/zh-cn/p/rl-control-project/</loc>
+    <loc>https://sxttrt.github.io/zh-cn/p/rl-control-project/</loc>
     <lastmod>2025-06-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/zh-cn/categories/%E9%A1%B9%E7%9B%AE%E6%88%90%E6%9E%9C/</loc>
+    <loc>https://sxttrt.github.io/zh-cn/categories/%E9%A1%B9%E7%9B%AE%E6%88%90%E6%9E%9C/</loc>
     <lastmod>2025-06-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/zh-cn/p/painting-robot/</loc>
+    <loc>https://sxttrt.github.io/zh-cn/p/painting-robot/</loc>
     <lastmod>2025-06-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/zh-cn/p/competition-mei/</loc>
+    <loc>https://sxttrt.github.io/zh-cn/p/competition-mei/</loc>
     <lastmod>2025-01-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/zh-cn/categories/%E7%AB%9E%E8%B5%9B%E6%88%90%E6%9E%9C/</loc>
+    <loc>https://sxttrt.github.io/zh-cn/categories/%E7%AB%9E%E8%B5%9B%E6%88%90%E6%9E%9C/</loc>
     <lastmod>2025-01-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/zh-cn/p/ur-robot/</loc>
+    <loc>https://sxttrt.github.io/zh-cn/p/ur-robot/</loc>
     <lastmod>2024-12-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/zh-cn/p/gomoku-recognition/</loc>
+    <loc>https://sxttrt.github.io/zh-cn/p/gomoku-recognition/</loc>
     <lastmod>2024-12-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/zh-cn/categories/%E7%A7%91%E7%A0%94%E9%A1%B9%E7%9B%AE/</loc>
+    <loc>https://sxttrt.github.io/zh-cn/categories/%E7%A7%91%E7%A0%94%E9%A1%B9%E7%9B%AE/</loc>
     <lastmod>2024-12-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/zh-cn/p/competition-dian/</loc>
+    <loc>https://sxttrt.github.io/zh-cn/p/competition-dian/</loc>
     <lastmod>2024-12-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/zh-cn/p/ai-research/</loc>
+    <loc>https://sxttrt.github.io/zh-cn/p/ai-research/</loc>
     <lastmod>2024-11-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/zh-cn/p/four-wheel-car-modeling/</loc>
+    <loc>https://sxttrt.github.io/zh-cn/p/four-wheel-car-modeling/</loc>
     <lastmod>2024-06-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/zh-cn/page/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/page/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="http://localhost:1313/zh-cn/page/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/zh-cn/%E5%85%B3%E4%BA%8E/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/about/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="http://localhost:1313/zh-cn/%E5%85%B3%E4%BA%8E/"
-                />
   </url>
 </urlset>
