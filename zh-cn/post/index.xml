@@ -61,6 +61,431 @@
 </description>
         </item>
         <item>
+        <title>固高科技实习报告：基于运动控制技术的PCB打孔机系统开发</title>
+        <link>https://sxttrt.github.io/zh-cn/p/googoltech-internship/</link>
+        <pubDate>Tue, 19 Aug 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://sxttrt.github.io/zh-cn/p/googoltech-internship/</guid>
+        <description>&lt;img src="https://sxttrt.github.io/internship/fengmian.png" alt="Featured image of post 固高科技实习报告：基于运动控制技术的PCB打孔机系统开发" /&gt;&lt;!-- MathJax配置（用于渲染技术公式） --&gt;
+&lt;script src=&#34;https://polyfill.io/v3/polyfill.min.js?features=es6&#34;&gt;&lt;/script&gt;
+&lt;script id=&#34;MathJax-script&#34; async src=&#34;https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js&#34;&gt;&lt;/script&gt;
+&lt;script&gt;
+MathJax.config = {
+  tex: {
+    inlineMath: [[&#39;$&#39;, &#39;$&#39;], [&#39;\\(&#39;, &#39;\\)&#39;]],
+    displayMath: [[&#39;$$&#39;, &#39;$$&#39;], [&#39;\\[&#39;, &#39;\\]&#39;]],
+    processEscapes: true
+  },
+  svg: {
+    fontCache: &#39;global&#39;
+  }
+};
+&lt;/script&gt;
+&lt;h2 id=&#34;一实习核心信息&#34;&gt;一、实习核心信息
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;信息类别&lt;/th&gt;
+          &lt;th&gt;具体内容&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;实习人员&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;刘承韬&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;学 号&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;12212708&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;企业名称&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;固高科技股份有限公司（股票代码：301510）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;实习周期&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;2025年7月17日 - 2025年8月19日&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;实习平台&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;固高创工场（PBL项目式学习平台）&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;核心项目&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;基于固高运动控制平台的PCB三坐标打孔机系统集成与多模式控制&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;关键工具&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;固高GUS控制器、GSHD伺服驱动器、OtoStudio编程环境、Janus低代码平台、DriverStudio调试软件、EtherCAT总线&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;二背景分析&#34;&gt;二、背景分析
+&lt;/h2&gt;&lt;h3 id=&#34;1-行业背景&#34;&gt;1. 行业背景
+&lt;/h3&gt;&lt;p&gt;随着“中国制造2025”战略深入推进，我国制造业正加速向数字化、网络化、智能化转型。运动控制技术作为工业自动化的“大脑与神经中枢”，广泛应用于机器人、数控机床、半导体设备等关键领域。然而，该领域高端市场长期被国外厂商垄断，实现核心技术自主可控与国产化替代，已成为保障产业链安全、提升高端装备竞争力的迫切需求。&lt;/p&gt;
+&lt;h3 id=&#34;2-公司背景&#34;&gt;2. 公司背景
+&lt;/h3&gt;&lt;p&gt;固高科技由香港科技大学李泽湘、高秉强、吴宏三位教授于1999年联合创办，是国内运动控制领域领军企业与平台型公司。作为国家级高新技术企业，公司专注于运动控制、伺服驱动、机器视觉与工业网络等核心技术研发，已成为国内高端装备制造商核心控制部件国产替代的首选品牌，为我国装备制造业自主创新提供关键支撑。&lt;/p&gt;
+&lt;h3 id=&#34;3-项目背景&#34;&gt;3. 项目背景
+&lt;/h3&gt;&lt;p&gt;为破解高端装备行业理论与实践脱节、工程人才短缺的难题，固高科技创立“固高创工场”，采用PBL（Project-Based Learning）项目式学习模式，以来自工业一线的真实项目为载体，构建“形似-神似-优化-超越”的进阶学习路径。本项目依托该平台，通过一个月沉浸式实践，深度参与机电系统全流程开发，掌握运动控制技术工程化应用能力。&lt;/p&gt;
+&lt;h3 id=&#34;4-技术背景&#34;&gt;4. 技术背景
+&lt;/h3&gt;&lt;p&gt;项目基于固高自主构建的完整技术生态，核心包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;运动控制器：执行复杂路径规划与多轴协调控制算法，为系统核心；&lt;/li&gt;
+&lt;li&gt;伺服驱动器：接收控制指令，高精度驱动电机执行运动；&lt;/li&gt;
+&lt;li&gt;工业现场总线（gLink-II）：提供高速稳定通信，同步精度达100ns，支持数据冗余传输；&lt;/li&gt;
+&lt;li&gt;开发工具链：OtoStudio集成开发环境（支持ST语言编程）、Janus低代码平台（可视化开发）、DriverStudio伺服调试软件。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;三任务概述&#34;&gt;三、任务概述
+&lt;/h2&gt;&lt;h3 id=&#34;1-项目简介&#34;&gt;1. 项目简介
+&lt;/h3&gt;&lt;p&gt;本项目旨在基于固高运动控制平台，独立完成PCB三坐标打孔机的机电系统集成、工艺流程设计与调试优化。该设备通过X、Y、Z三轴精密运动实现定位与打孔操作，是理解运动控制技术应用的典型教学载体与工业实践项目，涵盖机械结构、电气系统、控制逻辑全维度开发。&lt;/p&gt;
+&lt;h3 id=&#34;2-核心任务与要求&#34;&gt;2. 核心任务与要求
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;机械结构认知&lt;/strong&gt;：深入理解三坐标打孔机机械本体（机架、三轴模组、电机、打孔执行机构），分析运动原理与负载特性；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;电气系统集成&lt;/strong&gt;：完成电气图设计，正确连接控制器、驱动器、电机、传感器等元件，构建完整硬件系统；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;信号逻辑分析&lt;/strong&gt;：定义X/Y/Z轴控制信号（使能、报警、位置指令）与IO信号（限位、原点检测、打孔启动），形成完整信号列表；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;工艺流程设计&lt;/strong&gt;：覆盖“待机→回原点→精确定位→打孔加工→循环/结束”全环节，加入安全保护（急停、超程）与特色功能（多点连续打孔）；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;双模式控制实现&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;低代码方式：通过Janus平台可视化拖拽功能块，快速实现控制逻辑；&lt;/li&gt;
+&lt;li&gt;ST语言方式：通过OtoStudio平台编写程序，实现复杂底层逻辑开发。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;3-预期成果&#34;&gt;3. 预期成果
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;可运行物理样机：调试完成能自动精准执行打孔任务的三轴运动控制装置；&lt;/li&gt;
+&lt;li&gt;完整实习报告：总结设计、集成与调试全流程，含技术细节与问题解决方案；&lt;/li&gt;
+&lt;li&gt;项目展架素材：梳理项目原理、技术亮点与实现成果，用于展示交流；&lt;/li&gt;
+&lt;li&gt;结业认证：通过固高创工场考评，获取实习证明与培训结业证书。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;四技术路线及解决方案&#34;&gt;四、技术路线及解决方案
+&lt;/h2&gt;&lt;h3 id=&#34;任务一固高科技驱控产品系统化学习与认知&#34;&gt;任务一：固高科技驱控产品系统化学习与认知
+&lt;/h3&gt;&lt;h4 id=&#34;1-核心知识体系&#34;&gt;1. 核心知识体系
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;产品架构全局认知&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;四大产品线逻辑：运动控制器（插卡式/嵌入式）→ 驱控一体（拿云/GTSD系列）→ 驱动器（伺服/步进）→ 软件平台（OtoStudio/Janus）；&lt;/li&gt;
+&lt;li&gt;技术迭代路径：从分散控制（如GTS卡）到高度集成（拿云六轴一体机），体现“核心零部件→智能装备”演进逻辑。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;关键技术原理&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;gLink-II千兆等环网：同步精度100ns（优于EtherCAT的1ms级），支持断线冗余运行；&lt;/li&gt;
+&lt;li&gt;核心运动算法：PSO（位置同步输出，实现2μm等间距打点）、5轴RTCP（空间刀具补偿）；&lt;/li&gt;
+&lt;li&gt;产业应用场景：半导体封装（GSN控制器实现±3μm轮廓精度）、教学装备（多自由度平台集成视觉+运动控制）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;2-工具链实践能力&#34;&gt;2. 工具链实践能力
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;OtoStudio：用ST语言编写底层运动逻辑（如回原点流程）；&lt;/li&gt;
+&lt;li&gt;Janus低代码平台：图形化拖拽生成工艺流程（如自动打孔循环）；&lt;/li&gt;
+&lt;li&gt;DriverStudio：伺服参数自整定（振动抑制、增益调整）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;3-产品学习成果展示&#34;&gt;3. 产品学习成果展示
+&lt;/h4&gt;&lt;div style=&#34;display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 20px 0;&#34;&gt;
+  &lt;div style=&#34;flex: 1 1 80%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/internship/图1.png&#34; alt=&#34;固高驱控产品体系&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;图1：固高科技驱控产品体系与关键技术&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 id=&#34;任务二机电特性匹配技术&#34;&gt;任务二：机电特性匹配技术
+&lt;/h3&gt;&lt;h4 id=&#34;1-核心匹配原则&#34;&gt;1. 核心匹配原则
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;四大匹配原则&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;功率匹配：驱动系统最大功率≥负载峰值功率的1.5-2倍，避免电机过载；&lt;/li&gt;
+&lt;li&gt;惯量匹配：负载惯量与电机转子惯量比值≤3（精密设备≤1），防止低频振荡（比值＞5时响应延迟增加300%）；&lt;/li&gt;
+&lt;li&gt;速度匹配：电机额定转速≥负载最高转速×传动比，避免高速失步；&lt;/li&gt;
+&lt;li&gt;精度匹配：编码器分辨率优于目标精度3倍以上（如±0.01mm需17位编码器）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;核心计算逻辑&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;惯量折算：$等效惯量 = 负载惯量 + (电机转子惯量 / 减速比²)$；&lt;/li&gt;
+&lt;li&gt;转矩需求：$峰值转矩 = 等效惯量×最大加速度 + 摩擦转矩$。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;实验验证&lt;/strong&gt;：通过调整配重块改变负载惯量，观察系统响应特性，验证匹配效果。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;任务三伺服驱动系统调试实践&#34;&gt;任务三：伺服驱动系统调试实践
+&lt;/h3&gt;&lt;h4 id=&#34;1-调试工具与目标&#34;&gt;1. 调试工具与目标
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;工具：DriverStudio软件，监控电流环（Id/Idr）、速度环（Vel）、位置环（Perr）曲线；&lt;/li&gt;
+&lt;li&gt;目标：2000rpm转速下，30ms内将位置误差整定至≤0.1°。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;根据你提供的截图信息，补充完整后的关键参数配置表格如下：&lt;/p&gt;
+&lt;h4 id=&#34;2-关键参数配置&#34;&gt;2. 关键参数配置
+&lt;/h4&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;控制环&lt;/th&gt;
+          &lt;th&gt;参数名称&lt;/th&gt;
+          &lt;th&gt;配置值&lt;/th&gt;
+          &lt;th&gt;作用说明&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;位置环&lt;/td&gt;
+          &lt;td&gt;位置环增益（FnP）&lt;/td&gt;
+          &lt;td&gt;30.0 Hz&lt;/td&gt;
+          &lt;td&gt;提升定位响应速度&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;位置环&lt;/td&gt;
+          &lt;td&gt;FIR滤波器启用&lt;/td&gt;
+          &lt;td&gt;已启用&lt;/td&gt;
+          &lt;td&gt;优化位置环控制信号滤波效果&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;位置环&lt;/td&gt;
+          &lt;td&gt;位置环平滑时间&lt;/td&gt;
+          &lt;td&gt;2.00 ms&lt;/td&gt;
+          &lt;td&gt;消除位置环控制信号高频噪声&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;速度环&lt;/td&gt;
+          &lt;td&gt;速度环增益（FnV）&lt;/td&gt;
+          &lt;td&gt;120 Hz&lt;/td&gt;
+          &lt;td&gt;抑制速度波动，提升速度稳定性&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;速度环&lt;/td&gt;
+          &lt;td&gt;速度环平滑时间（TVs）&lt;/td&gt;
+          &lt;td&gt;5.00 ms&lt;/td&gt;
+          &lt;td&gt;平滑速度环控制信号&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;速度环&lt;/td&gt;
+          &lt;td&gt;速度环带阻滤波器-中心频率&lt;/td&gt;
+          &lt;td&gt;1201.0 Hz&lt;/td&gt;
+          &lt;td&gt;定位机械谐振对应的频段&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;速度环&lt;/td&gt;
+          &lt;td&gt;速度环带阻滤波器-滤波器宽度&lt;/td&gt;
+          &lt;td&gt;800&lt;/td&gt;
+          &lt;td&gt;覆盖谐振频率的区间范围&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;电流环&lt;/td&gt;
+          &lt;td&gt;电流环带宽（FnC）&lt;/td&gt;
+          &lt;td&gt;1000 Hz&lt;/td&gt;
+          &lt;td&gt;增强电流环响应快速性&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;电流环&lt;/td&gt;
+          &lt;td&gt;电流环平滑时间（TCs）&lt;/td&gt;
+          &lt;td&gt;600 μs&lt;/td&gt;
+          &lt;td&gt;平滑电流环控制信号&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&#34;3-调试成果与能力提升&#34;&gt;3. 调试成果与能力提升
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;滤波器应用：电流环输入滤波器减少50%+高频毛刺，编码器反馈滤波器避免震荡；&lt;/li&gt;
+&lt;li&gt;前馈优化：加速度前馈将整定时间从30ms缩短至22ms，速度前馈降低40%低速爬行误差；&lt;/li&gt;
+&lt;li&gt;问题解决：通过FFT分析识别2.4kHz机械谐振点，配置陷波器压制振幅；3000rpm工况下误差≤0.3°。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;任务四电气元件认知与系统搭建&#34;&gt;任务四：电气元件认知与系统搭建
+&lt;/h3&gt;&lt;h4 id=&#34;1-核心电气元件学习&#34;&gt;1. 核心电气元件学习
+&lt;/h4&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;元件类型&lt;/th&gt;
+          &lt;th&gt;型号/系列&lt;/th&gt;
+          &lt;th&gt;功能定位&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;运动控制器&lt;/td&gt;
+          &lt;td&gt;固高GUS&lt;/td&gt;
+          &lt;td&gt;系统指令中枢，集成多轴控制、IO处理与总线通信&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;伺服驱动器&lt;/td&gt;
+          &lt;td&gt;GSHD-200&lt;/td&gt;
+          &lt;td&gt;接收控制指令，实现电流/速度/位置三环闭环控制&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;开关电源&lt;/td&gt;
+          &lt;td&gt;明纬EDR-150-24&lt;/td&gt;
+          &lt;td&gt;转换220V交流为24V直流，为控制器、IO模块供电&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;工业总线&lt;/td&gt;
+          &lt;td&gt;EtherCAT/gLink-II&lt;/td&gt;
+          &lt;td&gt;保障高速同步通信，支持抗干扰设计&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;传感器&lt;/td&gt;
+          &lt;td&gt;光电传感器/压力传感器&lt;/td&gt;
+          &lt;td&gt;实现限位保护、位置检测、压力监测&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&#34;2-电气系统搭建成果&#34;&gt;2. 电气系统搭建成果
+&lt;/h4&gt;  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/internship/图2.png&#34; alt=&#34;电气系统原理图&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;图2：PCB打孔机电气系统原理图&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/internship/图3.png&#34; alt=&#34;电气柜实物搭建&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;图3：电气柜实物搭建（上层：控制器/IO模块；中层：电源/开关；下层：驱动器/电机）&lt;/p&gt;
+  &lt;/div&gt;
+&lt;h3 id=&#34;任务五低代码平台应用与流程实现&#34;&gt;任务五：低代码平台应用与流程实现
+&lt;/h3&gt;&lt;h4 id=&#34;1-核心知识与技术路线&#34;&gt;1. 核心知识与技术路线
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;平台功能：通过可视化拖拽功能块（点位运动、延时、判断）实现控制逻辑，支持变量定义与IO绑定；&lt;/li&gt;
+&lt;li&gt;流程设计逻辑：按“系统启动→夹紧定位→三轴回零→精确定位→打孔加工→结束”拆解，设置判断节点与异常报警；&lt;/li&gt;
+&lt;li&gt;IO信号表：梳理18路IO信号（DI/DO），明确功能与硬件接口，为信号映射提供依据。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-低代码实现成果&#34;&gt;2. 低代码实现成果
+&lt;/h4&gt;&lt;div style=&#34;display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 20px 0;&#34;&gt;
+  &lt;!-- 第一张图片 --&gt;
+  &lt;div style=&#34;flex: 1 1 45%; text-align: center; min-width: 300px;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/internship/图51.png&#34; alt=&#34;低代码控制流程图（左）&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;!-- 第二张图片 --&gt;
+  &lt;div style=&#34;flex: 1 1 45%; text-align: center; min-width: 300px;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/internship/图52.png&#34; alt=&#34;低代码控制流程图（右）&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;图4：PCB打孔机低代码控制流程图（含安全保护与异常分支）&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div style=&#34;display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 20px 0;&#34;&gt;
+  &lt;div style=&#34;flex: 1 1 80%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/internship/图6.png&#34; alt=&#34;低代码控制流程图&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;图5：低代码具体实现&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 id=&#34;任务六otostudio编程与st语言基础&#34;&gt;任务六：OtoStudio编程与ST语言基础
+&lt;/h3&gt;&lt;h4 id=&#34;1-编程环境与语言特性&#34;&gt;1. 编程环境与语言特性
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;OtoStudio：基于CODESYS V2.3定制，兼容IEC61131-3标准，适配固高驱控设备；&lt;/li&gt;
+&lt;li&gt;ST语言特性：语法类似Pascal，支持变量声明（BOOL/INT/LREAL/MC_AXIS_REF）、流程控制（IF-THEN-ELSE/WHILE）与运动函数块调用。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-核心程序示例轴控制逻辑&#34;&gt;2. 核心程序示例（轴控制逻辑）
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-st&#34; data-lang=&#34;st&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nc&#34;&gt;PROGRAM&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;AxisControl&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;VAR&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;Axis1:&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;MC_AXIS_REF&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;          &lt;span class=&#34;nf&#34;&gt;//&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;轴引用变量&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;Position:&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;LREAL&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;500.0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;    &lt;span class=&#34;nf&#34;&gt;//&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;目标位置（单位：&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;mm&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;Velocity:&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;LREAL&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;100.0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;    &lt;span class=&#34;nf&#34;&gt;//&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;运动速度（单位：&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;mm&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;Acceleration:&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;LREAL&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;500.0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;//&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;加速度（单位：&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;mm&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;²）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;Deceleration:&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;LREAL&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;500.0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;//&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;减速度（单位：&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;mm&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;²）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;Start_Sig:&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;BOOL&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;FALSE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;    &lt;span class=&#34;nf&#34;&gt;//&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;启动信号（&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;DI输入&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;Done_Sig:&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;BOOL&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;FALSE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;    &lt;span class=&#34;nf&#34;&gt;//&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;完成信号（&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;DO输出&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;END_VAR&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;//&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;轴使能与回零&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nc&#34;&gt;IF&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;Start_Sig&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;AND&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;NOT&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;Axis1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;Status&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;Enabled&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;THEN&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;MC_Enable&lt;/span&gt;(&lt;span class=&#34;nc&#34;&gt;Axis1&lt;/span&gt;)&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;           &lt;span class=&#34;nf&#34;&gt;//&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;轴使能函数块&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nc&#34;&gt;MC_Home&lt;/span&gt;(&lt;span class=&#34;nc&#34;&gt;Axis1&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;TRUE&lt;/span&gt;)&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;       &lt;span class=&#34;nf&#34;&gt;//&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;轴回零函数块&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;END_IF&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;//&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;绝对位置运动&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nc&#34;&gt;IF&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;Axis1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;Status&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;Homed&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;AND&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;NOT&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;Done_Sig&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;THEN&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;MC_MoveAbsolute&lt;/span&gt;(&lt;span class=&#34;nc&#34;&gt;Axis1&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Position&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Velocity&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Acceleration&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Deceleration&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;FALSE&lt;/span&gt;)&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;IF&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;Axis1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;Status&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;OperationComplete&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;THEN&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;Done_Sig&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;TRUE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;         &lt;span class=&#34;nf&#34;&gt;//&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;运动完成置位&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nc&#34;&gt;END_IF&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;END_IF&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;3-可视化界面成果&#34;&gt;3. 可视化界面成果
+&lt;/h4&gt;&lt;div style=&#34;display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 20px 0;&#34;&gt;
+  &lt;div style=&#34;flex: 1 1 60%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/internship/图7.png&#34; alt=&#34;HMI可视化操作界面&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;图6：HMI可视化操作界面（支持轴位置监控与手动控制）&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 id=&#34;任务七实物搭建与多模式控制验证&#34;&gt;任务七：实物搭建与多模式控制验证
+&lt;/h3&gt;&lt;h4 id=&#34;1-实物搭建流程&#34;&gt;1. 实物搭建流程
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;机械组装：按“底座→X轴→Y轴→Z轴”顺序拼装，校准平行度与垂直度，确保重复定位精度≤0.02mm；&lt;/li&gt;
+&lt;li&gt;电气集成：按原理图接线，保障动力线与信号线间距≥10cm，屏蔽线接地抗干扰；&lt;/li&gt;
+&lt;li&gt;控制验证：分别通过低代码与ST语言实现“三轴回零→点位移动→电机启停”逻辑。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;2-实物成果与验证效果&#34;&gt;2. 实物成果与验证效果
+&lt;/h4&gt;  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/internship/图8.png&#34; alt=&#34;三轴运动控制实物&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;图6：三轴运动控制实物装置（主视图/侧视图）&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/internship/图9.png&#34; alt=&#34;功能验证效果&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;图7：模拟打孔点位精度验证（误差≤0.02mm）&lt;/p&gt;
+  &lt;/div&gt;
+&lt;h2 id=&#34;五经验总结&#34;&gt;五、经验总结
+&lt;/h2&gt;&lt;h3 id=&#34;1-技术知识与技能提升&#34;&gt;1. 技术知识与技能提升
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;运动控制理论落地&lt;/strong&gt;：掌握机电四大匹配原则的工程化应用，能通过惯量折算、转矩计算指导驱动系统选型，解决低频振荡、定位偏差等实际问题；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;工业工具链精通&lt;/strong&gt;：熟练使用OtoStudio（ST语言编程）、Janus（低代码开发）、DriverStudio（伺服调试）等专业工具，具备电气原理图设计与实物搭建能力；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;问题解决能力强化&lt;/strong&gt;：建立“现象分析→原因假设→逐一验证→方案实施”的工程化流程，成功解决总线通信中断、电机抖动、定位误差等典型问题。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-职业素养与工作方法&#34;&gt;2. 职业素养与工作方法
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;模块化思维&lt;/strong&gt;：学会将复杂项目拆解为机械、电气、控制等模块，分阶段调试验证，降低问题排查难度；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;团队协作意识&lt;/strong&gt;：在多模块协同开发中，体会“分工明确+文档同步”的重要性，通过《调试日志》《问题复盘文档》保障信息传递；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;工程化思维&lt;/strong&gt;：理解工业设备开发的约束条件（场地、部件兼容性），学会在资源受限场景下聚焦核心功能，确保阶段性成果价值。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;3-对个人与职业发展的影响&#34;&gt;3. 对个人与职业发展的影响
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;行业认知深化&lt;/strong&gt;：明确工业自动化的核心竞争力在于“技术落地能力”，从芯片级驱动技术到产线级系统集成，均需理论与实践深度融合；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;职业方向明确&lt;/strong&gt;：确立“工业软件（低代码/PLC编程）+运动控制技术”的交叉领域发展方向，未来计划深耕工业自动化软件开发与应用，为制造业智能化升级贡献力量。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;六后记&#34;&gt;六、后记
+&lt;/h2&gt;&lt;p&gt;本次固高科技暑假实习是一次将自动化理论与工业实践深度融合的宝贵经历。感谢固高科技提供的先进技术平台与实践机会，让我在运动控制、电气集成、工业软件等领域积累了扎实的工程经验；也感谢企业导师与学校指导老师的耐心指导，在技术攻关与职业规划上给予诸多启发。&lt;/p&gt;
+&lt;p&gt;通过一个月的沉浸式实践，我不仅提升了技术实操能力，更建立了工业级项目的开发思维与工程素养。未来，我将带着这份实践积累，在智能制造赛道持续探索，努力成长为兼具理论深度与落地能力的技术人才。&lt;/p&gt;
+&lt;h3 id=&#34;实习认证材料&#34;&gt;实习认证材料
+&lt;/h3&gt;&lt;div style=&#34;display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 20px 0;&#34;&gt;
+  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/internship/图10.png&#34; alt=&#34;实习证明&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;图8：固高科技实习证明（综合评价：优秀）&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/internship/图11.png&#34; alt=&#34;结业证书&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;图9：固高创工场《机电系统综合应用技术》结业证书&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+```</description>
+        </item>
+        <item>
         <title>基于强化学习的倒立摆控制与双足机器人系统构建</title>
         <link>https://sxttrt.github.io/zh-cn/p/rl-control-project/</link>
         <pubDate>Fri, 20 Jun 2025 00:00:00 +0000</pubDate>
