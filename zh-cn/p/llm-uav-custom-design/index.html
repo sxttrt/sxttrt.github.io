@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="融合大语言模型（LLM）与智能制造技术，实现无人机机架自动化生成与动力模块定制化设计，完成从建模、制造到飞行验证的全流程开发">
+<title>基于大语言模型的多旋翼无人机定制化设计与制造</title>
+
+<link rel='canonical' href='https://sxttrt.github.io/zh-cn/p/llm-uav-custom-design/'>
+
+<link rel="stylesheet" href="/scss/style.min.c91073e1bef24baf3131464aee14e30bb1335275cee51563e55fb2a5e03eca69.css"><meta property='og:title' content="基于大语言模型的多旋翼无人机定制化设计与制造">
+<meta property='og:description' content="融合大语言模型（LLM）与智能制造技术，实现无人机机架自动化生成与动力模块定制化设计，完成从建模、制造到飞行验证的全流程开发">
+<meta property='og:url' content='https://sxttrt.github.io/zh-cn/p/llm-uav-custom-design/'>
+<meta property='og:site_name' content='刘承韬'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-06-05T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-06-05T00:00:00&#43;00:00'/><meta property='og:image' content='https://sxttrt.github.io/uav/fengmian.jpg' />
+<meta name="twitter:title" content="基于大语言模型的多旋翼无人机定制化设计与制造">
+<meta name="twitter:description" content="融合大语言模型（LLM）与智能制造技术，实现无人机机架自动化生成与动力模块定制化设计，完成从建模、制造到飞行验证的全流程开发"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://sxttrt.github.io/uav/fengmian.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/zh-cn/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_4180be05c8c2e7f3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/zh-cn">刘承韬</a></h1>
+            <h2 class="site-description">Liu Chengtao | Undergraduate Works</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://space.bilibili.com/499786362?spm_id_from=333.1007.0.0'
+                        target="_blank"
+                        title="Bilibili"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.0.0-beta2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M488.6 104.1C505.3 122.2 513 143.8 511.9 169.8V372.2C511.5 398.6 502.7 420.3 485.4 437.3C468.2 454.3 446.3 463.2 419.9 464H92.02C65.57 463.2 43.81 454.2 26.74 436.8C9.682 419.4 .7667 396.5 0 368.2V169.8C.7667 143.8 9.682 122.2 26.74 104.1C43.81 87.75 65.57 78.77 92.02 78H121.4L96.05 52.19C90.3 46.46 87.42 39.19 87.42 30.4C87.42 21.6 90.3 14.34 96.05 8.603C101.8 2.868 109.1 0 117.9 0C126.7 0 134 2.868 139.8 8.603L213.1 78H301.1L375.6 8.603C381.7 2.868 389.2 0 398 0C406.8 0 414.1 2.868 419.9 8.603C425.6 14.34 428.5 21.6 428.5 30.4C428.5 39.19 425.6 46.46 419.9 52.19L394.6 78L423.9 78C450.3 78.77 471.9 87.75 488.6 104.1H488.6zM449.8 173.8C449.4 164.2 446.1 156.4 439.1 150.3C433.9 144.2 425.1 140.9 416.4 140.5H96.05C86.46 140.9 78.6 144.2 72.47 150.3C66.33 156.4 63.07 164.2 62.69 173.8V368.2C62.69 377.4 65.95 385.2 72.47 391.7C78.99 398.2 86.85 401.5 96.05 401.5H416.4C425.6 401.5 433.4 398.2 439.7 391.7C446 385.2 449.4 377.4 449.8 368.2L449.8 173.8zM185.5 216.5C191.8 222.8 195.2 230.6 195.6 239.7V273C195.2 282.2 191.9 289.9 185.8 296.2C179.6 302.5 171.8 305.7 162.2 305.7C152.6 305.7 144.7 302.5 138.6 296.2C132.5 289.9 129.2 282.2 128.8 273V239.7C129.2 230.6 132.6 222.8 138.9 216.5C145.2 210.2 152.1 206.9 162.2 206.5C171.4 206.9 179.2 210.2 185.5 216.5H185.5zM377 216.5C383.3 222.8 386.7 230.6 387.1 239.7V273C386.7 282.2 383.4 289.9 377.3 296.2C371.2 302.5 363.3 305.7 353.7 305.7C344.1 305.7 336.3 302.5 330.1 296.2C323.1 289.9 320.7 282.2 320.4 273V239.7C320.7 230.6 324.1 222.8 330.4 216.5C336.7 210.2 344.5 206.9 353.7 206.5C362.9 206.9 370.7 210.2 377 216.5H377z"/></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/sxttrt'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/zh-cn/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/zh-cn/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://sxttrt.github.io/" >English</option>
+                                
+                                    <option value="https://sxttrt.github.io/zh-cn/" selected>简体中文</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#一项目核心信息">一、项目核心信息</a></li>
+    <li><a href="#二项目背景与目标">二、项目背景与目标</a>
+      <ol>
+        <li><a href="#1-项目背景">1. 项目背景</a></li>
+        <li><a href="#2-核心目标">2. 核心目标</a></li>
+      </ol>
+    </li>
+    <li><a href="#三核心任务与进展">三、核心任务与进展</a>
+      <ol>
+        <li><a href="#1-机架设计llm辅助自动化生成">1. 机架设计（LLM辅助自动化生成）</a>
+          <ol>
+            <li><a href="#机架设计成果展示">机架设计成果展示</a></li>
+          </ol>
+        </li>
+        <li><a href="#2-动力模块设计与制造">2. 动力模块设计与制造</a>
+          <ol>
+            <li><a href="#21-机械结构设计solidworks建模">2.1 机械结构设计（SolidWorks建模）</a></li>
+            <li><a href="#动力模块建模成果">动力模块建模成果</a></li>
+            <li><a href="#22-3d打印制造">2.2 3D打印制造</a></li>
+            <li><a href="#3d打印成果预留图片位置">3D打印成果（预留图片位置）</a></li>
+            <li><a href="#23-硬件选型与适配优化">2.3 硬件选型与适配优化</a></li>
+            <li><a href="#硬件适配成果预留图片位置">硬件适配成果（预留图片位置）</a></li>
+            <li><a href="#24-动力模块尺寸与外形优化">2.4 动力模块尺寸与外形优化</a></li>
+          </ol>
+        </li>
+        <li><a href="#3-电控系统开发">3. 电控系统开发</a>
+          <ol>
+            <li><a href="#31-多飞控同步通信设计">3.1 多飞控同步通信设计</a></li>
+            <li><a href="#32-双环pid控制实现">3.2 双环PID控制实现</a></li>
+            <li><a href="#pid参数配置预留图片位置">PID参数配置（预留图片位置）</a></li>
+            <li><a href="#33-传感器数据处理">3.3 传感器数据处理</a></li>
+          </ol>
+        </li>
+        <li><a href="#4-飞行测试与验证">4. 飞行测试与验证</a>
+          <ol>
+            <li><a href="#41-测试目标">4.1 测试目标</a></li>
+            <li><a href="#42-测试结果">4.2 测试结果</a></li>
+            <li><a href="#飞行测试成果预留图片与视频位置">飞行测试成果（预留图片与视频位置）</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#四关键技术实现">四、关键技术实现</a>
+      <ol>
+        <li><a href="#1-llm辅助机架设计流程">1. LLM辅助机架设计流程</a></li>
+        <li><a href="#2-动力系统适配优化">2. 动力系统适配优化</a></li>
+        <li><a href="#3-动力模块尺寸外形优化技术">3. 动力模块尺寸外形优化技术</a></li>
+        <li><a href="#4-多飞控同步控制">4. 多飞控同步控制</a></li>
+      </ol>
+    </li>
+    <li><a href="#五不足与改进展望">五、不足与改进展望</a>
+      <ol>
+        <li><a href="#1-现有不足">1. 现有不足</a></li>
+        <li><a href="#2-改进方向">2. 改进方向</a></li>
+      </ol>
+    </li>
+    <li><a href="#六项目相关学术成果">六、项目相关学术成果</a>
+      <ol>
+        <li>
+          <ol>
+            <li><a href="#论文录用展示">论文录用展示</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#七总结">七、总结</a></li>
+    <li><a href="#八附录预留补充位置">八、附录（预留补充位置）</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/zh-cn/p/llm-uav-custom-design/">
+                
+                    <img src="/uav/fengmian.jpg" loading="lazy" alt="Featured image of post 基于大语言模型的多旋翼无人机定制化设计与制造" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/zh-cn/categories/%E9%A1%B9%E7%9B%AE%E6%88%90%E6%9E%9C/" >
+                项目成果
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/zh-cn/p/llm-uav-custom-design/">基于大语言模型的多旋翼无人机定制化设计与制造</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            融合大语言模型（LLM）与智能制造技术，实现无人机机架自动化生成与动力模块定制化设计，完成从建模、制造到飞行验证的全流程开发
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025-06-05</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <!-- MathJax配置（用于渲染技术公式） -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+MathJax.config = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    processEscapes: true
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<h2 id="一项目核心信息">一、项目核心信息
+</h2><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>信息类别</th>
+          <th>具体内容</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>项目名称</strong></td>
+          <td>基于大语言模型的多旋翼无人机定制化设计与制造</td>
+      </tr>
+      <tr>
+          <td><strong>负责人</strong></td>
+          <td>刘承韬</td>
+      </tr>
+      <tr>
+          <td><strong>项目周期</strong></td>
+          <td>2025年4月 - 2025年6月</td>
+      </tr>
+      <tr>
+          <td><strong>核心分工</strong></td>
+          <td>负责动力模块（机械结构、电控系统、飞控开发）设计与组装，视觉引导装配方案设计，飞行测试与调试</td>
+      </tr>
+      <tr>
+          <td><strong>核心目标</strong></td>
+          <td>1. 利用LLM自动化生成无人机机架，提升设计效率；2. 定制化开发动力模块，确保性能与可靠性；3. 实现多飞控同步控制与稳定飞行；4. 构建定制化无人机自动化设计制造流程</td>
+      </tr>
+      <tr>
+          <td><strong>关键工具</strong></td>
+          <td>SolidWorks（三维建模）、拓竹3D打印机（A1/X1）、STM32开源飞控、无刷电机（A2212系列）、电调（30A）、匿名上位机、Altair Inspire（拓扑优化）、CadQuery（参数化设计）</td>
+      </tr>
+  </tbody>
+</table></div>
+<h2 id="二项目背景与目标">二、项目背景与目标
+</h2><h3 id="1-项目背景">1. 项目背景
+</h3><p>随着无人机应用需求向个性化、定制化方向发展，传统设计制造流程面临效率低、成本高、响应慢等痛点。传统机架设计依赖人工建模，动力模块制造依赖手工装配，流程繁琐且易产生误差，难以快速响应多样化需求。</p>
+<p>本项目创新融合大语言模型（LLM）与智能制造技术：机架设计通过LLM自动化生成，大幅提升设计效率与精度；动力模块因对结构强度和功能性要求更高，采用“人工设计+3D打印”模式，结合视觉引导装配技术，确保模块与机架精准适配，最终构建一套快速响应定制需求的无人机自动化设计制造流程。</p>
+<h3 id="2-核心目标">2. 核心目标
+</h3><ul>
+<li><strong>设计目标</strong>：实现机架LLM自动化生成与动力模块定制化设计，兼顾结构紧凑性与功能完整性；</li>
+<li><strong>制造目标</strong>：通过3D打印完成机架与动力模块壳体制造，确保尺寸精度与结构强度；</li>
+<li><strong>控制目标</strong>：实现多飞控同步通信，基于双环PID控制算法，完成稳定飞行验证；</li>
+<li><strong>流程目标</strong>：打通“LLM设计→3D打印→电控集成→飞行测试”全流程，验证定制化方案可行性。</li>
+</ul>
+<h2 id="三核心任务与进展">三、核心任务与进展
+</h2><h3 id="1-机架设计llm辅助自动化生成">1. 机架设计（LLM辅助自动化生成）
+</h3><p>机架设计由团队成员李培江（论文一作）负责，采用LLM驱动的自动化流程，核心步骤如下：</p>
+<ol>
+<li><strong>需求分析</strong>：通过提示词工程、CoT等技术，将用户需求转化为结构化设计目标，生成拓扑优化初始条件；</li>
+<li><strong>参数化设计</strong>：LLM生成的结构描述语言输入CadQuery，自动化生成四旋翼/六旋翼基础模型；</li>
+<li><strong>拓扑优化</strong>：利用Altair Inspire对机臂等关键部件优化，在保证强度前提下实现轻量化；</li>
+<li><strong>制造输出</strong>：优化后的设计文件用于3D打印，机架尺寸控制在240mm×240mm左右，适配打印机最大打印范围。</li>
+</ol>
+<h4 id="机架设计成果展示">机架设计成果展示
+</h4>  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/uav/图1.png" alt="CadQuery生成的机架模型" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666; margin-top: 8px;">图1：CadQuery生成的四旋翼基础模型</p>
+  </div>
+  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/uav/图2.png" alt="Altair Inspire拓扑优化效果" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666; margin-top: 8px;">图2：拓扑优化前后机架结构对比</p>
+  </div>
+<h3 id="2-动力模块设计与制造">2. 动力模块设计与制造
+</h3><p>作为核心负责模块，完成从机械结构、硬件选型到尺寸外形优化的全流程开发：</p>
+<h4 id="21-机械结构设计solidworks建模">2.1 机械结构设计（SolidWorks建模）
+</h4><ul>
+<li>基于电机、电调、电池、STM32飞控板的实际尺寸，完成动力模块外壳三维建模；</li>
+<li>设计考虑安装空间、电线走线、散热结构与壳体强度，底部预留M3螺丝孔位，确保与机架稳定耦合；</li>
+<li>壳体设计以实用性为核心，预留调试空间，方便部件拆装与维护。</li>
+</ul>
+<h4 id="动力模块建模成果">动力模块建模成果
+</h4><div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 20px 0;">
+  <div style="flex: 1 1 80%; text-align: center;">
+    <img src="/uav/图3.png" alt="SolidWorks动力模块建模" style="max-width: 40%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666; margin-top: 8px;">图3：SolidWorks动力模块外壳三维模型</p>
+  </div>
+</div>
+<h4 id="22-3d打印制造">2.2 3D打印制造
+</h4><ul>
+<li>打印设备：拓竹3D打印机A1/X1，切片软件采用Pla Basic；</li>
+<li>打印材料：PLA Basic（热稳定性好、收缩率低、成型精度高，满足原型机力学需求）；</li>
+<li>制造效率：单个动力模块壳体打印时间约2小时，支持高频结构迭代；</li>
+<li>精度控制：打印层厚设置为0.15mm，尺寸误差控制在±0.2mm内，确保与机架适配性。</li>
+</ul>
+<h4 id="3d打印成果预留图片位置">3D打印成果（预留图片位置）
+</h4>  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/uav/图4.png" alt="3D打印完成的机架" style="max-width: 60%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666; margin-top: 8px;">图4：3D打印完成的无人机机架和动力模块壳体（优化前）</p>
+  </div>
+<h4 id="23-硬件选型与适配优化">2.3 硬件选型与适配优化
+</h4><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>硬件组件</th>
+          <th>选型型号/参数</th>
+          <th>选型依据与优化说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>电机</td>
+          <td>A2212 1400KV（替换原980KV）</td>
+          <td>原980KV电机适配大尺寸桨叶，新选型更适合7英寸桨叶，11V电压下推力充足，运行稳定</td>
+      </tr>
+      <tr>
+          <td>桨叶</td>
+          <td>7英寸三叶桨（7045）</td>
+          <td>替换原10英寸桨叶，解决机架空间受限问题，三叶桨推力比双叶桨提升20%-30%</td>
+      </tr>
+      <tr>
+          <td>电调</td>
+          <td>30A无刷电调</td>
+          <td>提供足够电流支持，适配A2212电机，避免过载，稳定性强</td>
+      </tr>
+      <tr>
+          <td>飞控板</td>
+          <td>STM32开源飞控（4cm×4cm）</td>
+          <td>支持协议修改与多飞控同步控制，体积小，适配模块化设计</td>
+      </tr>
+      <tr>
+          <td>电池</td>
+          <td>1300mAh 30C 3S/11.1V</td>
+          <td>尺寸小巧（72mm×34mm×21mm），重量轻，放电倍率满足动力需求</td>
+      </tr>
+  </tbody>
+</table></div>
+<h4 id="硬件适配成果预留图片位置">硬件适配成果（预留图片位置）
+</h4><div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 20px 0;">
+  <div style="flex: 1 1 80%; text-align: center;">
+    <img src="/uav/图5.jpg" alt="动力模块硬件集成实物" style="max-width: 60%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666; margin-top: 8px;">图5：动力模块硬件集成完成实物（电机+电调+飞控+电池）</p>
+  </div>
+</div>
+<h4 id="24-动力模块尺寸与外形优化">2.4 动力模块尺寸与外形优化
+</h4><p>针对初始设计中动力模块体积偏大、气动阻力高、空间利用率低的问题，开展专项优化：</p>
+<h5 id="241-优化目标">2.4.1 优化目标
+</h5><ul>
+<li>尺寸优化：将动力模块整体体积从120mm×80mm×60mm压缩至95mm×70mm×50mm（体积缩减约32%）；</li>
+<li>外形优化：采用流线型曲面设计，降低飞行过程中气动阻力；</li>
+<li>结构优化：在保证强度的前提下，通过拓扑优化去除冗余材料，减重约18%。</li>
+</ul>
+<h5 id="242-优化策略">2.4.2 优化策略
+</h5><ol>
+<li><strong>集成化布局</strong>：将电调、飞控板、电池仓集成设计，减少部件间冗余间隙；</li>
+<li><strong>曲面外形设计</strong>：将原方正壳体改为前窄后宽的流线型结构，边缘做圆角过渡（R5mm）；</li>
+<li><strong>拓扑优化减重</strong>：通过Altair Inspire对壳体非受力区域做镂空优化，保留关键承力结构；</li>
+<li><strong>接口适配优化</strong>：调整模块与机架的连接接口，适配优化后的尺寸，保证装配精度。</li>
+</ol>
+<h5 id="243-优化后3d模型展示">2.4.3 优化后3D模型展示
+</h5>  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/uav/图9.png" alt="动力模块优化后3D模型（正视图）" style="max-width: 60%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666; margin-top: 8px;">图6：动力模块优化后3D模型</p>
+  </div>
+<h5 id="244-优化后实物展示">2.4.4 优化后实物展示
+</h5>  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/uav/fengmian.jpg" alt="动力模块优化后实物（整体）" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666; margin-top: 8px;">图8：动力模块优化后实物（整体外观）</p>
+  </div>
+<h3 id="3-电控系统开发">3. 电控系统开发
+</h3><h4 id="31-多飞控同步通信设计">3.1 多飞控同步通信设计
+</h4><ul>
+<li>通信机制：遥控器2.4GHz模块配置为广播模式，同时向4个飞控板发送控制信号；</li>
+<li>优化设计：关闭3个从飞控板的回传信号与ack应答，仅保留主飞控板通信，避免信号冲突；</li>
+<li>控制逻辑：各飞控板根据自身位置角色，将统一控制信号转化为对应电机转速指令，实现协同控制。</li>
+</ul>
+<h4 id="32-双环pid控制实现">3.2 双环PID控制实现
+</h4><ul>
+<li>控制架构：外环（角度环）控制滚转（Roll）、俯仰（Pitch）、偏航（Yaw）姿态；内环（速率环）控制角速度；</li>
+<li>核心算法：四元数+卡尔曼滤波融合MPU6050传感器数据，抑制噪声与漂移，解决欧拉角万向锁问题；</li>
+<li>参数优化：
+<ul>
+<li>初始参数：外环$K_p=7.0$，$K_i=0$，$K_d=0$；内环$K_p=1.7-3.0$，$K_d=0.08$，$K_i=0$；</li>
+<li>优化调整：降低Yaw轴PD增益解决震荡，增大Pitch/Roll轴$K_p$并引入$K_i$，消除静态误差。</li>
+</ul>
+</li>
+</ul>
+<h4 id="pid参数配置预留图片位置">PID参数配置（预留图片位置）
+</h4><div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 20px 0;">
+  <div style="flex: 1 1 60%; text-align: center;">
+    <img src="/uav/图6.png" alt="双环PID参数配置表" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666; margin-top: 8px;">图10：优化前后双环PID参数对比</p>
+  </div>
+</div>
+<h4 id="33-传感器数据处理">3.3 传感器数据处理
+</h4><ul>
+<li>坐标系统一：针对部分模块旋转180°安装导致的坐标轴不一致问题，通过矩阵转换统一X/Y轴方向；</li>
+<li>姿态解算：融合MPU6050角速度与加速度数据，提升姿态解算精度与一致性。</li>
+</ul>
+<h3 id="4-飞行测试与验证">4. 飞行测试与验证
+</h3><h4 id="41-测试目标">4.1 测试目标
+</h4><ul>
+<li>验证无人机起飞能力与姿态响应；</li>
+<li>测试多飞控同步控制效果；</li>
+<li>优化PID参数，解决震荡与偏移问题；</li>
+<li>验证动力模块优化后对飞行性能的提升（续航、机动性）。</li>
+</ul>
+<h4 id="42-测试结果">4.2 测试结果
+</h4><ul>
+<li>动力性能：A2212 1400KV电机+7英寸三叶桨，四电机总推力约2828g，整机质量1300g，推重比2.18，满足稳定飞行需求；</li>
+<li>飞行表现：成功实现首飞，能够响应遥控器指令完成姿态调整，优化后震荡与偏移问题显著改善；</li>
+<li>模块优化收益：动力模块体积缩减32%、减重18%后，无人机续航提升约12%，转向机动性提升8%；</li>
+<li>关键突破：打通“LLM设计→3D打印制造→电控集成→飞行测试”全流程，验证模块化与LLM辅助设计方案可行性。</li>
+</ul>
+<h4 id="飞行测试成果预留图片与视频位置">飞行测试成果（预留图片与视频位置）
+</h4>  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/uav/图11.png" alt="无人机首飞实物" style="max-width: 60%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666; margin-top: 8px;">图11：无人机首飞测试实物图</p>
+  </div>
+<!-- 优化后的视频播放与下载区域 -->
+<div style="text-align: center; margin: 30px 0;">
+  <h4>无人机首飞测试视频</h4>
+  <iframe 
+    src="/uav/视频1.mp4" 
+    width="80%" 
+    height="450px" 
+    style="border: 1px solid #eee; border-radius: 4px; margin-bottom: 15px;"
+    allowfullscreen>
+    您的浏览器不支持iframe播放，请直接下载视频查看
+  </iframe>
+  <!-- 独立的醒目下载链接（适配所有浏览器） -->
+  <div style="margin: 10px 0;">
+    <a href="/uav/视频1.mp4" 
+       target="_blank" 
+       download="无人机首飞测试视频.mp4"  
+       style="display: inline-block; padding: 10px 25px; background: #2188ff; color: #fff; text-decoration: none; border-radius: 6px; font-size: 15px; font-weight: 500;">
+      📥 下载首飞测试视频（MP4格式）
+    </a>
+  </div>
+  <p style="font-size: 14px; color: #666; margin-top: 8px;">视频1：无人机首飞测试完整视频（含姿态调整与稳定性验证）</p>
+</div>
+<h2 id="四关键技术实现">四、关键技术实现
+</h2><h3 id="1-llm辅助机架设计流程">1. LLM辅助机架设计流程
+</h3><p>核心创新点在于将自然语言需求转化为自动化设计输出，形成闭环流程：</p>
+<ol>
+<li>初始输入：接收<strong>用户定制需求</strong>，通过LLM提示词工程/CoT（思维链）技术处理；</li>
+<li>设计生成：基于处理后的需求，生成参数化设计指令，输入CadQuery完成无人机机架自动化建模；</li>
+<li>优化制造：用Altair Inspire对建模结果做拓扑优化，优化后输出文件进行3D打印制造；</li>
+<li>验证闭环：
+<ul>
+<li>对打印成品做有限元性能验证，<strong>验证达标</strong> → 直接输出机架成品；</li>
+<li>验证不达标 → 回到“LLM提示词工程/CoT处理”环节，迭代设计指令重新优化。</li>
+</ul>
+</li>
+</ol>
+<h3 id="2-动力系统适配优化">2. 动力系统适配优化
+</h3><p>基于螺旋桨推力理论公式，实现动力组件精准匹配：
+$$T \approx C_{t} \cdot \rho \cdot n^{2} \cdot D^{4}$$</p>
+<ul>
+<li>其中：$C_t$为推力系数，$\rho$为空气密度，$n$为转速，$D$为桨叶直径；</li>
+<li>优化逻辑：通过公式反推不同尺寸桨叶推力，结合机架空间限制，最终选定7英寸三叶桨，平衡尺寸与推力需求。</li>
+</ul>
+<h3 id="3-动力模块尺寸外形优化技术">3. 动力模块尺寸外形优化技术
+</h3><ul>
+<li>拓扑优化：基于Altair Inspire的有限元分析，识别非承力区域并做镂空/减材设计；</li>
+<li>气动外形设计：采用流线型曲面建模，降低飞行气动阻力，提升续航与机动性；</li>
+<li>集成化布局：多部件紧凑集成，减少冗余空间，实现体积与重量双优化。</li>
+</ul>
+<h3 id="4-多飞控同步控制">4. 多飞控同步控制
+</h3><ul>
+<li>通信架构：广播模式+主从飞控分工，确保指令同步性；</li>
+<li>协议优化：关闭从飞控应答，避免通信冲突，提升控制实时性；</li>
+<li>容错设计：模块化冗余，单个模块故障不影响整体系统基础功能。</li>
+</ul>
+<h2 id="五不足与改进展望">五、不足与改进展望
+</h2><h3 id="1-现有不足">1. 现有不足
+</h3><ul>
+<li>供电一致性：各动力模块独立供电，电池个体差异导致推力输出微小差异，影响姿态控制精度；</li>
+<li>传感器融合：各模块IMU独立运行，未实现数据通讯与融合，存在姿态解算差异；</li>
+<li>飞控功能：仅实现基础姿态控制，缺乏高度闭环控制与GPS定点、失控保护等高阶功能；</li>
+<li>结构设计：以实验为导向，空间利用率低，工程化与美观性不足；</li>
+<li>动力模块：优化后的曲面结构3D打印精度仍有提升空间，批量生产一致性待验证。</li>
+</ul>
+<h3 id="2-改进方向">2. 改进方向
+</h3><ul>
+<li>电源管理：引入电池均衡机制，优化电池选型，提升模块间推力一致性；</li>
+<li>数据融合：建立模块间飞控通信机制，采用多IMU数据融合算法，抑制漂移；</li>
+<li>飞控升级：集成气压计/超声波传感器，完善高度闭环控制，增加GPS定点与失控保护；</li>
+<li>结构优化：进一步优化动力模块曲面设计，适配高精度3D打印工艺，提升批量生产稳定性；</li>
+<li>材料升级：尝试碳纤维复合材料打印动力模块，进一步减重并提升结构强度。</li>
+</ul>
+<h2 id="六项目相关学术成果">六、项目相关学术成果
+</h2><p>本项目的研究成果已形成学术论文，并成功通过同行评审，被《Procedia CIRP》（CIRPe 2025专辑）录用，具体信息如下：</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>论文信息</th>
+          <th>具体内容</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>论文标题</strong></td>
+          <td>Leveraging LLMs for personalized and manufacturable design generation of multirotor unmanned aerial vehicles</td>
+      </tr>
+      <tr>
+          <td><strong>期刊名称</strong></td>
+          <td>Procedia CIRP（EI收录，机械工程领域顶级会议专辑）</td>
+      </tr>
+      <tr>
+          <td><strong>专辑/会议</strong></td>
+          <td>SI: CIRPe 2025</td>
+      </tr>
+      <tr>
+          <td><strong>稿件编号</strong></td>
+          <td>PROCIR-D-25-00979R1</td>
+      </tr>
+      <tr>
+          <td><strong>作者信息</strong></td>
+          <td>第一作者：李培江；第三作者：刘承韬（本项目负责人）</td>
+      </tr>
+      <tr>
+          <td><strong>录用状态</strong></td>
+          <td>已通过同行评审，待正式发表</td>
+      </tr>
+  </tbody>
+</table></div>
+<h4 id="论文录用展示">论文录用展示
+</h4><div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 20px 0;">
+  <div style="flex: 1 1 80%; text-align: center;">
+    <img src="/uav/图12.png" alt="Procedia CIRP论文录用证书" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666; margin-top: 8px;">图12：《Procedia CIRP》论文录用证明</p>
+  </div>
+</div>
+<h2 id="七总结">七、总结
+</h2><p>本项目成功实现了基于LLM与智能制造技术的定制化无人机开发，核心成果包括：</p>
+<ol>
+<li>打通“LLM机架设计→3D打印制造→电控集成→飞行测试”全流程，验证了定制化方案的可行性；</li>
+<li>完成动力模块全栈开发，实现硬件适配、尺寸外形优化（体积缩32%/减重18%）、多飞控同步、PID参数优化等关键突破，无人机首飞稳定且性能提升；</li>
+<li>创新融合LLM自动化设计与模块化技术，相关研究成果已被《Procedia CIRP》录用，为无人机定制化生产提供了可行思路。</li>
+</ol>
+<p>项目通过实际开发验证了“LLM+智能制造”在无人机领域的应用价值，后续将围绕供电一致性、传感器融合、飞控功能升级、动力模块批量生产优化等方向持续迭代，进一步提升系统稳定性与实用性，同时可扩展为六旋翼、八旋翼等多类型平台，适配更多应用场景。</p>
+<h2 id="八附录预留补充位置">八、附录（预留补充位置）
+</h2><ul>
+<li>设计文件：机架/动力模块SolidWorks建模文件（含优化前后版本）、LLM设计提示词工程文档；</li>
+<li>代码文件：STM32飞控PID控制代码、多飞控通信协议代码；</li>
+<li>测试数据：动力性能测试报告、飞行姿态数据日志、动力模块优化前后性能对比数据；</li>
+<li>其他补充：硬件选型清单、3D打印参数配置表、动力模块拓扑优化分析报告。</li>
+</ul>
+<div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 20px 0;">
+  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/uav/补充图片1.png" alt="补充细节图1" style="max-width: 100%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666; margin-top: 8px;">图13：电控系统接线图</p>
+  </div>
+  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/uav/补充图片2.png" alt="补充细节图2" style="max-width: 100%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666; margin-top: 8px;">图14：传感器数据处理流程图</p>
+  </div>
+</div>
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/zh-cn/p/rl-control-project/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/RL/fengmian.png" loading="lazy" data-key="rl-control-project" data-hash="/RL/fengmian.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">基于强化学习的倒立摆控制与双足机器人系统构建</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/zh-cn/p/painting-robot/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/gen3/fengmian.png" loading="lazy" data-key="painting-robot" data-hash="/gen3/fengmian.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">基于Gen3-lite机械臂的绘画机器人系统</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/zh-cn/p/ur-robot/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/UR-Robot/fengmian.png" loading="lazy" data-key="UR-Robot" data-hash="/UR-Robot/fengmian.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">声控协作式机器人系统设计与实现</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/zh-cn/p/ai-research/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/ai/fengmian.png" loading="lazy" data-key="ai-research" data-hash="/ai/fengmian.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">基于传统机器学习算法的分类与图像处理研究</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2025 刘承韬
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
