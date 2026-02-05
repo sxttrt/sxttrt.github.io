@@ -680,23 +680,24 @@ MathJax.config = {
   &lt;/div&gt;
 &lt;div style=&#34;text-align: center; margin: 30px 0;&#34;&gt;
   &lt;h4&gt;无人机首飞测试视频&lt;/h4&gt;
-&lt;p&gt;&lt;video 
-width=&#34;80%&#34; 
-controls 
-preload=&#34;none&#34; 
-poster=&#34;/UAV/fig1.png&#34; 
-style=&#34;border: 1px solid #eee; border-radius: 4px; margin-bottom: 15px;&#34;&gt;
-&lt;source src=&#34;https://sxttrt.github.io/UAV/video1.mp4&#34; type=&#34;video/mp4&#34;&gt;
-您的浏览器不支持 HTML5 视频播放，请通过下方链接下载查看。
-&lt;/video&gt;&lt;/p&gt;
+  &lt;iframe
+    src=&#34;https://sxttrt.github.io/UAV1/video1.mp4&#34;
+    width=&#34;80%&#34;
+    height=&#34;450px&#34;
+    style=&#34;border: 1px solid #eee; border-radius: 4px; margin-bottom: 15px;&#34;
+    allowfullscreen&gt;
+    您的浏览器不支持iframe播放，请直接下载视频查看
+  &lt;/iframe&gt;
   &lt;div style=&#34;margin: 10px 0;&#34;&gt;
-    &lt;a href=&#34;https://sxttrt.github.io/UAV/video1.mp4&#34; 
-       target=&#34;_blank&#34; 
-       download=&#34;Drone_Flight_Test.mp4&#34;  
+    &lt;a href=&#34;https://sxttrt.github.io/UAV1/video1.mp4&#34;
+       target=&#34;_blank&#34;
+       download=&#34;无人机首飞测试视频.mp4&#34;  
        style=&#34;display: inline-block; padding: 10px 25px; background: #2188ff; color: #fff; text-decoration: none; border-radius: 6px; font-size: 15px; font-weight: 500;&#34;&gt;
       📥 下载首飞测试视频（MP4格式）
     &lt;/a&gt;
   &lt;/div&gt;
+  &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;视频1：无人机首飞测试完整视频&lt;/p&gt;
+&lt;/div&gt;
   &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;视频1：无人机首飞测试完整视频&lt;/p&gt;
 &lt;/div&gt;
 &lt;h2 id=&#34;四关键技术实现&#34;&gt;四、关键技术实现
@@ -1271,7 +1272,7 @@ $$\Delta z = K_p e_f + K_d \dot{e}&lt;em&gt;f$$
   &lt;h4&gt;声控机器人实物抓取演示
   &lt;/h4&gt;
   &lt;iframe 
-    src=&#34;https://sxttrt.github.io/uav/视频1.mp4&#34; 
+    src=&#34;https://sxttrt.github.io/UR-Robot/video1.mp4&#34; 
     width=&#34;80%&#34; 
     height=&#34;450px&#34; 
     style=&#34;border: 1px solid #eee; border-radius: 4px; margin-bottom: 15px;&#34;
@@ -1279,7 +1280,7 @@ $$\Delta z = K_p e_f + K_d \dot{e}&lt;em&gt;f$$
     您的浏览器不支持iframe播放，请直接下载视频查看
   &lt;/iframe&gt;
   &lt;div style=&#34;margin: 10px 0;&#34;&gt;
-    &lt;a href=&#34;https://sxttrt.github.io/uav/视频1.mp4&#34; 
+    &lt;a href=&#34;https://sxttrt.github.io/UR-Robot/video1.mp4&#34; 
        target=&#34;_blank&#34; 
        download=&#34;无人机首飞测试视频.mp4&#34;  
        style=&#34;display: inline-block; padding: 10px 25px; background: #2188ff; color: #fff; text-decoration: none; border-radius: 6px; font-size: 15px; font-weight: 500;&#34;&gt;
