@@ -698,8 +698,6 @@ MathJax.config = {
   &lt;/div&gt;
   &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;视频1：无人机首飞测试完整视频&lt;/p&gt;
 &lt;/div&gt;
-  &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;视频1：无人机首飞测试完整视频&lt;/p&gt;
-&lt;/div&gt;
 &lt;h2 id=&#34;四关键技术实现&#34;&gt;四、关键技术实现
 &lt;/h2&gt;&lt;h3 id=&#34;1-llm辅助机架设计流程&#34;&gt;1. LLM辅助机架设计流程
 &lt;/h3&gt;&lt;p&gt;核心创新点在于将自然语言需求转化为自动化设计输出，形成闭环流程：&lt;/p&gt;
