@@ -1008,7 +1008,7 @@ $$\text{reward_stand_still} = \exp(-(\text{pose_error} + 0.5\cdot\text{vel_error
         <pubDate>Thu, 05 Jun 2025 00:00:00 +0000</pubDate>
         
         <guid>https://sxttrt.github.io/zh-cn/p/llm-uav-custom-design/</guid>
-        <description>&lt;img src="https://sxttrt.github.io/uav/fengmian.jpg" alt="Featured image of post 基于大语言模型的多旋翼无人机定制化设计与制造" /&gt;&lt;!-- MathJax配置（用于渲染技术公式） --&gt;
+        <description>&lt;img src="https://sxttrt.github.io/UAV/fengmian.jpg" alt="Featured image of post 基于大语言模型的多旋翼无人机定制化设计与制造" /&gt;&lt;!-- MathJax配置（用于渲染技术公式） --&gt;
 &lt;script src=&#34;https://polyfill.io/v3/polyfill.min.js?features=es6&#34;&gt;&lt;/script&gt;
 &lt;script id=&#34;MathJax-script&#34; async src=&#34;https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js&#34;&gt;&lt;/script&gt;
 &lt;script&gt;
@@ -1080,11 +1080,11 @@ MathJax.config = {
 &lt;/ol&gt;
 &lt;h4 id=&#34;机架设计成果展示&#34;&gt;机架设计成果展示
 &lt;/h4&gt;  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
-    &lt;img src=&#34;https://sxttrt.github.io/uav/图1.png&#34; alt=&#34;CadQuery生成的机架模型&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/UAV/图1.png&#34; alt=&#34;CadQuery生成的机架模型&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
     &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;图1：CadQuery生成的四旋翼基础模型&lt;/p&gt;
   &lt;/div&gt;
   &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
-    &lt;img src=&#34;https://sxttrt.github.io/uav/图2.png&#34; alt=&#34;Altair Inspire拓扑优化效果&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/UAV/图2.png&#34; alt=&#34;Altair Inspire拓扑优化效果&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
     &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;图2：拓扑优化前后机架结构对比&lt;/p&gt;
   &lt;/div&gt;
 &lt;h3 id=&#34;2-动力模块设计与制造&#34;&gt;2. 动力模块设计与制造
@@ -1098,7 +1098,7 @@ MathJax.config = {
 &lt;h4 id=&#34;动力模块建模成果&#34;&gt;动力模块建模成果
 &lt;/h4&gt;&lt;div style=&#34;display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 20px 0;&#34;&gt;
   &lt;div style=&#34;flex: 1 1 80%; text-align: center;&#34;&gt;
-    &lt;img src=&#34;https://sxttrt.github.io/uav/图3.png&#34; alt=&#34;SolidWorks动力模块建模&#34; style=&#34;max-width: 40%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/UAV/图3.png&#34; alt=&#34;SolidWorks动力模块建模&#34; style=&#34;max-width: 40%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
     &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;图3：SolidWorks动力模块外壳三维模型&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;
@@ -1111,7 +1111,7 @@ MathJax.config = {
 &lt;/ul&gt;
 &lt;h4 id=&#34;3d打印成果预留图片位置&#34;&gt;3D打印成果（预留图片位置）
 &lt;/h4&gt;  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
-    &lt;img src=&#34;https://sxttrt.github.io/uav/图4.png&#34; alt=&#34;3D打印完成的机架&#34; style=&#34;max-width: 60%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/UAV/图4.png&#34; alt=&#34;3D打印完成的机架&#34; style=&#34;max-width: 60%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
     &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;图4：3D打印完成的无人机机架和动力模块壳体（优化前）&lt;/p&gt;
   &lt;/div&gt;
 &lt;h4 id=&#34;23-硬件选型与适配优化&#34;&gt;2.3 硬件选型与适配优化
@@ -1154,7 +1154,7 @@ MathJax.config = {
 &lt;h4 id=&#34;硬件适配成果预留图片位置&#34;&gt;硬件适配成果（预留图片位置）
 &lt;/h4&gt;&lt;div style=&#34;display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 20px 0;&#34;&gt;
   &lt;div style=&#34;flex: 1 1 80%; text-align: center;&#34;&gt;
-    &lt;img src=&#34;https://sxttrt.github.io/uav/图5.jpg&#34; alt=&#34;动力模块硬件集成实物&#34; style=&#34;max-width: 60%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/UAV/图5.jpg&#34; alt=&#34;动力模块硬件集成实物&#34; style=&#34;max-width: 60%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
     &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;图5：动力模块硬件集成完成实物（电机+电调+飞控+电池）&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;
@@ -1175,12 +1175,12 @@ MathJax.config = {
 &lt;/ol&gt;
 &lt;h5 id=&#34;243-优化后3d模型展示&#34;&gt;2.4.3 优化后3D模型展示
 &lt;/h5&gt;  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
-    &lt;img src=&#34;https://sxttrt.github.io/uav/图9.png&#34; alt=&#34;动力模块优化后3D模型（正视图）&#34; style=&#34;max-width: 60%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/UAV/图9.png&#34; alt=&#34;动力模块优化后3D模型（正视图）&#34; style=&#34;max-width: 60%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
     &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;图6：动力模块优化后3D模型&lt;/p&gt;
   &lt;/div&gt;
 &lt;h5 id=&#34;244-优化后实物展示&#34;&gt;2.4.4 优化后实物展示
 &lt;/h5&gt;  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
-    &lt;img src=&#34;https://sxttrt.github.io/uav/fengmian.jpg&#34; alt=&#34;动力模块优化后实物（整体）&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/UAV/fengmian.jpg&#34; alt=&#34;动力模块优化后实物（整体）&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
     &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;图8：动力模块优化后实物（整体外观）&lt;/p&gt;
   &lt;/div&gt;
 &lt;h3 id=&#34;3-电控系统开发&#34;&gt;3. 电控系统开发
@@ -1204,7 +1204,7 @@ MathJax.config = {
 &lt;h4 id=&#34;pid参数配置预留图片位置&#34;&gt;PID参数配置（预留图片位置）
 &lt;/h4&gt;&lt;div style=&#34;display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 20px 0;&#34;&gt;
   &lt;div style=&#34;flex: 1 1 60%; text-align: center;&#34;&gt;
-    &lt;img src=&#34;https://sxttrt.github.io/uav/图6.png&#34; alt=&#34;双环PID参数配置表&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/UAV/图6.png&#34; alt=&#34;双环PID参数配置表&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
     &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;图10：优化前后双环PID参数对比&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;
@@ -1230,13 +1230,13 @@ MathJax.config = {
 &lt;/ul&gt;
 &lt;h4 id=&#34;飞行测试成果预留图片与视频位置&#34;&gt;飞行测试成果（预留图片与视频位置）
 &lt;/h4&gt;  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
-    &lt;img src=&#34;https://sxttrt.github.io/uav/fengmian.jpg&#34; alt=&#34;无人机首飞实物&#34; style=&#34;max-width: 60%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/UAV/fengmian.jpg&#34; alt=&#34;无人机首飞实物&#34; style=&#34;max-width: 60%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
     &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;图11：无人机首飞测试实物图&lt;/p&gt;
   &lt;/div&gt;
 &lt;div style=&#34;text-align: center; margin: 30px 0;&#34;&gt;
   &lt;h4&gt;无人机首飞测试视频&lt;/h4&gt;
   &lt;iframe 
-    src=&#34;https://sxttrt.github.io/uav/视频1.mp4&#34; 
+    src=&#34;https://sxttrt.github.io/UAV/视频1.mp4&#34; 
     width=&#34;80%&#34; 
     height=&#34;450px&#34; 
     style=&#34;border: 1px solid #eee; border-radius: 4px; margin-bottom: 15px;&#34;
@@ -1244,7 +1244,7 @@ MathJax.config = {
     您的浏览器不支持iframe播放，请直接下载视频查看
   &lt;/iframe&gt;
   &lt;div style=&#34;margin: 10px 0;&#34;&gt;
-    &lt;a href=&#34;https://sxttrt.github.io/uav/视频1.mp4&#34; 
+    &lt;a href=&#34;https://sxttrt.github.io/UAV/视频1.mp4&#34; 
        target=&#34;_blank&#34; 
        download=&#34;无人机首飞测试视频.mp4&#34;  
        style=&#34;display: inline-block; padding: 10px 25px; background: #2188ff; color: #fff; text-decoration: none; border-radius: 6px; font-size: 15px; font-weight: 500;&#34;&gt;
@@ -1343,13 +1343,13 @@ $$T \approx C_{t} \cdot \rho \cdot n^{2} \cdot D^{4}$$&lt;/p&gt;
 &lt;/h4&gt;&lt;div style=&#34;display: flex; flex-wrap: wrap; gap: 20px; justify-content: 
 center; margin: 20px 0;&#34;&gt;
   &lt;div style=&#34;flex: 1 1 80%; text-align: center;&#34;&gt;
-    &lt;img src=&#34;https://sxttrt.github.io/uav/lunwen1.jpg&#34; alt=&#34;Procedia CIRP论文录用证书&#34; style=&#34;max-width: 60%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/UAV/lunwen1.jpg&#34; alt=&#34;Procedia CIRP论文录用证书&#34; style=&#34;max-width: 60%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
     &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;图12：《Procedia CIRP》论文录用证明&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;div style=&#34;display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 20px 0;&#34;&gt;
   &lt;div style=&#34;flex: 1 1 80%; text-align: center;&#34;&gt;
-    &lt;img src=&#34;https://sxttrt.github.io/uav/lunwen2.png&#34; alt=&#34;Procedia CIRP论文录用证书&#34; style=&#34;max-width: 60%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/UAV/lunwen2.png&#34; alt=&#34;Procedia CIRP论文录用证书&#34; style=&#34;max-width: 60%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
     &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;图13：论文首页&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;
