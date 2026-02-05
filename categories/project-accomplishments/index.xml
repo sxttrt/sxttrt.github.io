@@ -1,0 +1,1486 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Project Accomplishments on Liu Chengtao</title>
+        <link>https://sxttrt.github.io/categories/project-accomplishments/</link>
+        <description>Recent content in Project Accomplishments on Liu Chengtao</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <copyright>刘承韬</copyright>
+        <lastBuildDate>Fri, 20 Jun 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://sxttrt.github.io/categories/project-accomplishments/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>RL-based Inverted Pendulum Control and Bipedal Robot System Construction</title>
+        <link>https://sxttrt.github.io/p/rl-control-project/</link>
+        <pubDate>Fri, 20 Jun 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://sxttrt.github.io/p/rl-control-project/</guid>
+        <description>&lt;img src="https://sxttrt.github.io/RL/fengmian.png" alt="Featured image of post RL-based Inverted Pendulum Control and Bipedal Robot System Construction" /&gt;&lt;script src=&#34;https://polyfill.io/v3/polyfill.min.js?features=es6&#34;&gt;&lt;/script&gt;
+&lt;script id=&#34;MathJax-script&#34; async src=&#34;https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js&#34;&gt;&lt;/script&gt;
+&lt;script&gt;
+MathJax.config = {
+  tex: {
+    inlineMath: [[&#39;$&#39;, &#39;$&#39;], [&#39;\\(&#39;, &#39;\\)&#39;]],
+    displayMath: [[&#39;$$&#39;, &#39;$$&#39;], [&#39;\\[&#39;, &#39;\\]&#39;]],
+    processEscapes: true,
+    processEnvironments: true
+  },
+  svg: {
+    fontCache: &#39;global&#39;
+  }
+};
+&lt;/script&gt;
+&lt;h2 id=&#34;i-project-core-information&#34;&gt;I. Project Core Information
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Category&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Details&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Project Title&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;RL-based Inverted Pendulum Control and Bipedal Robot System Construction&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Core Team&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Chengtao Liu, Haojia Zhang, Bohan Ma&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Core Objectives&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;1. &lt;strong&gt;Inverted Pendulum&lt;/strong&gt;: ① Linear control via LQR (Dynamics modeling, linearization, discretization); ② RL control via REINFORCE (Policy gradient deployment, reward shaping);&lt;br&gt;2. &lt;strong&gt;Bipedal Robot&lt;/strong&gt;: ① Simulation setup in Isaac Gym/MuJoCo; ② PPO training framework deployment; ③ Hierarchical reward function design; ④ Three-stage training pipeline (Balance -&amp;gt; Gait -&amp;gt; Terrain adaptation); ⑤ Adaptive walking on unstructured terrains.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Technical Stack&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Python, PyTorch (RL Framework), NumPy (Matrix Computing), Isaac Gym (Parallel Simulation), MuJoCo (High-fidelity Physics), Gymnasium (REINFORCE environment), Matplotlib.&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;ii-background-and-objectives&#34;&gt;II. Background and Objectives
+&lt;/h2&gt;&lt;h3 id=&#34;1-project-background&#34;&gt;1. Project Background
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Inverted Pendulum System&lt;/strong&gt;: As a classic non-linear and unstable system, its balance control is a benchmark for validating control algorithms. Traditional linear control (e.g., LQR) relies on precise mathematical modeling and offers limited robustness. Reinforcement Learning (e.g., REINFORCE) allows agents to learn optimal policies through trial-and-error without an explicit model.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Bipedal Robots&lt;/strong&gt;: These robots offer superior terrain adaptability for search and rescue, exploration, and logistics. However, their high-dimensional, non-linear dynamics make gait stability a core challenge. Deep Reinforcement Learning (DRL) can discover non-intuitive, efficient control policies that outperform traditional model-based methods (e.g., ZMP) in robustness.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-core-objectives&#34;&gt;2. Core Objectives
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Inverted Pendulum&lt;/strong&gt;: Implement LQR-based linear control (covering variable substitution, linearization, and discretization) and REINFORCE-based RL control to achieve long-term balance under micro-perturbations.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Bipedal Robot&lt;/strong&gt;: Deploy a PPO training framework in Isaac Gym; design hierarchical rewards to resolve issues like gait &amp;ldquo;shuffling&amp;rdquo; or policy collapse; and establish a three-stage pipeline for adaptive walking on slopes and rough terrain.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Engineering Excellence&lt;/strong&gt;: Modularize all algorithm components and provide simulation visualizations to ensure experiment reproducibility.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;iii-key-task-implementation&#34;&gt;III. Key Task Implementation
+&lt;/h2&gt;&lt;h3 id=&#34;task-1-inverted-pendulum-lqr-vs-reinforce-control&#34;&gt;Task 1: Inverted Pendulum (LQR vs. REINFORCE Control)
+&lt;/h3&gt;&lt;h4 id=&#34;1-linear-control-via-lqr&#34;&gt;1. Linear Control via LQR
+&lt;/h4&gt;&lt;h5 id=&#34;1-dynamics-modeling-linearization-and-discretization&#34;&gt;(1) Dynamics Modeling, Linearization, and Discretization
+&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Variable Substitution&lt;/strong&gt;: Defined state variables to simplify dynamics:
+$$x_1=z \text{ (Position)}, x_2=\pi-\theta \text{ (Converted Angle)}, x_3=\dot{z} \text{ (Velocity)}, x_4=\dot{\theta} \text{ (Angular Velocity)}$$&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Linearization&lt;/strong&gt;: Performed Taylor expansion at the equilibrium point $x_0=[0,0,0,0]$, assuming $\sin x_2 \approx x_2$ and $\cos x_2 \approx 1$.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Discretization&lt;/strong&gt;: Converted the continuous model to a discrete-time model for LQR design using $A_d = I + AT$ and $B_d = BT$.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;2-lqr-controller-design-and-results&#34;&gt;(2) LQR Controller Design and Results
+&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Parameter Configuration&lt;/strong&gt;: Defined weight matrices $Q$ and $R$ to balance error and energy consumption. Solved the Discrete Algebraic Riccati Equation (DARE) to obtain the optimal feedback gain $K$.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Experimental Results&lt;/strong&gt;: Successfully achieved stability for initial angles of $2.6$, $2.7$, and $2.9\text{ rad}$.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Configuration&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Settling Time&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Max Overshoot&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Control Energy ($N^2 \cdot s$)&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Baseline (R=0.1)&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;0.27s&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;5.0°&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;414,654.0&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;High Q&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;0.25s&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;5.8°&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;451,955.5&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;High R (R=1)&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;0.31s&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;3.3°&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;355,800.3&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;div style=&#34;text-align: center; margin: 15px 0;&#34;&gt;
+  &lt;img src=&#34;https://sxttrt.github.io/RL/图2.png&#34; alt=&#34;Inverted Pendulum control results&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+  &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;Fig 1: Stabilization effects from different initial angles&lt;/p&gt;
+&lt;/div&gt;
+&lt;h4 id=&#34;2-rl-control-via-reinforce&#34;&gt;2. RL Control via REINFORCE
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Strategy&lt;/strong&gt;: Utilized a two-layer MLP as the policy network, mapping the 4D state to a probability distribution over 2 discrete actions (Left/Right force).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Reward Shaping&lt;/strong&gt;: Designed a multi-dimensional reward function covering survival, angle deviation, centering, and velocity penalties.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Results&lt;/strong&gt;: After &lt;strong&gt;2,325 training episodes&lt;/strong&gt;, the policy converged, enabling the pendulum to maintain precise balance under continuous perturbations.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div style=&#34;text-align: center; margin: 15px 0;&#34;&gt;
+  &lt;img src=&#34;https://sxttrt.github.io/RL/图3.png&#34; alt=&#34;REINFORCE training curve&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+  &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;Fig 2: REINFORCE training reward curve&lt;/p&gt;
+&lt;/div&gt;
+&lt;h3 id=&#34;task-2-bipedal-robot-ppo-control&#34;&gt;Task 2: Bipedal Robot PPO Control
+&lt;/h3&gt;&lt;h4 id=&#34;1-system-architecture&#34;&gt;1. System Architecture
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Isaac Gym&lt;/strong&gt;: GPU-accelerated simulation supporting thousands of parallel environments. Enabled &lt;strong&gt;Domain Randomization&lt;/strong&gt; (friction, mass, CoM) to enhance policy robustness.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;MuJoCo&lt;/strong&gt;: High-fidelity engine used for &lt;strong&gt;Sim-to-Sim&lt;/strong&gt; verification.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-hierarchical-reward-function-design&#34;&gt;2. Hierarchical Reward Function Design
+&lt;/h4&gt;&lt;p&gt;Designed multi-objective rewards to guide behavior:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Orientation Reward&lt;/strong&gt;: Penalized gravity vector projection on the XY plane to keep the torso upright.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Z-Velocity Penalty&lt;/strong&gt;: Suppressed vertical oscillation to stabilize the center of mass.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Airtime Reward&lt;/strong&gt;: Incentivized a target airtime (0.3s - 0.6s) to eliminate &amp;ldquo;shuffling&amp;rdquo; and generate natural gaits.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Command Tracking&lt;/strong&gt;: Exponentially penalized errors in linear velocity (XY), angular velocity (Yaw), and heading.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Stand-still Reward&lt;/strong&gt;: Penalized unnecessary motion when command velocity is zero.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;3-three-stage-training-pipeline&#34;&gt;3. Three-Stage Training Pipeline
+&lt;/h4&gt;&lt;p&gt;Used a curriculum-based strategy to prevent policy collapse:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Stage 1 (Flat Terrain Balance)&lt;/strong&gt;: Achieved basic standing and mobility. Delayed policy collapse from 5k to 55k episodes by introducing orientation constraints.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Stage 2 (Gait &amp;amp; Command)&lt;/strong&gt;: Optimized gait rhythm and tracking precision by adjusting action rate penalties and airtime rewards.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Stage 3 (Robustness &amp;amp; Complex Terrain)&lt;/strong&gt;: Enabled random force perturbations and terrain curricula (slopes/rough ground), achieving an 88% success rate on non-flat surfaces.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;4-experimental-results&#34;&gt;4. Experimental Results
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Natural Gait&lt;/strong&gt;: Achieved biological gait characteristics with 0.4s-0.6s airtime and &amp;lt;5% command tracking error.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Robustness&lt;/strong&gt;: Recovered balance within 1.2s-2.0s after random pushes.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Terrain Success Rate&lt;/strong&gt;:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Terrain Type&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Success Rate&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Torso Oscillation&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Flat (No Perturbation)&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;100%&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&amp;lt; 5°&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Unstructured (Trimesh)&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;90%&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&amp;lt; 8°&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Slopes&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;92%&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&amp;lt; 8°&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Flat + Random Pushes&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;95%&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&amp;lt; 7°&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;div style=&#34;text-align: center; margin: 15px 0;&#34;&gt;
+  &lt;img src=&#34;https://sxttrt.github.io/RL/图6.png&#34; alt=&#34;MuJoCo gait simulation&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+  &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;Fig 3: Optimized gait simulation in MuJoCo&lt;/p&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;iv-project-results-and-conclusions&#34;&gt;IV. Project Results and Conclusions
+&lt;/h2&gt;&lt;h3 id=&#34;1-simulation-highlights&#34;&gt;1. Simulation Highlights
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Inverted Pendulum&lt;/strong&gt;: Demonstrated rapid convergence from extreme initial angles ($2.9\text{ rad}$) using LQR, and robust balance under micro-perturbations using REINFORCE.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Bipedal Robot&lt;/strong&gt;: Generated human-like natural gaits, eliminating &amp;ldquo;shuffling&amp;rdquo; and showing high resilience to environmental disturbances and slope changes.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-core-technical-insights&#34;&gt;2. Core Technical Insights
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;LQR Weighting&lt;/strong&gt;: High $Q$ leads to faster response but higher overshoot; High $R$ minimizes energy but slows response.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Reward Shaping&lt;/strong&gt;: Multi-dimensional rewards are critical to prevent agents from exploiting &amp;ldquo;loopholes&amp;rdquo; (e.g., surviving without balancing).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Curriculum Learning&lt;/strong&gt;: The three-stage training pipeline is essential for high-dimensional systems; direct training on complex terrains often leads to divergence.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>Customized Design and Manufacturing of Multi-rotor UAVs Based on Large Language Models</title>
+        <link>https://sxttrt.github.io/p/llm-uav-custom-design/</link>
+        <pubDate>Thu, 05 Jun 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://sxttrt.github.io/p/llm-uav-custom-design/</guid>
+        <description>&lt;img src="https://sxttrt.github.io/uav/fengmian.jpg" alt="Featured image of post Customized Design and Manufacturing of Multi-rotor UAVs Based on Large Language Models" /&gt;&lt;script src=&#34;https://polyfill.io/v3/polyfill.min.js?features=es6&#34;&gt;&lt;/script&gt;
+&lt;script id=&#34;MathJax-script&#34; async src=&#34;https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js&#34;&gt;&lt;/script&gt;
+&lt;script&gt;
+MathJax.config = {
+  tex: {
+    inlineMath: [[&#39;$&#39;, &#39;$&#39;], [&#39;\\(&#39;, &#39;\\)&#39;]],
+    displayMath: [[&#39;$$&#39;, &#39;$$&#39;], [&#39;\\[&#39;, &#39;\\]&#39;]],
+    processEscapes: true
+  },
+  svg: {
+    fontCache: &#39;global&#39;
+  }
+};
+&lt;/script&gt;
+&lt;h2 id=&#34;i-project-overview&#34;&gt;I. Project Overview
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Category&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Details&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Project Title&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Customized Design and Manufacturing of Multi-rotor UAVs Based on LLM&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Project Lead&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Chengtao Liu&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Timeline&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;April 2025 - June 2025&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Core Responsibilities&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Designed and assembled the power modules (mechanical structure, electronic control, flight control development); Engineered the vision-guided assembly scheme; Conducted flight testing and system tuning.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Core Objectives&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;1. Automate UAV frame generation using LLMs to enhance design efficiency; 2. Develop customized power modules ensuring high performance and reliability; 3. Achieve synchronized multi-flight controller management and stable flight; 4. Establish an automated pipeline for customized UAV design and manufacturing.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Key Tools&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;SolidWorks (3D Modeling), Bambu Lab 3D Printers (A1/X1), STM32 Open-source Flight Control, Brushless Motors (A2212 series), ESCs (30A), Anonymous Ground Station, Altair Inspire (Topology Optimization), CadQuery (Parametric Design).&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;ii-background-and-objectives&#34;&gt;II. Background and Objectives
+&lt;/h2&gt;&lt;h3 id=&#34;1-project-background&#34;&gt;1. Project Background
+&lt;/h3&gt;&lt;p&gt;As demand for personalized and customized UAV applications grows, traditional design and manufacturing processes face challenges such as low efficiency, high costs, and slow response times. Conventional frame design relies heavily on manual modeling, and power module manufacturing depends on manual assembly—processes that are cumbersome, prone to error, and difficult to scale for diverse requirements.&lt;/p&gt;
+&lt;p&gt;This project innovatively integrates &lt;strong&gt;Large Language Models (LLM)&lt;/strong&gt; with &lt;strong&gt;Intelligent Manufacturing&lt;/strong&gt;: the UAV frame is automatically generated via LLM to significantly boost design efficiency and precision. Given the higher requirements for structural strength and functionality, the power modules utilize a &amp;ldquo;Manual Design + 3D Printing&amp;rdquo; approach combined with vision-guided assembly to ensure precise fitment with the frame. This culminates in an automated design-to-manufacturing workflow capable of rapid response to customized needs.&lt;/p&gt;
+&lt;h3 id=&#34;2-core-objectives&#34;&gt;2. Core Objectives
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Design&lt;/strong&gt;: Realize LLM-driven automated frame generation and customized power module design, balancing structural compactness with functional integrity.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Manufacturing&lt;/strong&gt;: Utilize 3D printing for frames and power module housings to ensure dimensional accuracy and structural robustness.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Control&lt;/strong&gt;: Implement synchronized communication across multiple flight controllers and validate stable flight based on dual-loop PID algorithms.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Workflow&lt;/strong&gt;: Bridge the gap between &amp;ldquo;LLM Design → 3D Printing → Electronic Integration → Flight Testing&amp;rdquo; to verify the feasibility of customized solutions.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;iii-key-tasks-and-progress&#34;&gt;III. Key Tasks and Progress
+&lt;/h2&gt;&lt;h3 id=&#34;1-frame-design-llm-aided-automated-generation&#34;&gt;1. Frame Design (LLM-Aided Automated Generation)
+&lt;/h3&gt;&lt;p&gt;Led by team member Peijiang Li (First Author), the frame design employs an LLM-driven automated workflow:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Requirement Analysis&lt;/strong&gt;: Utilized prompt engineering and Chain-of-Thought (CoT) to transform user requirements into structured design goals and initial conditions for topology optimization.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Parametric Design&lt;/strong&gt;: LLM-generated structural description language was fed into CadQuery to automatically generate base models for quadrotor/hexarotor configurations.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Topology Optimization&lt;/strong&gt;: Utilized Altair Inspire to optimize critical components like motor arms, achieving lightweighting while maintaining structural strength.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Manufacturing Output&lt;/strong&gt;: Optimized design files were sent to 3D printers, with frame dimensions controlled at approximately 240mm×240mm to fit the maximum build volume.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;frame-design-results&#34;&gt;Frame Design Results
+&lt;/h4&gt;  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/uav/图1.png&#34; alt=&#34;Frame model generated by CadQuery&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;Fig 1: Quadrotor base model generated by CadQuery&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/uav/图2.png&#34; alt=&#34;Topology optimization results&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;Fig 2: Comparison of frame structure before and after topology optimization&lt;/p&gt;
+  &lt;/div&gt;
+&lt;h3 id=&#34;2-power-module-design-and-manufacturing&#34;&gt;2. Power Module Design and Manufacturing
+&lt;/h3&gt;&lt;p&gt;As the module lead, I managed the full lifecycle development from mechanical structure and hardware selection to form-factor optimization:&lt;/p&gt;
+&lt;h4 id=&#34;21-mechanical-design-solidworks-modeling&#34;&gt;2.1 Mechanical Design (SolidWorks Modeling)
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;Developed 3D models for the power module housings based on the physical dimensions of motors, ESCs, batteries, and STM32 flight control boards.&lt;/li&gt;
+&lt;li&gt;Optimized for installation space, cable routing, heat dissipation, and structural integrity, with pre-drilled M3 screw holes for stable frame coupling.&lt;/li&gt;
+&lt;li&gt;Focused on utility and maintainability, providing sufficient clearance for debugging and component replacement.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;power-module-modeling-results&#34;&gt;Power Module Modeling Results
+&lt;/h4&gt;&lt;div style=&#34;display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 20px 0;&#34;&gt;
+  &lt;div style=&#34;flex: 1 1 80%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/uav/图3.png&#34; alt=&#34;SolidWorks Power Module Modeling&#34; style=&#34;max-width: 40%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;Fig 3: 3D model of the power module housing in SolidWorks&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h4 id=&#34;22-3d-printing-and-manufacturing&#34;&gt;2.2 3D Printing and Manufacturing
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Equipment&lt;/strong&gt;: Bambu Lab A1/X1 printers; slicing performed via Bambu Studio.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Material&lt;/strong&gt;: PLA Basic (selected for thermal stability, low shrinkage, and high molding precision, meeting the mechanical needs of the prototype).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Efficiency&lt;/strong&gt;: Printing time per module housing was approx. 2 hours, supporting high-frequency structural iterations.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Precision&lt;/strong&gt;: Layer height set to 0.15mm with dimensional tolerances within ±0.2mm to ensure seamless frame integration.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;3d-printing-outcomes&#34;&gt;3D Printing Outcomes
+&lt;/h4&gt;  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/uav/图4.png&#34; alt=&#34;3D printed frame&#34; style=&#34;max-width: 60%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;Fig 4: 3D printed UAV frame and power module housing (Pre-optimization)&lt;/p&gt;
+  &lt;/div&gt;
+&lt;h4 id=&#34;23-hardware-selection-and-optimization&#34;&gt;2.3 Hardware Selection and Optimization
+&lt;/h4&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Component&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Model/Parameters&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Optimization &amp;amp; Selection Rationale&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Motor&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;A2212 1400KV (Replaced 980KV)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;The 980KV was better suited for larger props; the new 1400KV is optimized for 7-inch props, providing ample thrust and stability at 11V.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Propellers&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;7-inch 3-blade (7045)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Replaced 10-inch props to solve frame clearance issues; 3-blade design increased thrust by 20-30% over 2-blade variants.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;ESC&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;30A Brushless ESC&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Provides sufficient current overhead for A2212 motors, preventing overload and ensuring reliability.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Flight Controller&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;STM32 Open-source (4cm×4cm)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Supports protocol modification and multi-FC synchronization; compact size fits modular design.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Battery&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;1300mAh 30C 3S/11.1V&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Compact (72x34x21mm) and lightweight; discharge rate meets high-thrust power requirements.&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&#34;hardware-integration-results&#34;&gt;Hardware Integration Results
+&lt;/h4&gt;&lt;div style=&#34;display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 20px 0;&#34;&gt;
+  &lt;div style=&#34;flex: 1 1 80%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/uav/图5.jpg&#34; alt=&#34;Hardware integration physical view&#34; style=&#34;max-width: 60%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;Fig 5: Integrated power module (Motor + ESC + FC + Battery)&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h4 id=&#34;24-power-module-size-and-form-factor-optimization&#34;&gt;2.4 Power Module Size and Form-factor Optimization
+&lt;/h4&gt;&lt;p&gt;Addressed issues of excessive volume, high aerodynamic drag, and low space utilization in the initial design:&lt;/p&gt;
+&lt;h5 id=&#34;241-optimization-goals&#34;&gt;2.4.1 Optimization Goals
+&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Size Optimization&lt;/strong&gt;: Reduced total volume from 120x80x60mm to 95x70x50mm (~32% reduction).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Aero Optimization&lt;/strong&gt;: Implemented a streamlined curved surface design to minimize drag during flight.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Weight Optimization&lt;/strong&gt;: Removed redundant materials via topology optimization, resulting in an 18% weight reduction while maintaining strength.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;242-optimization-strategies&#34;&gt;2.4.2 Optimization Strategies
+&lt;/h5&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Integrated Layout&lt;/strong&gt;: Redesigned internal placement for the ESC, FC, and battery to eliminate redundant gaps.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Streamlined Surface&lt;/strong&gt;: Changed the boxy housing to a tapered, aerodynamic structure with rounded edges (R5mm).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Weight Reduction&lt;/strong&gt;: Used Altair Inspire to hollow out non-load-bearing areas.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Interface Refinement&lt;/strong&gt;: Adjusted frame-to-module interfaces to match the new dimensions, ensuring assembly precision.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;243-optimized-3d-model&#34;&gt;2.4.3 Optimized 3D Model
+&lt;/h5&gt;  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/uav/图9.png&#34; alt=&#34;Optimized power module model&#34; style=&#34;max-width: 60%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;Fig 6: 3D model of the optimized power module&lt;/p&gt;
+  &lt;/div&gt;
+&lt;h5 id=&#34;244-optimized-physical-prototype&#34;&gt;2.4.4 Optimized Physical Prototype
+&lt;/h5&gt;  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/uav/fengmian.jpg&#34; alt=&#34;Optimized physical prototype&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;Fig 8: Final optimized power module (Physical view)&lt;/p&gt;
+  &lt;/div&gt;
+&lt;h3 id=&#34;3-electronic-control-system-development&#34;&gt;3. Electronic Control System Development
+&lt;/h3&gt;&lt;h4 id=&#34;31-multi-fc-synchronous-communication&#34;&gt;3.1 Multi-FC Synchronous Communication
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Communication Mechanism&lt;/strong&gt;: Configured the 2.4GHz receiver to broadcast mode, transmitting control signals to 4 flight controllers simultaneously.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Optimization&lt;/strong&gt;: Disabled return signals and ACK responses from the 3 &amp;ldquo;slave&amp;rdquo; controllers to prevent signal collision, retaining only the primary controller&amp;rsquo;s feedback.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Control Logic&lt;/strong&gt;: Each controller maps synchronized signals into specific motor RPM commands based on its spatial role, achieving collaborative control.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;32-dual-loop-pid-implementation&#34;&gt;3.2 Dual-loop PID Implementation
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Architecture&lt;/strong&gt;: Outer loop (Attitude) controls Roll, Pitch, and Yaw; inner loop (Rate) controls angular velocity.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Core Algorithms&lt;/strong&gt;: Combined Quaternions with Kalman Filtering to fuse MPU6050 data, suppressing noise and drift while resolving Gimbal Lock issues.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Parameter Tuning&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Initial&lt;/strong&gt;: Outer loop $K_p=7.0$, $K_i=0$, $K_d=0$; Inner loop $K_p=1.7-3.0$, $K_d=0.08$, $K_i=0$.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Refined&lt;/strong&gt;: Reduced Yaw PD gains to fix oscillation; increased Pitch/Roll $K_p$ and introduced $K_i$ to eliminate steady-state error.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;pid-parameter-configuration&#34;&gt;PID Parameter Configuration
+&lt;/h4&gt;&lt;div style=&#34;display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 20px 0;&#34;&gt;
+  &lt;div style=&#34;flex: 1 1 60%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/uav/图6.png&#34; alt=&#34;PID configuration comparison&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;Fig 10: Comparison of dual-loop PID parameters before and after optimization&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h4 id=&#34;33-sensor-data-processing&#34;&gt;3.3 Sensor Data Processing
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Coordinate Alignment&lt;/strong&gt;: Unified X/Y axes through matrix transformations for modules mounted with a 180° rotation.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Attitude Estimation&lt;/strong&gt;: Fused angular velocity and acceleration data from MPU6050 to improve estimation precision and consistency.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;4-flight-testing-and-validation&#34;&gt;4. Flight Testing and Validation
+&lt;/h3&gt;&lt;h4 id=&#34;41-testing-objectives&#34;&gt;4.1 Testing Objectives
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;Validate take-off capability and attitude response.&lt;/li&gt;
+&lt;li&gt;Test multi-FC synchronization efficacy.&lt;/li&gt;
+&lt;li&gt;Optimize PID parameters to resolve oscillation and drift.&lt;/li&gt;
+&lt;li&gt;Verify performance gains from power module optimization (Endurance, Maneuverability).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;42-results&#34;&gt;4.2 Results
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Power Performance&lt;/strong&gt;: A2212 1400KV motors + 7-inch 3-blade props provided ~2828g of total thrust. With a 1300g take-off weight, the Thrust-to-Weight ratio reached 2.18, ensuring stability.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Flight Behavior&lt;/strong&gt;: Successfully achieved the maiden flight, demonstrating responsive attitude adjustment. Post-optimization, oscillations were significantly mitigated.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Module Efficiency&lt;/strong&gt;: Volume reduction (32%) and weight reduction (18%) led to a 12% increase in endurance and an 8% improvement in turning maneuverability.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Key Breakthrough&lt;/strong&gt;: Successfully validated the full &amp;ldquo;LLM Design → 3D Printing → Electronic Integration → Flight Test&amp;rdquo; pipeline.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;flight-test-results&#34;&gt;Flight Test Results
+&lt;/h4&gt;  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/uav/fengmian.jpg&#34; alt=&#34;Maiden flight&#34; style=&#34;max-width: 60%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;Fig 11: Physical prototype during maiden flight test&lt;/p&gt;
+  &lt;/div&gt;
+&lt;div style=&#34;text-align: center; margin: 30px 0;&#34;&gt;
+  &lt;h4&gt;UAV Maiden Flight Video&lt;/h4&gt;
+  &lt;iframe 
+    src=&#34;https://sxttrt.github.io/uav/视频1.mp4&#34; 
+    width=&#34;80%&#34; 
+    height=&#34;450px&#34; 
+    style=&#34;border: 1px solid #eee; border-radius: 4px; margin-bottom: 15px;&#34;
+    allowfullscreen&gt;
+    Your browser does not support iframes. Please download the video to view it.
+  &lt;/iframe&gt;
+  &lt;div style=&#34;margin: 10px 0;&#34;&gt;
+    &lt;a href=&#34;https://sxttrt.github.io/uav/视频1.mp4&#34; 
+       target=&#34;_blank&#34; 
+       download=&#34;UAV_Flight_Test.mp4&#34;  
+       style=&#34;display: inline-block; padding: 10px 25px; background: #2188ff; color: #fff; text-decoration: none; border-radius: 6px; font-size: 15px; font-weight: 500;&#34;&gt;
+      📥 Download Flight Test Video (MP4)
+    &lt;/a&gt;
+  &lt;/div&gt;
+  &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;Video 1: Complete footage of the UAV maiden flight test&lt;/p&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;iv-core-technical-implementation&#34;&gt;IV. Core Technical Implementation
+&lt;/h2&gt;&lt;h3 id=&#34;1-llm-aided-frame-design-workflow&#34;&gt;1. LLM-Aided Frame Design Workflow
+&lt;/h3&gt;&lt;p&gt;The primary innovation lies in converting natural language requirements into automated design outputs:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Initial Input&lt;/strong&gt;: Receive customized user requirements processed via LLM Prompt Engineering and CoT.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Design Generation&lt;/strong&gt;: Generate parametric commands into CadQuery for automated UAV frame modeling.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Optimized Manufacturing&lt;/strong&gt;: Perform topology optimization via Altair Inspire before 3D printing.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Validation Loop&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;Conduct FEA (Finite Element Analysis) on printed parts. &lt;strong&gt;If Passed&lt;/strong&gt; → Final Output.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;If Failed&lt;/strong&gt; → Re-iterate through CoT processing to refine design instructions.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;2-power-system-adaptation&#34;&gt;2. Power System Adaptation
+&lt;/h3&gt;&lt;p&gt;Matching power components based on propeller thrust theory:
+$$T \approx C_{t} \cdot \rho \cdot n^{2} \cdot D^{4}$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Where: $C_t$ is the thrust coefficient, $\rho$ is air density, $n$ is RPM, and $D$ is propeller diameter.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Logic&lt;/strong&gt;: Reversed calculations to find the optimal prop size given frame constraints, resulting in the selection of 7-inch 3-blade props.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;3-structural-optimization-techniques&#34;&gt;3. Structural Optimization Techniques
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Topology Optimization&lt;/strong&gt;: Used FEA via Altair Inspire to identify non-critical areas for material reduction.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Aerodynamic Design&lt;/strong&gt;: Streamlined modeling to reduce drag, improving battery life and agility.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Integrated Packaging&lt;/strong&gt;: Compact component placement to minimize redundant volume.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;4-multi-fc-synchronization&#34;&gt;4. Multi-FC Synchronization
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Communication Architecture&lt;/strong&gt;: Broadcast mode + Master-Slave roles for synchronized command execution.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Protocol Tuning&lt;/strong&gt;: Disabled slave feedback to eliminate latency and communication conflict.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Fault Tolerance&lt;/strong&gt;: Modular redundancy ensures basic functionality even if a single module fails.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;v-limitations-and-future-work&#34;&gt;V. Limitations and Future Work
+&lt;/h2&gt;&lt;h3 id=&#34;1-current-limitations&#34;&gt;1. Current Limitations
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Power Consistency&lt;/strong&gt;: Independent batteries per module lead to slight thrust variances, affecting precision.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Sensor Fusion&lt;/strong&gt;: IMUs operate independently; a lack of cross-module data fusion leads to slight attitude estimation drift.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Flight Features&lt;/strong&gt;: Currently limited to basic attitude control; lacks GPS station-keeping and fail-safe protocols.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Engineering Aesthetics&lt;/strong&gt;: Design remains experimental with lower space efficiency compared to industrial models.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-future-directions&#34;&gt;2. Future Directions
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Power Management&lt;/strong&gt;: Introduce battery balancing mechanisms to unify thrust across modules.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Advanced Fusion&lt;/strong&gt;: Establish inter-module communication for multi-IMU data fusion to suppress drift.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Autonomy Upgrade&lt;/strong&gt;: Integrate barometers and GPS for altitude-hold and autonomous navigation.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Structural Material&lt;/strong&gt;: Explore carbon fiber composite 3D printing to further reduce weight and increase rigidity.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;vi-academic-results&#34;&gt;VI. Academic Results
+&lt;/h2&gt;&lt;p&gt;Research results from this project have been compiled into a paper and accepted by &lt;strong&gt;Procedia CIRP&lt;/strong&gt; (CIRPe 2025 Special Issue) after peer review:&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Paper Info&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Details&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Title&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Leveraging LLMs for personalized and manufacturable design generation of multirotor unmanned aerial vehicles&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Journal&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Procedia CIRP&lt;/strong&gt; (EI Indexed, Top-tier conference series in Mechanical Engineering)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Issue/Conf&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;SI: CIRPe 2025&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Manuscript #&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;PROCIR-D-25-00979R1&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Authors&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;1st Author: Peijiang Li; 3rd Author: &lt;strong&gt;Chengtao Liu&lt;/strong&gt; (Project Lead)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Status&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Accepted after peer review; Awaiting publication&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&#34;acceptance-proof&#34;&gt;Acceptance Proof
+&lt;/h4&gt;&lt;div style=&#34;display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 20px 0;&#34;&gt;
+  &lt;div style=&#34;flex: 1 1 80%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/uav/论文1.jpg&#34; alt=&#34;Procedia CIRP Acceptance Letter&#34; style=&#34;max-width: 60%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;Fig 12: Acceptance Proof from Procedia CIRP&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div style=&#34;display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 20px 0;&#34;&gt;
+  &lt;div style=&#34;flex: 1 1 80%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/uav/论文2.png&#34; alt=&#34;Paper Front Page&#34; style=&#34;max-width: 60%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;Fig 13: Paper Front Page&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;vii-conclusion&#34;&gt;VII. Conclusion
+&lt;/h2&gt;&lt;p&gt;This project successfully demonstrates a customized UAV development workflow based on LLM and Intelligent Manufacturing. Key outcomes include:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Bridged the &amp;ldquo;LLM Design → 3D Printing → Control Integration → Flight Test&amp;rdquo; loop, proving the feasibility of the customized paradigm.&lt;/li&gt;
+&lt;li&gt;Completed full-stack development of the power modules, achieving significant volume (32%) and weight (18%) reductions alongside synchronized control and stable flight.&lt;/li&gt;
+&lt;li&gt;Published innovative research in &lt;strong&gt;Procedia CIRP&lt;/strong&gt;, providing a scalable approach for customized multirotor production.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;By validating &amp;ldquo;LLM + Intelligent Manufacturing&amp;rdquo; through physical prototyping, this project sets a foundation for future iterations involving six-rotor platforms and more complex autonomous mission scenarios.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Painting Robot System Based on the Kinova Gen3-lite Robotic Arm</title>
+        <link>https://sxttrt.github.io/p/painting-robot/</link>
+        <pubDate>Wed, 04 Jun 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://sxttrt.github.io/p/painting-robot/</guid>
+        <description>&lt;img src="https://sxttrt.github.io/gen3/fengmian.png" alt="Featured image of post Painting Robot System Based on the Kinova Gen3-lite Robotic Arm" /&gt;&lt;script src=&#34;https://polyfill.io/v3/polyfill.min.js?features=es6&#34;&gt;&lt;/script&gt;
+&lt;script id=&#34;MathJax-script&#34; async src=&#34;https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js&#34;&gt;&lt;/script&gt;
+&lt;script&gt;
+MathJax.config = {
+  tex: {
+    inlineMath: [[&#39;$&#39;, &#39;$&#39;], [&#39;\\(&#39;, &#39;\\)&#39;]],
+    displayMath: [[&#39;$$&#39;, &#39;$$&#39;], [&#39;\\[&#39;, &#39;\\]&#39;]],
+    processEscapes: true
+  },
+  svg: {
+    fontCache: &#39;global&#39;
+  }
+};
+&lt;/script&gt;
+&lt;h2 id=&#34;i-project-core-information&#34;&gt;I. Project Core Information
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Category&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Details&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Project Title&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Construction of a Painting Robot System Based on the Kinova Gen3-lite Arm&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Core Members&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Yukun Li, Chengtao Liu, Bobin Wang&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Timeline&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;March 2025 - June 2025&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Core Tasks&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;1. &lt;strong&gt;Image Scanning&lt;/strong&gt;: Camera acquisition, preprocessing, edge detection, and contour extraction using OpenCV.&lt;br&gt;2. &lt;strong&gt;Trajectory Planning&lt;/strong&gt;: Binarization, skeletonization, path merging/simplification, and coordinate normalization.&lt;br&gt;3. &lt;strong&gt;Robot Control&lt;/strong&gt;: Force-controlled trajectory tracking under the ROS framework, coordinate transformation, and pen up/down simulation.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Key Tools&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Python, OpenCV (Image Processing), NumPy, ROS (Robot Operating System), Kinova Gen3-lite Arm, Kortex SDK, skimage (Skeletonization).&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;ii-background-and-objectives&#34;&gt;II. Background and Objectives
+&lt;/h2&gt;&lt;h3 id=&#34;1-project-background&#34;&gt;1. Project Background
+&lt;/h3&gt;&lt;p&gt;Traditional manual painting relies heavily on experience and is prone to errors when replicating complex line drawings, with extremely low efficiency for batch reproduction. The Kinova Gen3-lite, a lightweight collaborative robot arm, offers a repeatability of ±0.1mm. By integrating computer vision with robotic control, it is possible to achieve a fully automated &amp;ldquo;Visual Perception → Path Planning → Mechanical Execution&amp;rdquo; closed-loop system.&lt;/p&gt;
+&lt;p&gt;This project targets lightweight scenarios such as educational demonstrations and creative workshops. By avoiding complex industrial-grade vision calibration and expensive force-sensing hardware, we utilize an open-source toolchain (OpenCV + ROS) to implement a low-cost, easy-to-deploy system. The core focus is on solving two challenges: &amp;ldquo;How to transform images into executable robot trajectories&amp;rdquo; and &amp;ldquo;How to maintain stable pen-to-paper contact without a dedicated force sensor.&amp;rdquo;&lt;/p&gt;
+&lt;h3 id=&#34;2-core-objectives&#34;&gt;2. Core Objectives
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Image Processing&lt;/strong&gt;: Achieve precise contour extraction for line drawings (e.g., animal sketches, geometric patterns) under varying lighting, while filtering out paper textures and noise.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Path Planning&lt;/strong&gt;: Convert contours into continuous, non-redundant trajectories with pen up/down markers to ensure smooth execution and minimize idle motion.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Robot Control&lt;/strong&gt;: Implement end-effector force estimation based on the &lt;strong&gt;Jacobian Transpose&lt;/strong&gt; method. Use a PD controller to maintain a stable 13N contact force across different paper thicknesses.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;System Integration&lt;/strong&gt;: Complete the full automation pipeline, aiming for an execution time of ≤ 5 minutes for sketches with up to 200 path points.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;iii-key-task-implementation&#34;&gt;III. Key Task Implementation
+&lt;/h2&gt;&lt;h3 id=&#34;task-1-image-scanning-and-preprocessing-opencv&#34;&gt;Task 1: Image Scanning and Preprocessing (OpenCV)
+&lt;/h3&gt;&lt;h4 id=&#34;1-processing-workflow&#34;&gt;1. Processing Workflow
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Hardware Initialization&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;Utilized an industrial camera via &lt;code&gt;cv2.VideoCapture(6)&lt;/code&gt; with a 480×640 resolution to balance processing efficiency and detail.&lt;/li&gt;
+&lt;li&gt;Calibrated brightness via &lt;code&gt;cap.set(10, 160)&lt;/code&gt; to adapt to indoor lighting environments.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Image Optimization&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Grayscale Conversion&lt;/strong&gt;: Reduced computational load by focusing on contour features.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Gaussian Blurring&lt;/strong&gt;: Used a 5×5 kernel to smooth the image and suppress salt-and-pepper noise.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Canny Edge Detection&lt;/strong&gt;: Dynamically adjusted thresholds via a GUI trackbar to extract clear contours.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Morphological Enhancement&lt;/strong&gt;: Applied dilation (5×5 kernel) to connect broken edges, followed by erosion to eliminate small-area noise.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Contour Extraction&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;Employed &lt;code&gt;cv2.findContours&lt;/code&gt; with &lt;code&gt;RETR_EXTERNAL&lt;/code&gt; to extract only outer boundaries and &lt;code&gt;CHAIN_APPROX_SIMPLE&lt;/code&gt; to compress redundant points.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;2-processing-results&#34;&gt;2. Processing Results
+&lt;/h4&gt;&lt;div style=&#34;text-align: center; margin: 15px 0;&#34;&gt;
+  &lt;img src=&#34;https://sxttrt.github.io/gen3/图1.png&#34; alt=&#34;Image processing results&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+  &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;Fig 1: Processing effects across 3 different image types&lt;/p&gt;
+&lt;/div&gt;
+&lt;h3 id=&#34;task-2-trajectory-planning-image-to-mechanical-path&#34;&gt;Task 2: Trajectory Planning (Image to Mechanical Path)
+&lt;/h3&gt;&lt;h4 id=&#34;1-implementation-steps&#34;&gt;1. Implementation Steps
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Skeletonization&lt;/strong&gt;: Used &lt;code&gt;skimage.morphology.skeletonize&lt;/code&gt; to refine wide lines into single-pixel centerlines, significantly reducing trajectory complexity.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Breakpoint Repair&lt;/strong&gt;: Scanned the skeletonized image to detect and fill symmetric gaps (8-neighbor pixels), ensuring path continuity.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Path Optimization&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Trajectory Tracking&lt;/strong&gt;: Traversed pixels from identified endpoints to extract complete paths.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Path Merging&lt;/strong&gt;: Merged endpoints within a 10-pixel Euclidean distance to minimize &amp;ldquo;pen-up&amp;rdquo; actions.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Simplification&lt;/strong&gt;: Used &lt;code&gt;cv2.approxPolyDP&lt;/code&gt; (epsilon=2 pixels) to retain key turning points while discarding redundant segments, reducing total points by over 60%.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Coordinate Normalization&lt;/strong&gt;: Mapped pixel coordinates (x, y) to a [0, 1] range to eliminate image size effects and adapt to the robot&amp;rsquo;s 0.5m×0.5m workspace.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;2-trajectory-planning-results&#34;&gt;2. Trajectory Planning Results
+&lt;/h4&gt;&lt;div style=&#34;display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 20px 0;&#34;&gt;
+  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/gen3/图2.png&#34; alt=&#34;Skeletonization effect&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;Fig 2: Single-pixel centerline after skeletonization&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/gen3/图3.png&#34; alt=&#34;Optimized path&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;Fig 3: Final execution path after merging and simplification&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 id=&#34;task-3-robot-control-ros--kortex-sdk&#34;&gt;Task 3: Robot Control (ROS &amp;amp; Kortex SDK)
+&lt;/h3&gt;&lt;h4 id=&#34;1-force-control-implementation&#34;&gt;1. Force Control Implementation
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;End-effector Force Estimation (Sensorless)&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;Principle: Leveraged the robot&amp;rsquo;s &lt;strong&gt;Jacobian Transpose&lt;/strong&gt; relationship to estimate end-effector forces from joint torque measurements. Formula:
+$$F_{ee} = J^T \tau$$
+Where $F_{ee} \in \mathbb{R}^6$ is the estimated force/torque, $J \in \mathbb{R}^{6 \times 6}$ is the Jacobian matrix of the Gen3-lite, and $\tau \in \mathbb{R}^6$ is the measured joint torque.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;PD Force-controlled Trajectory Tracking&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;Objective: Maintain a stable 13N contact force in the Z-axis.&lt;/li&gt;
+&lt;li&gt;Control Law:
+$$\Delta z = K_p e_f + K_d \dot{e}&lt;em&gt;f$$
+Where $e_f = F&lt;/em&gt;{desired} - F_z$ (force error), $K_p=0.005$, and $K_d=0.001$.&lt;/li&gt;
+&lt;li&gt;Robustness: Only activated the controller when $|F_z| &amp;gt; 1N$ to prevent oscillation in free space.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;2-ros-node-architecture&#34;&gt;2. ROS Node Architecture
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Jacobian Node&lt;/strong&gt;: Subscribes to joint states to calculate and publish the Jacobian matrix and force estimates.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Painting Control Node&lt;/strong&gt;: Subscribes to force feedback, parses path files, and publishes Cartesian motion commands.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;iv-project-results-and-conclusion&#34;&gt;IV. Project Results and Conclusion
+&lt;/h2&gt;&lt;h3 id=&#34;1-painting-performance-comparison&#34;&gt;1. Painting Performance Comparison
+&lt;/h3&gt;&lt;div style=&#34;display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 20px 0;&#34;&gt;
+  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/gen3/图4.png&#34; alt=&#34;Input whale drawing&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;Fig 4: Original whale sketch input&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/gen3/图5.png&#34; alt=&#34;Output whale painting&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;Fig 5: Final hardware painting result&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 id=&#34;2-research-paper-download&#34;&gt;2. Research Paper Download
+&lt;/h3&gt;&lt;p&gt;📄 &lt;a href=&#34;https://sxttrt.github.io/gen3/The Final Project.pdf&#34; target=&#34;_blank&#34;&gt;Download The Final Project.pdf (Research Paper)&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;3-core-conclusions&#34;&gt;3. Core Conclusions
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Technical Aspect&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Key Findings&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Preprocessing&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Gaussian blurring (5×5) + Dilation/Erosion removed over 90% of noise; edge extraction accuracy reached ≥95%.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Path Planning&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;The workflow reduced path points by 60%-70%, increasing execution efficiency by over 50%.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Force Control&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Sensorless estimation kept contact force fluctuations within ±1.5N, meeting stability requirements.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Overall System&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Sketches with &amp;lt;200 points were completed in 3-5 minutes with a replication deviation of ≤1mm.&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+        </item>
+        <item>
+        <title>Design and Implementation of a Voice-Controlled Collaborative Robot System</title>
+        <link>https://sxttrt.github.io/p/ur-robot/</link>
+        <pubDate>Mon, 30 Dec 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://sxttrt.github.io/p/ur-robot/</guid>
+        <description>&lt;img src="https://sxttrt.github.io/UR-Robot/fengmian.png" alt="Featured image of post Design and Implementation of a Voice-Controlled Collaborative Robot System" /&gt;&lt;h2 id=&#34;i-project-overview&#34;&gt;I. Project Overview
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Category&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Details&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Project Title&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Design and Implementation of a Voice-Controlled Collaborative Robot System&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Project Lead&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Chengtao Liu&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Timeline&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;October 2024 - December 2024&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Core Member&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Chengtao Liu (Solo)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Supervisor&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Yi Xiong (Intelligent Control Science Innovation Practice II)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Core Tasks&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;1. DTW-based speech recognition (tool keyword identification); 2. YOLOv8-based object detection (5 tool categories); 3. GRCNN-based planar grasp point generation; 4. UR robot &amp;amp; gripper control (ur-rtde/minimalmodbus).&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Key Tools&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Python, OpenCV, YOLOv8, GRCNN, ur-rtde (Robot Control), MinimalModbus (Gripper Control).&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Deliverables&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;1. Functional voice-controlled grasping system; 2. Trained YOLOv8 tool detection weights; 3. Hardware grasping demonstration video; 4. Full project codebase with GUI.&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;ii-background-and-objectives&#34;&gt;II. Background and Objectives
+&lt;/h2&gt;&lt;h3 id=&#34;1-project-background&#34;&gt;1. Project Background
+&lt;/h3&gt;&lt;p&gt;In industrial assembly and warehouse sorting, traditional robots often require manual coordinate setting, which is cumbersome and lacks flexibility. Voice control, as a natural human-computer interaction (HCI) method, enables a fully automated &amp;ldquo;Voice Command → Automated Recognition → Precise Grasping&amp;rdquo; workflow, enhancing production efficiency while lowering the barrier for operators. This project focuses on &amp;ldquo;tool grasping&amp;rdquo; by integrating speech recognition (DTW), computer vision (YOLOv8/GRCNN), and robotics control to develop a lightweight, real-time, and controllable collaborative system for industrial environments, avoiding total reliance on &amp;ldquo;black-box&amp;rdquo; deep learning.&lt;/p&gt;
+&lt;h3 id=&#34;2-core-objectives&#34;&gt;2. Core Objectives
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Speech Recognition&lt;/strong&gt;: Implement keyword recognition for 5 tool types (&amp;ldquo;Hammer, Wrench, Screwdriver, Pliers, Tape Measure&amp;rdquo;), achieving ≥90% accuracy for isolated words and ≥85% for keywords at the start of short phrases.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Object Recognition&lt;/strong&gt;: Achieve a mAP50 of ≥93% using YOLOv8, ensuring robust detection across varied lighting and orientations in real-world lab settings.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Grasping Control&lt;/strong&gt;: Generate effective grasp points with ≥90% accuracy via GRCNN and achieve a ≥85% hardware success rate for the UR robot. Implement adaptive gripper force (e.g., 40% for tape measures, 80% for metallic tools).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;User Experience&lt;/strong&gt;: Develop a visualization UI supporting one-click &amp;ldquo;Voice Input → Image Recognition → Execution&amp;rdquo; operations, accompanied by hardware demonstration videos.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;iii-core-technical-implementation&#34;&gt;III. Core Technical Implementation
+&lt;/h2&gt;&lt;h3 id=&#34;task-1-dtw-based-speech-recognition-module&#34;&gt;Task 1: DTW-Based Speech Recognition Module
+&lt;/h3&gt;&lt;h4 id=&#34;1-algorithm-pipeline-and-preprocessing&#34;&gt;1. Algorithm Pipeline and Preprocessing
+&lt;/h4&gt;&lt;p&gt;Adopted a three-step workflow—&amp;ldquo;Template Recording → Signal Preprocessing → DTW Matching&amp;rdquo;—to resolve temporal inconsistencies in speech signals:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Template Recording&lt;/strong&gt;: Recorded 6 audio samples for each of the 5 keywords at different pitches and speeds (16,000Hz, Mono, 16-bit), generating 30 templates (Fig 1).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Signal Preprocessing&lt;/strong&gt;:
+&lt;ol&gt;
+&lt;li&gt;Applied framing (20ms length, 10ms shift) and pre-emphasis to boost high-frequency signals.&lt;/li&gt;
+&lt;li&gt;Implemented dual-threshold Voice Activity Detection (VAD) to isolate speech from silence.&lt;/li&gt;
+&lt;li&gt;Extracted 13-dimensional Mel-Frequency Cepstral Coefficients (MFCC) to transform audio into feature vectors (Fig 2).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;DTW Matching&lt;/strong&gt;: Real-time recording (2.5s duration, CHUNK=1024) is matched against templates by calculating Euclidean distance. The template with the minimum distance is selected as the result (e.g., &amp;ldquo;Hammer&amp;rdquo; distance ≈ 7585, Fig 3).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-recognition-performance&#34;&gt;2. Recognition Performance
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Preprocessing and Templates&lt;/strong&gt;:&lt;/p&gt;
+  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/UR-Robot/图1.png&#34; alt=&#34;Audio templates and MFCC features&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;Fig 1: Audio templates (top) and MFCC feature files (bottom)&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Results and Analysis&lt;/strong&gt;:&lt;/p&gt;
+&lt;div style=&#34;text-align: center; margin: 15px 0;&#34;&gt;
+  &lt;img src=&#34;https://sxttrt.github.io/UR-Robot/图3.png&#34; alt=&#34;DTW distance and recognition result&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+  &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;Fig 3: DTW distance calculation (Minimum distance corresponds to &#34;Hammer&#34;)&lt;/p&gt;
+&lt;/div&gt;
+&lt;div style=&#34;text-align: center; margin: 10px 0;&#34;&gt;
+  &lt;table style=&#34;max-width: 80%; margin: 0 auto; border-collapse: collapse; border: 1px solid #eee;&#34;&gt;
+    &lt;tr style=&#34;background-color: #f5f5f5;&#34;&gt;
+      &lt;th style=&#34;padding: 8px; border: 1px solid #eee; text-align: center;&#34;&gt;Category&lt;/th&gt;
+      &lt;th style=&#34;padding: 8px; border: 1px solid #eee; text-align: center;&#34;&gt;Hammer&lt;/th&gt;
+      &lt;th style=&#34;padding: 8px; border: 1px solid #eee; text-align: center;&#34;&gt;Wrench&lt;/th&gt;
+      &lt;th style=&#34;padding: 8px; border: 1px solid #eee; text-align: center;&#34;&gt;Screwdriver&lt;/th&gt;
+      &lt;th style=&#34;padding: 8px; border: 1px solid #eee; text-align: center;&#34;&gt;Pliers&lt;/th&gt;
+      &lt;th style=&#34;padding: 8px; border: 1px solid #eee; text-align: center;&#34;&gt;Tape Measure&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&#34;padding: 8px; border: 1px solid #eee; text-align: center;&#34;&gt;Word Acc (30 trials)&lt;/td&gt;
+      &lt;td style=&#34;padding: 8px; border: 1px solid #eee; text-align: center;&#34;&gt;30/30&lt;/td&gt;
+      &lt;td style=&#34;padding: 8px; border: 1px solid #eee; text-align: center;&#34;&gt;30/30&lt;/td&gt;
+      &lt;td style=&#34;padding: 8px; border: 1px solid #eee; text-align: center;&#34;&gt;30/30&lt;/td&gt;
+      &lt;td style=&#34;padding: 8px; border: 1px solid #eee; text-align: center;&#34;&gt;28/30&lt;/td&gt;
+      &lt;td style=&#34;padding: 8px; border: 1px solid #eee; text-align: center;&#34;&gt;29/30&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&#34;padding: 8px; border: 1px solid #eee; text-align: center;&#34;&gt;Phrase Acc (Start)&lt;/td&gt;
+      &lt;td style=&#34;padding: 8px; border: 1px solid #eee; text-align: center;&#34;&gt;28/30&lt;/td&gt;
+      &lt;td style=&#34;padding: 8px; border: 1px solid #eee; text-align: center;&#34;&gt;29/30&lt;/td&gt;
+      &lt;td style=&#34;padding: 8px; border: 1px solid #eee; text-align: center;&#34;&gt;29/30&lt;/td&gt;
+      &lt;td style=&#34;padding: 8px; border: 1px solid #eee; text-align: center;&#34;&gt;-/30&lt;/td&gt;
+      &lt;td style=&#34;padding: 8px; border: 1px solid #eee; text-align: center;&#34;&gt;-/30&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+  &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;Table 1: Speech recognition accuracy statistics (errors due to phonetic similarity between &#34;Pliers&#34; and &#34;Tape Measure&#34;)&lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;task-2-tool-recognition-based-on-yolov8&#34;&gt;Task 2: Tool Recognition Based on YOLOv8
+&lt;/h3&gt;&lt;h4 id=&#34;1-model-development-and-dataset-optimization&#34;&gt;1. Model Development and Dataset Optimization
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Model Selection&lt;/strong&gt;: Selected YOLOv8 for its 12% precision improvement over YOLOv5 and robust community support, focusing on 5 tool categories.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Dataset Iteration&lt;/strong&gt;:
+&lt;ol&gt;
+&lt;li&gt;Initial Dataset: 200 images with salt-and-pepper noise and rotation augmentation; mAP50 reached 88%, but real-world miss rates were high.&lt;/li&gt;
+&lt;li&gt;Optimized Dataset: Filtered out cartoonish/handheld images and supplemented with 300 lab-captured physical tool images. Adopted an &amp;ldquo;incremental training&amp;rdquo; strategy.&lt;/li&gt;
+&lt;li&gt;Knowledge Distillation: Used YOLOv8-L as a teacher model to transfer features to the YOLOv8-N student model, enhancing generalization.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Final Results&lt;/strong&gt;: The optimized model achieved a mAP50 of 95.2%, with detection precision for all tools exceeding 93% and miss rates dropping below 10% (Fig 4, 5).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-detection-performance&#34;&gt;2. Detection Performance
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Training Metrics&lt;/strong&gt;:
+  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/UR-Robot/图4.png&#34; alt=&#34;YOLOv8 Training Loss&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;Fig 4: Training loss curve (convergence at ~0.5)&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/UR-Robot/图5.png&#34; alt=&#34;YOLOv8 Validation Metrics&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;Fig 5: Validation metrics (mAP50=95.2%, Precision=93.1%)&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;task-3-grcnn-grasp-planning-and-robot-control&#34;&gt;Task 3: GRCNN Grasp Planning and Robot Control
+&lt;/h3&gt;&lt;h4 id=&#34;1-planar-grasp-point-generation-grcnn&#34;&gt;1. Planar Grasp Point Generation (GRCNN)
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Logic&lt;/strong&gt;: Fused RGB+Depth information from an Intel RealSense camera. GRCNN generates a global grasp confidence map, which is then cropped based on YOLOv8 bounding boxes to extract optimal grasp parameters (position, angle, width):
+&lt;ol&gt;
+&lt;li&gt;Image Preprocessing: Cropped YOLOv8 regions (confidence ≥ 0.5) with a 20px padding to ensure tool integrity.&lt;/li&gt;
+&lt;li&gt;Parameter Generation: Output grasp quality (q_img), angle (ang_img), and width (width_img) maps, locating local maxima for the grasp point (Fig 7).&lt;/li&gt;
+&lt;li&gt;Optimization: Increased depth weighting for flat tools (e.g., wrenches) to eliminate invalid grasp candidates.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-coordinate-transformation-and-ur-control&#34;&gt;2. Coordinate Transformation and UR Control
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Mapping&lt;/strong&gt;:
+&lt;ol&gt;
+&lt;li&gt;Pixel to Camera: Used RealSense intrinsics ($f_x, f_y, c_x, c_y$) and depth $Z$ to calculate 3D camera coordinates (Fig 8).&lt;/li&gt;
+&lt;li&gt;Camera to Robot: Calibrated via a 5×5 checkerboard (24 points) to compute the hand-eye transformation matrix $T$.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;UR Control&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;Utilized the &lt;code&gt;ur-rtde&lt;/code&gt; library for TCP/IP communication. Implemented &lt;code&gt;move_L&lt;/code&gt;/&lt;code&gt;move_J&lt;/code&gt; for linear/joint motion (velocity = 0.2m/s, acceleration = 0.1m/s², tolerance 2mm).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Gripper Control&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;Used &lt;code&gt;MinimalModbus&lt;/code&gt; via serial communication. Implemented adaptive force control: 80% for metallic tools (Hammer/Wrench) and 40% for plastic tools (Tape Measure) to prevent damage.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;3-control-visualization&#34;&gt;3. Control Visualization
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Grasp Points and Transformation&lt;/strong&gt;:
+  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/UR-Robot/图7.png&#34; alt=&#34;GRCNN grasp point generation&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;Fig 7: Pliers grasp point (Blue box indicates optimal grasp at 0.57rad)&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/UR-Robot/图8.png&#34; alt=&#34;Coordinate transformation formula&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;Fig 8: Pixel-to-Robot coordinate transformation formula&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;task-4-hardware-demonstration-video&#34;&gt;Task 4: Hardware Demonstration Video
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Hardware Demonstration:&lt;/strong&gt; This video showcases the robot responding to the &amp;ldquo;Hammer&amp;rdquo; voice command within a cluttered multi-tool environment. It demonstrates the full automated closed-loop pipeline from YOLOv8 identification and GRCNN localization to precision grasping.&lt;/p&gt;
+&lt;div style=&#34;text-align: center; margin: 30px 0;&#34;&gt;
+  &lt;h4&gt;Voice-Controlled Robot Grasping Demonstration&lt;/h4&gt;
+  &lt;iframe 
+    src=&#34;https://sxttrt.github.io/uav/视频1.mp4&#34; 
+    width=&#34;80%&#34; 
+    height=&#34;450px&#34; 
+    style=&#34;border: 1px solid #eee; border-radius: 4px; margin-bottom: 15px;&#34;
+    allowfullscreen&gt;
+    Your browser does not support iframes. Please download the video to view.
+  &lt;/iframe&gt;
+  &lt;div style=&#34;margin: 10px 0;&#34;&gt;
+    &lt;a href=&#34;https://sxttrt.github.io/uav/视频1.mp4&#34; 
+       target=&#34;_blank&#34; 
+       download=&#34;Voice_Robot_Grasping.mp4&#34;  
+       style=&#34;display: inline-block; padding: 10px 25px; background: #2188ff; color: #fff; text-decoration: none; border-radius: 6px; font-size: 15px; font-weight: 500;&#34;&gt;
+      📥 Download Grasping Video (MP4)
+    &lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;iv-key-results-and-indicators&#34;&gt;IV. Key Results and Indicators
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Metric&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Performance&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Speech Recognition&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Word Acc ≥ 93%; Phrase Acc (Keyword at Start) ≥ 85%.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Object Detection&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;YOLOv8 mAP50 = 95.2%; Miss rate ≤ 10% in real-world scenes.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Grasping Control&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;GRCNN grasp point validity ≥ 80%; UR hardware success rate ≥ 75%.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;System Response&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Total time from command to grasp completion ≤ 10s (autonomous).&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+        </item>
+        <item>
+        <title>Gomoku Recognition and Prediction System Based on Traditional Image Processing</title>
+        <link>https://sxttrt.github.io/p/gomoku-recognition/</link>
+        <pubDate>Fri, 20 Dec 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://sxttrt.github.io/p/gomoku-recognition/</guid>
+        <description>&lt;img src="https://sxttrt.github.io/gomoku/fengmian.png" alt="Featured image of post Gomoku Recognition and Prediction System Based on Traditional Image Processing" /&gt;&lt;h2 id=&#34;i-project-overview&#34;&gt;I. Project Overview
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Category&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Details&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Project Title&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Gomoku Recognition and Prediction System Based on Traditional Image Processing&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Role&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Project Lead&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Timeline&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;October 2024 - December 2024&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Core Members&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Chengtao Liu (Self), Jiaming Wu, Fengyang Wu, Wenbo Wan&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Core Tasks&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;1. Recognition of standard/hand-drawn boards and piece classification; 2. Board state modeling and coordinate normalization; 3. Intelligent move prediction and win/loss judgment; 4. Interactive UI development.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Key Tools&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;OpenCV (Image Processing), Python (Core Logic), Tkinter (UI Development), NumPy (Numerical Computing).&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;ii-background-and-objectives&#34;&gt;II. Background and Objectives
+&lt;/h2&gt;&lt;h3 id=&#34;1-project-background&#34;&gt;1. Project Background
+&lt;/h3&gt;&lt;p&gt;Automated recognition of Gomoku (Five-in-a-Row) is a classic application of computer vision. Traditional methods offer advantages such as controllable processes, low computational requirements, and straightforward implementation, making them ideal for lightweight recognition needs. This project moves away from &amp;ldquo;black-box&amp;rdquo; deep learning models, utilizing techniques like &lt;strong&gt;Gaussian filtering&lt;/strong&gt;, &lt;strong&gt;Canny edge detection&lt;/strong&gt;, and &lt;strong&gt;Hough transform&lt;/strong&gt; to solve two core challenges: high-precision recognition of standard boards and robust recognition of hand-drawn boards. Combined with heuristic pattern analysis, the system achieves a full &amp;ldquo;Recognition - Modeling - Prediction - Interaction&amp;rdquo; closed-loop.&lt;/p&gt;
+&lt;h3 id=&#34;2-core-objectives&#34;&gt;2. Core Objectives
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Recognition&lt;/strong&gt;: Achieve a 100% recognition rate for standard boards and ≥85% for neat hand-drawn boards, with precise classification of black and white pieces.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Modeling&lt;/strong&gt;: Construct a 15×15 board state model and implement normalized coordinate mapping to ensure data alignment with the physical board.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Intelligence&lt;/strong&gt;: Develop a move prediction algorithm based on pattern scoring and implement real-time win/loss judgment (5-in-a-row detection in horizontal, vertical, and diagonal directions).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Interaction&lt;/strong&gt;: Design a UI compatible with multiple board formats, supporting image importing, result visualization, and user interaction.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;iii-core-task-implementation&#34;&gt;III. Core Task Implementation
+&lt;/h2&gt;&lt;h3 id=&#34;task-1-standard-board-recognition-and-piece-classification&#34;&gt;Task 1: Standard Board Recognition and Piece Classification
+&lt;/h3&gt;&lt;h4 id=&#34;1-methodology&#34;&gt;1. Methodology
+&lt;/h4&gt;&lt;p&gt;Adopted a four-step pipeline: &amp;ldquo;Preprocessing → Piece Detection → Color Classification → Coordinate Mapping.&amp;rdquo;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Preprocessing&lt;/strong&gt;: Input images are denoised via Gaussian filtering (5×5 kernel) and converted to grayscale to reduce complexity.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Piece Detection&lt;/strong&gt;: Used &lt;code&gt;cv2.HoughCircles&lt;/code&gt; (Hough Circle Transform) with a radius range of 10-18px and a minimum distance of 25px to extract precise centers of the pieces.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Color Classification&lt;/strong&gt;: Transformed the Region of Interest (ROI) from RGB to &lt;strong&gt;HSV color space&lt;/strong&gt;. Pieces were classified using thresholds: White (Value &amp;gt; 120) and Black (Hue &amp;lt; 90).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Coordinate Mapping&lt;/strong&gt;: Calculated grid sizes based on board dimensions to map centers into 15×15 row/column indices.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-key-results&#34;&gt;2. Key Results
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Standard Board Performance&lt;/strong&gt;: Achieved nearly 100% recognition rate with zero deviation in coordinates or color classification.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Visuals&lt;/strong&gt;:
+&lt;div style=&#34;display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 15px 0;&#34;&gt;
+  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/gomoku/图3.png&#34; alt=&#34;Original standard board&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;Fig 1: Original standard board image&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/gomoku/图4.png&#34; alt=&#34;Recognition result&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;Fig 2: Recognition result (Annotated coordinates and colors)&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;task-2-hand-drawn-board-recognition-and-state-modeling&#34;&gt;Task 2: Hand-drawn Board Recognition and State Modeling
+&lt;/h3&gt;&lt;h4 id=&#34;1-methodology-1&#34;&gt;1. Methodology
+&lt;/h4&gt;&lt;p&gt;Designed a robust four-step workflow to handle irregular edges and piece adhesion:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Board Localization&lt;/strong&gt;: Extracted the largest contour via &lt;code&gt;cv2.findContours&lt;/code&gt; and used a bounding box to crop the board, resizing it to a fixed 1000×1000px.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Edge Detection&lt;/strong&gt;: Applied the Canny operator (thresholds 50-150) followed by dilation (5×5 kernel) to enhance line continuity and separate grid boundaries.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Grid Sorting&lt;/strong&gt;: Sorted extracted grid rectangles based on &amp;ldquo;diagonal distance (x+y)&amp;rdquo; to generate a 15×15 matrix, ensuring alignment with the physical grid.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Piece Judgment&lt;/strong&gt;: Calculated the ratio of white pixels within each grid and used the &amp;ldquo;Area-to-Perimeter ratio&amp;rdquo; (Circle &amp;lt; 1.3, Cross &amp;gt; 1.3) to distinguish between empty, black, and white (cross-marked) cells.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-key-results-1&#34;&gt;2. Key Results
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Hand-drawn Performance&lt;/strong&gt;: Achieved ≥85% accuracy for neat hand-drawn boards. Morphological operations effectively mitigated issues with boundary adhesion or line breaks.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Visuals&lt;/strong&gt;:
+&lt;div style=&#34;text-align: center; margin: 15px 0;&#34;&gt;
+  &lt;img src=&#34;https://sxttrt.github.io/gomoku/图7.png&#34; alt=&#34;Hand-drawn recognition result&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+  &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;Fig 3: Hand-drawn board recognition (Left: Original, Right: Resultant character board)&lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;task-3-move-prediction-and-winloss-judgment&#34;&gt;Task 3: Move Prediction and Win/Loss Judgment
+&lt;/h3&gt;&lt;h4 id=&#34;1-move-prediction-implementation&#34;&gt;1. Move Prediction Implementation
+&lt;/h4&gt;&lt;p&gt;The move prediction is the core intelligence of the system, utilizing a three-tier architecture: &amp;ldquo;&lt;strong&gt;Pattern Scanning - Score Calculation - Optimal Decision.&lt;/strong&gt;&amp;rdquo;&lt;/p&gt;
+&lt;h5 id=&#34;1-pattern-recognition-double-pointer-interval-scanning&#34;&gt;(1) Pattern Recognition: Double-pointer Interval Scanning
+&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Logic&lt;/strong&gt;: Scanned four directions (Horizontal, Vertical, Main Diagonal, Anti-diagonal) using a &lt;strong&gt;sliding window&lt;/strong&gt; (lengths 5 to 11). This ensures complex patterns like &amp;ldquo;Live 3 + Live 4&amp;rdquo; are captured without omission.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Filtering&lt;/strong&gt;: Implemented specific rules to avoid redundant counting of overlapping patterns and utilized edge-case logic for patterns near the board boundaries.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;2-score-calculation-pattern-weights-and-bonus-points&#34;&gt;(2) Score Calculation: Pattern Weights and Bonus Points
+&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Base Scores&lt;/strong&gt;: Predefined weights for typical patterns (e.g., &lt;strong&gt;Live 4: 1000&lt;/strong&gt;, &lt;strong&gt;Dead 4: 500&lt;/strong&gt;, &lt;strong&gt;Live 3: 300&lt;/strong&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Bonus Mechanism&lt;/strong&gt;: Added additional scores for lethal combinations (e.g., +30 for &amp;ldquo;Live 4 + Live 3&amp;rdquo;) to prioritize aggressive winning moves.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;3-optimal-decision-strategy-attack-defense-balancing&#34;&gt;(3) Optimal Decision Strategy: Attack-Defense Balancing
+&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Search Optimization&lt;/strong&gt;: Focused searches within a ±2 grid range of existing pieces to improve efficiency.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Decision Formula&lt;/strong&gt;: Calculated the &amp;ldquo;Yield Difference&amp;rdquo; for each empty cell to balance offensive gains and defensive requirements:
+&lt;code&gt;Yield = 1.1 × (Post-move Black Score - Pre-move Black Score) + (Pre-move White Score - Post-move White Score)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Kill Move Priority&lt;/strong&gt;: If any move results in an immediate Win/Live 4 (Score ≥ 1000), it is selected instantly.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-winloss-judgment&#34;&gt;2. Win/Loss Judgment
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Full-direction Detection&lt;/strong&gt;: Constructed 29 diagonal detection arrays to ensure comprehensive coverage.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Victory Interaction&lt;/strong&gt;: Upon detecting a 5-in-a-row string (&amp;ldquo;XXXXX&amp;rdquo; or &amp;ldquo;OOOOO&amp;rdquo;), the UI displays a victory pop-up and automatically resets the board after a 3-second delay.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Visuals&lt;/strong&gt;:
+&lt;div style=&#34;text-align: center; margin: 15px 0;&#34;&gt;
+  &lt;img src=&#34;https://sxttrt.github.io/gomoku/图11.png&#34; alt=&#34;Victory prompt&#34; style=&#34;max-width: 60%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+  &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;Fig 4: White player victory notification&lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;task-4-ui-development&#34;&gt;Task 4: UI Development
+&lt;/h3&gt;&lt;h4 id=&#34;1-features&#34;&gt;1. Features
+&lt;/h4&gt;&lt;p&gt;Developed an interactive Tkinter interface supporting:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Image Import&lt;/strong&gt;: Upload standard or hand-drawn board images (JPG/PNG).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Visualization&lt;/strong&gt;: Toggle between &amp;ldquo;Original,&amp;rdquo; &amp;ldquo;Grayscale,&amp;rdquo; and &amp;ldquo;Recognized&amp;rdquo; views.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Interaction&lt;/strong&gt;: Supports manual moves and real-time next-move prediction (indicated by colored masks: Red for Black, Green for White).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-ui-interface&#34;&gt;2. UI Interface
+&lt;/h4&gt;  &lt;div style=&#34;text-align: center; margin: 15px 0;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/gomoku/图11.png&#34; alt=&#34;UI Exhibition&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;Fig 5: System UI featuring recognition, prediction, and manual play&lt;/p&gt;
+  &lt;/div&gt;
+&lt;h2 id=&#34;iv-project-results-summary&#34;&gt;IV. Project Results Summary
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Recognition Precision&lt;/strong&gt;: ~100% for standard boards, ≥85% for neat hand-drawn boards, and ≥98% for color classification.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;System Performance&lt;/strong&gt;: Prediction latency ≤0.5s; move recommendations align with standard Gomoku strategies (prioritizing Live 4/Live 3 patterns).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Compatibility&lt;/strong&gt;: Seamlessly supports 15×15 standard boards and dynamically resizes hand-drawn inputs.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>Research on Classification and Image Processing Based on Traditional Machine Learning Algorithms</title>
+        <link>https://sxttrt.github.io/p/ai-research/</link>
+        <pubDate>Sat, 30 Nov 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://sxttrt.github.io/p/ai-research/</guid>
+        <description>&lt;img src="https://sxttrt.github.io/ai/fengmian.png" alt="Featured image of post Research on Classification and Image Processing Based on Traditional Machine Learning Algorithms" /&gt;&lt;script src=&#34;https://polyfill.io/v3/polyfill.min.js?features=es6&#34;&gt;&lt;/script&gt;
+&lt;script id=&#34;MathJax-script&#34; async src=&#34;https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js&#34;&gt;&lt;/script&gt;
+&lt;script&gt;
+MathJax.config = {
+  tex: {
+    inlineMath: [[&#39;$&#39;, &#39;$&#39;], [&#39;\\(&#39;, &#39;\\)&#39;]],
+    displayMath: [[&#39;$$&#39;, &#39;$$&#39;], [&#39;\\[&#39;, &#39;\\]&#39;]],
+    processEscapes: true,
+    processEnvironments: true
+  },
+  svg: {
+    fontCache: &#39;global&#39;
+  }
+};
+&lt;/script&gt;
+&lt;h2 id=&#34;i-project-overview&#34;&gt;I. Project Overview
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Category&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Details&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Project Title&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Research on Classification and Image Processing Based on Traditional ML Algorithms&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Role&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Project Lead&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Timeline&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;September 2024 - November 2024&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Core Member&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Chengtao Liu (Solo)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Core Tasks&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;1. Seeds dataset classification using K-means/Soft K-means (Optimized Split-Merge strategies); 2. Image reconstruction via PCA/Linear Autoencoder/Soft K-means (Comparative study on dimensions/clusters); 3. Binary classification of X-shaped data using Logistic Regression/MLP (Hyperparameter tuning: hidden layers, neurons, tolerance).&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Key Tools&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Python (Core Logic), NumPy (Matrix Operations), Matplotlib (Visualization), Pandas (Data Processing).&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;ii-background-and-objectives&#34;&gt;II. Background and Objectives
+&lt;/h2&gt;&lt;h3 id=&#34;1-project-background&#34;&gt;1. Project Background
+&lt;/h3&gt;&lt;p&gt;While Deep Learning excels in large-scale complex tasks, it often suffers from parameter redundancy, poor interpretability, and high computational demands. Traditional machine learning algorithms (e.g., K-means, PCA, Logistic Regression) remain highly valuable in small-to-medium data scenarios due to their mathematical transparency, lightweight nature, and reproducibility.&lt;/p&gt;
+&lt;p&gt;This project focuses on &lt;strong&gt;&amp;ldquo;Exploring the performance boundaries and hyperparameter influence of traditional algorithms,&amp;rdquo;&lt;/strong&gt; targeting two typical domains:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Classification Tasks&lt;/strong&gt;: Including clustering of the &amp;ldquo;Seeds Dataset&amp;rdquo; (K-means/Soft K-means) and binary classification of &amp;ldquo;X-shaped Distribution Data&amp;rdquo; (Logistic Regression/MLP).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Image Processing Tasks&lt;/strong&gt;: Implementing image reconstruction based on PCA, Linear Autoencoders, and Soft K-means to explore the correlation between &amp;ldquo;latent dimensions/clusters&amp;rdquo; and &amp;ldquo;reconstruction quality.&amp;rdquo;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;All algorithms were implemented from scratch using &lt;strong&gt;pure Python/NumPy&lt;/strong&gt; without relying on third-party ML libraries, aiming to deeply understand the underlying logic and summarize reusable parameter tuning patterns.&lt;/p&gt;
+&lt;h3 id=&#34;2-core-objectives&#34;&gt;2. Core Objectives
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Clustering Exploration&lt;/strong&gt;: Analyze the impact of &amp;ldquo;cluster count, split-merge strategies, iterations, and tolerance&amp;rdquo; on the Seeds dataset. Compare accuracy stability and resistance to local optima between K-means and Soft K-means.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Image Reconstruction&lt;/strong&gt;: Use an image of a WWI soldier to explore how &amp;ldquo;retained dimensions&amp;rdquo; (PCA/AE) and &amp;ldquo;cluster count&amp;rdquo; (Soft K-means) affect color restoration and detail retention.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Binary Classification&lt;/strong&gt;: Compare the fitting capabilities of linear (Logistic Regression) vs. non-linear (MLP) models on X-shaped data. Focus on how MLP &amp;ldquo;hidden layers, neurons, and tolerance&amp;rdquo; affect convergence speed and accuracy.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Engineering Excellence&lt;/strong&gt;: Modularize algorithm components and provide visualization scripts (accuracy curves, reconstruction comparisons) to ensure experiment reproducibility and intuitive interpretation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;iii-core-technical-implementation&#34;&gt;III. Core Technical Implementation
+&lt;/h2&gt;&lt;h3 id=&#34;task-1-k-means--soft-k-means-clustering-seeds-dataset&#34;&gt;Task 1: K-means &amp;amp; Soft K-means Clustering (Seeds Dataset)
+&lt;/h3&gt;&lt;h4 id=&#34;1-algorithmic-design&#34;&gt;1. Algorithmic Design
+&lt;/h4&gt;&lt;p&gt;This task explores the impact of &lt;strong&gt;algorithm type and hyperparameters (K, split-merge, iterations, tolerance)&lt;/strong&gt; on clustering accuracy:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;K-means Design&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Core Logic&lt;/strong&gt;: Minimizing the Within-Cluster Sum of Squares (WCSS):
+$$J=\sum_{i=1}^{k} \sum_{x \in C_{i}}\left| x-\mu_{i}\right| ^{2}$$&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Optimization&lt;/strong&gt;: Designed a dynamic &amp;ldquo;Split-Merge&amp;rdquo; scheme (splitting the cluster with max distance + merging the two closest clusters) to improve stability without exploding the cluster count.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Soft K-means Design&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Core Logic&lt;/strong&gt;: Introduced probabilistic weights $w_{ij}$ (probability of $x_i$ belonging to cluster $j$):
+$$J=\sum_{i=1}^{n} \sum_{j=1}^{k} w_{ij}\left| x_{i}-\mu_{j}\right| ^{2}$$&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Optimization&lt;/strong&gt;: Implemented &amp;ldquo;K-means++&amp;rdquo; style initialization (probabilistic distance-based centroid selection) to contrast with K-means random initialization.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-experimental-analysis&#34;&gt;2. Experimental Analysis
+&lt;/h4&gt;&lt;p&gt;Based on the Seeds dataset (3 classes, 210 samples), we analyzed the impact of core parameters:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Tolerance Impact (k=3, No Split-Merge)&lt;/strong&gt;:
+In the range of $1e-3$ to $1e-5$, accuracy remained constant, indicating low sensitivity. Fixed at $1e-5$ for subsequent tests.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Iteration Impact (k=3, Tolerance=1e-5)&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;K-means&lt;/strong&gt;: Peak accuracy (89.05%) at 200 iterations; accuracy declined beyond 200 (possible over-fitting).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Soft K-means&lt;/strong&gt;: Accuracy stabilized at 89.52% after only 50 iterations, demonstrating superior convergence stability.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Cluster Count &amp;amp; Split-Merge (Iter=200, Tol=1e-5)&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Cluster Count&lt;/strong&gt;: Increasing $k$ from 3 to 10 caused K-means accuracy to drop by 3%, while Soft K-means improved by 0.48%, showing better adaptability to high-cluster scenarios.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Split-Merge&lt;/strong&gt;: Enabled strategies slightly hindered performance for the Seeds dataset due to its compact distribution.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;task-2-image-reconstruction-pca-linear-ae-soft-k-means&#34;&gt;Task 2: Image Reconstruction (PCA, Linear AE, Soft K-means)
+&lt;/h3&gt;&lt;h4 id=&#34;1-technical-implementation&#34;&gt;1. Technical Implementation
+&lt;/h4&gt;&lt;p&gt;Focused on how &lt;strong&gt;dimensionality/clusters&lt;/strong&gt; affect reconstruction quality for a 256×256 WWI soldier image:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;PCA (Latent Dimension Exploration)&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;Computed the covariance matrix and performed SVD decomposition:
+$$C=U \sum V^{T}$$&lt;/li&gt;
+&lt;li&gt;Projected onto the top $k$ principal components ($k=1/2/3$).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Linear Autoencoder (Encoding Dimension Exploration)&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;Architecture: Input Layer $\rightarrow$ Encoding ($E=X \cdot W_e$) $\rightarrow$ Decoding ($D=E \cdot W_d$) (pure linear transformation).&lt;/li&gt;
+&lt;li&gt;Training: Used MSE loss and gradient clipping to prevent explosion.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Soft K-means (Cluster Count Exploration)&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;Treated pixels as samples and replaced original pixels with cluster centroids (explored $k=1/3/5/7/9$).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-results-and-analysis&#34;&gt;2. Results and Analysis
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;PCA vs. Linear Autoencoder&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Dim=1&lt;/strong&gt;: Both outputted grayscale images. AE reconstruction error (0.015) was lower than PCA (0.018).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Dim=2&lt;/strong&gt;: AE showed significant color restoration (error 0.008), while PCA remained dull (error 0.012), indicating AE&amp;rsquo;s superior linear feature retention.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Dim=3&lt;/strong&gt;: Both achieved perfect reconstruction (zero error) as they fully captured the RGB channels.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Soft K-means Results&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;At $k \leq 5$, significant color banding and detail loss (e.g., fabric texture) occurred.&lt;/li&gt;
+&lt;li&gt;At $k=9$, the model successfully recovered major colors and edge details (cap, collar), matching the image&amp;rsquo;s inherent color complexity.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;task-3-logistic-regression-vs-mlp-x-shaped-data&#34;&gt;Task 3: Logistic Regression vs. MLP (X-shaped Data)
+&lt;/h3&gt;&lt;h4 id=&#34;1-algorithmic-design-1&#34;&gt;1. Algorithmic Design
+&lt;/h4&gt;&lt;p&gt;Focused on the impact of &lt;strong&gt;model type and MLP hyperparameters&lt;/strong&gt; on non-linear decision boundaries:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Logistic Regression (Linear Baseline)&lt;/strong&gt;: Using Sigmoid activation $\sigma(z)$ and Cross-Entropy loss. Explored the limitations of linear models on intersecting data distributions.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;MLP (Non-linear Exploration)&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;Architecture: Input (2D) $\rightarrow$ Hidden Layers (1-6) $\rightarrow$ Sigmoid Output.&lt;/li&gt;
+&lt;li&gt;Hyperparameters: Explored hidden layers, neurons per layer (2/4/8/20), and tolerance ($1e-5$ to $1e-8$).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-results-and-analysis-1&#34;&gt;2. Results and Analysis
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Linear vs. Non-linear Comparison&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Logistic Regression&lt;/strong&gt;: Failed to fit the X-distribution, topping out at 59.60% accuracy.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;MLP (1 hidden layer, 8 neurons)&lt;/strong&gt;: Achieved 100% accuracy within 8,320 iterations.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;MLP Hyperparameter Sensitivity&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Network Depth&lt;/strong&gt;: 1-2 hidden layers with $\geq 8$ neurons were optimal. Increasing to 6 layers caused the model to trap in local optima (accuracy dropped to 77%).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tolerance&lt;/strong&gt;: $1e-7$ was the &amp;ldquo;sweet spot.&amp;rdquo; Tolerance $\geq 1e-6$ resulted under-fitting (accuracy $\approx 55%$), while $1e-8$ caused slight over-fitting and excessive computation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;iv-project-results-and-deliverables&#34;&gt;IV. Project Results and Deliverables
+&lt;/h2&gt;&lt;h3 id=&#34;1-research-papers&#34;&gt;1. Research Papers
+&lt;/h3&gt;&lt;h4 id=&#34;11-paper-1-study-on-classification-and-image-processing-via-k-means-pca-and-linear-ae&#34;&gt;1.1 Paper 1: Study on Classification and Image Processing via K-means, PCA, and Linear AE
+&lt;/h4&gt;&lt;iframe src=&#34;https://sxttrt.github.io/ai/K-means_PCA_LinearAutoencoder_Research.pdf&#34; width=&#34;100%&#34; height=&#34;700&#34; style=&#34;border: 1px solid #e0e0e0; border-radius: 6px;&#34; title=&#34;Paper 1&#34;&gt;&lt;/iframe&gt;
+&lt;h4 id=&#34;12-paper-2-binary-classification-exploration-via-logistic-regression-and-mlp&#34;&gt;1.2 Paper 2: Binary Classification Exploration via Logistic Regression and MLP
+&lt;/h4&gt;&lt;iframe src=&#34;https://sxttrt.github.io/ai/LogisticRegression_MLP_BinaryClassification.pdf&#34; width=&#34;100%&#34; height=&#34;700&#34; style=&#34;border: 1px solid #e0e0e0; border-radius: 6px; margin-top: 30px;&#34; title=&#34;Paper 2&#34;&gt;&lt;/iframe&gt;
+&lt;h3 id=&#34;2-core-research-outcomes-summary-table&#34;&gt;2. Core Research Outcomes (Summary Table)
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Domain&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Key Findings&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Clustering&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Soft K-means is more stable (accuracy fluctuation $\leq 0.5%$) and performs better in multi-cluster scenarios ($k=10$) than K-means.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Reconstruction&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Linear AE outperforms PCA at lower dimensions (Dim=2) for color retention. Soft K-means require $k \geq 9$ for acceptable detail in low-color-complexity images.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Classification&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;MLP with 1-2 hidden layers is optimal for non-linear boundaries; excessive depth ($\geq 6$ layers) significantly increases the risk of local optima entrapment.&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+        </item>
+        <item>
+        <title>Motion Control System Design for a Four-wheel Car Based on Experimental Identification and Simulation</title>
+        <link>https://sxttrt.github.io/p/four-wheel-car-modeling/</link>
+        <pubDate>Sat, 01 Jun 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://sxttrt.github.io/p/four-wheel-car-modeling/</guid>
+        <description>&lt;img src="https://sxttrt.github.io/four-wheel-car/fengmian.png" alt="Featured image of post Motion Control System Design for a Four-wheel Car Based on Experimental Identification and Simulation" /&gt;&lt;h2 id=&#34;i-project-core-information&#34;&gt;I. Project Core Information
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Category&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Details&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Project Title&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Experimental Modeling and Motion Control of a Four-wheel Car&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Role&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Project Lead&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Timeline&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;March 2024 - May 2024&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Core Members&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Chengtao Liu (Self), Fengyang Wu&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Core Tasks&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;1. Open-loop control system construction and data acquisition;&lt;br&gt;2. Experimental identification of the open-loop model;&lt;br&gt;3. Simulink simulation verification and PID parameter tuning;&lt;br&gt;4. Deployment of Arduino PID closed-loop control.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Key Tools&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Arduino IDE (Control Programming), MATLAB (System Identification), Simulink (Simulation &amp;amp; Tuning).&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;ii-background-and-objectives&#34;&gt;II. Background and Objectives
+&lt;/h2&gt;&lt;h3 id=&#34;1-project-background&#34;&gt;1. Project Background
+&lt;/h3&gt;&lt;p&gt;Following the requirements for the four-wheel car experimental modeling course, this project utilizes a laboratory four-wheel vehicle (equipped with 2 brushed DC motors) as the research object. By implementing an experimental modeling workflow—&amp;ldquo;Data Acquisition → Model Generation → Simulation Verification → Hardware Control&amp;rdquo;—we aimed to deepen the practical application of PID control theory and system identification technologies. This project effectively addresses common issues in motion control, such as low precision and significant response latency.&lt;/p&gt;
+&lt;h3 id=&#34;2-core-objectives&#34;&gt;2. Core Objectives
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Construct an Arduino-based open-loop control system to achieve precise motor speed control via PWM commands.&lt;/li&gt;
+&lt;li&gt;Establish an open-loop model for linear motion using the MATLAB System Identification Toolbox, ensuring high model fit accuracy.&lt;/li&gt;
+&lt;li&gt;Perform open-loop simulation and offline PID tuning in Simulink, followed by hardware deployment on Arduino to achieve robust closed-loop control.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;iii-core-task-implementation&#34;&gt;III. Core Task Implementation
+&lt;/h2&gt;&lt;h3 id=&#34;task-1-open-loop-system-construction-and-model-identification&#34;&gt;Task 1: Open-loop System Construction and Model Identification
+&lt;/h3&gt;&lt;h4 id=&#34;1-open-loop-control-system-setup&#34;&gt;1. Open-loop Control System Setup
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Hardware Foundation&lt;/strong&gt;: Per the course requirements, a 4-motor vehicle was originally planned; however, due to hardware compatibility, an &amp;ldquo;Arduino two-wheel car&amp;rdquo; from the Smart Sensing project was used. Both platforms share identical functionality, utilizing encoders for real-time wheel speed acquisition.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Control Logic&lt;/strong&gt;: Developed open-loop Arduino code defining motor pins (e.g., &lt;code&gt;Motor_AIN1=6&lt;/code&gt;, &lt;code&gt;Motor_AIN2=3&lt;/code&gt;) and encoder pins (&lt;code&gt;ENCODER_A=2&lt;/code&gt;). Utilized 10ms timer interrupts to update speed counts. Real-time speed feedback was captured via a serial debugger while sending varying PWM values (100, 150, 250, 255).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Key Visuals&lt;/strong&gt;:
+&lt;div style=&#34;text-align: center; margin: 15px 0;&#34;&gt;
+  &lt;img src=&#34;https://sxttrt.github.io/four-wheel-car/图1.png&#34; alt=&#34;Open-loop control data&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+  &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;Fig 1: Left and right wheel test data&lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-experimental-model-identification&#34;&gt;2. Experimental Model Identification
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Data Preprocessing&lt;/strong&gt;: Organized test data for 4 sets of PWM values (255, 250, 150, 100) into Excel. After removing outliers, the &amp;ldquo;PWM Input - RPM Output&amp;rdquo; dataset was imported into MATLAB.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Modeling Process&lt;/strong&gt;: Employed the &lt;strong&gt;Step Response Method&lt;/strong&gt; within the MATLAB System Identification Toolbox. Selected a second-order transfer function as the base model and fused 8 sets of valid data (4 PWM sets × 2 wheels) for fitting.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Accuracy Verification&lt;/strong&gt;: Achieved an average model fit of &lt;strong&gt;85.55%&lt;/strong&gt;, with individual dataset fits ranging from 76.24% to 92.52%, satisfying the project&amp;rsquo;s precision requirements.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Key Visuals&lt;/strong&gt;:
+&lt;div style=&#34;text-align: center; margin: 15px 0;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/four-wheel-car/图2.png&#34; alt=&#34;Transfer function parameter identification&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;Fig 2: Parameter identification via integrated datasets&lt;/p&gt;
+  &lt;/div&gt;
+&lt;div style=&#34;text-align: center; margin: 15px 0;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/four-wheel-car/图3.png&#34; alt=&#34;Transfer function and fit results&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;Fig 3: Identified transfer function and corresponding fit percentages&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;3-simulink-open-loop-simulation-verification&#34;&gt;3. Simulink Open-loop Simulation Verification
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Simulation Modeling&lt;/strong&gt;: Built an open-loop model in Simulink featuring &amp;ldquo;Step Input (PWM=175 corresponding to 37 RPM)&amp;rdquo;, &amp;ldquo;Transfer Fcn&amp;rdquo;, and &amp;ldquo;Scope&amp;rdquo; modules.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Validation&lt;/strong&gt;: Simulation fit across three iterations reached 91.83%, 92.58%, and 92.83%. The high overlap between simulation curves and physical measurements verified the model&amp;rsquo;s predictive accuracy.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Key Visuals&lt;/strong&gt;:
+&lt;div style=&#34;text-align: center; margin: 15px 0;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/four-wheel-car/图4.png&#34; alt=&#34;Simulink open-loop model&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;Fig 4: Open-loop Simulink model architecture&lt;/p&gt;
+  &lt;/div&gt;
+    &lt;div style=&#34;text-align: center; margin: 15px 0;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/four-wheel-car/图5.png&#34; alt=&#34;Simulation vs Measurement Comparison&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;Fig 5: Comparison between 175 PWM simulation and actual measured data&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;4-pid-closed-loop-control-tuning&#34;&gt;4. PID Closed-loop Control Tuning
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Closed-loop Modeling&lt;/strong&gt;: Integrated a &amp;ldquo;PID Controller&amp;rdquo; module into the open-loop architecture. Set an output limit of 45 (max motor RPM) to prevent system overload.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Parameter Optimization&lt;/strong&gt;: Used the &lt;strong&gt;Simulink PID Tuner&lt;/strong&gt; to achieve rapid response and minimal overshoot. Obtained parameters: &lt;strong&gt;P=1.117, I=13.04, D=-0.003613&lt;/strong&gt;. Due to the negligible D value, the system was simplified to PI control for hardware deployment.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Key Visuals&lt;/strong&gt;:
+&lt;div style=&#34;display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 15px 0;&#34;&gt;
+  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/four-wheel-car/图6.png&#34; alt=&#34;PID closed-loop Simulink model&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;Fig 6: PID closed-loop control system in Simulink&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/four-wheel-car/图7.png&#34; alt=&#34;PID tuning results&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;Fig 7: PID parameter tuning and output saturation settings&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;task-2-pid-deployment-and-physical-testing&#34;&gt;Task 2: PID Deployment and Physical Testing
+&lt;/h3&gt;&lt;h4 id=&#34;1-parameter-transformation-and-implementation&#34;&gt;1. Parameter Transformation and Implementation
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Conversion&lt;/strong&gt;: Based on the linear fit between PWM and RPM (coefficient 6.4677, offset -37.1855), the Simulink-optimized parameters were converted to Arduino-applicable values: &lt;strong&gt;KP=7.04, KI=0.8&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;PI Control Code&lt;/strong&gt;: Implemented an &lt;strong&gt;Incremental PI Control&lt;/strong&gt; function. The logic involves calculating speed error (Target - Actual), accumulating the integral term, and limiting PWM output to drive the motors via 10ms timer interrupts.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Key Visuals&lt;/strong&gt;:
+&lt;div style=&#34;display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 15px 0;&#34;&gt;
+  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/four-wheel-car/图8.png&#34; alt=&#34;PWM-RPM Linear Fit&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;Fig 8: Linear fitting of PWM and target speed&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/four-wheel-car/图9.png&#34; alt=&#34;Incremental PI Code&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;Fig 9: Snippet of incremental PI control implementation&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-physical-validation&#34;&gt;2. Physical Validation
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Testing Methodology&lt;/strong&gt;: Selected three target speeds (37, 31, 21 RPM) to compare &amp;ldquo;Open-loop Control&amp;rdquo; vs. &amp;ldquo;PI Closed-loop Control&amp;rdquo; responses. Additionally, compared Simulink simulation results with actual hardware performance.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Core Conclusion&lt;/strong&gt;: Closed-loop control significantly improved response time and reduced steady-state error compared to open-loop. The small discrepancy between simulation and measurement validated the high precision and practicality of the modeling approach.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Key Visuals&lt;/strong&gt;:
+&lt;div style=&#34;display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 15px 0;&#34;&gt;
+  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/four-wheel-car/图10.png&#34; alt=&#34;Open-loop vs Closed-loop&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;Fig 10: Performance comparison: Open-loop vs. Closed-loop at 37 RPM&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/four-wheel-car/图11.png&#34; alt=&#34;Simulation vs Measurement&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;Fig 11: Comparison between simulation and hardware measurements at 37 RPM&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;iv-project-results-and-conclusion&#34;&gt;IV. Project Results and Conclusion
+&lt;/h2&gt;&lt;p&gt;This project strictly followed the &amp;ldquo;Open-loop Construction → Model Identification → Simulation Tuning → Hardware Deployment&amp;rdquo; workflow. Key outcomes include:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Mathematical Description&lt;/strong&gt;: Developed a second-order transfer function model with an average fit of &lt;strong&gt;85.55%&lt;/strong&gt; for precise motion characterization.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Simulation Optimization&lt;/strong&gt;: Designed a Simulink closed-loop scheme to optimize PID parameters (simplified to PI: &lt;strong&gt;KP=7.04, KI=0.8&lt;/strong&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Hardware Performance&lt;/strong&gt;: The deployed Arduino PI controller demonstrated significant improvements in response speed and a marked reduction in steady-state error. Minimal errors between simulation and measurement further verified the modeling accuracy and practical utility of the controller.&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

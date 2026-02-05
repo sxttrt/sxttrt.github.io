@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="强化学习项目完整记录，含倒立摆LQR控制与REINFORCE控制、双足机器人PPO训练体系搭建及复杂地形自适应行走（附源码与仿真动态素材）">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="强化学习项目完整记录，含倒立摆LQR控制与REINFORCE控制、双足机器人PPO训练体系搭建及复杂地形自适应行走">
 <title>基于强化学习的倒立摆控制与双足机器人系统构建</title>
 
 <link rel='canonical' href='https://sxttrt.github.io/zh-cn/p/rl-control-project/'>
 
 <link rel="stylesheet" href="/scss/style.min.c91073e1bef24baf3131464aee14e30bb1335275cee51563e55fb2a5e03eca69.css"><meta property='og:title' content="基于强化学习的倒立摆控制与双足机器人系统构建">
-<meta property='og:description' content="强化学习项目完整记录，含倒立摆LQR控制与REINFORCE控制、双足机器人PPO训练体系搭建及复杂地形自适应行走（附源码与仿真动态素材）">
+<meta property='og:description' content="强化学习项目完整记录，含倒立摆LQR控制与REINFORCE控制、双足机器人PPO训练体系搭建及复杂地形自适应行走">
 <meta property='og:url' content='https://sxttrt.github.io/zh-cn/p/rl-control-project/'>
 <meta property='og:site_name' content='刘承韬'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-06-20T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-06-20T00:00:00&#43;00:00'/><meta property='og:image' content='https://sxttrt.github.io/RL/fengmian.png' />
 <meta name="twitter:title" content="基于强化学习的倒立摆控制与双足机器人系统构建">
-<meta name="twitter:description" content="强化学习项目完整记录，含倒立摆LQR控制与REINFORCE控制、双足机器人PPO训练体系搭建及复杂地形自适应行走（附源码与仿真动态素材）"><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="强化学习项目完整记录，含倒立摆LQR控制与REINFORCE控制、双足机器人PPO训练体系搭建及复杂地形自适应行走"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://sxttrt.github.io/RL/fengmian.png' />
     <link rel="shortcut icon" href="/favicon.ico" />
 
@@ -134,7 +134,7 @@
         
         
         <li >
-            <a href='/zh-cn/%E5%85%B3%E4%BA%8E/' >
+            <a href='/zh-cn/%E5%85%B3%E4%BA%8E%E6%88%91/' >
                 
                 
                 
@@ -147,7 +147,46 @@
 
 
                 
-                <span>关于</span>
+                <span>关于我</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/zh-cn/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/zh-cn/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
             </a>
         </li>
         
@@ -236,8 +275,8 @@
       <ol>
         <li><a href="#任务一倒立摆控制lqr线性控制--reinforce强化学习控制">任务一：倒立摆控制（LQR线性控制 + REINFORCE强化学习控制）</a>
           <ol>
-            <li><a href="#1-基于lqr的倒立摆线性控制文档2最优projectdocx">1. 基于LQR的倒立摆线性控制（文档2：最优project.docx）</a></li>
-            <li><a href="#2-基于reinforce的倒立摆强化学习控制文档1最优控制与设计final-project">2. 基于REINFORCE的倒立摆强化学习控制（文档1：《最优控制与设计》Final Project）</a></li>
+            <li><a href="#1-基于lqr的倒立摆线性控制">1. 基于LQR的倒立摆线性控制</a></li>
+            <li><a href="#2-基于reinforce的倒立摆强化学习控制">2. 基于REINFORCE的倒立摆强化学习控制（</a></li>
           </ol>
         </li>
         <li><a href="#任务二双足机器人ppo强化学习控制文档1最优控制与设计final-project">任务二：双足机器人PPO强化学习控制（文档1：《最优控制与设计》Final Project）</a>
@@ -261,14 +300,13 @@
     </li>
     <li><a href="#四项目成果与附件">四、项目成果与附件</a>
       <ol>
-        <li><a href="#1-仿真动态素材">1. 仿真动态素材</a>
+        <li><a href="#1-仿真成果展示">1. 仿真成果展示</a>
           <ol>
-            <li><a href="#11-倒立摆控制仿真素材">1.1 倒立摆控制仿真素材</a></li>
-            <li><a href="#12-双足机器人行走仿真素材">1.2 双足机器人行走仿真素材</a></li>
+            <li><a href="#11-倒立摆稳定控制">1.1 倒立摆稳定控制</a></li>
+            <li><a href="#12-双足机器人步态模拟">1.2 双足机器人步态模拟</a></li>
           </ol>
         </li>
         <li><a href="#2-核心探索结论">2. 核心探索结论</a></li>
-        <li><a href="#3-附件文件">3. 附件文件</a></li>
       </ol>
     </li>
   </ol>
@@ -311,7 +349,7 @@
     
         
         <h3 class="article-subtitle">
-            强化学习项目完整记录，含倒立摆LQR控制与REINFORCE控制、双足机器人PPO训练体系搭建及复杂地形自适应行走（附源码与仿真动态素材）
+            强化学习项目完整记录，含倒立摆LQR控制与REINFORCE控制、双足机器人PPO训练体系搭建及复杂地形自适应行走
         </h3>
         
     </div>
@@ -340,6 +378,25 @@
     </footer>
     
 
+    
+        <footer class="article-translations">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+            <div>
+                
+                    <a href="https://sxttrt.github.io/p/rl-control-project/" class="link">English</a>
+                
+            </div>
+        </footer>
     
 </div>
 
@@ -407,7 +464,7 @@ MathJax.config = {
 </ul>
 <h2 id="三核心任务实现">三、核心任务实现
 </h2><h3 id="任务一倒立摆控制lqr线性控制--reinforce强化学习控制">任务一：倒立摆控制（LQR线性控制 + REINFORCE强化学习控制）
-</h3><h4 id="1-基于lqr的倒立摆线性控制文档2最优projectdocx">1. 基于LQR的倒立摆线性控制（文档2：最优project.docx）
+</h3><h4 id="1-基于lqr的倒立摆线性控制">1. 基于LQR的倒立摆线性控制
 </h4><h5 id="1动力学建模与线性化离散化">（1）动力学建模与线性化、离散化
 </h5><ul>
 <li>
@@ -481,7 +538,7 @@ $$K = [[-4.4267, 262.3615, -12.0165, 57.0248]]$$</p>
   <img src="/RL/图2.png" alt="Soft K-means不同聚类数重建效果" style="max-width: 100%; border: 1px solid #eee; border-radius: 4px;">
   <p style="font-size: 14px; color: #666;">图1：不同初始角效果</p>
 </div>
-<h4 id="2-基于reinforce的倒立摆强化学习控制文档1最优控制与设计final-project">2. 基于REINFORCE的倒立摆强化学习控制（文档1：《最优控制与设计》Final Project）
+<h4 id="2-基于reinforce的倒立摆强化学习控制">2. 基于REINFORCE的倒立摆强化学习控制（
 </h4><h5 id="1算法设计与环境搭建">（1）算法设计与环境搭建
 </h5><ul>
 <li><strong>仿真环境</strong>：基于Gymnasium的CartPole-v1环境，状态空间含4个连续变量（小车位置、小车速度、摆杆角度、摆杆角速度），动作空间为2个离散动作（向左/向右施力）；中止条件：小车位置超±2.4m或摆杆角度超±12°。</li>
@@ -745,20 +802,18 @@ $$\text{reward_stand_still} = \exp(-(\text{pose_error} + 0.5\cdot\text{vel_error
 ><br>
 <em>图4：双足机器人在平坦地形、非平整地形、斜坡的行走仿真效果（基于文档1）</em></p>
 <h2 id="四项目成果与附件">四、项目成果与附件
-</h2><h3 id="1-仿真动态素材">1. 仿真动态素材
-</h3><h4 id="11-倒立摆控制仿真素材">1.1 倒立摆控制仿真素材
+</h2><h3 id="1-仿真成果展示">1. 仿真成果展示
+</h3><h4 id="11-倒立摆稳定控制">1.1 倒立摆稳定控制
 </h4><ul>
-<li>LQR控制：含2.6rad、2.7rad、2.9rad初始角稳定控制GIF，展示从小车倾斜到平衡的动态过程；</li>
-<li>REINFORCE控制：含训练2325轮后微扰下长时间平衡GIF，展示摆杆维持竖直的稳定状态。</li>
+<li><strong>LQR 控制：</strong> 实现了在大角度扰动下的快速收敛。测试表明，当摆杆处于 $2.6\text{ rad}$、$2.7\text{ rad}$ 及 $2.9\text{ rad}$ 等大倾角初始状态时，控制器能驱动小车迅速响应，在极短时间内使摆杆恢复并维持竖直平衡。</li>
+<li><strong>REINFORCE 强化学习控制：</strong> 经过 <strong>2325 轮</strong>训练，策略网络展现出极高的稳定性。在持续的随机微扰下，摆杆能实现长时间（&gt;60s）的精准平衡，无明显震荡。</li>
 </ul>
-<p>下载链接：<a class="link" href="/RL/%e5%80%92%e7%ab%8b%e6%91%86%e4%bb%bf%e7%9c%9fGIF%e5%90%88%e9%9b%86.zip" >倒立摆LQR+REINFORCE仿真GIF合集.zip</a></p>
-<h4 id="12-双足机器人行走仿真素材">1.2 双足机器人行走仿真素材
+<h4 id="12-双足机器人步态模拟">1.2 双足机器人步态模拟
 </h4><ul>
-<li>平地行走：展示自然步态（左右脚交替、无小碎步）；</li>
-<li>抗扰动行走：展示随机推力下的平衡恢复过程；</li>
-<li>复杂地形行走：展示非平整地形、斜坡的适配行走。</li>
+<li><strong>自然平地行走：</strong> 实现了具有生物力学特征的自然步态，左右脚交替平滑，彻底消除了低端仿真中常见的“小碎步”现象。</li>
+<li><strong>动态抗扰动：</strong> 在行走过程中加入随机脉冲推力，机器人能通过调整支撑腿步点和上身姿态迅速找回重心，展现了良好的动态平衡能力。</li>
+<li><strong>复杂环境适配：</strong> 算法成功适配了斜坡及非平整地面，能够根据地形坡度实时调整落脚点高度与踝关节补偿。</li>
 </ul>
-<p>下载链接：<a class="link" href="/RL/%e5%8f%8c%e8%b6%b3%e6%9c%ba%e5%99%a8%e4%ba%ba%e4%bb%bf%e7%9c%9fGIF%e5%90%88%e9%9b%86.zip" >双足机器人多场景仿真GIF合集.zip</a></p>
 <h3 id="2-核心探索结论">2. 核心探索结论
 </h3><div class="table-wrapper"><table>
   <thead>
@@ -782,30 +837,6 @@ $$\text{reward_stand_still} = \exp(-(\text{pose_error} + 0.5\cdot\text{vel_error
       </tr>
   </tbody>
 </table></div>
-<h3 id="3-附件文件">3. 附件文件
-</h3><ul>
-<li>
-<ol>
-<li><strong>项目源码仓库</strong>：含所有核心模块代码（train.py、task_registry.py、terrain.py、pointfoot_rough_config.py等），详见：<a class="link" href="https://github.com/xxx/RL-Robot-Control"  target="_blank" rel="noopener"
-    >RL-Robot-Control（示例链接，需替换为实际仓库）</a>；</li>
-</ol>
-</li>
-<li>
-<ol start="2">
-<li><strong>模型文件</strong>：双足机器人PPO策略ONNX格式文件（Isaac Gym训练导出，用于MuJoCo迁移）、倒立摆REINFORCE模型权重文件；</li>
-</ol>
-</li>
-<li>
-<ol start="3">
-<li><strong>实验配置文件</strong>：Isaac Gym/MuJoCo环境参数配置（含terrain.py参数、pointfoot_rough_config.py完整代码）；</li>
-</ol>
-</li>
-<li>
-<ol start="4">
-<li><strong>实验图表素材</strong>：所有训练奖励曲线、LQR参数对比图、机器人步态轨迹图的原始文件。</li>
-</ol>
-</li>
-</ul>
 
 </section>
 
@@ -911,6 +942,25 @@ $$\text{reward_stand_still} = \exp(-(\text{pose_error} + 0.5\cdot\text{vel_error
             
                 
 <article class="has-image">
+    <a href="/zh-cn/p/gomoku-recognition/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/gomoku/fengmian.png" loading="lazy" data-key="gomoku-recognition" data-hash="/gomoku/fengmian.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">基于传统图像处理的五子棋识别与预测系统</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
     <a href="/zh-cn/p/ai-research/">
         
         
@@ -941,7 +991,9 @@ $$\text{reward_stand_still} = \exp(-(\text{pose_error} + 0.5\cdot\text{vel_error
     <section class="copyright">
         &copy; 
         
-        2025 刘承韬
+            2025 - 
+        
+        2026 刘承韬
     </section>
     
     <section class="powerby">

@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="A comprehensive record of machine learning projects from Sept-Nov 2024, including K-means/Soft K-means classification, PCA/Linear Autoencoder dimensionality reduction, and Logistic Regression/MLP binary classification.">
+<title>Research on Classification and Image Processing Based on Traditional Machine Learning Algorithms</title>
+
+<link rel='canonical' href='https://sxttrt.github.io/p/ai-research/'>
+
+<link rel="stylesheet" href="/scss/style.min.c91073e1bef24baf3131464aee14e30bb1335275cee51563e55fb2a5e03eca69.css"><meta property='og:title' content="Research on Classification and Image Processing Based on Traditional Machine Learning Algorithms">
+<meta property='og:description' content="A comprehensive record of machine learning projects from Sept-Nov 2024, including K-means/Soft K-means classification, PCA/Linear Autoencoder dimensionality reduction, and Logistic Regression/MLP binary classification.">
+<meta property='og:url' content='https://sxttrt.github.io/p/ai-research/'>
+<meta property='og:site_name' content='Liu Chengtao'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-11-30T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-11-30T00:00:00&#43;00:00'/><meta property='og:image' content='https://sxttrt.github.io/ai/fengmian.png' />
+<meta name="twitter:title" content="Research on Classification and Image Processing Based on Traditional Machine Learning Algorithms">
+<meta name="twitter:description" content="A comprehensive record of machine learning projects from Sept-Nov 2024, including K-means/Soft K-means classification, PCA/Linear Autoencoder dimensionality reduction, and Logistic Regression/MLP binary classification."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://sxttrt.github.io/ai/fengmian.png' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_4180be05c8c2e7f3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Liu Chengtao</a></h1>
+            <h2 class="site-description">Liu Chengtao | Undergraduate Works</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://space.bilibili.com/499786362?spm_id_from=333.1007.0.0'
+                        target="_blank"
+                        title="Bilibili"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.0.0-beta2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M488.6 104.1C505.3 122.2 513 143.8 511.9 169.8V372.2C511.5 398.6 502.7 420.3 485.4 437.3C468.2 454.3 446.3 463.2 419.9 464H92.02C65.57 463.2 43.81 454.2 26.74 436.8C9.682 419.4 .7667 396.5 0 368.2V169.8C.7667 143.8 9.682 122.2 26.74 104.1C43.81 87.75 65.57 78.77 92.02 78H121.4L96.05 52.19C90.3 46.46 87.42 39.19 87.42 30.4C87.42 21.6 90.3 14.34 96.05 8.603C101.8 2.868 109.1 0 117.9 0C126.7 0 134 2.868 139.8 8.603L213.1 78H301.1L375.6 8.603C381.7 2.868 389.2 0 398 0C406.8 0 414.1 2.868 419.9 8.603C425.6 14.34 428.5 21.6 428.5 30.4C428.5 39.19 425.6 46.46 419.9 52.19L394.6 78L423.9 78C450.3 78.77 471.9 87.75 488.6 104.1H488.6zM449.8 173.8C449.4 164.2 446.1 156.4 439.1 150.3C433.9 144.2 425.1 140.9 416.4 140.5H96.05C86.46 140.9 78.6 144.2 72.47 150.3C66.33 156.4 63.07 164.2 62.69 173.8V368.2C62.69 377.4 65.95 385.2 72.47 391.7C78.99 398.2 86.85 401.5 96.05 401.5H416.4C425.6 401.5 433.4 398.2 439.7 391.7C446 385.2 449.4 377.4 449.8 368.2L449.8 173.8zM185.5 216.5C191.8 222.8 195.2 230.6 195.6 239.7V273C195.2 282.2 191.9 289.9 185.8 296.2C179.6 302.5 171.8 305.7 162.2 305.7C152.6 305.7 144.7 302.5 138.6 296.2C132.5 289.9 129.2 282.2 128.8 273V239.7C129.2 230.6 132.6 222.8 138.9 216.5C145.2 210.2 152.1 206.9 162.2 206.5C171.4 206.9 179.2 210.2 185.5 216.5H185.5zM377 216.5C383.3 222.8 386.7 230.6 387.1 239.7V273C386.7 282.2 383.4 289.9 377.3 296.2C371.2 302.5 363.3 305.7 353.7 305.7C344.1 305.7 336.3 302.5 330.1 296.2C323.1 289.9 320.7 282.2 320.4 273V239.7C320.7 230.6 324.1 222.8 330.4 216.5C336.7 210.2 344.5 206.9 353.7 206.5C362.9 206.9 370.7 210.2 377 216.5H377z"/></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/sxttrt'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about-me/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About Me</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://sxttrt.github.io/" selected>English</option>
+                                
+                                    <option value="https://sxttrt.github.io/zh-cn/" >简体中文</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#i-project-overview">I. Project Overview</a></li>
+    <li><a href="#ii-background-and-objectives">II. Background and Objectives</a>
+      <ol>
+        <li><a href="#1-project-background">1. Project Background</a></li>
+        <li><a href="#2-core-objectives">2. Core Objectives</a></li>
+      </ol>
+    </li>
+    <li><a href="#iii-core-technical-implementation">III. Core Technical Implementation</a>
+      <ol>
+        <li><a href="#task-1-k-means--soft-k-means-clustering-seeds-dataset">Task 1: K-means &amp; Soft K-means Clustering (Seeds Dataset)</a>
+          <ol>
+            <li><a href="#1-algorithmic-design">1. Algorithmic Design</a></li>
+            <li><a href="#2-experimental-analysis">2. Experimental Analysis</a></li>
+          </ol>
+        </li>
+        <li><a href="#task-2-image-reconstruction-pca-linear-ae-soft-k-means">Task 2: Image Reconstruction (PCA, Linear AE, Soft K-means)</a>
+          <ol>
+            <li><a href="#1-technical-implementation">1. Technical Implementation</a></li>
+            <li><a href="#2-results-and-analysis">2. Results and Analysis</a></li>
+          </ol>
+        </li>
+        <li><a href="#task-3-logistic-regression-vs-mlp-x-shaped-data">Task 3: Logistic Regression vs. MLP (X-shaped Data)</a>
+          <ol>
+            <li><a href="#1-algorithmic-design-1">1. Algorithmic Design</a></li>
+            <li><a href="#2-results-and-analysis-1">2. Results and Analysis</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#iv-project-results-and-deliverables">IV. Project Results and Deliverables</a>
+      <ol>
+        <li><a href="#1-research-papers">1. Research Papers</a>
+          <ol>
+            <li><a href="#11-paper-1-study-on-classification-and-image-processing-via-k-means-pca-and-linear-ae">1.1 Paper 1: Study on Classification and Image Processing via K-means, PCA, and Linear AE</a></li>
+            <li><a href="#12-paper-2-binary-classification-exploration-via-logistic-regression-and-mlp">1.2 Paper 2: Binary Classification Exploration via Logistic Regression and MLP</a></li>
+          </ol>
+        </li>
+        <li><a href="#2-core-research-outcomes-summary-table">2. Core Research Outcomes (Summary Table)</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/ai-research/">
+                
+                    <img src="/ai/fengmian.png" loading="lazy" alt="Featured image of post Research on Classification and Image Processing Based on Traditional Machine Learning Algorithms" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/project-accomplishments/" >
+                Project Accomplishments
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/ai-research/">Research on Classification and Image Processing Based on Traditional Machine Learning Algorithms</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            A comprehensive record of machine learning projects from Sept-Nov 2024, including K-means/Soft K-means classification, PCA/Linear Autoencoder dimensionality reduction, and Logistic Regression/MLP binary classification.
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2024-11-30</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+        <footer class="article-translations">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+            <div>
+                
+                    <a href="https://sxttrt.github.io/zh-cn/p/ai-research/" class="link">简体中文</a>
+                
+            </div>
+        </footer>
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+MathJax.config = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    processEscapes: true,
+    processEnvironments: true
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<h2 id="i-project-overview">I. Project Overview
+</h2><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Category</th>
+          <th style="text-align: left">Details</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Project Title</strong></td>
+          <td style="text-align: left">Research on Classification and Image Processing Based on Traditional ML Algorithms</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Role</strong></td>
+          <td style="text-align: left">Project Lead</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Timeline</strong></td>
+          <td style="text-align: left">September 2024 - November 2024</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Core Member</strong></td>
+          <td style="text-align: left">Chengtao Liu (Solo)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Core Tasks</strong></td>
+          <td style="text-align: left">1. Seeds dataset classification using K-means/Soft K-means (Optimized Split-Merge strategies); 2. Image reconstruction via PCA/Linear Autoencoder/Soft K-means (Comparative study on dimensions/clusters); 3. Binary classification of X-shaped data using Logistic Regression/MLP (Hyperparameter tuning: hidden layers, neurons, tolerance).</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Key Tools</strong></td>
+          <td style="text-align: left">Python (Core Logic), NumPy (Matrix Operations), Matplotlib (Visualization), Pandas (Data Processing).</td>
+      </tr>
+  </tbody>
+</table></div>
+<h2 id="ii-background-and-objectives">II. Background and Objectives
+</h2><h3 id="1-project-background">1. Project Background
+</h3><p>While Deep Learning excels in large-scale complex tasks, it often suffers from parameter redundancy, poor interpretability, and high computational demands. Traditional machine learning algorithms (e.g., K-means, PCA, Logistic Regression) remain highly valuable in small-to-medium data scenarios due to their mathematical transparency, lightweight nature, and reproducibility.</p>
+<p>This project focuses on <strong>&ldquo;Exploring the performance boundaries and hyperparameter influence of traditional algorithms,&rdquo;</strong> targeting two typical domains:</p>
+<ul>
+<li><strong>Classification Tasks</strong>: Including clustering of the &ldquo;Seeds Dataset&rdquo; (K-means/Soft K-means) and binary classification of &ldquo;X-shaped Distribution Data&rdquo; (Logistic Regression/MLP).</li>
+<li><strong>Image Processing Tasks</strong>: Implementing image reconstruction based on PCA, Linear Autoencoders, and Soft K-means to explore the correlation between &ldquo;latent dimensions/clusters&rdquo; and &ldquo;reconstruction quality.&rdquo;</li>
+</ul>
+<p>All algorithms were implemented from scratch using <strong>pure Python/NumPy</strong> without relying on third-party ML libraries, aiming to deeply understand the underlying logic and summarize reusable parameter tuning patterns.</p>
+<h3 id="2-core-objectives">2. Core Objectives
+</h3><ul>
+<li><strong>Clustering Exploration</strong>: Analyze the impact of &ldquo;cluster count, split-merge strategies, iterations, and tolerance&rdquo; on the Seeds dataset. Compare accuracy stability and resistance to local optima between K-means and Soft K-means.</li>
+<li><strong>Image Reconstruction</strong>: Use an image of a WWI soldier to explore how &ldquo;retained dimensions&rdquo; (PCA/AE) and &ldquo;cluster count&rdquo; (Soft K-means) affect color restoration and detail retention.</li>
+<li><strong>Binary Classification</strong>: Compare the fitting capabilities of linear (Logistic Regression) vs. non-linear (MLP) models on X-shaped data. Focus on how MLP &ldquo;hidden layers, neurons, and tolerance&rdquo; affect convergence speed and accuracy.</li>
+<li><strong>Engineering Excellence</strong>: Modularize algorithm components and provide visualization scripts (accuracy curves, reconstruction comparisons) to ensure experiment reproducibility and intuitive interpretation.</li>
+</ul>
+<h2 id="iii-core-technical-implementation">III. Core Technical Implementation
+</h2><h3 id="task-1-k-means--soft-k-means-clustering-seeds-dataset">Task 1: K-means &amp; Soft K-means Clustering (Seeds Dataset)
+</h3><h4 id="1-algorithmic-design">1. Algorithmic Design
+</h4><p>This task explores the impact of <strong>algorithm type and hyperparameters (K, split-merge, iterations, tolerance)</strong> on clustering accuracy:</p>
+<ul>
+<li><strong>K-means Design</strong>:
+<ul>
+<li><strong>Core Logic</strong>: Minimizing the Within-Cluster Sum of Squares (WCSS):
+$$J=\sum_{i=1}^{k} \sum_{x \in C_{i}}\left| x-\mu_{i}\right| ^{2}$$</li>
+<li><strong>Optimization</strong>: Designed a dynamic &ldquo;Split-Merge&rdquo; scheme (splitting the cluster with max distance + merging the two closest clusters) to improve stability without exploding the cluster count.</li>
+</ul>
+</li>
+<li><strong>Soft K-means Design</strong>:
+<ul>
+<li><strong>Core Logic</strong>: Introduced probabilistic weights $w_{ij}$ (probability of $x_i$ belonging to cluster $j$):
+$$J=\sum_{i=1}^{n} \sum_{j=1}^{k} w_{ij}\left| x_{i}-\mu_{j}\right| ^{2}$$</li>
+<li><strong>Optimization</strong>: Implemented &ldquo;K-means++&rdquo; style initialization (probabilistic distance-based centroid selection) to contrast with K-means random initialization.</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-experimental-analysis">2. Experimental Analysis
+</h4><p>Based on the Seeds dataset (3 classes, 210 samples), we analyzed the impact of core parameters:</p>
+<p><strong>Tolerance Impact (k=3, No Split-Merge)</strong>:
+In the range of $1e-3$ to $1e-5$, accuracy remained constant, indicating low sensitivity. Fixed at $1e-5$ for subsequent tests.</p>
+<p><strong>Iteration Impact (k=3, Tolerance=1e-5)</strong>:</p>
+<ul>
+<li><strong>K-means</strong>: Peak accuracy (89.05%) at 200 iterations; accuracy declined beyond 200 (possible over-fitting).</li>
+<li><strong>Soft K-means</strong>: Accuracy stabilized at 89.52% after only 50 iterations, demonstrating superior convergence stability.</li>
+</ul>
+<p><strong>Cluster Count &amp; Split-Merge (Iter=200, Tol=1e-5)</strong>:</p>
+<ul>
+<li><strong>Cluster Count</strong>: Increasing $k$ from 3 to 10 caused K-means accuracy to drop by 3%, while Soft K-means improved by 0.48%, showing better adaptability to high-cluster scenarios.</li>
+<li><strong>Split-Merge</strong>: Enabled strategies slightly hindered performance for the Seeds dataset due to its compact distribution.</li>
+</ul>
+<h3 id="task-2-image-reconstruction-pca-linear-ae-soft-k-means">Task 2: Image Reconstruction (PCA, Linear AE, Soft K-means)
+</h3><h4 id="1-technical-implementation">1. Technical Implementation
+</h4><p>Focused on how <strong>dimensionality/clusters</strong> affect reconstruction quality for a 256×256 WWI soldier image:</p>
+<ul>
+<li><strong>PCA (Latent Dimension Exploration)</strong>:
+<ul>
+<li>Computed the covariance matrix and performed SVD decomposition:
+$$C=U \sum V^{T}$$</li>
+<li>Projected onto the top $k$ principal components ($k=1/2/3$).</li>
+</ul>
+</li>
+<li><strong>Linear Autoencoder (Encoding Dimension Exploration)</strong>:
+<ul>
+<li>Architecture: Input Layer $\rightarrow$ Encoding ($E=X \cdot W_e$) $\rightarrow$ Decoding ($D=E \cdot W_d$) (pure linear transformation).</li>
+<li>Training: Used MSE loss and gradient clipping to prevent explosion.</li>
+</ul>
+</li>
+<li><strong>Soft K-means (Cluster Count Exploration)</strong>:
+<ul>
+<li>Treated pixels as samples and replaced original pixels with cluster centroids (explored $k=1/3/5/7/9$).</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-results-and-analysis">2. Results and Analysis
+</h4><p><strong>PCA vs. Linear Autoencoder</strong>:</p>
+<ul>
+<li><strong>Dim=1</strong>: Both outputted grayscale images. AE reconstruction error (0.015) was lower than PCA (0.018).</li>
+<li><strong>Dim=2</strong>: AE showed significant color restoration (error 0.008), while PCA remained dull (error 0.012), indicating AE&rsquo;s superior linear feature retention.</li>
+<li><strong>Dim=3</strong>: Both achieved perfect reconstruction (zero error) as they fully captured the RGB channels.</li>
+</ul>
+<p><strong>Soft K-means Results</strong>:</p>
+<ul>
+<li>At $k \leq 5$, significant color banding and detail loss (e.g., fabric texture) occurred.</li>
+<li>At $k=9$, the model successfully recovered major colors and edge details (cap, collar), matching the image&rsquo;s inherent color complexity.</li>
+</ul>
+<h3 id="task-3-logistic-regression-vs-mlp-x-shaped-data">Task 3: Logistic Regression vs. MLP (X-shaped Data)
+</h3><h4 id="1-algorithmic-design-1">1. Algorithmic Design
+</h4><p>Focused on the impact of <strong>model type and MLP hyperparameters</strong> on non-linear decision boundaries:</p>
+<ul>
+<li><strong>Logistic Regression (Linear Baseline)</strong>: Using Sigmoid activation $\sigma(z)$ and Cross-Entropy loss. Explored the limitations of linear models on intersecting data distributions.</li>
+<li><strong>MLP (Non-linear Exploration)</strong>:
+<ul>
+<li>Architecture: Input (2D) $\rightarrow$ Hidden Layers (1-6) $\rightarrow$ Sigmoid Output.</li>
+<li>Hyperparameters: Explored hidden layers, neurons per layer (2/4/8/20), and tolerance ($1e-5$ to $1e-8$).</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-results-and-analysis-1">2. Results and Analysis
+</h4><p><strong>Linear vs. Non-linear Comparison</strong>:</p>
+<ul>
+<li><strong>Logistic Regression</strong>: Failed to fit the X-distribution, topping out at 59.60% accuracy.</li>
+<li><strong>MLP (1 hidden layer, 8 neurons)</strong>: Achieved 100% accuracy within 8,320 iterations.</li>
+</ul>
+<p><strong>MLP Hyperparameter Sensitivity</strong>:</p>
+<ul>
+<li><strong>Network Depth</strong>: 1-2 hidden layers with $\geq 8$ neurons were optimal. Increasing to 6 layers caused the model to trap in local optima (accuracy dropped to 77%).</li>
+<li><strong>Tolerance</strong>: $1e-7$ was the &ldquo;sweet spot.&rdquo; Tolerance $\geq 1e-6$ resulted under-fitting (accuracy $\approx 55%$), while $1e-8$ caused slight over-fitting and excessive computation.</li>
+</ul>
+<h2 id="iv-project-results-and-deliverables">IV. Project Results and Deliverables
+</h2><h3 id="1-research-papers">1. Research Papers
+</h3><h4 id="11-paper-1-study-on-classification-and-image-processing-via-k-means-pca-and-linear-ae">1.1 Paper 1: Study on Classification and Image Processing via K-means, PCA, and Linear AE
+</h4><iframe src="/ai/K-means_PCA_LinearAutoencoder_Research.pdf" width="100%" height="700" style="border: 1px solid #e0e0e0; border-radius: 6px;" title="Paper 1"></iframe>
+<h4 id="12-paper-2-binary-classification-exploration-via-logistic-regression-and-mlp">1.2 Paper 2: Binary Classification Exploration via Logistic Regression and MLP
+</h4><iframe src="/ai/LogisticRegression_MLP_BinaryClassification.pdf" width="100%" height="700" style="border: 1px solid #e0e0e0; border-radius: 6px; margin-top: 30px;" title="Paper 2"></iframe>
+<h3 id="2-core-research-outcomes-summary-table">2. Core Research Outcomes (Summary Table)
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Domain</th>
+          <th style="text-align: left">Key Findings</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Clustering</strong></td>
+          <td style="text-align: left">Soft K-means is more stable (accuracy fluctuation $\leq 0.5%$) and performs better in multi-cluster scenarios ($k=10$) than K-means.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Reconstruction</strong></td>
+          <td style="text-align: left">Linear AE outperforms PCA at lower dimensions (Dim=2) for color retention. Soft K-means require $k \geq 9$ for acceptable detail in low-color-complexity images.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Classification</strong></td>
+          <td style="text-align: left">MLP with 1-2 hidden layers is optimal for non-linear boundaries; excessive depth ($\geq 6$ layers) significantly increases the risk of local optima entrapment.</td>
+      </tr>
+  </tbody>
+</table></div>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/rl-control-project/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/RL/fengmian.png" loading="lazy" data-key="rl-control-project" data-hash="/RL/fengmian.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">RL-based Inverted Pendulum Control and Bipedal Robot System Construction</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/llm-uav-custom-design/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/uav/fengmian.jpg" loading="lazy" data-key="llm-uav-custom-design" data-hash="/uav/fengmian.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Customized Design and Manufacturing of Multi-rotor UAVs Based on Large Language Models</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/painting-robot/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/gen3/fengmian.png" loading="lazy" data-key="painting-robot" data-hash="/gen3/fengmian.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Painting Robot System Based on the Kinova Gen3-lite Robotic Arm</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/ur-robot/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/UR-Robot/fengmian.png" loading="lazy" data-key="UR-Robot" data-hash="/UR-Robot/fengmian.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Design and Implementation of a Voice-Controlled Collaborative Robot System</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/gomoku-recognition/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/gomoku/fengmian.png" loading="lazy" data-key="gomoku-recognition" data-hash="/gomoku/fengmian.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Gomoku Recognition and Prediction System Based on Traditional Image Processing</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2025 - 
+        
+        2026 刘承韬
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

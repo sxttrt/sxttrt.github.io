@@ -134,7 +134,7 @@
         
         
         <li >
-            <a href='/zh-cn/%E5%85%B3%E4%BA%8E/' >
+            <a href='/zh-cn/%E5%85%B3%E4%BA%8E%E6%88%91/' >
                 
                 
                 
@@ -147,7 +147,46 @@
 
 
                 
-                <span>关于</span>
+                <span>关于我</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/zh-cn/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/zh-cn/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
             </a>
         </li>
         
@@ -316,6 +355,25 @@
     
 
     
+        <footer class="article-translations">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+            <div>
+                
+                    <a href="https://sxttrt.github.io/p/competition-dian/" class="link">English</a>
+                
+            </div>
+        </footer>
+    
 </div>
 
 </header>
@@ -327,7 +385,7 @@
 </h2><ul>
 <li><strong>竞赛名称</strong>：2024年全国大学生电子设计竞赛（广东赛区）暨2024年全国大学生电子设计竞赛广东赛区竞赛</li>
 <li><strong>获奖等级</strong>：省级一等奖</li>
-<li><strong>竞赛题目</strong>：H题 自动行驶小车（【本科组/高职高专组】，来源：H题_自动行驶小车.pdf）</li>
+<li><strong>竞赛题目</strong>：H题 自动行驶小车（本科组/高职高专组）</li>
 <li><strong>竞赛周期</strong>：2024年7月29日8:00-8月1日20:00</li>
 <li><strong>团队成员</strong>：刘承韬、王博彬、吴丰杨</li>
 <li><strong>指导教师</strong>：陈亮名、尉进</li>
@@ -350,13 +408,13 @@
 <h2 id="二项目演示与开源仓库">二、项目演示与开源仓库
 </h2><p><a href="https://b23.tv/3AOoPXD" target="_blank">2024年电子设计竞赛H题省一等奖作品演示视频</a>
 （视频为部分测试H题_自动行驶小车.pdf要求的任务：A→B停车、A→B→C→D→A路径、A→C→B→D→A路径、4圈连续行驶（视频中未停下））</p>
-<p>项目已在gothub上开源：
+<p>项目已在gissthub上开源：
 <a href="https://github.com/fynngwu/2024_TI_competition_H" target="_blank">2024 年电子设计竞赛 H 题自动行驶小车开源项目</a></p>
 <h2 id="三项目概述">三、项目概述
 </h2><p>基于H题_自动行驶小车.pdf要求，开发以<strong>TI MSPM0系列MCU</strong>为核心的自动行驶小车，核心约束与实现目标如下：</p>
 <ul>
-<li><strong>硬件约束</strong>：小车尺寸≤25cm（长）×15cm（宽）×15cm（高），仅用TI MSPM0系列MCU，不装摄像头（符合H题_自动行驶小车.pdf说明1）；</li>
-<li><strong>场地约束</strong>：在220cm×120cm白色哑光场地行驶，沿1.8cm宽黑色半圆弧路径（半径40cm，含A/B/C/D四点，来源：H题_自动行驶小车.pdf图1）；</li>
+<li><strong>硬件约束</strong>：小车尺寸≤25cm（长）×15cm（宽）×15cm（高），仅用TI MSPM0系列MCU，不装摄像头；</li>
+<li><strong>场地约束</strong>：在220cm×120cm白色哑光场地行驶，沿1.8cm宽黑色半圆弧路径（半径40cm，含A/B/C/D四点）；</li>
 <li><strong>实现成果</strong>：完成全部4项任务，其中任务4实际用时设计78s。</li>
 </ul>
 <blockquote>
@@ -560,7 +618,9 @@
     <section class="copyright">
         &copy; 
         
-        2025 刘承韬
+            2025 - 
+        
+        2026 刘承韬
     </section>
     
     <section class="powerby">

@@ -13,15 +13,12 @@
         <pubDate>Mon, 27 Jan 2025 00:00:00 +0000</pubDate>
         
         <guid>https://sxttrt.github.io/zh-cn/p/competition-mei/</guid>
-        <description>&lt;img src="https://sxttrt.github.io/competition/fengmian3.png" alt="Featured image of post 2025年美国大学生数学建模竞赛（MCM）B题成果详情（Honorable Mention）" /&gt;&lt;ul&gt;
-&lt;li&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;一竞赛与团队核心信息&#34;&gt;一、竞赛与团队核心信息
+        <description>&lt;img src="https://sxttrt.github.io/competition/fengmian3.png" alt="Featured image of post 2025年美国大学生数学建模竞赛（MCM）B题成果详情（Honorable Mention）" /&gt;&lt;h2 id=&#34;一竞赛与团队核心信息&#34;&gt;一、竞赛与团队核心信息
 &lt;/h2&gt;&lt;table&gt;
   &lt;thead&gt;
       &lt;tr&gt;
           &lt;th&gt;信息类别&lt;/th&gt;
-          &lt;th&gt;具体内容（源自论文Summary Sheet及正文）&lt;/th&gt;
+          &lt;th&gt;具体内容&lt;/th&gt;
       &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
@@ -35,7 +32,7 @@
       &lt;/tr&gt;
       &lt;tr&gt;
           &lt;td&gt;&lt;strong&gt;获奖等级&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;国际二等奖（Honorable Mention）- 全球前20%-30%&lt;/td&gt;
+          &lt;td&gt;国际二等奖（Honorable Mention）&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
           &lt;td&gt;&lt;strong&gt;团队信息&lt;/strong&gt;&lt;/td&gt;
@@ -47,7 +44,7 @@
       &lt;/tr&gt;
       &lt;tr&gt;
           &lt;td&gt;&lt;strong&gt;核心成果&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;25页全英文参赛论文（含完整建模逻辑、MATLAB求解、13篇权威参考文献）&lt;/td&gt;
+          &lt;td&gt;25页全英文参赛论文（含完整建模逻辑、MATLAB求解、13篇参考文献）&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
           &lt;td&gt;&lt;strong&gt;竞赛周期&lt;/strong&gt;&lt;/td&gt;
@@ -77,7 +74,6 @@
       2. 生态危机：门登霍尔冰川年融化面积超35km²，2023-2024年因冰川融水引发两次洪水，近300栋建筑受损；&lt;br&gt;
       3. 基建压力：交通拥堵（城区拥堵时长增加1.5倍）、直升机观光噪音扰民，供水/垃圾系统濒临过载，当地拟设“无邮轮周六”缓解压力。
     &lt;/div&gt;
-    &lt;p style=&#34;margin-top: 8px; font-size: 14px; color: #666;&#34;&gt;图2：朱诺过度旅游问题示意图（数据源自论文及2024年朱诺市官方报告）&lt;/p&gt;
   &lt;/div&gt;
   &lt;!-- 夏威夷问题描述（替代图片） --&gt;
   &lt;div style=&#34;flex: 1 1 calc(50% - 12px); text-align: center; padding: 20px; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);&#34;&gt;
@@ -87,7 +83,6 @@
       2. 生态威胁：游客碳排放致海水升温，2015-2019年珊瑚白化面积增加40%，瓦胡岛近岸珊瑚死亡率达35%；&lt;br&gt;
       3. 局部压力：瓦胡岛日均游客超3万人次，交通瘫痪率较2019年上升28%，考艾岛却因基础设施不足难以承接更多游客。
     &lt;/div&gt;
-    &lt;p style=&#34;margin-top: 8px; font-size: 14px; color: #666;&#34;&gt;图3：夏威夷四岛旅游问题示意图（数据源自论文及夏威夷旅游局2023年报）&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;h2 id=&#34;三建模核心逻辑&#34;&gt;三、建模核心逻辑
@@ -118,7 +113,7 @@
 针对夏威夷过度旅游问题，研究构建了多目标优化模型，重点分析瓦胡岛、毛伊县等四个地区。
 &lt;p&gt;首先调整基建压力相关公式：由于夏威夷港口排名数据缺失，改用海岸区域指标参与基建评估，计算得出夏威夷的基建得分为 1.5998；基于此，进一步构建四地的基建压力公式，其中年游客量最大值设定为 600 万，日游客量最大值为日均游客量的 2 倍。&lt;/p&gt;
 &lt;p&gt;收入函数的推导结合了当地旅游支出的总税率（17.962%）。居民满意度通过指数函数拟合失业情况与游客量的关系，瓦胡岛、考艾岛、毛伊县、夏威夷岛这四个地区的拟合参数各有不同。&lt;/p&gt;
-&lt;p&gt;环境压力方面聚焦珊瑚白化问题，建立了 “游客量 - 交通碳排放 - 海水升温 - 珊瑚白化率” 的四维动态系统：先通过游客量与交通碳排放的对数关系，得出海水温度上升量与游客量的对数成比例；再结合海水温度与珊瑚白化率的指数关系，利用 2015-2019 年的数据拟合，最终得到珊瑚白化率（即环境压力）的计算公式 —— 为 5.921 乘 10 的负八次方与游客量三次方的乘积。&lt;/p&gt;
+&lt;p&gt;环境压力方面聚焦珊瑚白化问题，建立了 “游客量 - 交通碳排放 - 海水升温 - 珊瑚白化率” 的四维动态系统：先通过游客量与交通碳排放的对数关系，得出海水温度上升量与游客量的对数成比例；再结合海水温度与珊瑚白化率的指数关系，利用 2015-2019 年的数据拟合，最终得到珊瑚白化率（即环境压力）的计算公式 —— 为 $5.921 \times 10^{-8}$ 与游客量 $V^3$ 的乘积。&lt;/p&gt;
 &lt;p&gt;最后，将基建压力、收入、居民满意度、环境压力这四项指标纳入多目标优化模型，构建目标函数（权重与朱诺模型保持一致），并结合各目的地的旅游收入上限、基建容量上限、珊瑚白化率可接受上限，分析目标得分与年游客量之间的关系。&lt;/p&gt;
 &lt;/div&gt;
 &lt;h4 id=&#34;2夏威夷四岛最优游客量图&#34;&gt;（2）夏威夷四岛最优游客量图
@@ -188,7 +183,7 @@
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;竞赛名称&lt;/strong&gt;：2024年全国大学生电子设计竞赛（广东赛区）暨2024年全国大学生电子设计竞赛广东赛区竞赛&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;获奖等级&lt;/strong&gt;：省级一等奖&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;竞赛题目&lt;/strong&gt;：H题 自动行驶小车（【本科组/高职高专组】，来源：H题_自动行驶小车.pdf）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;竞赛题目&lt;/strong&gt;：H题 自动行驶小车（本科组/高职高专组）&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;竞赛周期&lt;/strong&gt;：2024年7月29日8:00-8月1日20:00&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;团队成员&lt;/strong&gt;：刘承韬、王博彬、吴丰杨&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;指导教师&lt;/strong&gt;：陈亮名、尉进&lt;/li&gt;
@@ -211,13 +206,13 @@
 &lt;h2 id=&#34;二项目演示与开源仓库&#34;&gt;二、项目演示与开源仓库
 &lt;/h2&gt;&lt;p&gt;&lt;a href=&#34;https://b23.tv/3AOoPXD&#34; target=&#34;_blank&#34;&gt;2024年电子设计竞赛H题省一等奖作品演示视频&lt;/a&gt;
 （视频为部分测试H题_自动行驶小车.pdf要求的任务：A→B停车、A→B→C→D→A路径、A→C→B→D→A路径、4圈连续行驶（视频中未停下））&lt;/p&gt;
-&lt;p&gt;项目已在gothub上开源：
+&lt;p&gt;项目已在gissthub上开源：
 &lt;a href=&#34;https://github.com/fynngwu/2024_TI_competition_H&#34; target=&#34;_blank&#34;&gt;2024 年电子设计竞赛 H 题自动行驶小车开源项目&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;三项目概述&#34;&gt;三、项目概述
 &lt;/h2&gt;&lt;p&gt;基于H题_自动行驶小车.pdf要求，开发以&lt;strong&gt;TI MSPM0系列MCU&lt;/strong&gt;为核心的自动行驶小车，核心约束与实现目标如下：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;硬件约束&lt;/strong&gt;：小车尺寸≤25cm（长）×15cm（宽）×15cm（高），仅用TI MSPM0系列MCU，不装摄像头（符合H题_自动行驶小车.pdf说明1）；&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;场地约束&lt;/strong&gt;：在220cm×120cm白色哑光场地行驶，沿1.8cm宽黑色半圆弧路径（半径40cm，含A/B/C/D四点，来源：H题_自动行驶小车.pdf图1）；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;硬件约束&lt;/strong&gt;：小车尺寸≤25cm（长）×15cm（宽）×15cm（高），仅用TI MSPM0系列MCU，不装摄像头；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;场地约束&lt;/strong&gt;：在220cm×120cm白色哑光场地行驶，沿1.8cm宽黑色半圆弧路径（半径40cm，含A/B/C/D四点）；&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;实现成果&lt;/strong&gt;：完成全部4项任务，其中任务4实际用时设计78s。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;blockquote&gt;

@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="A comprehensive record of reinforcement learning projects, including LQR vs. REINFORCE control for inverted pendulums, and PPO training frameworks for bipedal robots with adaptive walking on complex terrains.">
+<title>RL-based Inverted Pendulum Control and Bipedal Robot System Construction</title>
+
+<link rel='canonical' href='https://sxttrt.github.io/p/rl-control-project/'>
+
+<link rel="stylesheet" href="/scss/style.min.c91073e1bef24baf3131464aee14e30bb1335275cee51563e55fb2a5e03eca69.css"><meta property='og:title' content="RL-based Inverted Pendulum Control and Bipedal Robot System Construction">
+<meta property='og:description' content="A comprehensive record of reinforcement learning projects, including LQR vs. REINFORCE control for inverted pendulums, and PPO training frameworks for bipedal robots with adaptive walking on complex terrains.">
+<meta property='og:url' content='https://sxttrt.github.io/p/rl-control-project/'>
+<meta property='og:site_name' content='Liu Chengtao'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-06-20T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-06-20T00:00:00&#43;00:00'/><meta property='og:image' content='https://sxttrt.github.io/RL/fengmian.png' />
+<meta name="twitter:title" content="RL-based Inverted Pendulum Control and Bipedal Robot System Construction">
+<meta name="twitter:description" content="A comprehensive record of reinforcement learning projects, including LQR vs. REINFORCE control for inverted pendulums, and PPO training frameworks for bipedal robots with adaptive walking on complex terrains."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://sxttrt.github.io/RL/fengmian.png' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_4180be05c8c2e7f3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Liu Chengtao</a></h1>
+            <h2 class="site-description">Liu Chengtao | Undergraduate Works</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://space.bilibili.com/499786362?spm_id_from=333.1007.0.0'
+                        target="_blank"
+                        title="Bilibili"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.0.0-beta2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M488.6 104.1C505.3 122.2 513 143.8 511.9 169.8V372.2C511.5 398.6 502.7 420.3 485.4 437.3C468.2 454.3 446.3 463.2 419.9 464H92.02C65.57 463.2 43.81 454.2 26.74 436.8C9.682 419.4 .7667 396.5 0 368.2V169.8C.7667 143.8 9.682 122.2 26.74 104.1C43.81 87.75 65.57 78.77 92.02 78H121.4L96.05 52.19C90.3 46.46 87.42 39.19 87.42 30.4C87.42 21.6 90.3 14.34 96.05 8.603C101.8 2.868 109.1 0 117.9 0C126.7 0 134 2.868 139.8 8.603L213.1 78H301.1L375.6 8.603C381.7 2.868 389.2 0 398 0C406.8 0 414.1 2.868 419.9 8.603C425.6 14.34 428.5 21.6 428.5 30.4C428.5 39.19 425.6 46.46 419.9 52.19L394.6 78L423.9 78C450.3 78.77 471.9 87.75 488.6 104.1H488.6zM449.8 173.8C449.4 164.2 446.1 156.4 439.1 150.3C433.9 144.2 425.1 140.9 416.4 140.5H96.05C86.46 140.9 78.6 144.2 72.47 150.3C66.33 156.4 63.07 164.2 62.69 173.8V368.2C62.69 377.4 65.95 385.2 72.47 391.7C78.99 398.2 86.85 401.5 96.05 401.5H416.4C425.6 401.5 433.4 398.2 439.7 391.7C446 385.2 449.4 377.4 449.8 368.2L449.8 173.8zM185.5 216.5C191.8 222.8 195.2 230.6 195.6 239.7V273C195.2 282.2 191.9 289.9 185.8 296.2C179.6 302.5 171.8 305.7 162.2 305.7C152.6 305.7 144.7 302.5 138.6 296.2C132.5 289.9 129.2 282.2 128.8 273V239.7C129.2 230.6 132.6 222.8 138.9 216.5C145.2 210.2 152.1 206.9 162.2 206.5C171.4 206.9 179.2 210.2 185.5 216.5H185.5zM377 216.5C383.3 222.8 386.7 230.6 387.1 239.7V273C386.7 282.2 383.4 289.9 377.3 296.2C371.2 302.5 363.3 305.7 353.7 305.7C344.1 305.7 336.3 302.5 330.1 296.2C323.1 289.9 320.7 282.2 320.4 273V239.7C320.7 230.6 324.1 222.8 330.4 216.5C336.7 210.2 344.5 206.9 353.7 206.5C362.9 206.9 370.7 210.2 377 216.5H377z"/></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/sxttrt'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about-me/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About Me</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://sxttrt.github.io/" selected>English</option>
+                                
+                                    <option value="https://sxttrt.github.io/zh-cn/" >简体中文</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#i-project-core-information">I. Project Core Information</a></li>
+    <li><a href="#ii-background-and-objectives">II. Background and Objectives</a>
+      <ol>
+        <li><a href="#1-project-background">1. Project Background</a></li>
+        <li><a href="#2-core-objectives">2. Core Objectives</a></li>
+      </ol>
+    </li>
+    <li><a href="#iii-key-task-implementation">III. Key Task Implementation</a>
+      <ol>
+        <li><a href="#task-1-inverted-pendulum-lqr-vs-reinforce-control">Task 1: Inverted Pendulum (LQR vs. REINFORCE Control)</a>
+          <ol>
+            <li><a href="#1-linear-control-via-lqr">1. Linear Control via LQR</a></li>
+            <li><a href="#2-rl-control-via-reinforce">2. RL Control via REINFORCE</a></li>
+          </ol>
+        </li>
+        <li><a href="#task-2-bipedal-robot-ppo-control">Task 2: Bipedal Robot PPO Control</a>
+          <ol>
+            <li><a href="#1-system-architecture">1. System Architecture</a></li>
+            <li><a href="#2-hierarchical-reward-function-design">2. Hierarchical Reward Function Design</a></li>
+            <li><a href="#3-three-stage-training-pipeline">3. Three-Stage Training Pipeline</a></li>
+            <li><a href="#4-experimental-results">4. Experimental Results</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#iv-project-results-and-conclusions">IV. Project Results and Conclusions</a>
+      <ol>
+        <li><a href="#1-simulation-highlights">1. Simulation Highlights</a></li>
+        <li><a href="#2-core-technical-insights">2. Core Technical Insights</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/rl-control-project/">
+                
+                    <img src="/RL/fengmian.png" loading="lazy" alt="Featured image of post RL-based Inverted Pendulum Control and Bipedal Robot System Construction" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/project-accomplishments/" >
+                Project Accomplishments
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/rl-control-project/">RL-based Inverted Pendulum Control and Bipedal Robot System Construction</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            A comprehensive record of reinforcement learning projects, including LQR vs. REINFORCE control for inverted pendulums, and PPO training frameworks for bipedal robots with adaptive walking on complex terrains.
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025-06-20</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+        <footer class="article-translations">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+            <div>
+                
+                    <a href="https://sxttrt.github.io/zh-cn/p/rl-control-project/" class="link">简体中文</a>
+                
+            </div>
+        </footer>
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+MathJax.config = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    processEscapes: true,
+    processEnvironments: true
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<h2 id="i-project-core-information">I. Project Core Information
+</h2><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Category</th>
+          <th style="text-align: left">Details</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Project Title</strong></td>
+          <td style="text-align: left">RL-based Inverted Pendulum Control and Bipedal Robot System Construction</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Core Team</strong></td>
+          <td style="text-align: left">Chengtao Liu, Haojia Zhang, Bohan Ma</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Core Objectives</strong></td>
+          <td style="text-align: left">1. <strong>Inverted Pendulum</strong>: ① Linear control via LQR (Dynamics modeling, linearization, discretization); ② RL control via REINFORCE (Policy gradient deployment, reward shaping);<br>2. <strong>Bipedal Robot</strong>: ① Simulation setup in Isaac Gym/MuJoCo; ② PPO training framework deployment; ③ Hierarchical reward function design; ④ Three-stage training pipeline (Balance -&gt; Gait -&gt; Terrain adaptation); ⑤ Adaptive walking on unstructured terrains.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Technical Stack</strong></td>
+          <td style="text-align: left">Python, PyTorch (RL Framework), NumPy (Matrix Computing), Isaac Gym (Parallel Simulation), MuJoCo (High-fidelity Physics), Gymnasium (REINFORCE environment), Matplotlib.</td>
+      </tr>
+  </tbody>
+</table></div>
+<h2 id="ii-background-and-objectives">II. Background and Objectives
+</h2><h3 id="1-project-background">1. Project Background
+</h3><ul>
+<li><strong>Inverted Pendulum System</strong>: As a classic non-linear and unstable system, its balance control is a benchmark for validating control algorithms. Traditional linear control (e.g., LQR) relies on precise mathematical modeling and offers limited robustness. Reinforcement Learning (e.g., REINFORCE) allows agents to learn optimal policies through trial-and-error without an explicit model.</li>
+<li><strong>Bipedal Robots</strong>: These robots offer superior terrain adaptability for search and rescue, exploration, and logistics. However, their high-dimensional, non-linear dynamics make gait stability a core challenge. Deep Reinforcement Learning (DRL) can discover non-intuitive, efficient control policies that outperform traditional model-based methods (e.g., ZMP) in robustness.</li>
+</ul>
+<h3 id="2-core-objectives">2. Core Objectives
+</h3><ul>
+<li><strong>Inverted Pendulum</strong>: Implement LQR-based linear control (covering variable substitution, linearization, and discretization) and REINFORCE-based RL control to achieve long-term balance under micro-perturbations.</li>
+<li><strong>Bipedal Robot</strong>: Deploy a PPO training framework in Isaac Gym; design hierarchical rewards to resolve issues like gait &ldquo;shuffling&rdquo; or policy collapse; and establish a three-stage pipeline for adaptive walking on slopes and rough terrain.</li>
+<li><strong>Engineering Excellence</strong>: Modularize all algorithm components and provide simulation visualizations to ensure experiment reproducibility.</li>
+</ul>
+<h2 id="iii-key-task-implementation">III. Key Task Implementation
+</h2><h3 id="task-1-inverted-pendulum-lqr-vs-reinforce-control">Task 1: Inverted Pendulum (LQR vs. REINFORCE Control)
+</h3><h4 id="1-linear-control-via-lqr">1. Linear Control via LQR
+</h4><h5 id="1-dynamics-modeling-linearization-and-discretization">(1) Dynamics Modeling, Linearization, and Discretization
+</h5><ul>
+<li><strong>Variable Substitution</strong>: Defined state variables to simplify dynamics:
+$$x_1=z \text{ (Position)}, x_2=\pi-\theta \text{ (Converted Angle)}, x_3=\dot{z} \text{ (Velocity)}, x_4=\dot{\theta} \text{ (Angular Velocity)}$$</li>
+<li><strong>Linearization</strong>: Performed Taylor expansion at the equilibrium point $x_0=[0,0,0,0]$, assuming $\sin x_2 \approx x_2$ and $\cos x_2 \approx 1$.</li>
+<li><strong>Discretization</strong>: Converted the continuous model to a discrete-time model for LQR design using $A_d = I + AT$ and $B_d = BT$.</li>
+</ul>
+<h5 id="2-lqr-controller-design-and-results">(2) LQR Controller Design and Results
+</h5><ul>
+<li><strong>Parameter Configuration</strong>: Defined weight matrices $Q$ and $R$ to balance error and energy consumption. Solved the Discrete Algebraic Riccati Equation (DARE) to obtain the optimal feedback gain $K$.</li>
+<li><strong>Experimental Results</strong>: Successfully achieved stability for initial angles of $2.6$, $2.7$, and $2.9\text{ rad}$.</li>
+</ul>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Configuration</th>
+          <th style="text-align: left">Settling Time</th>
+          <th style="text-align: left">Max Overshoot</th>
+          <th style="text-align: left">Control Energy ($N^2 \cdot s$)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Baseline (R=0.1)</strong></td>
+          <td style="text-align: left">0.27s</td>
+          <td style="text-align: left">5.0°</td>
+          <td style="text-align: left">414,654.0</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>High Q</strong></td>
+          <td style="text-align: left">0.25s</td>
+          <td style="text-align: left">5.8°</td>
+          <td style="text-align: left">451,955.5</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>High R (R=1)</strong></td>
+          <td style="text-align: left">0.31s</td>
+          <td style="text-align: left">3.3°</td>
+          <td style="text-align: left">355,800.3</td>
+      </tr>
+  </tbody>
+</table></div>
+<div style="text-align: center; margin: 15px 0;">
+  <img src="/RL/图2.png" alt="Inverted Pendulum control results" style="max-width: 100%; border: 1px solid #eee; border-radius: 4px;">
+  <p style="font-size: 14px; color: #666;">Fig 1: Stabilization effects from different initial angles</p>
+</div>
+<h4 id="2-rl-control-via-reinforce">2. RL Control via REINFORCE
+</h4><ul>
+<li><strong>Strategy</strong>: Utilized a two-layer MLP as the policy network, mapping the 4D state to a probability distribution over 2 discrete actions (Left/Right force).</li>
+<li><strong>Reward Shaping</strong>: Designed a multi-dimensional reward function covering survival, angle deviation, centering, and velocity penalties.</li>
+<li><strong>Results</strong>: After <strong>2,325 training episodes</strong>, the policy converged, enabling the pendulum to maintain precise balance under continuous perturbations.</li>
+</ul>
+<div style="text-align: center; margin: 15px 0;">
+  <img src="/RL/图3.png" alt="REINFORCE training curve" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+  <p style="font-size: 14px; color: #666;">Fig 2: REINFORCE training reward curve</p>
+</div>
+<h3 id="task-2-bipedal-robot-ppo-control">Task 2: Bipedal Robot PPO Control
+</h3><h4 id="1-system-architecture">1. System Architecture
+</h4><ul>
+<li><strong>Isaac Gym</strong>: GPU-accelerated simulation supporting thousands of parallel environments. Enabled <strong>Domain Randomization</strong> (friction, mass, CoM) to enhance policy robustness.</li>
+<li><strong>MuJoCo</strong>: High-fidelity engine used for <strong>Sim-to-Sim</strong> verification.</li>
+</ul>
+<h4 id="2-hierarchical-reward-function-design">2. Hierarchical Reward Function Design
+</h4><p>Designed multi-objective rewards to guide behavior:</p>
+<ul>
+<li><strong>Orientation Reward</strong>: Penalized gravity vector projection on the XY plane to keep the torso upright.</li>
+<li><strong>Z-Velocity Penalty</strong>: Suppressed vertical oscillation to stabilize the center of mass.</li>
+<li><strong>Airtime Reward</strong>: Incentivized a target airtime (0.3s - 0.6s) to eliminate &ldquo;shuffling&rdquo; and generate natural gaits.</li>
+<li><strong>Command Tracking</strong>: Exponentially penalized errors in linear velocity (XY), angular velocity (Yaw), and heading.</li>
+<li><strong>Stand-still Reward</strong>: Penalized unnecessary motion when command velocity is zero.</li>
+</ul>
+<h4 id="3-three-stage-training-pipeline">3. Three-Stage Training Pipeline
+</h4><p>Used a curriculum-based strategy to prevent policy collapse:</p>
+<ol>
+<li><strong>Stage 1 (Flat Terrain Balance)</strong>: Achieved basic standing and mobility. Delayed policy collapse from 5k to 55k episodes by introducing orientation constraints.</li>
+<li><strong>Stage 2 (Gait &amp; Command)</strong>: Optimized gait rhythm and tracking precision by adjusting action rate penalties and airtime rewards.</li>
+<li><strong>Stage 3 (Robustness &amp; Complex Terrain)</strong>: Enabled random force perturbations and terrain curricula (slopes/rough ground), achieving an 88% success rate on non-flat surfaces.</li>
+</ol>
+<h4 id="4-experimental-results">4. Experimental Results
+</h4><ul>
+<li><strong>Natural Gait</strong>: Achieved biological gait characteristics with 0.4s-0.6s airtime and &lt;5% command tracking error.</li>
+<li><strong>Robustness</strong>: Recovered balance within 1.2s-2.0s after random pushes.</li>
+<li><strong>Terrain Success Rate</strong>:</li>
+</ul>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Terrain Type</th>
+          <th style="text-align: left">Success Rate</th>
+          <th style="text-align: left">Torso Oscillation</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Flat (No Perturbation)</strong></td>
+          <td style="text-align: left">100%</td>
+          <td style="text-align: left">&lt; 5°</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Unstructured (Trimesh)</strong></td>
+          <td style="text-align: left">90%</td>
+          <td style="text-align: left">&lt; 8°</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Slopes</strong></td>
+          <td style="text-align: left">92%</td>
+          <td style="text-align: left">&lt; 8°</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Flat + Random Pushes</strong></td>
+          <td style="text-align: left">95%</td>
+          <td style="text-align: left">&lt; 7°</td>
+      </tr>
+  </tbody>
+</table></div>
+<div style="text-align: center; margin: 15px 0;">
+  <img src="/RL/图6.png" alt="MuJoCo gait simulation" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+  <p style="font-size: 14px; color: #666;">Fig 3: Optimized gait simulation in MuJoCo</p>
+</div>
+<h2 id="iv-project-results-and-conclusions">IV. Project Results and Conclusions
+</h2><h3 id="1-simulation-highlights">1. Simulation Highlights
+</h3><ul>
+<li><strong>Inverted Pendulum</strong>: Demonstrated rapid convergence from extreme initial angles ($2.9\text{ rad}$) using LQR, and robust balance under micro-perturbations using REINFORCE.</li>
+<li><strong>Bipedal Robot</strong>: Generated human-like natural gaits, eliminating &ldquo;shuffling&rdquo; and showing high resilience to environmental disturbances and slope changes.</li>
+</ul>
+<h3 id="2-core-technical-insights">2. Core Technical Insights
+</h3><ul>
+<li><strong>LQR Weighting</strong>: High $Q$ leads to faster response but higher overshoot; High $R$ minimizes energy but slows response.</li>
+<li><strong>Reward Shaping</strong>: Multi-dimensional rewards are critical to prevent agents from exploiting &ldquo;loopholes&rdquo; (e.g., surviving without balancing).</li>
+<li><strong>Curriculum Learning</strong>: The three-stage training pipeline is essential for high-dimensional systems; direct training on complex terrains often leads to divergence.</li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/llm-uav-custom-design/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/uav/fengmian.jpg" loading="lazy" data-key="llm-uav-custom-design" data-hash="/uav/fengmian.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Customized Design and Manufacturing of Multi-rotor UAVs Based on Large Language Models</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/painting-robot/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/gen3/fengmian.png" loading="lazy" data-key="painting-robot" data-hash="/gen3/fengmian.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Painting Robot System Based on the Kinova Gen3-lite Robotic Arm</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/ur-robot/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/UR-Robot/fengmian.png" loading="lazy" data-key="UR-Robot" data-hash="/UR-Robot/fengmian.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Design and Implementation of a Voice-Controlled Collaborative Robot System</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/gomoku-recognition/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/gomoku/fengmian.png" loading="lazy" data-key="gomoku-recognition" data-hash="/gomoku/fengmian.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Gomoku Recognition and Prediction System Based on Traditional Image Processing</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/ai-research/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/ai/fengmian.png" loading="lazy" data-key="ai-research" data-hash="/ai/fengmian.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Research on Classification and Image Processing Based on Traditional Machine Learning Algorithms</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2025 - 
+        
+        2026 刘承韬
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

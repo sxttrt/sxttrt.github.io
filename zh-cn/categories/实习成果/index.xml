@@ -47,7 +47,7 @@ MathJax.config = {
       &lt;/tr&gt;
       &lt;tr&gt;
           &lt;td&gt;&lt;strong&gt;企业名称&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;固高科技股份有限公司（股票代码：301510）&lt;/td&gt;
+          &lt;td&gt;固高科技股份有限公司&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
           &lt;td&gt;&lt;strong&gt;实习周期&lt;/strong&gt;&lt;/td&gt;
@@ -396,7 +396,7 @@ MathJax.config = {
   &lt;/div&gt;
   &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
     &lt;img src=&#34;https://sxttrt.github.io/internship/图9.png&#34; alt=&#34;功能验证效果&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
-    &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;图7：模拟打孔点位精度验证（误差≤0.02mm）&lt;/p&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;图7：模拟打孔点位精度验证（误差≤0.5mm）&lt;/p&gt;
   &lt;/div&gt;
 &lt;h2 id=&#34;五经验总结&#34;&gt;五、经验总结
 &lt;/h2&gt;&lt;h3 id=&#34;1-技术知识与技能提升&#34;&gt;1. 技术知识与技能提升
@@ -429,8 +429,7 @@ MathJax.config = {
     &lt;img src=&#34;https://sxttrt.github.io/internship/图11.png&#34; alt=&#34;结业证书&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
     &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;图9：固高创工场《机电系统综合应用技术》结业证书&lt;/p&gt;
   &lt;/div&gt;
-&lt;/div&gt;
-```</description>
+&lt;/div&gt;</description>
         </item>
         
     </channel>

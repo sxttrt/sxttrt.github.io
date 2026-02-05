@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="A comprehensive Gomoku recognition and prediction system featuring Gaussian filtering, Canny edge detection, Hough transform, HSV-based piece classification, heuristic move prediction, and UI development (compatible with standard and hand-drawn boards).">
+<title>Gomoku Recognition and Prediction System Based on Traditional Image Processing</title>
+
+<link rel='canonical' href='https://sxttrt.github.io/p/gomoku-recognition/'>
+
+<link rel="stylesheet" href="/scss/style.min.c91073e1bef24baf3131464aee14e30bb1335275cee51563e55fb2a5e03eca69.css"><meta property='og:title' content="Gomoku Recognition and Prediction System Based on Traditional Image Processing">
+<meta property='og:description' content="A comprehensive Gomoku recognition and prediction system featuring Gaussian filtering, Canny edge detection, Hough transform, HSV-based piece classification, heuristic move prediction, and UI development (compatible with standard and hand-drawn boards).">
+<meta property='og:url' content='https://sxttrt.github.io/p/gomoku-recognition/'>
+<meta property='og:site_name' content='Liu Chengtao'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-12-20T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-12-20T00:00:00&#43;00:00'/><meta property='og:image' content='https://sxttrt.github.io/gomoku/fengmian.png' />
+<meta name="twitter:title" content="Gomoku Recognition and Prediction System Based on Traditional Image Processing">
+<meta name="twitter:description" content="A comprehensive Gomoku recognition and prediction system featuring Gaussian filtering, Canny edge detection, Hough transform, HSV-based piece classification, heuristic move prediction, and UI development (compatible with standard and hand-drawn boards)."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://sxttrt.github.io/gomoku/fengmian.png' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_4180be05c8c2e7f3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Liu Chengtao</a></h1>
+            <h2 class="site-description">Liu Chengtao | Undergraduate Works</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://space.bilibili.com/499786362?spm_id_from=333.1007.0.0'
+                        target="_blank"
+                        title="Bilibili"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.0.0-beta2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M488.6 104.1C505.3 122.2 513 143.8 511.9 169.8V372.2C511.5 398.6 502.7 420.3 485.4 437.3C468.2 454.3 446.3 463.2 419.9 464H92.02C65.57 463.2 43.81 454.2 26.74 436.8C9.682 419.4 .7667 396.5 0 368.2V169.8C.7667 143.8 9.682 122.2 26.74 104.1C43.81 87.75 65.57 78.77 92.02 78H121.4L96.05 52.19C90.3 46.46 87.42 39.19 87.42 30.4C87.42 21.6 90.3 14.34 96.05 8.603C101.8 2.868 109.1 0 117.9 0C126.7 0 134 2.868 139.8 8.603L213.1 78H301.1L375.6 8.603C381.7 2.868 389.2 0 398 0C406.8 0 414.1 2.868 419.9 8.603C425.6 14.34 428.5 21.6 428.5 30.4C428.5 39.19 425.6 46.46 419.9 52.19L394.6 78L423.9 78C450.3 78.77 471.9 87.75 488.6 104.1H488.6zM449.8 173.8C449.4 164.2 446.1 156.4 439.1 150.3C433.9 144.2 425.1 140.9 416.4 140.5H96.05C86.46 140.9 78.6 144.2 72.47 150.3C66.33 156.4 63.07 164.2 62.69 173.8V368.2C62.69 377.4 65.95 385.2 72.47 391.7C78.99 398.2 86.85 401.5 96.05 401.5H416.4C425.6 401.5 433.4 398.2 439.7 391.7C446 385.2 449.4 377.4 449.8 368.2L449.8 173.8zM185.5 216.5C191.8 222.8 195.2 230.6 195.6 239.7V273C195.2 282.2 191.9 289.9 185.8 296.2C179.6 302.5 171.8 305.7 162.2 305.7C152.6 305.7 144.7 302.5 138.6 296.2C132.5 289.9 129.2 282.2 128.8 273V239.7C129.2 230.6 132.6 222.8 138.9 216.5C145.2 210.2 152.1 206.9 162.2 206.5C171.4 206.9 179.2 210.2 185.5 216.5H185.5zM377 216.5C383.3 222.8 386.7 230.6 387.1 239.7V273C386.7 282.2 383.4 289.9 377.3 296.2C371.2 302.5 363.3 305.7 353.7 305.7C344.1 305.7 336.3 302.5 330.1 296.2C323.1 289.9 320.7 282.2 320.4 273V239.7C320.7 230.6 324.1 222.8 330.4 216.5C336.7 210.2 344.5 206.9 353.7 206.5C362.9 206.9 370.7 210.2 377 216.5H377z"/></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/sxttrt'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about-me/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About Me</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://sxttrt.github.io/" selected>English</option>
+                                
+                                    <option value="https://sxttrt.github.io/zh-cn/" >简体中文</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#i-project-overview">I. Project Overview</a></li>
+    <li><a href="#ii-background-and-objectives">II. Background and Objectives</a>
+      <ol>
+        <li><a href="#1-project-background">1. Project Background</a></li>
+        <li><a href="#2-core-objectives">2. Core Objectives</a></li>
+      </ol>
+    </li>
+    <li><a href="#iii-core-task-implementation">III. Core Task Implementation</a>
+      <ol>
+        <li><a href="#task-1-standard-board-recognition-and-piece-classification">Task 1: Standard Board Recognition and Piece Classification</a>
+          <ol>
+            <li><a href="#1-methodology">1. Methodology</a></li>
+            <li><a href="#2-key-results">2. Key Results</a></li>
+          </ol>
+        </li>
+        <li><a href="#task-2-hand-drawn-board-recognition-and-state-modeling">Task 2: Hand-drawn Board Recognition and State Modeling</a>
+          <ol>
+            <li><a href="#1-methodology-1">1. Methodology</a></li>
+            <li><a href="#2-key-results-1">2. Key Results</a></li>
+          </ol>
+        </li>
+        <li><a href="#task-3-move-prediction-and-winloss-judgment">Task 3: Move Prediction and Win/Loss Judgment</a>
+          <ol>
+            <li><a href="#1-move-prediction-implementation">1. Move Prediction Implementation</a></li>
+            <li><a href="#2-winloss-judgment">2. Win/Loss Judgment</a></li>
+          </ol>
+        </li>
+        <li><a href="#task-4-ui-development">Task 4: UI Development</a>
+          <ol>
+            <li><a href="#1-features">1. Features</a></li>
+            <li><a href="#2-ui-interface">2. UI Interface</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#iv-project-results-summary">IV. Project Results Summary</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/gomoku-recognition/">
+                
+                    <img src="/gomoku/fengmian.png" loading="lazy" alt="Featured image of post Gomoku Recognition and Prediction System Based on Traditional Image Processing" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/project-accomplishments/" >
+                Project Accomplishments
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/gomoku-recognition/">Gomoku Recognition and Prediction System Based on Traditional Image Processing</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            A comprehensive Gomoku recognition and prediction system featuring Gaussian filtering, Canny edge detection, Hough transform, HSV-based piece classification, heuristic move prediction, and UI development (compatible with standard and hand-drawn boards).
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2024-12-20</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+        <footer class="article-translations">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+            <div>
+                
+                    <a href="https://sxttrt.github.io/zh-cn/p/gomoku-recognition/" class="link">简体中文</a>
+                
+            </div>
+        </footer>
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="i-project-overview">I. Project Overview
+</h2><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Category</th>
+          <th style="text-align: left">Details</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Project Title</strong></td>
+          <td style="text-align: left">Gomoku Recognition and Prediction System Based on Traditional Image Processing</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Role</strong></td>
+          <td style="text-align: left">Project Lead</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Timeline</strong></td>
+          <td style="text-align: left">October 2024 - December 2024</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Core Members</strong></td>
+          <td style="text-align: left">Chengtao Liu (Self), Jiaming Wu, Fengyang Wu, Wenbo Wan</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Core Tasks</strong></td>
+          <td style="text-align: left">1. Recognition of standard/hand-drawn boards and piece classification; 2. Board state modeling and coordinate normalization; 3. Intelligent move prediction and win/loss judgment; 4. Interactive UI development.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Key Tools</strong></td>
+          <td style="text-align: left">OpenCV (Image Processing), Python (Core Logic), Tkinter (UI Development), NumPy (Numerical Computing).</td>
+      </tr>
+  </tbody>
+</table></div>
+<h2 id="ii-background-and-objectives">II. Background and Objectives
+</h2><h3 id="1-project-background">1. Project Background
+</h3><p>Automated recognition of Gomoku (Five-in-a-Row) is a classic application of computer vision. Traditional methods offer advantages such as controllable processes, low computational requirements, and straightforward implementation, making them ideal for lightweight recognition needs. This project moves away from &ldquo;black-box&rdquo; deep learning models, utilizing techniques like <strong>Gaussian filtering</strong>, <strong>Canny edge detection</strong>, and <strong>Hough transform</strong> to solve two core challenges: high-precision recognition of standard boards and robust recognition of hand-drawn boards. Combined with heuristic pattern analysis, the system achieves a full &ldquo;Recognition - Modeling - Prediction - Interaction&rdquo; closed-loop.</p>
+<h3 id="2-core-objectives">2. Core Objectives
+</h3><ul>
+<li><strong>Recognition</strong>: Achieve a 100% recognition rate for standard boards and ≥85% for neat hand-drawn boards, with precise classification of black and white pieces.</li>
+<li><strong>Modeling</strong>: Construct a 15×15 board state model and implement normalized coordinate mapping to ensure data alignment with the physical board.</li>
+<li><strong>Intelligence</strong>: Develop a move prediction algorithm based on pattern scoring and implement real-time win/loss judgment (5-in-a-row detection in horizontal, vertical, and diagonal directions).</li>
+<li><strong>Interaction</strong>: Design a UI compatible with multiple board formats, supporting image importing, result visualization, and user interaction.</li>
+</ul>
+<h2 id="iii-core-task-implementation">III. Core Task Implementation
+</h2><h3 id="task-1-standard-board-recognition-and-piece-classification">Task 1: Standard Board Recognition and Piece Classification
+</h3><h4 id="1-methodology">1. Methodology
+</h4><p>Adopted a four-step pipeline: &ldquo;Preprocessing → Piece Detection → Color Classification → Coordinate Mapping.&rdquo;</p>
+<ul>
+<li><strong>Preprocessing</strong>: Input images are denoised via Gaussian filtering (5×5 kernel) and converted to grayscale to reduce complexity.</li>
+<li><strong>Piece Detection</strong>: Used <code>cv2.HoughCircles</code> (Hough Circle Transform) with a radius range of 10-18px and a minimum distance of 25px to extract precise centers of the pieces.</li>
+<li><strong>Color Classification</strong>: Transformed the Region of Interest (ROI) from RGB to <strong>HSV color space</strong>. Pieces were classified using thresholds: White (Value &gt; 120) and Black (Hue &lt; 90).</li>
+<li><strong>Coordinate Mapping</strong>: Calculated grid sizes based on board dimensions to map centers into 15×15 row/column indices.</li>
+</ul>
+<h4 id="2-key-results">2. Key Results
+</h4><ul>
+<li><strong>Standard Board Performance</strong>: Achieved nearly 100% recognition rate with zero deviation in coordinates or color classification.</li>
+<li><strong>Visuals</strong>:
+<div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 15px 0;">
+  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/gomoku/图3.png" alt="Original standard board" style="max-width: 100%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666;">Fig 1: Original standard board image</p>
+  </div>
+  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/gomoku/图4.png" alt="Recognition result" style="max-width: 100%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666;">Fig 2: Recognition result (Annotated coordinates and colors)</p>
+  </div>
+</div>
+</li>
+</ul>
+<h3 id="task-2-hand-drawn-board-recognition-and-state-modeling">Task 2: Hand-drawn Board Recognition and State Modeling
+</h3><h4 id="1-methodology-1">1. Methodology
+</h4><p>Designed a robust four-step workflow to handle irregular edges and piece adhesion:</p>
+<ul>
+<li><strong>Board Localization</strong>: Extracted the largest contour via <code>cv2.findContours</code> and used a bounding box to crop the board, resizing it to a fixed 1000×1000px.</li>
+<li><strong>Edge Detection</strong>: Applied the Canny operator (thresholds 50-150) followed by dilation (5×5 kernel) to enhance line continuity and separate grid boundaries.</li>
+<li><strong>Grid Sorting</strong>: Sorted extracted grid rectangles based on &ldquo;diagonal distance (x+y)&rdquo; to generate a 15×15 matrix, ensuring alignment with the physical grid.</li>
+<li><strong>Piece Judgment</strong>: Calculated the ratio of white pixels within each grid and used the &ldquo;Area-to-Perimeter ratio&rdquo; (Circle &lt; 1.3, Cross &gt; 1.3) to distinguish between empty, black, and white (cross-marked) cells.</li>
+</ul>
+<h4 id="2-key-results-1">2. Key Results
+</h4><ul>
+<li><strong>Hand-drawn Performance</strong>: Achieved ≥85% accuracy for neat hand-drawn boards. Morphological operations effectively mitigated issues with boundary adhesion or line breaks.</li>
+<li><strong>Visuals</strong>:
+<div style="text-align: center; margin: 15px 0;">
+  <img src="/gomoku/图7.png" alt="Hand-drawn recognition result" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+  <p style="font-size: 14px; color: #666;">Fig 3: Hand-drawn board recognition (Left: Original, Right: Resultant character board)</p>
+</div>
+</li>
+</ul>
+<h3 id="task-3-move-prediction-and-winloss-judgment">Task 3: Move Prediction and Win/Loss Judgment
+</h3><h4 id="1-move-prediction-implementation">1. Move Prediction Implementation
+</h4><p>The move prediction is the core intelligence of the system, utilizing a three-tier architecture: &ldquo;<strong>Pattern Scanning - Score Calculation - Optimal Decision.</strong>&rdquo;</p>
+<h5 id="1-pattern-recognition-double-pointer-interval-scanning">(1) Pattern Recognition: Double-pointer Interval Scanning
+</h5><ul>
+<li><strong>Logic</strong>: Scanned four directions (Horizontal, Vertical, Main Diagonal, Anti-diagonal) using a <strong>sliding window</strong> (lengths 5 to 11). This ensures complex patterns like &ldquo;Live 3 + Live 4&rdquo; are captured without omission.</li>
+<li><strong>Filtering</strong>: Implemented specific rules to avoid redundant counting of overlapping patterns and utilized edge-case logic for patterns near the board boundaries.</li>
+</ul>
+<h5 id="2-score-calculation-pattern-weights-and-bonus-points">(2) Score Calculation: Pattern Weights and Bonus Points
+</h5><ul>
+<li><strong>Base Scores</strong>: Predefined weights for typical patterns (e.g., <strong>Live 4: 1000</strong>, <strong>Dead 4: 500</strong>, <strong>Live 3: 300</strong>).</li>
+<li><strong>Bonus Mechanism</strong>: Added additional scores for lethal combinations (e.g., +30 for &ldquo;Live 4 + Live 3&rdquo;) to prioritize aggressive winning moves.</li>
+</ul>
+<h5 id="3-optimal-decision-strategy-attack-defense-balancing">(3) Optimal Decision Strategy: Attack-Defense Balancing
+</h5><ul>
+<li><strong>Search Optimization</strong>: Focused searches within a ±2 grid range of existing pieces to improve efficiency.</li>
+<li><strong>Decision Formula</strong>: Calculated the &ldquo;Yield Difference&rdquo; for each empty cell to balance offensive gains and defensive requirements:
+<code>Yield = 1.1 × (Post-move Black Score - Pre-move Black Score) + (Pre-move White Score - Post-move White Score)</code></li>
+<li><strong>Kill Move Priority</strong>: If any move results in an immediate Win/Live 4 (Score ≥ 1000), it is selected instantly.</li>
+</ul>
+<h4 id="2-winloss-judgment">2. Win/Loss Judgment
+</h4><ul>
+<li><strong>Full-direction Detection</strong>: Constructed 29 diagonal detection arrays to ensure comprehensive coverage.</li>
+<li><strong>Victory Interaction</strong>: Upon detecting a 5-in-a-row string (&ldquo;XXXXX&rdquo; or &ldquo;OOOOO&rdquo;), the UI displays a victory pop-up and automatically resets the board after a 3-second delay.</li>
+<li><strong>Visuals</strong>:
+<div style="text-align: center; margin: 15px 0;">
+  <img src="/gomoku/图11.png" alt="Victory prompt" style="max-width: 60%; border: 1px solid #eee; border-radius: 4px;">
+  <p style="font-size: 14px; color: #666;">Fig 4: White player victory notification</p>
+</div>
+</li>
+</ul>
+<h3 id="task-4-ui-development">Task 4: UI Development
+</h3><h4 id="1-features">1. Features
+</h4><p>Developed an interactive Tkinter interface supporting:</p>
+<ul>
+<li><strong>Image Import</strong>: Upload standard or hand-drawn board images (JPG/PNG).</li>
+<li><strong>Visualization</strong>: Toggle between &ldquo;Original,&rdquo; &ldquo;Grayscale,&rdquo; and &ldquo;Recognized&rdquo; views.</li>
+<li><strong>Interaction</strong>: Supports manual moves and real-time next-move prediction (indicated by colored masks: Red for Black, Green for White).</li>
+</ul>
+<h4 id="2-ui-interface">2. UI Interface
+</h4>  <div style="text-align: center; margin: 15px 0;">
+    <img src="/gomoku/图11.png" alt="UI Exhibition" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666;">Fig 5: System UI featuring recognition, prediction, and manual play</p>
+  </div>
+<h2 id="iv-project-results-summary">IV. Project Results Summary
+</h2><ul>
+<li><strong>Recognition Precision</strong>: ~100% for standard boards, ≥85% for neat hand-drawn boards, and ≥98% for color classification.</li>
+<li><strong>System Performance</strong>: Prediction latency ≤0.5s; move recommendations align with standard Gomoku strategies (prioritizing Live 4/Live 3 patterns).</li>
+<li><strong>Compatibility</strong>: Seamlessly supports 15×15 standard boards and dynamically resizes hand-drawn inputs.</li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/rl-control-project/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/RL/fengmian.png" loading="lazy" data-key="rl-control-project" data-hash="/RL/fengmian.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">RL-based Inverted Pendulum Control and Bipedal Robot System Construction</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/llm-uav-custom-design/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/uav/fengmian.jpg" loading="lazy" data-key="llm-uav-custom-design" data-hash="/uav/fengmian.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Customized Design and Manufacturing of Multi-rotor UAVs Based on Large Language Models</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/painting-robot/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/gen3/fengmian.png" loading="lazy" data-key="painting-robot" data-hash="/gen3/fengmian.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Painting Robot System Based on the Kinova Gen3-lite Robotic Arm</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/ur-robot/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/UR-Robot/fengmian.png" loading="lazy" data-key="UR-Robot" data-hash="/UR-Robot/fengmian.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Design and Implementation of a Voice-Controlled Collaborative Robot System</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/ai-research/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/ai/fengmian.png" loading="lazy" data-key="ai-research" data-hash="/ai/fengmian.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Research on Classification and Image Processing Based on Traditional Machine Learning Algorithms</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2025 - 
+        
+        2026 刘承韬
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

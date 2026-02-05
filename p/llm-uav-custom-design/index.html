@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Integrating Large Language Models (LLM) with intelligent manufacturing to achieve automated frame generation and customized power module design, covering the full development lifecycle from modeling and manufacturing to flight verification.">
+<title>Customized Design and Manufacturing of Multi-rotor UAVs Based on Large Language Models</title>
+
+<link rel='canonical' href='https://sxttrt.github.io/p/llm-uav-custom-design/'>
+
+<link rel="stylesheet" href="/scss/style.min.c91073e1bef24baf3131464aee14e30bb1335275cee51563e55fb2a5e03eca69.css"><meta property='og:title' content="Customized Design and Manufacturing of Multi-rotor UAVs Based on Large Language Models">
+<meta property='og:description' content="Integrating Large Language Models (LLM) with intelligent manufacturing to achieve automated frame generation and customized power module design, covering the full development lifecycle from modeling and manufacturing to flight verification.">
+<meta property='og:url' content='https://sxttrt.github.io/p/llm-uav-custom-design/'>
+<meta property='og:site_name' content='Liu Chengtao'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-06-05T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-06-05T00:00:00&#43;00:00'/><meta property='og:image' content='https://sxttrt.github.io/uav/fengmian.jpg' />
+<meta name="twitter:title" content="Customized Design and Manufacturing of Multi-rotor UAVs Based on Large Language Models">
+<meta name="twitter:description" content="Integrating Large Language Models (LLM) with intelligent manufacturing to achieve automated frame generation and customized power module design, covering the full development lifecycle from modeling and manufacturing to flight verification."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://sxttrt.github.io/uav/fengmian.jpg' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_4180be05c8c2e7f3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Liu Chengtao</a></h1>
+            <h2 class="site-description">Liu Chengtao | Undergraduate Works</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://space.bilibili.com/499786362?spm_id_from=333.1007.0.0'
+                        target="_blank"
+                        title="Bilibili"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.0.0-beta2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M488.6 104.1C505.3 122.2 513 143.8 511.9 169.8V372.2C511.5 398.6 502.7 420.3 485.4 437.3C468.2 454.3 446.3 463.2 419.9 464H92.02C65.57 463.2 43.81 454.2 26.74 436.8C9.682 419.4 .7667 396.5 0 368.2V169.8C.7667 143.8 9.682 122.2 26.74 104.1C43.81 87.75 65.57 78.77 92.02 78H121.4L96.05 52.19C90.3 46.46 87.42 39.19 87.42 30.4C87.42 21.6 90.3 14.34 96.05 8.603C101.8 2.868 109.1 0 117.9 0C126.7 0 134 2.868 139.8 8.603L213.1 78H301.1L375.6 8.603C381.7 2.868 389.2 0 398 0C406.8 0 414.1 2.868 419.9 8.603C425.6 14.34 428.5 21.6 428.5 30.4C428.5 39.19 425.6 46.46 419.9 52.19L394.6 78L423.9 78C450.3 78.77 471.9 87.75 488.6 104.1H488.6zM449.8 173.8C449.4 164.2 446.1 156.4 439.1 150.3C433.9 144.2 425.1 140.9 416.4 140.5H96.05C86.46 140.9 78.6 144.2 72.47 150.3C66.33 156.4 63.07 164.2 62.69 173.8V368.2C62.69 377.4 65.95 385.2 72.47 391.7C78.99 398.2 86.85 401.5 96.05 401.5H416.4C425.6 401.5 433.4 398.2 439.7 391.7C446 385.2 449.4 377.4 449.8 368.2L449.8 173.8zM185.5 216.5C191.8 222.8 195.2 230.6 195.6 239.7V273C195.2 282.2 191.9 289.9 185.8 296.2C179.6 302.5 171.8 305.7 162.2 305.7C152.6 305.7 144.7 302.5 138.6 296.2C132.5 289.9 129.2 282.2 128.8 273V239.7C129.2 230.6 132.6 222.8 138.9 216.5C145.2 210.2 152.1 206.9 162.2 206.5C171.4 206.9 179.2 210.2 185.5 216.5H185.5zM377 216.5C383.3 222.8 386.7 230.6 387.1 239.7V273C386.7 282.2 383.4 289.9 377.3 296.2C371.2 302.5 363.3 305.7 353.7 305.7C344.1 305.7 336.3 302.5 330.1 296.2C323.1 289.9 320.7 282.2 320.4 273V239.7C320.7 230.6 324.1 222.8 330.4 216.5C336.7 210.2 344.5 206.9 353.7 206.5C362.9 206.9 370.7 210.2 377 216.5H377z"/></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/sxttrt'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about-me/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About Me</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://sxttrt.github.io/" selected>English</option>
+                                
+                                    <option value="https://sxttrt.github.io/zh-cn/" >简体中文</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#i-project-overview">I. Project Overview</a></li>
+    <li><a href="#ii-background-and-objectives">II. Background and Objectives</a>
+      <ol>
+        <li><a href="#1-project-background">1. Project Background</a></li>
+        <li><a href="#2-core-objectives">2. Core Objectives</a></li>
+      </ol>
+    </li>
+    <li><a href="#iii-key-tasks-and-progress">III. Key Tasks and Progress</a>
+      <ol>
+        <li><a href="#1-frame-design-llm-aided-automated-generation">1. Frame Design (LLM-Aided Automated Generation)</a>
+          <ol>
+            <li><a href="#frame-design-results">Frame Design Results</a></li>
+          </ol>
+        </li>
+        <li><a href="#2-power-module-design-and-manufacturing">2. Power Module Design and Manufacturing</a>
+          <ol>
+            <li><a href="#21-mechanical-design-solidworks-modeling">2.1 Mechanical Design (SolidWorks Modeling)</a></li>
+            <li><a href="#power-module-modeling-results">Power Module Modeling Results</a></li>
+            <li><a href="#22-3d-printing-and-manufacturing">2.2 3D Printing and Manufacturing</a></li>
+            <li><a href="#3d-printing-outcomes">3D Printing Outcomes</a></li>
+            <li><a href="#23-hardware-selection-and-optimization">2.3 Hardware Selection and Optimization</a></li>
+            <li><a href="#hardware-integration-results">Hardware Integration Results</a></li>
+            <li><a href="#24-power-module-size-and-form-factor-optimization">2.4 Power Module Size and Form-factor Optimization</a></li>
+          </ol>
+        </li>
+        <li><a href="#3-electronic-control-system-development">3. Electronic Control System Development</a>
+          <ol>
+            <li><a href="#31-multi-fc-synchronous-communication">3.1 Multi-FC Synchronous Communication</a></li>
+            <li><a href="#32-dual-loop-pid-implementation">3.2 Dual-loop PID Implementation</a></li>
+            <li><a href="#pid-parameter-configuration">PID Parameter Configuration</a></li>
+            <li><a href="#33-sensor-data-processing">3.3 Sensor Data Processing</a></li>
+          </ol>
+        </li>
+        <li><a href="#4-flight-testing-and-validation">4. Flight Testing and Validation</a>
+          <ol>
+            <li><a href="#41-testing-objectives">4.1 Testing Objectives</a></li>
+            <li><a href="#42-results">4.2 Results</a></li>
+            <li><a href="#flight-test-results">Flight Test Results</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#iv-core-technical-implementation">IV. Core Technical Implementation</a>
+      <ol>
+        <li><a href="#1-llm-aided-frame-design-workflow">1. LLM-Aided Frame Design Workflow</a></li>
+        <li><a href="#2-power-system-adaptation">2. Power System Adaptation</a></li>
+        <li><a href="#3-structural-optimization-techniques">3. Structural Optimization Techniques</a></li>
+        <li><a href="#4-multi-fc-synchronization">4. Multi-FC Synchronization</a></li>
+      </ol>
+    </li>
+    <li><a href="#v-limitations-and-future-work">V. Limitations and Future Work</a>
+      <ol>
+        <li><a href="#1-current-limitations">1. Current Limitations</a></li>
+        <li><a href="#2-future-directions">2. Future Directions</a></li>
+      </ol>
+    </li>
+    <li><a href="#vi-academic-results">VI. Academic Results</a>
+      <ol>
+        <li>
+          <ol>
+            <li><a href="#acceptance-proof">Acceptance Proof</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#vii-conclusion">VII. Conclusion</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/llm-uav-custom-design/">
+                
+                    <img src="/uav/fengmian.jpg" loading="lazy" alt="Featured image of post Customized Design and Manufacturing of Multi-rotor UAVs Based on Large Language Models" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/project-accomplishments/" >
+                Project Accomplishments
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/llm-uav-custom-design/">Customized Design and Manufacturing of Multi-rotor UAVs Based on Large Language Models</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            Integrating Large Language Models (LLM) with intelligent manufacturing to achieve automated frame generation and customized power module design, covering the full development lifecycle from modeling and manufacturing to flight verification.
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025-06-05</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+        <footer class="article-translations">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+            <div>
+                
+                    <a href="https://sxttrt.github.io/zh-cn/p/llm-uav-custom-design/" class="link">简体中文</a>
+                
+            </div>
+        </footer>
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+MathJax.config = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    processEscapes: true
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<h2 id="i-project-overview">I. Project Overview
+</h2><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Category</th>
+          <th style="text-align: left">Details</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Project Title</strong></td>
+          <td style="text-align: left">Customized Design and Manufacturing of Multi-rotor UAVs Based on LLM</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Project Lead</strong></td>
+          <td style="text-align: left">Chengtao Liu</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Timeline</strong></td>
+          <td style="text-align: left">April 2025 - June 2025</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Core Responsibilities</strong></td>
+          <td style="text-align: left">Designed and assembled the power modules (mechanical structure, electronic control, flight control development); Engineered the vision-guided assembly scheme; Conducted flight testing and system tuning.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Core Objectives</strong></td>
+          <td style="text-align: left">1. Automate UAV frame generation using LLMs to enhance design efficiency; 2. Develop customized power modules ensuring high performance and reliability; 3. Achieve synchronized multi-flight controller management and stable flight; 4. Establish an automated pipeline for customized UAV design and manufacturing.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Key Tools</strong></td>
+          <td style="text-align: left">SolidWorks (3D Modeling), Bambu Lab 3D Printers (A1/X1), STM32 Open-source Flight Control, Brushless Motors (A2212 series), ESCs (30A), Anonymous Ground Station, Altair Inspire (Topology Optimization), CadQuery (Parametric Design).</td>
+      </tr>
+  </tbody>
+</table></div>
+<h2 id="ii-background-and-objectives">II. Background and Objectives
+</h2><h3 id="1-project-background">1. Project Background
+</h3><p>As demand for personalized and customized UAV applications grows, traditional design and manufacturing processes face challenges such as low efficiency, high costs, and slow response times. Conventional frame design relies heavily on manual modeling, and power module manufacturing depends on manual assembly—processes that are cumbersome, prone to error, and difficult to scale for diverse requirements.</p>
+<p>This project innovatively integrates <strong>Large Language Models (LLM)</strong> with <strong>Intelligent Manufacturing</strong>: the UAV frame is automatically generated via LLM to significantly boost design efficiency and precision. Given the higher requirements for structural strength and functionality, the power modules utilize a &ldquo;Manual Design + 3D Printing&rdquo; approach combined with vision-guided assembly to ensure precise fitment with the frame. This culminates in an automated design-to-manufacturing workflow capable of rapid response to customized needs.</p>
+<h3 id="2-core-objectives">2. Core Objectives
+</h3><ul>
+<li><strong>Design</strong>: Realize LLM-driven automated frame generation and customized power module design, balancing structural compactness with functional integrity.</li>
+<li><strong>Manufacturing</strong>: Utilize 3D printing for frames and power module housings to ensure dimensional accuracy and structural robustness.</li>
+<li><strong>Control</strong>: Implement synchronized communication across multiple flight controllers and validate stable flight based on dual-loop PID algorithms.</li>
+<li><strong>Workflow</strong>: Bridge the gap between &ldquo;LLM Design → 3D Printing → Electronic Integration → Flight Testing&rdquo; to verify the feasibility of customized solutions.</li>
+</ul>
+<h2 id="iii-key-tasks-and-progress">III. Key Tasks and Progress
+</h2><h3 id="1-frame-design-llm-aided-automated-generation">1. Frame Design (LLM-Aided Automated Generation)
+</h3><p>Led by team member Peijiang Li (First Author), the frame design employs an LLM-driven automated workflow:</p>
+<ol>
+<li><strong>Requirement Analysis</strong>: Utilized prompt engineering and Chain-of-Thought (CoT) to transform user requirements into structured design goals and initial conditions for topology optimization.</li>
+<li><strong>Parametric Design</strong>: LLM-generated structural description language was fed into CadQuery to automatically generate base models for quadrotor/hexarotor configurations.</li>
+<li><strong>Topology Optimization</strong>: Utilized Altair Inspire to optimize critical components like motor arms, achieving lightweighting while maintaining structural strength.</li>
+<li><strong>Manufacturing Output</strong>: Optimized design files were sent to 3D printers, with frame dimensions controlled at approximately 240mm×240mm to fit the maximum build volume.</li>
+</ol>
+<h4 id="frame-design-results">Frame Design Results
+</h4>  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/uav/图1.png" alt="Frame model generated by CadQuery" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666; margin-top: 8px;">Fig 1: Quadrotor base model generated by CadQuery</p>
+  </div>
+  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/uav/图2.png" alt="Topology optimization results" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666; margin-top: 8px;">Fig 2: Comparison of frame structure before and after topology optimization</p>
+  </div>
+<h3 id="2-power-module-design-and-manufacturing">2. Power Module Design and Manufacturing
+</h3><p>As the module lead, I managed the full lifecycle development from mechanical structure and hardware selection to form-factor optimization:</p>
+<h4 id="21-mechanical-design-solidworks-modeling">2.1 Mechanical Design (SolidWorks Modeling)
+</h4><ul>
+<li>Developed 3D models for the power module housings based on the physical dimensions of motors, ESCs, batteries, and STM32 flight control boards.</li>
+<li>Optimized for installation space, cable routing, heat dissipation, and structural integrity, with pre-drilled M3 screw holes for stable frame coupling.</li>
+<li>Focused on utility and maintainability, providing sufficient clearance for debugging and component replacement.</li>
+</ul>
+<h4 id="power-module-modeling-results">Power Module Modeling Results
+</h4><div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 20px 0;">
+  <div style="flex: 1 1 80%; text-align: center;">
+    <img src="/uav/图3.png" alt="SolidWorks Power Module Modeling" style="max-width: 40%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666; margin-top: 8px;">Fig 3: 3D model of the power module housing in SolidWorks</p>
+  </div>
+</div>
+<h4 id="22-3d-printing-and-manufacturing">2.2 3D Printing and Manufacturing
+</h4><ul>
+<li><strong>Equipment</strong>: Bambu Lab A1/X1 printers; slicing performed via Bambu Studio.</li>
+<li><strong>Material</strong>: PLA Basic (selected for thermal stability, low shrinkage, and high molding precision, meeting the mechanical needs of the prototype).</li>
+<li><strong>Efficiency</strong>: Printing time per module housing was approx. 2 hours, supporting high-frequency structural iterations.</li>
+<li><strong>Precision</strong>: Layer height set to 0.15mm with dimensional tolerances within ±0.2mm to ensure seamless frame integration.</li>
+</ul>
+<h4 id="3d-printing-outcomes">3D Printing Outcomes
+</h4>  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/uav/图4.png" alt="3D printed frame" style="max-width: 60%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666; margin-top: 8px;">Fig 4: 3D printed UAV frame and power module housing (Pre-optimization)</p>
+  </div>
+<h4 id="23-hardware-selection-and-optimization">2.3 Hardware Selection and Optimization
+</h4><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Component</th>
+          <th style="text-align: left">Model/Parameters</th>
+          <th style="text-align: left">Optimization &amp; Selection Rationale</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Motor</strong></td>
+          <td style="text-align: left">A2212 1400KV (Replaced 980KV)</td>
+          <td style="text-align: left">The 980KV was better suited for larger props; the new 1400KV is optimized for 7-inch props, providing ample thrust and stability at 11V.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Propellers</strong></td>
+          <td style="text-align: left">7-inch 3-blade (7045)</td>
+          <td style="text-align: left">Replaced 10-inch props to solve frame clearance issues; 3-blade design increased thrust by 20-30% over 2-blade variants.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>ESC</strong></td>
+          <td style="text-align: left">30A Brushless ESC</td>
+          <td style="text-align: left">Provides sufficient current overhead for A2212 motors, preventing overload and ensuring reliability.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Flight Controller</strong></td>
+          <td style="text-align: left">STM32 Open-source (4cm×4cm)</td>
+          <td style="text-align: left">Supports protocol modification and multi-FC synchronization; compact size fits modular design.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Battery</strong></td>
+          <td style="text-align: left">1300mAh 30C 3S/11.1V</td>
+          <td style="text-align: left">Compact (72x34x21mm) and lightweight; discharge rate meets high-thrust power requirements.</td>
+      </tr>
+  </tbody>
+</table></div>
+<h4 id="hardware-integration-results">Hardware Integration Results
+</h4><div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 20px 0;">
+  <div style="flex: 1 1 80%; text-align: center;">
+    <img src="/uav/图5.jpg" alt="Hardware integration physical view" style="max-width: 60%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666; margin-top: 8px;">Fig 5: Integrated power module (Motor + ESC + FC + Battery)</p>
+  </div>
+</div>
+<h4 id="24-power-module-size-and-form-factor-optimization">2.4 Power Module Size and Form-factor Optimization
+</h4><p>Addressed issues of excessive volume, high aerodynamic drag, and low space utilization in the initial design:</p>
+<h5 id="241-optimization-goals">2.4.1 Optimization Goals
+</h5><ul>
+<li><strong>Size Optimization</strong>: Reduced total volume from 120x80x60mm to 95x70x50mm (~32% reduction).</li>
+<li><strong>Aero Optimization</strong>: Implemented a streamlined curved surface design to minimize drag during flight.</li>
+<li><strong>Weight Optimization</strong>: Removed redundant materials via topology optimization, resulting in an 18% weight reduction while maintaining strength.</li>
+</ul>
+<h5 id="242-optimization-strategies">2.4.2 Optimization Strategies
+</h5><ol>
+<li><strong>Integrated Layout</strong>: Redesigned internal placement for the ESC, FC, and battery to eliminate redundant gaps.</li>
+<li><strong>Streamlined Surface</strong>: Changed the boxy housing to a tapered, aerodynamic structure with rounded edges (R5mm).</li>
+<li><strong>Weight Reduction</strong>: Used Altair Inspire to hollow out non-load-bearing areas.</li>
+<li><strong>Interface Refinement</strong>: Adjusted frame-to-module interfaces to match the new dimensions, ensuring assembly precision.</li>
+</ol>
+<h5 id="243-optimized-3d-model">2.4.3 Optimized 3D Model
+</h5>  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/uav/图9.png" alt="Optimized power module model" style="max-width: 60%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666; margin-top: 8px;">Fig 6: 3D model of the optimized power module</p>
+  </div>
+<h5 id="244-optimized-physical-prototype">2.4.4 Optimized Physical Prototype
+</h5>  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/uav/fengmian.jpg" alt="Optimized physical prototype" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666; margin-top: 8px;">Fig 8: Final optimized power module (Physical view)</p>
+  </div>
+<h3 id="3-electronic-control-system-development">3. Electronic Control System Development
+</h3><h4 id="31-multi-fc-synchronous-communication">3.1 Multi-FC Synchronous Communication
+</h4><ul>
+<li><strong>Communication Mechanism</strong>: Configured the 2.4GHz receiver to broadcast mode, transmitting control signals to 4 flight controllers simultaneously.</li>
+<li><strong>Optimization</strong>: Disabled return signals and ACK responses from the 3 &ldquo;slave&rdquo; controllers to prevent signal collision, retaining only the primary controller&rsquo;s feedback.</li>
+<li><strong>Control Logic</strong>: Each controller maps synchronized signals into specific motor RPM commands based on its spatial role, achieving collaborative control.</li>
+</ul>
+<h4 id="32-dual-loop-pid-implementation">3.2 Dual-loop PID Implementation
+</h4><ul>
+<li><strong>Architecture</strong>: Outer loop (Attitude) controls Roll, Pitch, and Yaw; inner loop (Rate) controls angular velocity.</li>
+<li><strong>Core Algorithms</strong>: Combined Quaternions with Kalman Filtering to fuse MPU6050 data, suppressing noise and drift while resolving Gimbal Lock issues.</li>
+<li><strong>Parameter Tuning</strong>:
+<ul>
+<li><strong>Initial</strong>: Outer loop $K_p=7.0$, $K_i=0$, $K_d=0$; Inner loop $K_p=1.7-3.0$, $K_d=0.08$, $K_i=0$.</li>
+<li><strong>Refined</strong>: Reduced Yaw PD gains to fix oscillation; increased Pitch/Roll $K_p$ and introduced $K_i$ to eliminate steady-state error.</li>
+</ul>
+</li>
+</ul>
+<h4 id="pid-parameter-configuration">PID Parameter Configuration
+</h4><div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 20px 0;">
+  <div style="flex: 1 1 60%; text-align: center;">
+    <img src="/uav/图6.png" alt="PID configuration comparison" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666; margin-top: 8px;">Fig 10: Comparison of dual-loop PID parameters before and after optimization</p>
+  </div>
+</div>
+<h4 id="33-sensor-data-processing">3.3 Sensor Data Processing
+</h4><ul>
+<li><strong>Coordinate Alignment</strong>: Unified X/Y axes through matrix transformations for modules mounted with a 180° rotation.</li>
+<li><strong>Attitude Estimation</strong>: Fused angular velocity and acceleration data from MPU6050 to improve estimation precision and consistency.</li>
+</ul>
+<h3 id="4-flight-testing-and-validation">4. Flight Testing and Validation
+</h3><h4 id="41-testing-objectives">4.1 Testing Objectives
+</h4><ul>
+<li>Validate take-off capability and attitude response.</li>
+<li>Test multi-FC synchronization efficacy.</li>
+<li>Optimize PID parameters to resolve oscillation and drift.</li>
+<li>Verify performance gains from power module optimization (Endurance, Maneuverability).</li>
+</ul>
+<h4 id="42-results">4.2 Results
+</h4><ul>
+<li><strong>Power Performance</strong>: A2212 1400KV motors + 7-inch 3-blade props provided ~2828g of total thrust. With a 1300g take-off weight, the Thrust-to-Weight ratio reached 2.18, ensuring stability.</li>
+<li><strong>Flight Behavior</strong>: Successfully achieved the maiden flight, demonstrating responsive attitude adjustment. Post-optimization, oscillations were significantly mitigated.</li>
+<li><strong>Module Efficiency</strong>: Volume reduction (32%) and weight reduction (18%) led to a 12% increase in endurance and an 8% improvement in turning maneuverability.</li>
+<li><strong>Key Breakthrough</strong>: Successfully validated the full &ldquo;LLM Design → 3D Printing → Electronic Integration → Flight Test&rdquo; pipeline.</li>
+</ul>
+<h4 id="flight-test-results">Flight Test Results
+</h4>  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/uav/fengmian.jpg" alt="Maiden flight" style="max-width: 60%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666; margin-top: 8px;">Fig 11: Physical prototype during maiden flight test</p>
+  </div>
+<div style="text-align: center; margin: 30px 0;">
+  <h4>UAV Maiden Flight Video</h4>
+  <iframe 
+    src="/uav/视频1.mp4" 
+    width="80%" 
+    height="450px" 
+    style="border: 1px solid #eee; border-radius: 4px; margin-bottom: 15px;"
+    allowfullscreen>
+    Your browser does not support iframes. Please download the video to view it.
+  </iframe>
+  <div style="margin: 10px 0;">
+    <a href="/uav/视频1.mp4" 
+       target="_blank" 
+       download="UAV_Flight_Test.mp4"  
+       style="display: inline-block; padding: 10px 25px; background: #2188ff; color: #fff; text-decoration: none; border-radius: 6px; font-size: 15px; font-weight: 500;">
+      📥 Download Flight Test Video (MP4)
+    </a>
+  </div>
+  <p style="font-size: 14px; color: #666; margin-top: 8px;">Video 1: Complete footage of the UAV maiden flight test</p>
+</div>
+<h2 id="iv-core-technical-implementation">IV. Core Technical Implementation
+</h2><h3 id="1-llm-aided-frame-design-workflow">1. LLM-Aided Frame Design Workflow
+</h3><p>The primary innovation lies in converting natural language requirements into automated design outputs:</p>
+<ol>
+<li><strong>Initial Input</strong>: Receive customized user requirements processed via LLM Prompt Engineering and CoT.</li>
+<li><strong>Design Generation</strong>: Generate parametric commands into CadQuery for automated UAV frame modeling.</li>
+<li><strong>Optimized Manufacturing</strong>: Perform topology optimization via Altair Inspire before 3D printing.</li>
+<li><strong>Validation Loop</strong>:
+<ul>
+<li>Conduct FEA (Finite Element Analysis) on printed parts. <strong>If Passed</strong> → Final Output.</li>
+<li><strong>If Failed</strong> → Re-iterate through CoT processing to refine design instructions.</li>
+</ul>
+</li>
+</ol>
+<h3 id="2-power-system-adaptation">2. Power System Adaptation
+</h3><p>Matching power components based on propeller thrust theory:
+$$T \approx C_{t} \cdot \rho \cdot n^{2} \cdot D^{4}$$</p>
+<ul>
+<li>Where: $C_t$ is the thrust coefficient, $\rho$ is air density, $n$ is RPM, and $D$ is propeller diameter.</li>
+<li><strong>Logic</strong>: Reversed calculations to find the optimal prop size given frame constraints, resulting in the selection of 7-inch 3-blade props.</li>
+</ul>
+<h3 id="3-structural-optimization-techniques">3. Structural Optimization Techniques
+</h3><ul>
+<li><strong>Topology Optimization</strong>: Used FEA via Altair Inspire to identify non-critical areas for material reduction.</li>
+<li><strong>Aerodynamic Design</strong>: Streamlined modeling to reduce drag, improving battery life and agility.</li>
+<li><strong>Integrated Packaging</strong>: Compact component placement to minimize redundant volume.</li>
+</ul>
+<h3 id="4-multi-fc-synchronization">4. Multi-FC Synchronization
+</h3><ul>
+<li><strong>Communication Architecture</strong>: Broadcast mode + Master-Slave roles for synchronized command execution.</li>
+<li><strong>Protocol Tuning</strong>: Disabled slave feedback to eliminate latency and communication conflict.</li>
+<li><strong>Fault Tolerance</strong>: Modular redundancy ensures basic functionality even if a single module fails.</li>
+</ul>
+<h2 id="v-limitations-and-future-work">V. Limitations and Future Work
+</h2><h3 id="1-current-limitations">1. Current Limitations
+</h3><ul>
+<li><strong>Power Consistency</strong>: Independent batteries per module lead to slight thrust variances, affecting precision.</li>
+<li><strong>Sensor Fusion</strong>: IMUs operate independently; a lack of cross-module data fusion leads to slight attitude estimation drift.</li>
+<li><strong>Flight Features</strong>: Currently limited to basic attitude control; lacks GPS station-keeping and fail-safe protocols.</li>
+<li><strong>Engineering Aesthetics</strong>: Design remains experimental with lower space efficiency compared to industrial models.</li>
+</ul>
+<h3 id="2-future-directions">2. Future Directions
+</h3><ul>
+<li><strong>Power Management</strong>: Introduce battery balancing mechanisms to unify thrust across modules.</li>
+<li><strong>Advanced Fusion</strong>: Establish inter-module communication for multi-IMU data fusion to suppress drift.</li>
+<li><strong>Autonomy Upgrade</strong>: Integrate barometers and GPS for altitude-hold and autonomous navigation.</li>
+<li><strong>Structural Material</strong>: Explore carbon fiber composite 3D printing to further reduce weight and increase rigidity.</li>
+</ul>
+<h2 id="vi-academic-results">VI. Academic Results
+</h2><p>Research results from this project have been compiled into a paper and accepted by <strong>Procedia CIRP</strong> (CIRPe 2025 Special Issue) after peer review:</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Paper Info</th>
+          <th style="text-align: left">Details</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Title</strong></td>
+          <td style="text-align: left">Leveraging LLMs for personalized and manufacturable design generation of multirotor unmanned aerial vehicles</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Journal</strong></td>
+          <td style="text-align: left"><strong>Procedia CIRP</strong> (EI Indexed, Top-tier conference series in Mechanical Engineering)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Issue/Conf</strong></td>
+          <td style="text-align: left">SI: CIRPe 2025</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Manuscript #</strong></td>
+          <td style="text-align: left">PROCIR-D-25-00979R1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Authors</strong></td>
+          <td style="text-align: left">1st Author: Peijiang Li; 3rd Author: <strong>Chengtao Liu</strong> (Project Lead)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Status</strong></td>
+          <td style="text-align: left">Accepted after peer review; Awaiting publication</td>
+      </tr>
+  </tbody>
+</table></div>
+<h4 id="acceptance-proof">Acceptance Proof
+</h4><div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 20px 0;">
+  <div style="flex: 1 1 80%; text-align: center;">
+    <img src="/uav/论文1.jpg" alt="Procedia CIRP Acceptance Letter" style="max-width: 60%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666; margin-top: 8px;">Fig 12: Acceptance Proof from Procedia CIRP</p>
+  </div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 20px 0;">
+  <div style="flex: 1 1 80%; text-align: center;">
+    <img src="/uav/论文2.png" alt="Paper Front Page" style="max-width: 60%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666; margin-top: 8px;">Fig 13: Paper Front Page</p>
+  </div>
+</div>
+<h2 id="vii-conclusion">VII. Conclusion
+</h2><p>This project successfully demonstrates a customized UAV development workflow based on LLM and Intelligent Manufacturing. Key outcomes include:</p>
+<ol>
+<li>Bridged the &ldquo;LLM Design → 3D Printing → Control Integration → Flight Test&rdquo; loop, proving the feasibility of the customized paradigm.</li>
+<li>Completed full-stack development of the power modules, achieving significant volume (32%) and weight (18%) reductions alongside synchronized control and stable flight.</li>
+<li>Published innovative research in <strong>Procedia CIRP</strong>, providing a scalable approach for customized multirotor production.</li>
+</ol>
+<p>By validating &ldquo;LLM + Intelligent Manufacturing&rdquo; through physical prototyping, this project sets a foundation for future iterations involving six-rotor platforms and more complex autonomous mission scenarios.</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/rl-control-project/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/RL/fengmian.png" loading="lazy" data-key="rl-control-project" data-hash="/RL/fengmian.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">RL-based Inverted Pendulum Control and Bipedal Robot System Construction</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/painting-robot/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/gen3/fengmian.png" loading="lazy" data-key="painting-robot" data-hash="/gen3/fengmian.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Painting Robot System Based on the Kinova Gen3-lite Robotic Arm</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/ur-robot/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/UR-Robot/fengmian.png" loading="lazy" data-key="UR-Robot" data-hash="/UR-Robot/fengmian.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Design and Implementation of a Voice-Controlled Collaborative Robot System</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/gomoku-recognition/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/gomoku/fengmian.png" loading="lazy" data-key="gomoku-recognition" data-hash="/gomoku/fengmian.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Gomoku Recognition and Prediction System Based on Traditional Image Processing</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/ai-research/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/ai/fengmian.png" loading="lazy" data-key="ai-research" data-hash="/ai/fengmian.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Research on Classification and Image Processing Based on Traditional Machine Learning Algorithms</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2025 - 
+        
+        2026 刘承韬
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

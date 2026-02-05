@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Competition Results on Liu Chengtao</title>
+        <link>https://sxttrt.github.io/categories/competition-results/</link>
+        <description>Recent content in Competition Results on Liu Chengtao</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <copyright>刘承韬</copyright>
+        <lastBuildDate>Mon, 27 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://sxttrt.github.io/categories/competition-results/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>2025 MCM Problem B: Sustainable Tourism Modeling (Honorable Mention)</title>
+        <link>https://sxttrt.github.io/p/competition-mei/</link>
+        <pubDate>Mon, 27 Jan 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://sxttrt.github.io/p/competition-mei/</guid>
+        <description>&lt;img src="https://sxttrt.github.io/competition/fengmian3.png" alt="Featured image of post 2025 MCM Problem B: Sustainable Tourism Modeling (Honorable Mention)" /&gt;&lt;h2 id=&#34;i-contest-and-core-team-information&#34;&gt;I. Contest and Core Team Information
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Category&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Details&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Contest Name&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;2025 Mathematical Contest in Modeling (MCM)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Problem Topic&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Problem B: Sustainable Tourism Modeling (Focusing on Juneau Glacier Protection &amp;amp; Hawaii Tourism Redistribution)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Award Level&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Honorable Mention (International Second Prize)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Team Info&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Team Control Number: 2509436&lt;br&gt;Members: Wang Bobin, &lt;strong&gt;Liu Chengtao&lt;/strong&gt; (Self), Liu Yijin&lt;br&gt;Advisor: Zhang Wei (SUSTech)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Institution&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Southern University of Science and Technology (SUSTech)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Core Deliverable&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;25-page research paper in English (including modeling logic, MATLAB solvers, and 13 references)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Competition Period&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;February 6-10, 2025 (Problem decomposition, modeling, and paper writing completed within 4 days)&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;ii-core-deliverable-research-paper-25-page-full-version&#34;&gt;II. Core Deliverable: Research Paper (25-page Full Version)
+&lt;/h2&gt;&lt;h3 id=&#34;1-paper-preview-and-download&#34;&gt;1. Paper Preview and Download
+&lt;/h3&gt;&lt;iframe src=&#34;https://sxttrt.github.io/competition/An_MCM_Paper_Made_by_Team_2509436.pdf&#34; width=&#34;100%&#34; height=&#34;700&#34; style=&#34;border: 1px solid #e0e0e0; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);&#34; title=&#34;2025 MCM Problem B Paper: Sustainable Tourism Modeling&#34;&gt;
+&lt;/iframe&gt;
+&lt;p&gt;If the preview fails to load, you may download it directly:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://sxttrt.github.io/competition/An_MCM_Paper_Made_by_Team_2509436.pdf&#34; target=&#34;_blank&#34;&gt;Download An_MCM_Paper_Made_by_Team_2509436.pdf&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;2-paper-structure-and-key-visuals&#34;&gt;2. Paper Structure and Key Visuals
+&lt;/h3&gt;&lt;h4 id=&#34;1-overall-framework&#34;&gt;(1) Overall Framework
+&lt;/h4&gt;&lt;div style=&#34;width: 100%; margin: 20px 0; text-align: center;&#34;&gt;
+  &lt;img src=&#34;https://sxttrt.github.io/competition/美赛1.png&#34; alt=&#34;2025 MCM Problem B Paper Framework&#34; style=&#34;max-width: 80%; height: auto; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);&#34;&gt;
+  &lt;p style=&#34;margin-top: 8px; font-size: 14px; color: #666;&#34;&gt;Fig 1: Paper structure (Introduction → Model Preparation → Juneau Model → Hawaii Adaptation → Strengths/Weaknesses → Policy)&lt;/p&gt;
+&lt;/div&gt;
+&lt;h4 id=&#34;2-regional-comparison-of-challenges&#34;&gt;(2) Regional Comparison of Challenges
+&lt;/h4&gt;&lt;div style=&#34;display: flex; gap: 25px; flex-wrap: wrap; margin: 20px 0;&#34;&gt;
+  &lt;div style=&#34;flex: 1 1 calc(50% - 12px); text-align: center; padding: 20px; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);&#34;&gt;
+    &lt;div style=&#34;text-align: left; line-height: 1.8; color: #333; margin-bottom: 10px;&#34;&gt;
+      &lt;strong&gt;Juneau: Overtourism vs. Ecological &amp; Infrastructure Contradictions&lt;/strong&gt;&lt;br&gt;
+      1. Scale: 1.6M visitors in 2023 (51x the local population); daily peaks reaching 20k.&lt;br&gt;
+      2. Ecological Crisis: Mendenhall Glacier retreating by &gt;35km²/year; two major floods in 2023-24 damaging 300+ buildings.&lt;br&gt;
+      3. Infrastructure: Traffic congestion increased 1.5x; helicopter noise; water/waste systems near collapse.
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div style=&#34;flex: 1 1 calc(50% - 12px); text-align: center; padding: 20px; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);&#34;&gt;
+    &lt;div style=&#34;text-align: left; line-height: 1.8; color: #333; margin-bottom: 10px;&#34;&gt;
+      &lt;strong&gt;Hawaii: Imbalanced Distribution &amp; Ecological Degradation&lt;/strong&gt;&lt;br&gt;
+      1. Imbalance: 11.34M total visitors in 2023; Oahu took 56% while Kauai took only 14%, leading to simultaneous overload and idle capacity.&lt;br&gt;
+      2. Ecological Threat: Tourism-related carbon emissions causing sea warming; coral bleaching increased by 40% (2015-19).&lt;br&gt;
+      3. Local Pressure: Oahu daily visitors &gt;30k; traffic congestion up 28% compared to 2019.
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;iii-core-modeling-logic&#34;&gt;III. Core Modeling Logic
+&lt;/h2&gt;&lt;h3 id=&#34;1-multi-objective-optimization-for-juneau&#34;&gt;1. Multi-Objective Optimization for Juneau
+&lt;/h3&gt;&lt;p&gt;Using &amp;ldquo;Annual Visitor Volume ($x$, in 10k)&amp;rdquo; as the decision variable, we constructed a tri-dimensional &amp;ldquo;Economy-Environment-Society&amp;rdquo; model:&lt;/p&gt;
+&lt;h4 id=&#34;1-objective-functions&#34;&gt;(1) Objective Functions
+&lt;/h4&gt;&lt;div style=&#34;width: 100%; margin: 20px 0; text-align: center;&#34;&gt;
+  &lt;img src=&#34;https://sxttrt.github.io/competition/公式1.png&#34; alt=&#34;Juneau model objective functions (Income + Infrastructure + Environment + Satisfaction)&#34; style=&#34;max-width: 90%; height: auto; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);&#34;&gt;
+  &lt;p style=&#34;margin-top: 8px; font-size: 14px; color: #666;&#34;&gt;Fig 4: Core formulas for the Juneau model&lt;/p&gt;
+&lt;/div&gt;
+&lt;h4 id=&#34;2-optimal-solution-visualization&#34;&gt;(2) Optimal Solution Visualization
+&lt;/h4&gt;&lt;div style=&#34;display: flex; gap: 25px; flex-wrap: wrap; margin: 20px 0;&#34;&gt;
+  &lt;div style=&#34;flex: 1 1 calc(50% - 12px); text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/competition/公式2.png&#34; alt=&#34;Objective Function Z Curve&#34; style=&#34;max-width: 100%; height: auto; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);&#34;&gt;
+    &lt;p style=&#34;margin-top: 8px; font-size: 14px; color: #666;&#34;&gt;Fig 5: Z-curve of the objective function (peak corresponds to optimal volume)&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div style=&#34;flex: 1 1 calc(50% - 12px); text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/competition/公式3.png&#34; alt=&#34;Juneau Optimal Indices&#34; style=&#34;max-width: 100%; height: auto; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);&#34;&gt;
+    &lt;p style=&#34;margin-top: 8px; font-size: 14px; color: #666;&#34;&gt;Fig 6: Indicators at the optimal solution (Income: $390M, Ice Melt: 37.11km², Satisfaction: 68%)&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 id=&#34;2-hawaii-model-adaptation&#34;&gt;2. Hawaii Model Adaptation
+&lt;/h3&gt;&lt;p&gt;Parameters were adjusted for the four-island scenario, focusing on island-specific carrying capacities:&lt;/p&gt;
+&lt;h4 id=&#34;1-parameter-comparison-and-environmental-stress&#34;&gt;(1) Parameter Comparison and Environmental Stress
+&lt;/h4&gt;&lt;p&gt;To address Hawaii&amp;rsquo;s overtourism, the model was refined for four regions including Oahu and Maui County.&lt;/p&gt;
+&lt;p&gt;Infrastructure pressure formulas were adjusted: due to missing port ranking data, coastal zone indicators were used, resulting in an infrastructure score of 1.5998. The maximum annual visitor volume was set at 6M. Income functions integrated the local tourism tax rate (17.962%), while resident satisfaction was modeled via exponential fitting of unemployment vs. visitor volume across the islands.&lt;/p&gt;
+&lt;p&gt;Environmental pressure focused on coral bleaching, establishing a four-dimensional dynamic system: &lt;strong&gt;&amp;ldquo;Visitor Volume ($V$) — Carbon Emissions — Sea Temperature Rise — Coral Bleaching Rate ($B$)&amp;rdquo;&lt;/strong&gt;. By fitting 2015-2019 data, we derived the final calculation formula for environmental pressure:&lt;/p&gt;
+&lt;p&gt;$$B = 5.921 \times 10^{-8} \cdot V^3$$&lt;/p&gt;
+&lt;p&gt;Finally, these four indicators were integrated into a multi-objective model to analyze the relationship between target scores and annual visitor volumes.&lt;/p&gt;
+&lt;h4 id=&#34;2-optimal-visitor-volume-for-the-four-islands&#34;&gt;(2) Optimal Visitor Volume for the Four Islands
+&lt;/h4&gt;&lt;div style=&#34;width: 100%; margin: 20px 0; text-align: center;&#34;&gt;
+  &lt;img src=&#34;https://sxttrt.github.io/competition/公式4.png&#34; alt=&#34;Optimal Visitor Volume for Hawaii Four Islands&#34; style=&#34;max-width: 90%; height: auto; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);&#34;&gt;
+  &lt;p style=&#34;margin-top: 8px; font-size: 14px; color: #666;&#34;&gt;Fig 8: Summary of optimal visitor volumes (Oahu: 329.9k, Kauai: 253.0k, Maui: 303.9k, Hawaii Island: 275.5k)&lt;/p&gt;
+&lt;/div&gt;
+&lt;h3 id=&#34;3-sensitivity-analysis&#34;&gt;3. Sensitivity Analysis
+&lt;/h3&gt;&lt;div style=&#34;display: flex; gap: 25px; flex-wrap: wrap; margin: 20px 0;&#34;&gt;
+  &lt;div style=&#34;flex: 1 1 calc(50% - 12px); text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/competition/公式8.png&#34; alt=&#34;Weight Sensitivity Analysis&#34; style=&#34;max-width: 100%; height: auto; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);&#34;&gt;
+    &lt;p style=&#34;margin-top: 8px; font-size: 14px; color: #666;&#34;&gt;Fig 10: Weight sensitivity analysis&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div style=&#34;flex: 1 1 calc(50% - 12px); text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/competition/公式9.png&#34; alt=&#34;Parameter Sensitivity Analysis&#34; style=&#34;max-width: 100%; height: auto; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);&#34;&gt;
+    &lt;p style=&#34;margin-top: 8px; font-size: 14px; color: #666;&#34;&gt;Fig 11: Parameter sensitivity analysis&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;iv-value-and-policy-recommendations&#34;&gt;IV. Value and Policy Recommendations
+&lt;/h2&gt;&lt;h3 id=&#34;1-three-tier-policy-system-for-juneau&#34;&gt;1. Three-Tier Policy System for Juneau
+&lt;/h3&gt;&lt;p&gt;Based on optimization results, we proposed a &amp;ldquo;Short-term Control, Medium-term Balance, Long-term Upgrade&amp;rdquo; policy framework:&lt;/p&gt;
+&lt;h4 id=&#34;1-short-term-1-2-years-relieving-core-tensions&#34;&gt;(1) Short-term (1-2 years): Relieving Core Tensions
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Volume Control&lt;/strong&gt;: Cap annual visitors at 2.1M (a 31% increase from 2023) and implement a &amp;ldquo;Cruise-free Saturday.&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Infrastructure&lt;/strong&gt;: Expand waste treatment capacity in downtown by 30% and add dedicated shuttle lanes.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Monitoring&lt;/strong&gt;: Establish real-time &amp;ldquo;Visitor-Glacier Melt&amp;rdquo; databases via new sensor nodes.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-medium-term-3-5-years-balancing-stakeholders&#34;&gt;(2) Medium-term (3-5 years): Balancing Stakeholders
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Differential Taxation&lt;/strong&gt;: Implement a $15/person &amp;ldquo;Ecological Protection Tax&amp;rdquo; for cruise passengers.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Community Synergy&lt;/strong&gt;: Create &amp;ldquo;Buffer Zones&amp;rdquo; between tourist areas and residential zones; utilize tax revenue to improve local water systems.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mechanism&lt;/strong&gt;: Quarterly &amp;ldquo;Tourism-Community&amp;rdquo; hearings where residents hold a 23% veto power over high-impact projects.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;3-long-term-5-years-sustainable-upgrading&#34;&gt;(3) Long-term (5+ years): Sustainable Upgrading
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Diversification&lt;/strong&gt;: Develop &amp;ldquo;Glacier Research Tours&amp;rdquo; and &amp;ldquo;Indigenous Culture Experiences&amp;rdquo; to increase average stay from 1.2 to 2.5 days.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Green Transition&lt;/strong&gt;: Mandate biofuel use for cruise ships by 2030 (40% emission reduction).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Regional Coordination&lt;/strong&gt;: Establish regional diversion agreements with Anchorage to prevent localized pressure concentration.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>2024 NUEDC Problem H: Autonomous Driving Vehicle (Provincial First Prize)</title>
+        <link>https://sxttrt.github.io/p/competition-dian/</link>
+        <pubDate>Tue, 10 Dec 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://sxttrt.github.io/p/competition-dian/</guid>
+        <description>&lt;img src="https://sxttrt.github.io/competition/fengmian.png" alt="Featured image of post 2024 NUEDC Problem H: Autonomous Driving Vehicle (Provincial First Prize)" /&gt;&lt;h2 id=&#34;i-contest-and-project-overview&#34;&gt;I. Contest and Project Overview
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Contest Name&lt;/strong&gt;: 2024 National Undergraduate Electronic Design Contest (NUEDC) - Guangdong Division&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Award Level&lt;/strong&gt;: Provincial First Prize&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Problem&lt;/strong&gt;: Problem H - Autonomous Driving Vehicle (Undergraduate/Vocational Category)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Timeline&lt;/strong&gt;: July 29, 2024, 08:00 – August 1, 2024, 20:00&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Team Members&lt;/strong&gt;: Chengtao Liu, Bobin Wang, Fengyang Wu&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Supervisors&lt;/strong&gt;: Liangming Chen, Jin Wei&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Institution&lt;/strong&gt;: Southern University of Science and Technology (SUSTech)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Certificate ID&lt;/strong&gt;: 2408010300021&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;supporting-documents&#34;&gt;Supporting Documents
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://sxttrt.github.io/competition/%e8%af%81%e4%b9%a6.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;2024 NUEDC Problem H Provincial First Prize Certificate&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h1 id=&#34;pdf-download-link&#34;&gt;PDF Download Link
+&lt;/h1&gt;&lt;p&gt;📄 &lt;a href=&#34;https://sxttrt.github.io/competition/zhengshu.pdf&#34; target=&#34;_blank&#34;&gt;2024 NUEDC Problem H Provincial First Prize Certificate (PDF)&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;ii-demonstration-and-open-source-repository&#34;&gt;II. Demonstration and Open Source Repository
+&lt;/h2&gt;&lt;p&gt;&lt;a href=&#34;https://b23.tv/3AOoPXD&#34; target=&#34;_blank&#34;&gt;2024 NUEDC Problem H Demonstration Video&lt;/a&gt;
+&lt;em&gt;(The video demonstrates tasks required by the official Problem H technical sheet: A→B parking, A→B→C→D→A pathing, A→C→B→D→A pathing, and 4-lap continuous driving.)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;GitHub Repository:&lt;/strong&gt;
+&lt;a href=&#34;https://github.com/fynngwu/2024_TI_competition_H&#34; target=&#34;_blank&#34;&gt;2024 NUEDC Problem H Autonomous Vehicle Open Source Project&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;iii-project-abstract&#34;&gt;III. Project Abstract
+&lt;/h2&gt;&lt;p&gt;Based on the requirements of Problem H, we developed an autonomous driving vehicle centered around the &lt;strong&gt;TI MSPM0 Series MCU&lt;/strong&gt;. The core constraints and objectives are as follows:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Hardware Constraints&lt;/strong&gt;: Vehicle dimensions ≤ 25cm (L) × 15cm (W) × 15cm (H); exclusively utilizes the TI MSPM0 Series MCU; no cameras allowed.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Site Constraints&lt;/strong&gt;: 220cm × 120cm white matte field with a 1.8cm wide black semi-circular path (radius 40cm, featuring points A/B/C/D).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Achievements&lt;/strong&gt;: Successfully completed all 4 mandatory tasks, with Task 4 (continuous driving) optimized to 78 seconds.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Operational Snapshots:&lt;/strong&gt; &amp;gt; &lt;div style=&#34;display: flex; gap: 20px; flex-wrap: wrap; align-items: flex-start;&#34;&gt;&lt;/p&gt;
+  &lt;div style=&#34;text-align: center; flex: 1 1 calc(50% - 10px);&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/competition/a点照片.png&#34; alt=&#34;Startup at Point A&#34; style=&#34;max-width: 100%; height: auto;&#34;&gt;
+    &lt;p style=&#34;margin-top: 6px; font-size: 14px; color: #555;&#34;&gt;Vehicle startup at Point A&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div style=&#34;text-align: center; flex: 1 1 calc(50% - 10px);&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/competition/过程照片.png&#34; alt=&#34;Vehicle in motion&#34; style=&#34;max-width: 100%; height: auto;&#34;&gt;
+    &lt;p style=&#34;margin-top: 6px; font-size: 14px; color: #555;&#34;&gt;Vehicle in motion during test&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;iv-system-architecture&#34;&gt;IV. System Architecture
+&lt;/h2&gt;&lt;h3 id=&#34;1-hardware-architecture&#34;&gt;1. Hardware Architecture
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Module Category&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Selected Components&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Functional Role (Requirements Mapping)&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Main Controller&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;TI MSPM0G3507 (16-bit, 80MHz)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Task scheduling, path calculation, and PID control (Mandatory per Problem H Note 1).&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Path Recognition&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;8-way IR Line-tracking Sensors&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Detects the black path and calculates lateral error (Black arc path detection).&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Attitude Sensing&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;ICM-20602 9-axis IMU&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Captures Roll/Pitch/Yaw to prevent tail-flicking during high-speed arc turns.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Speed/Positioning&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Hall Encoders (100 pulses/rev)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Measures motor RPM and travel distance for precise parking.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Motor Driver&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;TB6612FNG Module&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Drives DC motors with PWM-based speed regulation for dynamic path transitions.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;HMI&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;0.96-inch OLED + 3-way Buttons&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Displays task modes/parameters and supports manual task switching.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Power Supply&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;11.1V Lithium Battery (2200mAh)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Ensures ≥1 hour of runtime for multiple testing rounds (Problem H Note 6).&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;2-software-architecture-timing-and-logic&#34;&gt;2. Software Architecture (Timing and Logic)
+&lt;/h3&gt;&lt;h4 id=&#34;1-core-control-framework-main-loop-state-machine--timer-interrupt-synergy&#34;&gt;(1) Core Control Framework: &amp;ldquo;Main Loop State Machine + Timer Interrupt&amp;rdquo; Synergy
+&lt;/h4&gt;&lt;p&gt;The software architecture is built on the principle of &lt;strong&gt;separating non-real-time tasks (Main Loop) from real-time tasks (Timer Interrupts)&lt;/strong&gt;. This ensures high timing precision for Problem H tasks (e.g., path error detection and PID cycles):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Module 1: Main Loop State Machine (Non-real-time Global Scheduling)&lt;/strong&gt; Acts as the central dispatcher for initialization, task switching, and status display:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Initialization&lt;/strong&gt;: Configures hardware for sensors (IR, Encoders), motor drivers, and the OLED display.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Task Mode Selection&lt;/strong&gt;: Supports manual/automatic switching between Tasks 1–4, loading specific path parameters and control logic for each.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Status Monitoring&lt;/strong&gt;: Outputs real-time telemetry to the OLED for debugging and performance verification.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Module 2: Timer Interrupts (Precision Real-time Task Execution)&lt;/strong&gt; Utilizes a combination of hardware timer interrupts (mid-low frequency) and external pin interrupts (high frequency) to prevent main loop blocking and ensure timing accuracy:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Encoder Data Acquisition (1ms)&lt;/strong&gt;: Triggered via &lt;strong&gt;external pin interrupts&lt;/strong&gt; on encoder phases (Rising/Falling edges) for real-time distance and speed calculation.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;PID Control Calculation (5ms)&lt;/strong&gt;: Powered by &lt;strong&gt;TIMER_0 (10ms hardware interrupt)&lt;/strong&gt; with software subdivision (executes every 2 interrupts). Dynamically adjusts motor speed and steering based on encoder feedback and IR path error.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;IR Sensor Acquisition (10ms)&lt;/strong&gt;: Directly triggered by &lt;strong&gt;TIMER_0 (10ms hardware interrupt)&lt;/strong&gt; to sample path signals (e.g., &amp;ldquo;Left Deviation,&amp;rdquo; &amp;ldquo;Centered&amp;rdquo;) for PID input.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-task-logic-and-control-strategy-mapping&#34;&gt;(2) Task Logic and Control Strategy Mapping
+&lt;/h4&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Task No.&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Functionality (Problem H)&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Core Control Strategy&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Module Dependency&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Task 1&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;A→B Auto Drive + Parking&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Basic line-tracking (IR error correction) + Pre-deceleration logic (speed reduction near Point B for parking accuracy).&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Main Loop (Task Switch) + Timer (PID Control)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Task 2&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;A→B→C→D→A Full Path&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Pose fusion (Encoder distance + IR deviation) + Audio-visual alerts at waypoints (B/C/D).&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Main Loop (Status) + Timer (Data Acq)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Task 3&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;A→C→B→D→A Complex Path&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Path node pre-storage (recording waypoint coordinates) + Steering timing control (pre-calculating turn angles before reaching nodes).&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Main Loop (Parameters) + Timer (PID Steering)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Task 4&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;4-Lap Continuous Driving&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Voltage compensation (preventing RPM drift as battery levels drop) + Iterative optimization (fine-tuning path error parameters per lap).&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Main Loop (Monitoring) + Timer (High-freq PID)&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

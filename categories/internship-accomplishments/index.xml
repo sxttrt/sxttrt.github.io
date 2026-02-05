@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Internship Accomplishments on Liu Chengtao</title>
+        <link>https://sxttrt.github.io/categories/internship-accomplishments/</link>
+        <description>Recent content in Internship Accomplishments on Liu Chengtao</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <copyright>刘承韬</copyright>
+        <lastBuildDate>Tue, 19 Aug 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://sxttrt.github.io/categories/internship-accomplishments/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Googoltech Internship Report: Development of a PCB Drilling Machine System Based on Motion Control Technology</title>
+        <link>https://sxttrt.github.io/p/googoltech-internship/</link>
+        <pubDate>Tue, 19 Aug 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://sxttrt.github.io/p/googoltech-internship/</guid>
+        <description>&lt;img src="https://sxttrt.github.io/internship/fengmian.png" alt="Featured image of post Googoltech Internship Report: Development of a PCB Drilling Machine System Based on Motion Control Technology" /&gt;&lt;script src=&#34;https://polyfill.io/v3/polyfill.min.js?features=es6&#34;&gt;&lt;/script&gt;
+&lt;script id=&#34;MathJax-script&#34; async src=&#34;https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js&#34;&gt;&lt;/script&gt;
+&lt;script&gt;
+MathJax.config = {
+  tex: {
+    inlineMath: [[&#39;$&#39;, &#39;$&#39;], [&#39;\\(&#39;, &#39;\\)&#39;]],
+    displayMath: [[&#39;$$&#39;, &#39;$$&#39;], [&#39;\\[&#39;, &#39;\\]&#39;]],
+    processEscapes: true
+  },
+  svg: {
+    fontCache: &#39;global&#39;
+  }
+};
+&lt;/script&gt;
+&lt;h2 id=&#34;i-internship-core-information&#34;&gt;I. Internship Core Information
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Category&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Details&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Intern&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Chengtao Liu&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Student ID&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;12212708&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Company&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Googol Technology (Googoltech) Co., Ltd.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Duration&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;July 17, 2025 – August 19, 2025&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Platform&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Googol Park (PBL Project-Based Learning Platform)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Core Project&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;System Integration and Multi-mode Control of a PCB 3-axis Drilling Machine Based on Googoltech Platform&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Key Tools&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Googol GUS Controller, GSHD Servo Drive, OtoStudio (IDE), Janus (Low-code), DriverStudio (Tuning), EtherCAT/gLink-II Fieldbus&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;ii-background-analysis&#34;&gt;II. Background Analysis
+&lt;/h2&gt;&lt;h3 id=&#34;1-industry-context&#34;&gt;1. Industry Context
+&lt;/h3&gt;&lt;p&gt;With the &amp;ldquo;Made in China 2025&amp;rdquo; strategy, the manufacturing sector is accelerating toward digitalization and intelligent transformation. Motion control technology, serving as the &amp;ldquo;brain and nervous system&amp;rdquo; of industrial automation, is widely applied in robotics, CNC machine tools, and semiconductor equipment. However, high-end markets have long been dominated by foreign vendors. Achieving self-controllability and domestic substitution in this field is critical for securing supply chains and enhancing the competitiveness of high-end equipment.&lt;/p&gt;
+&lt;h3 id=&#34;2-company-profile&#34;&gt;2. Company Profile
+&lt;/h3&gt;&lt;p&gt;Founded in 1999 by Professors Zexiang Li, Bingqiang Gao, and Hong Wu from HKUST, Googoltech is a pioneer and platform leader in China&amp;rsquo;s motion control industry. As a national high-tech enterprise, the company focuses on R&amp;amp;D in motion control, servo drives, machine vision, and industrial networking, becoming the preferred domestic brand for core control components in high-end equipment.&lt;/p&gt;
+&lt;h3 id=&#34;3-project-context&#34;&gt;3. Project Context
+&lt;/h3&gt;&lt;p&gt;To address the talent gap and the disconnect between theory and practice in high-end equipment manufacturing, Googoltech established &amp;ldquo;Googol Park.&amp;rdquo; Utilizing a Project-Based Learning (PBL) model with real-world industrial projects, it provides an &amp;ldquo;Imitation-Assimilation-Optimization-Excellence&amp;rdquo; learning path. This project, based in Googol Park, involved a one-month immersive practice in the full-cycle development of an electromechanical system.&lt;/p&gt;
+&lt;h3 id=&#34;4-technical-architecture&#34;&gt;4. Technical Architecture
+&lt;/h3&gt;&lt;p&gt;The project is built on Googoltech&amp;rsquo;s proprietary technical ecosystem:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Motion Controller&lt;/strong&gt;: Executes complex path planning and multi-axis coordination algorithms.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Servo Drive&lt;/strong&gt;: Receives commands and drives motors with high precision.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Industrial Fieldbus (gLink-II)&lt;/strong&gt;: Provides high-speed stable communication with 100ns synchronization precision and data redundancy.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Toolchain&lt;/strong&gt;: OtoStudio IDE (ST language), Janus (visual low-code), and DriverStudio (servo tuning).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;iii-task-overview&#34;&gt;III. Task Overview
+&lt;/h2&gt;&lt;h3 id=&#34;1-project-introduction&#34;&gt;1. Project Introduction
+&lt;/h3&gt;&lt;p&gt;The objective was to independently complete the electromechanical integration, process design, and tuning of a PCB 3-axis drilling machine. The device uses X, Y, and Z-axis precision motion for positioning and drilling, serving as a typical industrial carrier for understanding motion control applications.&lt;/p&gt;
+&lt;h3 id=&#34;2-core-tasks-and-requirements&#34;&gt;2. Core Tasks and Requirements
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Mechanical Awareness&lt;/strong&gt;: Analyze the 3-axis modules, motors, and drilling actuators to understand motion principles and load characteristics.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Electrical Integration&lt;/strong&gt;: Design electrical schematics and connect controllers, drives, motors, and sensors to build the hardware system.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Signal Logic Analysis&lt;/strong&gt;: Define X/Y/Z control signals (Enable, Alarm, Position) and IO signals (Limits, Origin, Drill Start).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Process Design&lt;/strong&gt;: Define the sequence from &amp;ldquo;Standby → Homing → Precise Positioning → Drilling → Loop/End,&amp;rdquo; incorporating safety protections (E-stop, Overtravel).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Multi-mode Control Implementation&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Low-code&lt;/strong&gt;: Rapid logic implementation using Janus visual blocks.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Structured Text (ST)&lt;/strong&gt;: Detailed low-level logic development via OtoStudio.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;3-expected-outcomes&#34;&gt;3. Expected Outcomes
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Physical Prototype&lt;/strong&gt;: A fully commissioned 3-axis motion control device executing precise autonomous drilling.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Internship Report&lt;/strong&gt;: Summary of design, integration, and tuning, including technical solutions and troubleshooting.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Certification&lt;/strong&gt;: Completion of Googol Park assessment and acquisition of the &amp;ldquo;Electromechanical System Integrated Application Technology&amp;rdquo; certificate.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;iv-technical-route-and-solutions&#34;&gt;IV. Technical Route and Solutions
+&lt;/h2&gt;&lt;h3 id=&#34;task-1-systematic-training-on-googoltech-products&#34;&gt;Task 1: Systematic Training on Googoltech Products
+&lt;/h3&gt;&lt;h4 id=&#34;1-core-knowledge-system&#34;&gt;1. Core Knowledge System
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Product Architecture&lt;/strong&gt;: Understanding the logic from controllers (Plug-in/Embedded) to integrated drive-control units (Nayun/GTSD) and software platforms.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Technical Principles&lt;/strong&gt;: gLink-II gigabit ring network (100ns precision); core algorithms like PSO (Position Synchronized Output for 2μm interval drilling) and 5-axis RTCP.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-toolchain-proficiency&#34;&gt;2. Toolchain Proficiency
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;OtoStudio&lt;/strong&gt;: Developed low-level motion logic (e.g., homing sequences) using ST language.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Janus&lt;/strong&gt;: Designed process flows (e.g., automatic drilling cycles) via graphical blocks.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;DriverStudio&lt;/strong&gt;: Performed servo parameter auto-tuning (vibration suppression, gain adjustment).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;3-learning-outcomes&#34;&gt;3. Learning Outcomes
+&lt;/h4&gt;&lt;div style=&#34;display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 20px 0;&#34;&gt;
+  &lt;div style=&#34;flex: 1 1 80%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/internship/图1.png&#34; alt=&#34;Googoltech Product System&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;Fig 1: Googoltech motion control product ecosystem and key technologies&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 id=&#34;task-2-electromechanical-characteristic-matching&#34;&gt;Task 2: Electromechanical Characteristic Matching
+&lt;/h3&gt;&lt;h4 id=&#34;1-core-matching-principles&#34;&gt;1. Core Matching Principles
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Power Matching&lt;/strong&gt;: Drive system max power $\geq$ 1.5–2x peak load power to prevent motor overload.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Inertia Matching&lt;/strong&gt;: Load-to-rotor inertia ratio $\leq$ 3 (Precision $\leq$ 1) to prevent low-frequency oscillation.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Speed &amp;amp; Precision&lt;/strong&gt;: Motor rated speed $\geq$ load max speed $\times$ gear ratio; encoder resolution must be 3x better than target precision.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-calculation-logic&#34;&gt;2. Calculation Logic
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Equivalent Inertia&lt;/strong&gt;: $J_{eq} = J_{load} + (J_{rotor} / n^2)$&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Torque Demand&lt;/strong&gt;: $T_{peak} = J_{eq} \cdot \alpha_{max} + T_{friction}$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;task-3-servo-drive-system-tuning&#34;&gt;Task 3: Servo Drive System Tuning
+&lt;/h3&gt;&lt;h4 id=&#34;1-tools-and-objectives&#34;&gt;1. Tools and Objectives
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Tool&lt;/strong&gt;: DriverStudio software for monitoring Current (Id/Idr), Velocity (Vel), and Position Error (Perr) curves.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Objective&lt;/strong&gt;: Settle position error to $\leq$ 0.1° within 30ms at 2000rpm.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-key-parameter-configuration&#34;&gt;2. Key Parameter Configuration
+&lt;/h4&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Control Loop&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Parameter&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Value&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Role&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Position&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Position Loop Gain (FnP)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;30.0 Hz&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Enhances positioning response speed&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Position&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;FIR Filter&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Enabled&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Optimizes control signal filtering&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Position&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Smoothing Time&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;2.00 ms&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Eliminates high-frequency noise&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Velocity&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Velocity Loop Gain (FnV)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;120 Hz&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Suppresses fluctuations and improves stability&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Velocity&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Velocity Smoothing (TVs)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;5.00 ms&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Smooths velocity control signals&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Velocity&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Notch Filter Frequency&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;1201.0 Hz&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Targets mechanical resonance&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Velocity&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Notch Filter Width&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;800&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Covers resonance frequency range&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Current&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Current Loop Bandwidth (FnC)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;1000 Hz&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Enhances current response rapidity&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Current&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Current Smoothing (TCs)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;600 μs&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Smooths current control signals&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;task-4-electrical-system-integration&#34;&gt;Task 4: Electrical System Integration
+&lt;/h3&gt;&lt;h4 id=&#34;1-core-component-selection&#34;&gt;1. Core Component Selection
+&lt;/h4&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Component&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Model/Series&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Function&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Motion Controller&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Googol GUS&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Central command hub for multi-axis control and IO&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Servo Drive&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;GSHD-200&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Triple-loop closed-loop control (Current/Speed/Pos)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Power Supply&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Mean Well EDR-150-24&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;220V AC to 24V DC for logic and IO&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Industrial Bus&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;EtherCAT/gLink-II&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;High-speed synchronized communication&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&#34;2-electrical-construction-results&#34;&gt;2. Electrical Construction Results
+&lt;/h4&gt;  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/internship/图2.png&#34; alt=&#34;Electrical Schematic&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;Fig 2: Electrical schematic of the PCB drilling machine&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/internship/图3.png&#34; alt=&#34;Electrical Cabinet&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;Fig 3: Completed electrical cabinet (Top: Controller/IO; Middle: Power/Switch; Bottom: Drives/Motors)&lt;/p&gt;
+  &lt;/div&gt;
+&lt;h3 id=&#34;task-5-low-code-implementation-janus&#34;&gt;Task 5: Low-code Implementation (Janus)
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Design Logic&lt;/strong&gt;: Decomposed the process into &amp;ldquo;System Start → Clamping → Homing → Precise Positioning → Drilling → End,&amp;rdquo; with decision nodes for anomaly alarms.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;IO Mapping&lt;/strong&gt;: Managed 18 IO channels (DI/DO) for seamless hardware interfacing.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;low-code-outcomes&#34;&gt;Low-code Outcomes
+&lt;/h4&gt;&lt;div style=&#34;display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 20px 0;&#34;&gt;
+  &lt;div style=&#34;flex: 1 1 80%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/internship/图6.png&#34; alt=&#34;Low-code workflow&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;Fig 4: Low-code implementation of the drilling process&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 id=&#34;task-6-st-programming-otostudio&#34;&gt;Task 6: ST Programming (OtoStudio)
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Environment&lt;/strong&gt;: Based on CODESYS V2.3, compatible with IEC 61131-3 standards.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Language&lt;/strong&gt;: Used Structured Text (ST) for complex logic, defining variables (BOOL, INT, LREAL) and calling Motion Function Blocks (MC_Enable, MC_MoveAbsolute).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;core-program-example-axis-control&#34;&gt;Core Program Example (Axis Control)
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-st&#34; data-lang=&#34;st&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nc&#34;&gt;PROGRAM&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;AxisControl&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;VAR&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;Axis1:&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;MC_AXIS_REF&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;          &lt;span class=&#34;nf&#34;&gt;//&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Axis&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;reference&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;Position:&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;LREAL&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;500.0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;    &lt;span class=&#34;nf&#34;&gt;//&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Target&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;position&lt;/span&gt; (&lt;span class=&#34;nv&#34;&gt;mm&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;Velocity:&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;LREAL&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;100.0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;    &lt;span class=&#34;nf&#34;&gt;//&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Velocity&lt;/span&gt; (&lt;span class=&#34;nv&#34;&gt;mm&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;s&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;Start_Sig:&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;BOOL&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;FALSE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;    &lt;span class=&#34;nf&#34;&gt;//&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;DI&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;Start&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;Signal&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;Done_Sig:&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;BOOL&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;FALSE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;     &lt;span class=&#34;nf&#34;&gt;//&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;DO&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;Done&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;Signal&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;END_VAR&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;//&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Enable&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;and&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;Home&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;IF&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;Start_Sig&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;AND&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;NOT&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;Axis1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;Status&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;Enabled&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;THEN&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;MC_Enable&lt;/span&gt;(&lt;span class=&#34;nc&#34;&gt;Axis1&lt;/span&gt;)&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;           
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;MC_Home&lt;/span&gt;(&lt;span class=&#34;nc&#34;&gt;Axis1&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;TRUE&lt;/span&gt;)&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;       
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;END_IF&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;//&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Absolute&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;Move&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;IF&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;Axis1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;Status&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;Homed&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;AND&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;NOT&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;Done_Sig&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;THEN&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;MC_MoveAbsolute&lt;/span&gt;(&lt;span class=&#34;nc&#34;&gt;Axis1&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Position&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Velocity&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;500.0&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;500.0&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;FALSE&lt;/span&gt;)&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;IF&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;Axis1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;Status&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;OperationComplete&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;THEN&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nf&#34;&gt;Done_Sig&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;TRUE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;         
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nf&#34;&gt;END_IF&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;END_IF&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+        </item>
+        
+    </channel>
+</rss>

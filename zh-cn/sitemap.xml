@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://sxttrt.github.io/zh-cn/</loc>
-    <lastmod>2025-10-16T00:00:00+00:00</lastmod>
+    <lastmod>2026-02-05T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -15,33 +15,70 @@
                 href="https://sxttrt.github.io/zh-cn/"
                 />
   </url><url>
-    <loc>https://sxttrt.github.io/zh-cn/post/</loc>
-    <lastmod>2025-10-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://sxttrt.github.io/zh-cn/tags/</loc>
-    <lastmod>2025-10-16T00:00:00+00:00</lastmod>
+    <loc>https://sxttrt.github.io/zh-cn/page/</loc>
+    <lastmod>2026-02-05T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://sxttrt.github.io/tags/"
+                href="https://sxttrt.github.io/page/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="https://sxttrt.github.io/zh-cn/tags/"
+                href="https://sxttrt.github.io/zh-cn/page/"
                 />
   </url><url>
-    <loc>https://sxttrt.github.io/zh-cn/tags/%E6%88%90%E6%9E%9C%E6%B1%87%E6%80%BB/</loc>
-    <lastmod>2025-10-16T00:00:00+00:00</lastmod>
+    <loc>https://sxttrt.github.io/zh-cn/post/</loc>
+    <lastmod>2026-02-05T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://sxttrt.github.io/post/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://sxttrt.github.io/zh-cn/post/"
+                />
   </url><url>
-    <loc>https://sxttrt.github.io/zh-cn/tags/%E7%AB%9E%E8%B5%9B/</loc>
-    <lastmod>2025-10-16T00:00:00+00:00</lastmod>
+    <loc>https://sxttrt.github.io/zh-cn/%E5%85%B3%E4%BA%8E%E6%88%91/</loc>
+    <lastmod>2026-02-05T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://sxttrt.github.io/about-me/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://sxttrt.github.io/zh-cn/%E5%85%B3%E4%BA%8E%E6%88%91/"
+                />
   </url><url>
-    <loc>https://sxttrt.github.io/zh-cn/tags/%E7%A7%91%E7%A0%94/</loc>
-    <lastmod>2025-10-16T00:00:00+00:00</lastmod>
+    <loc>https://sxttrt.github.io/zh-cn/archives/</loc>
+    <lastmod>2026-02-05T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://sxttrt.github.io/archives/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://sxttrt.github.io/zh-cn/archives/"
+                />
   </url><url>
-    <loc>https://sxttrt.github.io/zh-cn/p/%E6%88%91%E7%9A%84%E7%A7%91%E7%A0%94%E4%B8%8E%E7%AB%9E%E8%B5%9B%E6%88%90%E6%9E%9C%E6%80%BB%E8%A7%88/</loc>
-    <lastmod>2025-10-16T00:00:00+00:00</lastmod>
+    <loc>https://sxttrt.github.io/zh-cn/p/%E9%A1%B9%E7%9B%AE%E6%A1%A3%E6%A1%88/</loc>
+    <lastmod>2026-02-05T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://sxttrt.github.io/p/project-portfolio/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://sxttrt.github.io/zh-cn/p/%E9%A1%B9%E7%9B%AE%E6%A1%A3%E6%A1%88/"
+                />
   </url><url>
     <loc>https://sxttrt.github.io/zh-cn/categories/</loc>
     <lastmod>2025-08-19T00:00:00+00:00</lastmod>
@@ -58,68 +95,165 @@
   </url><url>
     <loc>https://sxttrt.github.io/zh-cn/p/googoltech-internship/</loc>
     <lastmod>2025-08-19T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://sxttrt.github.io/p/googoltech-internship/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://sxttrt.github.io/zh-cn/p/googoltech-internship/"
+                />
   </url><url>
     <loc>https://sxttrt.github.io/zh-cn/categories/%E5%AE%9E%E4%B9%A0%E6%88%90%E6%9E%9C/</loc>
     <lastmod>2025-08-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://sxttrt.github.io/zh-cn/p/rl-control-project/</loc>
     <lastmod>2025-06-20T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://sxttrt.github.io/p/rl-control-project/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://sxttrt.github.io/zh-cn/p/rl-control-project/"
+                />
   </url><url>
     <loc>https://sxttrt.github.io/zh-cn/categories/%E9%A1%B9%E7%9B%AE%E6%88%90%E6%9E%9C/</loc>
     <lastmod>2025-06-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://sxttrt.github.io/zh-cn/p/llm-uav-custom-design/</loc>
     <lastmod>2025-06-05T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://sxttrt.github.io/p/llm-uav-custom-design/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://sxttrt.github.io/zh-cn/p/llm-uav-custom-design/"
+                />
   </url><url>
     <loc>https://sxttrt.github.io/zh-cn/p/painting-robot/</loc>
     <lastmod>2025-06-04T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://sxttrt.github.io/p/painting-robot/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://sxttrt.github.io/zh-cn/p/painting-robot/"
+                />
   </url><url>
     <loc>https://sxttrt.github.io/zh-cn/p/competition-mei/</loc>
     <lastmod>2025-01-27T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://sxttrt.github.io/p/competition-mei/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://sxttrt.github.io/zh-cn/p/competition-mei/"
+                />
   </url><url>
     <loc>https://sxttrt.github.io/zh-cn/categories/%E7%AB%9E%E8%B5%9B%E6%88%90%E6%9E%9C/</loc>
     <lastmod>2025-01-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://sxttrt.github.io/zh-cn/p/ur-robot/</loc>
     <lastmod>2024-12-30T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://sxttrt.github.io/p/ur-robot/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://sxttrt.github.io/zh-cn/p/ur-robot/"
+                />
   </url><url>
     <loc>https://sxttrt.github.io/zh-cn/p/gomoku-recognition/</loc>
     <lastmod>2024-12-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://sxttrt.github.io/zh-cn/categories/%E7%A7%91%E7%A0%94%E9%A1%B9%E7%9B%AE/</loc>
-    <lastmod>2024-12-20T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://sxttrt.github.io/p/gomoku-recognition/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://sxttrt.github.io/zh-cn/p/gomoku-recognition/"
+                />
   </url><url>
     <loc>https://sxttrt.github.io/zh-cn/p/competition-dian/</loc>
     <lastmod>2024-12-10T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://sxttrt.github.io/p/competition-dian/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://sxttrt.github.io/zh-cn/p/competition-dian/"
+                />
   </url><url>
     <loc>https://sxttrt.github.io/zh-cn/p/ai-research/</loc>
     <lastmod>2024-11-30T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://sxttrt.github.io/p/ai-research/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://sxttrt.github.io/zh-cn/p/ai-research/"
+                />
   </url><url>
     <loc>https://sxttrt.github.io/zh-cn/p/four-wheel-car-modeling/</loc>
     <lastmod>2024-06-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://sxttrt.github.io/zh-cn/page/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://sxttrt.github.io/page/"
+                href="https://sxttrt.github.io/p/four-wheel-car-modeling/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="https://sxttrt.github.io/zh-cn/page/"
+                href="https://sxttrt.github.io/zh-cn/p/four-wheel-car-modeling/"
                 />
   </url><url>
-    <loc>https://sxttrt.github.io/zh-cn/%E5%85%B3%E4%BA%8E/</loc>
+    <loc>https://sxttrt.github.io/zh-cn/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://sxttrt.github.io/about/"
+                href="https://sxttrt.github.io/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="https://sxttrt.github.io/zh-cn/%E5%85%B3%E4%BA%8E/"
+                href="https://sxttrt.github.io/zh-cn/tags/"
+                />
+  </url><url>
+    <loc>https://sxttrt.github.io/zh-cn/search/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://sxttrt.github.io/search/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://sxttrt.github.io/zh-cn/search/"
                 />
   </url>
 </urlset>

@@ -134,7 +134,7 @@
         
         
         <li >
-            <a href='/zh-cn/%E5%85%B3%E4%BA%8E/' >
+            <a href='/zh-cn/%E5%85%B3%E4%BA%8E%E6%88%91/' >
                 
                 
                 
@@ -147,7 +147,46 @@
 
 
                 
-                <span>关于</span>
+                <span>关于我</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/zh-cn/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/zh-cn/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
             </a>
         </li>
         
@@ -291,7 +330,6 @@
       </ol>
     </li>
     <li><a href="#七总结">七、总结</a></li>
-    <li><a href="#八附录预留补充位置">八、附录（预留补充位置）</a></li>
   </ol>
 </nav>
         </div>
@@ -361,6 +399,25 @@
     </footer>
     
 
+    
+        <footer class="article-translations">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+            <div>
+                
+                    <a href="https://sxttrt.github.io/p/llm-uav-custom-design/" class="link">English</a>
+                
+            </div>
+        </footer>
     
 </div>
 
@@ -591,10 +648,9 @@ MathJax.config = {
 </ul>
 <h4 id="飞行测试成果预留图片与视频位置">飞行测试成果（预留图片与视频位置）
 </h4>  <div style="flex: 1 1 45%; text-align: center;">
-    <img src="/uav/图11.png" alt="无人机首飞实物" style="max-width: 60%; border: 1px solid #eee; border-radius: 4px;">
+    <img src="/uav/fengmian.jpg" alt="无人机首飞实物" style="max-width: 60%; border: 1px solid #eee; border-radius: 4px;">
     <p style="font-size: 14px; color: #666; margin-top: 8px;">图11：无人机首飞测试实物图</p>
   </div>
-<!-- 优化后的视频播放与下载区域 -->
 <div style="text-align: center; margin: 30px 0;">
   <h4>无人机首飞测试视频</h4>
   <iframe 
@@ -605,7 +661,6 @@ MathJax.config = {
     allowfullscreen>
     您的浏览器不支持iframe播放，请直接下载视频查看
   </iframe>
-  <!-- 独立的醒目下载链接（适配所有浏览器） -->
   <div style="margin: 10px 0;">
     <a href="/uav/视频1.mp4" 
        target="_blank" 
@@ -614,7 +669,7 @@ MathJax.config = {
       📥 下载首飞测试视频（MP4格式）
     </a>
   </div>
-  <p style="font-size: 14px; color: #666; margin-top: 8px;">视频1：无人机首飞测试完整视频（含姿态调整与稳定性验证）</p>
+  <p style="font-size: 14px; color: #666; margin-top: 8px;">视频1：无人机首飞测试完整视频</p>
 </div>
 <h2 id="四关键技术实现">四、关键技术实现
 </h2><h3 id="1-llm辅助机架设计流程">1. LLM辅助机架设计流程
@@ -703,10 +758,17 @@ $$T \approx C_{t} \cdot \rho \cdot n^{2} \cdot D^{4}$$</p>
   </tbody>
 </table></div>
 <h4 id="论文录用展示">论文录用展示
-</h4><div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 20px 0;">
+</h4><div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: 
+center; margin: 20px 0;">
   <div style="flex: 1 1 80%; text-align: center;">
-    <img src="/uav/图12.png" alt="Procedia CIRP论文录用证书" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+    <img src="/uav/论文1.jpg" alt="Procedia CIRP论文录用证书" style="max-width: 60%; border: 1px solid #eee; border-radius: 4px;">
     <p style="font-size: 14px; color: #666; margin-top: 8px;">图12：《Procedia CIRP》论文录用证明</p>
+  </div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 20px 0;">
+  <div style="flex: 1 1 80%; text-align: center;">
+    <img src="/uav/论文2.png" alt="Procedia CIRP论文录用证书" style="max-width: 60%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666; margin-top: 8px;">图13：论文首页</p>
   </div>
 </div>
 <h2 id="七总结">七、总结
@@ -717,23 +779,7 @@ $$T \approx C_{t} \cdot \rho \cdot n^{2} \cdot D^{4}$$</p>
 <li>创新融合LLM自动化设计与模块化技术，相关研究成果已被《Procedia CIRP》录用，为无人机定制化生产提供了可行思路。</li>
 </ol>
 <p>项目通过实际开发验证了“LLM+智能制造”在无人机领域的应用价值，后续将围绕供电一致性、传感器融合、飞控功能升级、动力模块批量生产优化等方向持续迭代，进一步提升系统稳定性与实用性，同时可扩展为六旋翼、八旋翼等多类型平台，适配更多应用场景。</p>
-<h2 id="八附录预留补充位置">八、附录（预留补充位置）
-</h2><ul>
-<li>设计文件：机架/动力模块SolidWorks建模文件（含优化前后版本）、LLM设计提示词工程文档；</li>
-<li>代码文件：STM32飞控PID控制代码、多飞控通信协议代码；</li>
-<li>测试数据：动力性能测试报告、飞行姿态数据日志、动力模块优化前后性能对比数据；</li>
-<li>其他补充：硬件选型清单、3D打印参数配置表、动力模块拓扑优化分析报告。</li>
-</ul>
-<div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 20px 0;">
-  <div style="flex: 1 1 45%; text-align: center;">
-    <img src="/uav/补充图片1.png" alt="补充细节图1" style="max-width: 100%; border: 1px solid #eee; border-radius: 4px;">
-    <p style="font-size: 14px; color: #666; margin-top: 8px;">图13：电控系统接线图</p>
-  </div>
-  <div style="flex: 1 1 45%; text-align: center;">
-    <img src="/uav/补充图片2.png" alt="补充细节图2" style="max-width: 100%; border: 1px solid #eee; border-radius: 4px;">
-    <p style="font-size: 14px; color: #666; margin-top: 8px;">图14：传感器数据处理流程图</p>
-  </div>
-</div>
+
 </section>
 
 
@@ -838,6 +884,25 @@ $$T \approx C_{t} \cdot \rho \cdot n^{2} \cdot D^{4}$$</p>
             
                 
 <article class="has-image">
+    <a href="/zh-cn/p/gomoku-recognition/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/gomoku/fengmian.png" loading="lazy" data-key="gomoku-recognition" data-hash="/gomoku/fengmian.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">基于传统图像处理的五子棋识别与预测系统</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
     <a href="/zh-cn/p/ai-research/">
         
         
@@ -868,7 +933,9 @@ $$T \approx C_{t} \cdot \rho \cdot n^{2} \cdot D^{4}$$</p>
     <section class="copyright">
         &copy; 
         
-        2025 刘承韬
+            2025 - 
+        
+        2026 刘承韬
     </section>
     
     <section class="powerby">

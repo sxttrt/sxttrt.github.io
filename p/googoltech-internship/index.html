@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="A comprehensive record of a summer internship at Googoltech, covering motion control product training, electromechanical matching, servo tuning, low-code development, ST programming, and hardware integration for a multi-mode PCB drilling machine.">
+<title>Googoltech Internship Report: Development of a PCB Drilling Machine System Based on Motion Control Technology</title>
+
+<link rel='canonical' href='https://sxttrt.github.io/p/googoltech-internship/'>
+
+<link rel="stylesheet" href="/scss/style.min.c91073e1bef24baf3131464aee14e30bb1335275cee51563e55fb2a5e03eca69.css"><meta property='og:title' content="Googoltech Internship Report: Development of a PCB Drilling Machine System Based on Motion Control Technology">
+<meta property='og:description' content="A comprehensive record of a summer internship at Googoltech, covering motion control product training, electromechanical matching, servo tuning, low-code development, ST programming, and hardware integration for a multi-mode PCB drilling machine.">
+<meta property='og:url' content='https://sxttrt.github.io/p/googoltech-internship/'>
+<meta property='og:site_name' content='Liu Chengtao'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-08-19T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-08-19T00:00:00&#43;00:00'/><meta property='og:image' content='https://sxttrt.github.io/internship/fengmian.png' />
+<meta name="twitter:title" content="Googoltech Internship Report: Development of a PCB Drilling Machine System Based on Motion Control Technology">
+<meta name="twitter:description" content="A comprehensive record of a summer internship at Googoltech, covering motion control product training, electromechanical matching, servo tuning, low-code development, ST programming, and hardware integration for a multi-mode PCB drilling machine."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://sxttrt.github.io/internship/fengmian.png' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_4180be05c8c2e7f3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Liu Chengtao</a></h1>
+            <h2 class="site-description">Liu Chengtao | Undergraduate Works</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://space.bilibili.com/499786362?spm_id_from=333.1007.0.0'
+                        target="_blank"
+                        title="Bilibili"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.0.0-beta2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M488.6 104.1C505.3 122.2 513 143.8 511.9 169.8V372.2C511.5 398.6 502.7 420.3 485.4 437.3C468.2 454.3 446.3 463.2 419.9 464H92.02C65.57 463.2 43.81 454.2 26.74 436.8C9.682 419.4 .7667 396.5 0 368.2V169.8C.7667 143.8 9.682 122.2 26.74 104.1C43.81 87.75 65.57 78.77 92.02 78H121.4L96.05 52.19C90.3 46.46 87.42 39.19 87.42 30.4C87.42 21.6 90.3 14.34 96.05 8.603C101.8 2.868 109.1 0 117.9 0C126.7 0 134 2.868 139.8 8.603L213.1 78H301.1L375.6 8.603C381.7 2.868 389.2 0 398 0C406.8 0 414.1 2.868 419.9 8.603C425.6 14.34 428.5 21.6 428.5 30.4C428.5 39.19 425.6 46.46 419.9 52.19L394.6 78L423.9 78C450.3 78.77 471.9 87.75 488.6 104.1H488.6zM449.8 173.8C449.4 164.2 446.1 156.4 439.1 150.3C433.9 144.2 425.1 140.9 416.4 140.5H96.05C86.46 140.9 78.6 144.2 72.47 150.3C66.33 156.4 63.07 164.2 62.69 173.8V368.2C62.69 377.4 65.95 385.2 72.47 391.7C78.99 398.2 86.85 401.5 96.05 401.5H416.4C425.6 401.5 433.4 398.2 439.7 391.7C446 385.2 449.4 377.4 449.8 368.2L449.8 173.8zM185.5 216.5C191.8 222.8 195.2 230.6 195.6 239.7V273C195.2 282.2 191.9 289.9 185.8 296.2C179.6 302.5 171.8 305.7 162.2 305.7C152.6 305.7 144.7 302.5 138.6 296.2C132.5 289.9 129.2 282.2 128.8 273V239.7C129.2 230.6 132.6 222.8 138.9 216.5C145.2 210.2 152.1 206.9 162.2 206.5C171.4 206.9 179.2 210.2 185.5 216.5H185.5zM377 216.5C383.3 222.8 386.7 230.6 387.1 239.7V273C386.7 282.2 383.4 289.9 377.3 296.2C371.2 302.5 363.3 305.7 353.7 305.7C344.1 305.7 336.3 302.5 330.1 296.2C323.1 289.9 320.7 282.2 320.4 273V239.7C320.7 230.6 324.1 222.8 330.4 216.5C336.7 210.2 344.5 206.9 353.7 206.5C362.9 206.9 370.7 210.2 377 216.5H377z"/></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/sxttrt'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about-me/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About Me</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://sxttrt.github.io/" selected>English</option>
+                                
+                                    <option value="https://sxttrt.github.io/zh-cn/" >简体中文</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#i-internship-core-information">I. Internship Core Information</a></li>
+    <li><a href="#ii-background-analysis">II. Background Analysis</a>
+      <ol>
+        <li><a href="#1-industry-context">1. Industry Context</a></li>
+        <li><a href="#2-company-profile">2. Company Profile</a></li>
+        <li><a href="#3-project-context">3. Project Context</a></li>
+        <li><a href="#4-technical-architecture">4. Technical Architecture</a></li>
+      </ol>
+    </li>
+    <li><a href="#iii-task-overview">III. Task Overview</a>
+      <ol>
+        <li><a href="#1-project-introduction">1. Project Introduction</a></li>
+        <li><a href="#2-core-tasks-and-requirements">2. Core Tasks and Requirements</a></li>
+        <li><a href="#3-expected-outcomes">3. Expected Outcomes</a></li>
+      </ol>
+    </li>
+    <li><a href="#iv-technical-route-and-solutions">IV. Technical Route and Solutions</a>
+      <ol>
+        <li><a href="#task-1-systematic-training-on-googoltech-products">Task 1: Systematic Training on Googoltech Products</a>
+          <ol>
+            <li><a href="#1-core-knowledge-system">1. Core Knowledge System</a></li>
+            <li><a href="#2-toolchain-proficiency">2. Toolchain Proficiency</a></li>
+            <li><a href="#3-learning-outcomes">3. Learning Outcomes</a></li>
+          </ol>
+        </li>
+        <li><a href="#task-2-electromechanical-characteristic-matching">Task 2: Electromechanical Characteristic Matching</a>
+          <ol>
+            <li><a href="#1-core-matching-principles">1. Core Matching Principles</a></li>
+            <li><a href="#2-calculation-logic">2. Calculation Logic</a></li>
+          </ol>
+        </li>
+        <li><a href="#task-3-servo-drive-system-tuning">Task 3: Servo Drive System Tuning</a>
+          <ol>
+            <li><a href="#1-tools-and-objectives">1. Tools and Objectives</a></li>
+            <li><a href="#2-key-parameter-configuration">2. Key Parameter Configuration</a></li>
+          </ol>
+        </li>
+        <li><a href="#task-4-electrical-system-integration">Task 4: Electrical System Integration</a>
+          <ol>
+            <li><a href="#1-core-component-selection">1. Core Component Selection</a></li>
+            <li><a href="#2-electrical-construction-results">2. Electrical Construction Results</a></li>
+          </ol>
+        </li>
+        <li><a href="#task-5-low-code-implementation-janus">Task 5: Low-code Implementation (Janus)</a>
+          <ol>
+            <li><a href="#low-code-outcomes">Low-code Outcomes</a></li>
+          </ol>
+        </li>
+        <li><a href="#task-6-st-programming-otostudio">Task 6: ST Programming (OtoStudio)</a>
+          <ol>
+            <li><a href="#core-program-example-axis-control">Core Program Example (Axis Control)</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/googoltech-internship/">
+                
+                    <img src="/internship/fengmian.png" loading="lazy" alt="Featured image of post Googoltech Internship Report: Development of a PCB Drilling Machine System Based on Motion Control Technology" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/internship-accomplishments/" >
+                Internship Accomplishments
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/googoltech-internship/">Googoltech Internship Report: Development of a PCB Drilling Machine System Based on Motion Control Technology</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            A comprehensive record of a summer internship at Googoltech, covering motion control product training, electromechanical matching, servo tuning, low-code development, ST programming, and hardware integration for a multi-mode PCB drilling machine.
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025-08-19</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+        <footer class="article-translations">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+            <div>
+                
+                    <a href="https://sxttrt.github.io/zh-cn/p/googoltech-internship/" class="link">简体中文</a>
+                
+            </div>
+        </footer>
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+MathJax.config = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    processEscapes: true
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<h2 id="i-internship-core-information">I. Internship Core Information
+</h2><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Category</th>
+          <th style="text-align: left">Details</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Intern</strong></td>
+          <td style="text-align: left">Chengtao Liu</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Student ID</strong></td>
+          <td style="text-align: left">12212708</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Company</strong></td>
+          <td style="text-align: left">Googol Technology (Googoltech) Co., Ltd.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Duration</strong></td>
+          <td style="text-align: left">July 17, 2025 – August 19, 2025</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Platform</strong></td>
+          <td style="text-align: left">Googol Park (PBL Project-Based Learning Platform)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Core Project</strong></td>
+          <td style="text-align: left">System Integration and Multi-mode Control of a PCB 3-axis Drilling Machine Based on Googoltech Platform</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Key Tools</strong></td>
+          <td style="text-align: left">Googol GUS Controller, GSHD Servo Drive, OtoStudio (IDE), Janus (Low-code), DriverStudio (Tuning), EtherCAT/gLink-II Fieldbus</td>
+      </tr>
+  </tbody>
+</table></div>
+<h2 id="ii-background-analysis">II. Background Analysis
+</h2><h3 id="1-industry-context">1. Industry Context
+</h3><p>With the &ldquo;Made in China 2025&rdquo; strategy, the manufacturing sector is accelerating toward digitalization and intelligent transformation. Motion control technology, serving as the &ldquo;brain and nervous system&rdquo; of industrial automation, is widely applied in robotics, CNC machine tools, and semiconductor equipment. However, high-end markets have long been dominated by foreign vendors. Achieving self-controllability and domestic substitution in this field is critical for securing supply chains and enhancing the competitiveness of high-end equipment.</p>
+<h3 id="2-company-profile">2. Company Profile
+</h3><p>Founded in 1999 by Professors Zexiang Li, Bingqiang Gao, and Hong Wu from HKUST, Googoltech is a pioneer and platform leader in China&rsquo;s motion control industry. As a national high-tech enterprise, the company focuses on R&amp;D in motion control, servo drives, machine vision, and industrial networking, becoming the preferred domestic brand for core control components in high-end equipment.</p>
+<h3 id="3-project-context">3. Project Context
+</h3><p>To address the talent gap and the disconnect between theory and practice in high-end equipment manufacturing, Googoltech established &ldquo;Googol Park.&rdquo; Utilizing a Project-Based Learning (PBL) model with real-world industrial projects, it provides an &ldquo;Imitation-Assimilation-Optimization-Excellence&rdquo; learning path. This project, based in Googol Park, involved a one-month immersive practice in the full-cycle development of an electromechanical system.</p>
+<h3 id="4-technical-architecture">4. Technical Architecture
+</h3><p>The project is built on Googoltech&rsquo;s proprietary technical ecosystem:</p>
+<ul>
+<li><strong>Motion Controller</strong>: Executes complex path planning and multi-axis coordination algorithms.</li>
+<li><strong>Servo Drive</strong>: Receives commands and drives motors with high precision.</li>
+<li><strong>Industrial Fieldbus (gLink-II)</strong>: Provides high-speed stable communication with 100ns synchronization precision and data redundancy.</li>
+<li><strong>Toolchain</strong>: OtoStudio IDE (ST language), Janus (visual low-code), and DriverStudio (servo tuning).</li>
+</ul>
+<h2 id="iii-task-overview">III. Task Overview
+</h2><h3 id="1-project-introduction">1. Project Introduction
+</h3><p>The objective was to independently complete the electromechanical integration, process design, and tuning of a PCB 3-axis drilling machine. The device uses X, Y, and Z-axis precision motion for positioning and drilling, serving as a typical industrial carrier for understanding motion control applications.</p>
+<h3 id="2-core-tasks-and-requirements">2. Core Tasks and Requirements
+</h3><ol>
+<li><strong>Mechanical Awareness</strong>: Analyze the 3-axis modules, motors, and drilling actuators to understand motion principles and load characteristics.</li>
+<li><strong>Electrical Integration</strong>: Design electrical schematics and connect controllers, drives, motors, and sensors to build the hardware system.</li>
+<li><strong>Signal Logic Analysis</strong>: Define X/Y/Z control signals (Enable, Alarm, Position) and IO signals (Limits, Origin, Drill Start).</li>
+<li><strong>Process Design</strong>: Define the sequence from &ldquo;Standby → Homing → Precise Positioning → Drilling → Loop/End,&rdquo; incorporating safety protections (E-stop, Overtravel).</li>
+<li><strong>Multi-mode Control Implementation</strong>:
+<ul>
+<li><strong>Low-code</strong>: Rapid logic implementation using Janus visual blocks.</li>
+<li><strong>Structured Text (ST)</strong>: Detailed low-level logic development via OtoStudio.</li>
+</ul>
+</li>
+</ol>
+<h3 id="3-expected-outcomes">3. Expected Outcomes
+</h3><ul>
+<li><strong>Physical Prototype</strong>: A fully commissioned 3-axis motion control device executing precise autonomous drilling.</li>
+<li><strong>Internship Report</strong>: Summary of design, integration, and tuning, including technical solutions and troubleshooting.</li>
+<li><strong>Certification</strong>: Completion of Googol Park assessment and acquisition of the &ldquo;Electromechanical System Integrated Application Technology&rdquo; certificate.</li>
+</ul>
+<h2 id="iv-technical-route-and-solutions">IV. Technical Route and Solutions
+</h2><h3 id="task-1-systematic-training-on-googoltech-products">Task 1: Systematic Training on Googoltech Products
+</h3><h4 id="1-core-knowledge-system">1. Core Knowledge System
+</h4><ul>
+<li><strong>Product Architecture</strong>: Understanding the logic from controllers (Plug-in/Embedded) to integrated drive-control units (Nayun/GTSD) and software platforms.</li>
+<li><strong>Technical Principles</strong>: gLink-II gigabit ring network (100ns precision); core algorithms like PSO (Position Synchronized Output for 2μm interval drilling) and 5-axis RTCP.</li>
+</ul>
+<h4 id="2-toolchain-proficiency">2. Toolchain Proficiency
+</h4><ul>
+<li><strong>OtoStudio</strong>: Developed low-level motion logic (e.g., homing sequences) using ST language.</li>
+<li><strong>Janus</strong>: Designed process flows (e.g., automatic drilling cycles) via graphical blocks.</li>
+<li><strong>DriverStudio</strong>: Performed servo parameter auto-tuning (vibration suppression, gain adjustment).</li>
+</ul>
+<h4 id="3-learning-outcomes">3. Learning Outcomes
+</h4><div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 20px 0;">
+  <div style="flex: 1 1 80%; text-align: center;">
+    <img src="/internship/图1.png" alt="Googoltech Product System" style="max-width: 100%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666; margin-top: 8px;">Fig 1: Googoltech motion control product ecosystem and key technologies</p>
+  </div>
+</div>
+<h3 id="task-2-electromechanical-characteristic-matching">Task 2: Electromechanical Characteristic Matching
+</h3><h4 id="1-core-matching-principles">1. Core Matching Principles
+</h4><ul>
+<li><strong>Power Matching</strong>: Drive system max power $\geq$ 1.5–2x peak load power to prevent motor overload.</li>
+<li><strong>Inertia Matching</strong>: Load-to-rotor inertia ratio $\leq$ 3 (Precision $\leq$ 1) to prevent low-frequency oscillation.</li>
+<li><strong>Speed &amp; Precision</strong>: Motor rated speed $\geq$ load max speed $\times$ gear ratio; encoder resolution must be 3x better than target precision.</li>
+</ul>
+<h4 id="2-calculation-logic">2. Calculation Logic
+</h4><ul>
+<li><strong>Equivalent Inertia</strong>: $J_{eq} = J_{load} + (J_{rotor} / n^2)$</li>
+<li><strong>Torque Demand</strong>: $T_{peak} = J_{eq} \cdot \alpha_{max} + T_{friction}$</li>
+</ul>
+<h3 id="task-3-servo-drive-system-tuning">Task 3: Servo Drive System Tuning
+</h3><h4 id="1-tools-and-objectives">1. Tools and Objectives
+</h4><ul>
+<li><strong>Tool</strong>: DriverStudio software for monitoring Current (Id/Idr), Velocity (Vel), and Position Error (Perr) curves.</li>
+<li><strong>Objective</strong>: Settle position error to $\leq$ 0.1° within 30ms at 2000rpm.</li>
+</ul>
+<h4 id="2-key-parameter-configuration">2. Key Parameter Configuration
+</h4><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Control Loop</th>
+          <th style="text-align: left">Parameter</th>
+          <th style="text-align: left">Value</th>
+          <th style="text-align: left">Role</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Position</strong></td>
+          <td style="text-align: left">Position Loop Gain (FnP)</td>
+          <td style="text-align: left">30.0 Hz</td>
+          <td style="text-align: left">Enhances positioning response speed</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Position</strong></td>
+          <td style="text-align: left">FIR Filter</td>
+          <td style="text-align: left">Enabled</td>
+          <td style="text-align: left">Optimizes control signal filtering</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Position</strong></td>
+          <td style="text-align: left">Smoothing Time</td>
+          <td style="text-align: left">2.00 ms</td>
+          <td style="text-align: left">Eliminates high-frequency noise</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Velocity</strong></td>
+          <td style="text-align: left">Velocity Loop Gain (FnV)</td>
+          <td style="text-align: left">120 Hz</td>
+          <td style="text-align: left">Suppresses fluctuations and improves stability</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Velocity</strong></td>
+          <td style="text-align: left">Velocity Smoothing (TVs)</td>
+          <td style="text-align: left">5.00 ms</td>
+          <td style="text-align: left">Smooths velocity control signals</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Velocity</strong></td>
+          <td style="text-align: left">Notch Filter Frequency</td>
+          <td style="text-align: left">1201.0 Hz</td>
+          <td style="text-align: left">Targets mechanical resonance</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Velocity</strong></td>
+          <td style="text-align: left">Notch Filter Width</td>
+          <td style="text-align: left">800</td>
+          <td style="text-align: left">Covers resonance frequency range</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Current</strong></td>
+          <td style="text-align: left">Current Loop Bandwidth (FnC)</td>
+          <td style="text-align: left">1000 Hz</td>
+          <td style="text-align: left">Enhances current response rapidity</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Current</strong></td>
+          <td style="text-align: left">Current Smoothing (TCs)</td>
+          <td style="text-align: left">600 μs</td>
+          <td style="text-align: left">Smooths current control signals</td>
+      </tr>
+  </tbody>
+</table></div>
+<h3 id="task-4-electrical-system-integration">Task 4: Electrical System Integration
+</h3><h4 id="1-core-component-selection">1. Core Component Selection
+</h4><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Component</th>
+          <th style="text-align: left">Model/Series</th>
+          <th style="text-align: left">Function</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Motion Controller</strong></td>
+          <td style="text-align: left">Googol GUS</td>
+          <td style="text-align: left">Central command hub for multi-axis control and IO</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Servo Drive</strong></td>
+          <td style="text-align: left">GSHD-200</td>
+          <td style="text-align: left">Triple-loop closed-loop control (Current/Speed/Pos)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Power Supply</strong></td>
+          <td style="text-align: left">Mean Well EDR-150-24</td>
+          <td style="text-align: left">220V AC to 24V DC for logic and IO</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Industrial Bus</strong></td>
+          <td style="text-align: left">EtherCAT/gLink-II</td>
+          <td style="text-align: left">High-speed synchronized communication</td>
+      </tr>
+  </tbody>
+</table></div>
+<h4 id="2-electrical-construction-results">2. Electrical Construction Results
+</h4>  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/internship/图2.png" alt="Electrical Schematic" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666; margin-top: 8px;">Fig 2: Electrical schematic of the PCB drilling machine</p>
+  </div>
+  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/internship/图3.png" alt="Electrical Cabinet" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666; margin-top: 8px;">Fig 3: Completed electrical cabinet (Top: Controller/IO; Middle: Power/Switch; Bottom: Drives/Motors)</p>
+  </div>
+<h3 id="task-5-low-code-implementation-janus">Task 5: Low-code Implementation (Janus)
+</h3><ul>
+<li><strong>Design Logic</strong>: Decomposed the process into &ldquo;System Start → Clamping → Homing → Precise Positioning → Drilling → End,&rdquo; with decision nodes for anomaly alarms.</li>
+<li><strong>IO Mapping</strong>: Managed 18 IO channels (DI/DO) for seamless hardware interfacing.</li>
+</ul>
+<h4 id="low-code-outcomes">Low-code Outcomes
+</h4><div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 20px 0;">
+  <div style="flex: 1 1 80%; text-align: center;">
+    <img src="/internship/图6.png" alt="Low-code workflow" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666; margin-top: 8px;">Fig 4: Low-code implementation of the drilling process</p>
+  </div>
+</div>
+<h3 id="task-6-st-programming-otostudio">Task 6: ST Programming (OtoStudio)
+</h3><ul>
+<li><strong>Environment</strong>: Based on CODESYS V2.3, compatible with IEC 61131-3 standards.</li>
+<li><strong>Language</strong>: Used Structured Text (ST) for complex logic, defining variables (BOOL, INT, LREAL) and calling Motion Function Blocks (MC_Enable, MC_MoveAbsolute).</li>
+</ul>
+<h4 id="core-program-example-axis-control">Core Program Example (Axis Control)
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-st" data-lang="st"><span class="line"><span class="cl"><span class="nc">PROGRAM</span> <span class="nf">AxisControl</span>
+</span></span><span class="line"><span class="cl"><span class="nf">VAR</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">Axis1:</span> <span class="nc">MC_AXIS_REF</span><span class="p">;</span>          <span class="nf">//</span> <span class="nc">Axis</span> <span class="nf">reference</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">Position:</span> <span class="nc">LREAL</span> <span class="o">:=</span> <span class="m">500.0</span><span class="p">;</span>    <span class="nf">//</span> <span class="nc">Target</span> <span class="nf">position</span> (<span class="nv">mm</span>)
+</span></span><span class="line"><span class="cl">  <span class="nf">Velocity:</span> <span class="nc">LREAL</span> <span class="o">:=</span> <span class="m">100.0</span><span class="p">;</span>    <span class="nf">//</span> <span class="nc">Velocity</span> (<span class="nv">mm</span><span class="nf">/</span><span class="nv">s</span>)
+</span></span><span class="line"><span class="cl">  <span class="nf">Start_Sig:</span> <span class="nc">BOOL</span> <span class="o">:=</span> <span class="nc">FALSE</span><span class="p">;</span>    <span class="nf">//</span> <span class="nc">DI</span> <span class="nf">Start</span> <span class="nf">Signal</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">Done_Sig:</span> <span class="nc">BOOL</span> <span class="o">:=</span> <span class="nc">FALSE</span><span class="p">;</span>     <span class="nf">//</span> <span class="nc">DO</span> <span class="nf">Done</span> <span class="nf">Signal</span>
+</span></span><span class="line"><span class="cl"><span class="nf">END_VAR</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">//</span> <span class="nc">Enable</span> <span class="nf">and</span> <span class="nf">Home</span>
+</span></span><span class="line"><span class="cl"><span class="nf">IF</span> <span class="nf">Start_Sig</span> <span class="nf">AND</span> <span class="nf">NOT</span> <span class="nf">Axis1</span><span class="p">.</span><span class="nc">Status</span><span class="p">.</span><span class="nc">Enabled</span> <span class="nf">THEN</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">MC_Enable</span>(<span class="nc">Axis1</span>)<span class="p">;</span>           
+</span></span><span class="line"><span class="cl">  <span class="nf">MC_Home</span>(<span class="nc">Axis1</span><span class="nf">,</span> <span class="nc">TRUE</span>)<span class="p">;</span>       
+</span></span><span class="line"><span class="cl"><span class="nf">END_IF</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">//</span> <span class="nc">Absolute</span> <span class="nf">Move</span>
+</span></span><span class="line"><span class="cl"><span class="nf">IF</span> <span class="nf">Axis1</span><span class="p">.</span><span class="nc">Status</span><span class="p">.</span><span class="nc">Homed</span> <span class="nf">AND</span> <span class="nf">NOT</span> <span class="nf">Done_Sig</span> <span class="nf">THEN</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">MC_MoveAbsolute</span>(<span class="nc">Axis1</span><span class="nf">,</span> <span class="nc">Position</span><span class="nf">,</span> <span class="nc">Velocity</span><span class="nf">,</span> <span class="m">500.0</span><span class="nf">,</span> <span class="m">500.0</span><span class="nf">,</span> <span class="nc">FALSE</span>)<span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">IF</span> <span class="nf">Axis1</span><span class="p">.</span><span class="nc">Status</span><span class="p">.</span><span class="nc">OperationComplete</span> <span class="nf">THEN</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">Done_Sig</span> <span class="o">:=</span> <span class="nc">TRUE</span><span class="p">;</span>         
+</span></span><span class="line"><span class="cl">  <span class="nf">END_IF</span>
+</span></span><span class="line"><span class="cl"><span class="nf">END_IF</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2025 - 
+        
+        2026 刘承韬
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

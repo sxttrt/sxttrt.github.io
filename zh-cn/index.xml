@@ -7,57 +7,135 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>刘承韬</copyright>
-        <lastBuildDate>Thu, 16 Oct 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://sxttrt.github.io/zh-cn/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>我的科研与竞赛成果总览</title>
-        <link>https://sxttrt.github.io/zh-cn/p/%E6%88%91%E7%9A%84%E7%A7%91%E7%A0%94%E4%B8%8E%E7%AB%9E%E8%B5%9B%E6%88%90%E6%9E%9C%E6%80%BB%E8%A7%88/</link>
-        <pubDate>Thu, 16 Oct 2025 00:00:00 +0000</pubDate>
+        <lastBuildDate>Thu, 05 Feb 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://sxttrt.github.io/zh-cn/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>关于我</title>
+        <link>https://sxttrt.github.io/zh-cn/%E5%85%B3%E4%BA%8E%E6%88%91/</link>
+        <pubDate>Thu, 05 Feb 2026 00:00:00 +0000</pubDate>
         
-        <guid>https://sxttrt.github.io/zh-cn/p/%E6%88%91%E7%9A%84%E7%A7%91%E7%A0%94%E4%B8%8E%E7%AB%9E%E8%B5%9B%E6%88%90%E6%9E%9C%E6%80%BB%E8%A7%88/</guid>
-        <description>&lt;h1 id=&#34;我的成果总览&#34;&gt;我的成果总览
-&lt;/h1&gt;&lt;p&gt;点击下方项目/竞赛名称，可跳转到对应详情页查看细节。&lt;/p&gt;
-&lt;h2 id=&#34;一科研项目5项&#34;&gt;一、科研项目（5项）
-&lt;/h2&gt;&lt;h3 id=&#34;1-五子棋&#34;&gt;1. 五子棋
+        <guid>https://sxttrt.github.io/zh-cn/%E5%85%B3%E4%BA%8E%E6%88%91/</guid>
+        <description>&lt;h2 id=&#34;-你好我是刘承韬-chengtao-liu&#34;&gt;👋 你好，我是刘承韬 (Chengtao Liu)
+&lt;/h2&gt;&lt;p&gt;我目前是 &lt;strong&gt;南方科技大学 (SUSTech)&lt;/strong&gt; 系统设计与智能制造学院自动化专业的一名本科生。我的研究兴趣聚焦于 &lt;strong&gt;机器人学、计算机视觉与强化学习&lt;/strong&gt; 的交叉领域，致力于构建能够感知复杂环境并做出自主决策的智能系统。&lt;/p&gt;
+&lt;p&gt;我推崇“全栈工程”的学习模式，从底层的嵌入式开发、机电设计，到上层的感知算法与动力学仿真，我习惯于通过亲手搭建实物来验证理论。&lt;/p&gt;
+&lt;h3 id=&#34;-教育与学术背景&#34;&gt;🎓 教育与学术背景
 &lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;核心内容：&lt;/li&gt;
-&lt;li&gt;详情链接：&lt;a class=&#34;link&#34; href=&#34;https://sxttrt.github.io/zh-cn/p/gomoku-recognition/&#34; &gt;查看完整项目文档&lt;/a&gt;  &lt;!-- 替换成你的科研项目1路径 --&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;本科在读&lt;/strong&gt;：南方科技大学 (SUSTech) · 自动化专业&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;雅思成绩&lt;/strong&gt;：&lt;strong&gt;总分 6.5&lt;/strong&gt; (听力 6.5 / 阅读 6.5 / 写作 6.5 / 口语 5.5)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;学业表现&lt;/strong&gt;：&lt;strong&gt;GPA 3.55 / 4.0&lt;/strong&gt; (加权平均分 &lt;strong&gt;86.38/100&lt;/strong&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;学术成果&lt;/strong&gt;：联合作者论文 &lt;strong&gt;《Leveraging LLMs for personalized and manufacturable design generation of multirotor unmanned aerial vehicles》&lt;/strong&gt; 已被第13届 &lt;strong&gt;CIRP&lt;/strong&gt; 全球网络会议正式接收。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;2-4轮小车&#34;&gt;2. 4轮小车
+&lt;h3 id=&#34;-核心项目经历&#34;&gt;🔍 核心项目经历
 &lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;核心内容：&lt;/li&gt;
-&lt;li&gt;详情链接：&lt;a class=&#34;link&#34; href=&#34;https://sxttrt.github.io/zh-cn/p/four-wheel-car-modeling/&#34; &gt;查看完整项目文档&lt;/a&gt;  &lt;!-- 替换成你的科研项目2路径 --&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;自主无人系统&lt;/strong&gt;：探索 LLM 驱动的无人机机架生成与定制化制造，主导飞控通信协议重写与双环 PID 控制器设计，有效提升飞行稳定性和系统扩展性。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;机器人感知与控制&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;声控协作机器人&lt;/strong&gt;：融合语音识别、&lt;strong&gt;YOLOv8&lt;/strong&gt; 检测与 &lt;strong&gt;GRCNN&lt;/strong&gt; 抓取点预测，实现复杂环境下对手工工具的闭合自动抓取。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Gen3-lite 绘画机器人&lt;/strong&gt;：设计图像驱动绘画系统，引入笛卡尔轨迹插值及力控反馈，提升绘图精度与线条均匀性。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;3-便携式健康监测设备开发&#34;&gt;3. 便携式健康监测设备开发
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;强化学习与仿真&lt;/strong&gt;：在 &lt;strong&gt;Isaac Gym&lt;/strong&gt; 环境下部署 &lt;strong&gt;PPO 算法&lt;/strong&gt;，构建平衡-步态稳定-复杂适配的三级训练链路，实现双足机器人在非结构化地形（斜坡、沙石）的自适应行走。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;-竞赛与实习经历&#34;&gt;🏆 竞赛与实习经历
 &lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;核心内容：简述项目（如“设计心率+血氧监测模块，支持蓝牙数据同步”）&lt;/li&gt;
-&lt;li&gt;详情链接：&lt;a class=&#34;link&#34; href=&#34;https://sxttrt.github.io/post/project-health-monitor/&#34; &gt;查看完整项目文档&lt;/a&gt;  &lt;!-- 替换成你的科研项目3路径 --&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;2024年全国大学生电子设计竞赛&lt;/strong&gt;：&lt;strong&gt;广东省一等奖&lt;/strong&gt; (H题：自动行驶小车控制系统开发)。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;2025年美国大学生数学建模竞赛&lt;/strong&gt;：&lt;strong&gt;Honorable Mention (国际二等奖)&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;固高科技 (Googoltech) 实习&lt;/strong&gt;：合作完成 PCB 三坐标打孔机系统的开发、电气集成与伺服驱动器精细调优。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;4-工业数据异常检测模型设计&#34;&gt;4. 工业数据异常检测模型设计
+&lt;h3 id=&#34;-技术清单&#34;&gt;🛠️ 技术清单
 &lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;核心内容：简述项目（如“用LSTM模型识别生产线传感器异常数据，准确率98%”）&lt;/li&gt;
-&lt;li&gt;详情链接：&lt;a class=&#34;link&#34; href=&#34;https://sxttrt.github.io/post/project-data-anomaly/&#34; &gt;查看完整项目文档&lt;/a&gt;  &lt;!-- 替换成你的科研项目4路径 --&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;编程与仿真&lt;/strong&gt;：Python, MATLAB, PyTorch, ROS, OpenCV, Simulink&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;控制与硬件&lt;/strong&gt;：STM32, TI MSPM0, Arduino, 伺服调优 (DriverStudio), PLC (ST语言)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;机械设计&lt;/strong&gt;：SolidWorks, 3D打印 (Bambu Lab), 拓扑优化 (Altair Inspire)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;5-基于区块链的文件加密系统&#34;&gt;5. 基于区块链的文件加密系统
+&lt;hr&gt;
+&lt;h3 id=&#34;-联系我&#34;&gt;📬 联系我
 &lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;核心内容：简述项目（如“用以太坊私钥实现文件加密传输，确保数据安全”）&lt;/li&gt;
-&lt;li&gt;详情链接：&lt;a class=&#34;link&#34; href=&#34;https://sxttrt.github.io/post/project-blockchain-encrypt/&#34; &gt;查看完整项目文档&lt;/a&gt;  &lt;!-- 替换成你的科研项目5路径 --&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Email&lt;/strong&gt;: &lt;a class=&#34;link&#34; href=&#34;mailto:12212708@mail.sustech.edu.cn&#34; &gt;12212708@mail.sustech.edu.cn&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;GitHub&lt;/strong&gt;: &lt;a class=&#34;link&#34; href=&#34;https://github.com/sxttrt&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;sxttrt&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Bilibili&lt;/strong&gt;: &lt;a class=&#34;link&#34; href=&#34;https://space.bilibili.com/499786362&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;项目演示视频&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;s&lt;/p&gt;
-&lt;h2 id=&#34;二竞赛经历2项&#34;&gt;二、竞赛经历（2项）
-&lt;/h2&gt;&lt;h3 id=&#34;1-2024全国大学生电子设计竞赛h题省一等奖&#34;&gt;1. 2024全国大学生电子设计竞赛H题（省一等奖）
-&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;核心成果：简述竞赛（如“设计自动行驶小车，实现路径巡线、精准停车、多任务切换”）&lt;/li&gt;
-&lt;li&gt;详情链接：&lt;a class=&#34;link&#34; href=&#34;https://sxttrt.github.io/zh-cn/p/competition-dian/&#34; &gt;查看竞赛技术文档&lt;/a&gt;  &lt;!-- 这是你现有的竞赛页路径，不用改！ --&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;2-2025美国大学生数学建模竞赛省二等奖&#34;&gt;2. 2025美国大学生数学建模竞赛（省二等奖）
-&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;核心成果：简述竞赛（如“建立城市交通流量预测模型，优化早晚高峰疏导方案”）&lt;/li&gt;
-&lt;li&gt;详情链接：&lt;a class=&#34;link&#34; href=&#34;https://sxttrt.github.io/zh-cn/p/competition-mei/&#34; &gt;查看竞赛论文文档&lt;/a&gt;  &lt;!-- 替换成你的第2个比赛路径 --&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;说明&#34;&gt;说明
-&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;所有项目/竞赛均包含完整技术文档、代码开源链接（若有）、成果展示；&lt;/li&gt;
-&lt;li&gt;点击“查看完整文档”即可跳转到对应详情页，返回总览页可刷新当前页面。&lt;/li&gt;
-&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;The best way to predict the future is to invent it.&amp;rdquo;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        </item>
+        <item>
+        <title>归档</title>
+        <link>https://sxttrt.github.io/zh-cn/archives/</link>
+        <pubDate>Thu, 05 Feb 2026 00:00:00 +0000</pubDate>
+        
+        <guid>https://sxttrt.github.io/zh-cn/archives/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>项目档案</title>
+        <link>https://sxttrt.github.io/zh-cn/p/%E9%A1%B9%E7%9B%AE%E6%A1%A3%E6%A1%88/</link>
+        <pubDate>Thu, 05 Feb 2026 00:00:00 +0000</pubDate>
+        
+        <guid>https://sxttrt.github.io/zh-cn/p/%E9%A1%B9%E7%9B%AE%E6%A1%A3%E6%A1%88/</guid>
+        <description>&lt;h2 id=&#34;-核心项目总览&#34;&gt;🚀 核心项目总览
+&lt;/h2&gt;&lt;p&gt;&lt;em&gt;最后更新：2026-02-05&lt;/em&gt;&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;路径文件夹&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;项目名称&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;所属分类&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;核心技术栈&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;UAV&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://sxttrt.github.io/p/llm-uav-custom-design/&#34; &gt;基于大语言模型的多旋翼无人机定制化设计&lt;/a&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;项目成果&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;LLM, 3D打印, 多飞控同步&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;UR-Robot&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://sxttrt.github.io/p/UR-Robot/&#34; &gt;声控协作式机器人系统设计与实现&lt;/a&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;项目成果&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;YOLOv8, GRCNN, DTW语音识别&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;RL&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://sxttrt.github.io/p/rl-control-project/&#34; &gt;基于强化学习的倒立摆控制与双足机器人系统&lt;/a&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;项目成果&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;PPO, REINFORCE, Isaac Gym&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;ai&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://sxttrt.github.io/p/ai-research/&#34; &gt;基于传统机器学习算法的分类与图像处理&lt;/a&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;项目成果&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;K-means, PCA, 线性自编码器&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;gomoku&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://sxttrt.github.io/p/gomoku-recognition/&#34; &gt;基于传统图像处理的五子棋识别与预测&lt;/a&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;项目成果&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;霍夫变换, 启发式搜索, HSV&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Four-wheel-car&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://sxttrt.github.io/p/four-wheel-car-modeling/&#34; &gt;四轮小车实验建模与运动控制系统&lt;/a&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;项目成果&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;系统辨识, Simulink, PI控制&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;gen3&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://sxttrt.github.io/p/painting-robot/&#34; &gt;基于 Gen3-lite 机械臂的绘画机器人系统&lt;/a&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;项目成果&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;雅可比转置, 力控跟踪, OpenCV&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;competition-dian&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://sxttrt.github.io/p/competition-dian/&#34; &gt;2024 电赛 H 题：自动行驶小车（省一）&lt;/a&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;竞赛成果&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;MSP&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 </description>
         </item>
         <item>
@@ -100,7 +178,7 @@ MathJax.config = {
       &lt;/tr&gt;
       &lt;tr&gt;
           &lt;td&gt;&lt;strong&gt;企业名称&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;固高科技股份有限公司（股票代码：301510）&lt;/td&gt;
+          &lt;td&gt;固高科技股份有限公司&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
           &lt;td&gt;&lt;strong&gt;实习周期&lt;/strong&gt;&lt;/td&gt;
@@ -449,7 +527,7 @@ MathJax.config = {
   &lt;/div&gt;
   &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
     &lt;img src=&#34;https://sxttrt.github.io/internship/图9.png&#34; alt=&#34;功能验证效果&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
-    &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;图7：模拟打孔点位精度验证（误差≤0.02mm）&lt;/p&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;图7：模拟打孔点位精度验证（误差≤0.5mm）&lt;/p&gt;
   &lt;/div&gt;
 &lt;h2 id=&#34;五经验总结&#34;&gt;五、经验总结
 &lt;/h2&gt;&lt;h3 id=&#34;1-技术知识与技能提升&#34;&gt;1. 技术知识与技能提升
@@ -482,8 +560,7 @@ MathJax.config = {
     &lt;img src=&#34;https://sxttrt.github.io/internship/图11.png&#34; alt=&#34;结业证书&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
     &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;图9：固高创工场《机电系统综合应用技术》结业证书&lt;/p&gt;
   &lt;/div&gt;
-&lt;/div&gt;
-```</description>
+&lt;/div&gt;</description>
         </item>
         <item>
         <title>基于强化学习的倒立摆控制与双足机器人系统构建</title>
@@ -550,7 +627,7 @@ MathJax.config = {
 &lt;/ul&gt;
 &lt;h2 id=&#34;三核心任务实现&#34;&gt;三、核心任务实现
 &lt;/h2&gt;&lt;h3 id=&#34;任务一倒立摆控制lqr线性控制--reinforce强化学习控制&#34;&gt;任务一：倒立摆控制（LQR线性控制 + REINFORCE强化学习控制）
-&lt;/h3&gt;&lt;h4 id=&#34;1-基于lqr的倒立摆线性控制文档2最优projectdocx&#34;&gt;1. 基于LQR的倒立摆线性控制（文档2：最优project.docx）
+&lt;/h3&gt;&lt;h4 id=&#34;1-基于lqr的倒立摆线性控制&#34;&gt;1. 基于LQR的倒立摆线性控制
 &lt;/h4&gt;&lt;h5 id=&#34;1动力学建模与线性化离散化&#34;&gt;（1）动力学建模与线性化、离散化
 &lt;/h5&gt;&lt;ul&gt;
 &lt;li&gt;
@@ -624,7 +701,7 @@ $$K = [[-4.4267, 262.3615, -12.0165, 57.0248]]$$&lt;/p&gt;
   &lt;img src=&#34;https://sxttrt.github.io/RL/图2.png&#34; alt=&#34;Soft K-means不同聚类数重建效果&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
   &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图1：不同初始角效果&lt;/p&gt;
 &lt;/div&gt;
-&lt;h4 id=&#34;2-基于reinforce的倒立摆强化学习控制文档1最优控制与设计final-project&#34;&gt;2. 基于REINFORCE的倒立摆强化学习控制（文档1：《最优控制与设计》Final Project）
+&lt;h4 id=&#34;2-基于reinforce的倒立摆强化学习控制&#34;&gt;2. 基于REINFORCE的倒立摆强化学习控制（
 &lt;/h4&gt;&lt;h5 id=&#34;1算法设计与环境搭建&#34;&gt;（1）算法设计与环境搭建
 &lt;/h5&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;仿真环境&lt;/strong&gt;：基于Gymnasium的CartPole-v1环境，状态空间含4个连续变量（小车位置、小车速度、摆杆角度、摆杆角速度），动作空间为2个离散动作（向左/向右施力）；中止条件：小车位置超±2.4m或摆杆角度超±12°。&lt;/li&gt;
@@ -888,20 +965,18 @@ $$\text{reward_stand_still} = \exp(-(\text{pose_error} + 0.5\cdot\text{vel_error
 &gt;&lt;br&gt;
 &lt;em&gt;图4：双足机器人在平坦地形、非平整地形、斜坡的行走仿真效果（基于文档1）&lt;/em&gt;&lt;/p&gt;
 &lt;h2 id=&#34;四项目成果与附件&#34;&gt;四、项目成果与附件
-&lt;/h2&gt;&lt;h3 id=&#34;1-仿真动态素材&#34;&gt;1. 仿真动态素材
-&lt;/h3&gt;&lt;h4 id=&#34;11-倒立摆控制仿真素材&#34;&gt;1.1 倒立摆控制仿真素材
+&lt;/h2&gt;&lt;h3 id=&#34;1-仿真成果展示&#34;&gt;1. 仿真成果展示
+&lt;/h3&gt;&lt;h4 id=&#34;11-倒立摆稳定控制&#34;&gt;1.1 倒立摆稳定控制
 &lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;LQR控制：含2.6rad、2.7rad、2.9rad初始角稳定控制GIF，展示从小车倾斜到平衡的动态过程；&lt;/li&gt;
-&lt;li&gt;REINFORCE控制：含训练2325轮后微扰下长时间平衡GIF，展示摆杆维持竖直的稳定状态。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;LQR 控制：&lt;/strong&gt; 实现了在大角度扰动下的快速收敛。测试表明，当摆杆处于 $2.6\text{ rad}$、$2.7\text{ rad}$ 及 $2.9\text{ rad}$ 等大倾角初始状态时，控制器能驱动小车迅速响应，在极短时间内使摆杆恢复并维持竖直平衡。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;REINFORCE 强化学习控制：&lt;/strong&gt; 经过 &lt;strong&gt;2325 轮&lt;/strong&gt;训练，策略网络展现出极高的稳定性。在持续的随机微扰下，摆杆能实现长时间（&amp;gt;60s）的精准平衡，无明显震荡。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;下载链接：&lt;a class=&#34;link&#34; href=&#34;https://sxttrt.github.io/RL/%e5%80%92%e7%ab%8b%e6%91%86%e4%bb%bf%e7%9c%9fGIF%e5%90%88%e9%9b%86.zip&#34; &gt;倒立摆LQR+REINFORCE仿真GIF合集.zip&lt;/a&gt;&lt;/p&gt;
-&lt;h4 id=&#34;12-双足机器人行走仿真素材&#34;&gt;1.2 双足机器人行走仿真素材
+&lt;h4 id=&#34;12-双足机器人步态模拟&#34;&gt;1.2 双足机器人步态模拟
 &lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;平地行走：展示自然步态（左右脚交替、无小碎步）；&lt;/li&gt;
-&lt;li&gt;抗扰动行走：展示随机推力下的平衡恢复过程；&lt;/li&gt;
-&lt;li&gt;复杂地形行走：展示非平整地形、斜坡的适配行走。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;自然平地行走：&lt;/strong&gt; 实现了具有生物力学特征的自然步态，左右脚交替平滑，彻底消除了低端仿真中常见的“小碎步”现象。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;动态抗扰动：&lt;/strong&gt; 在行走过程中加入随机脉冲推力，机器人能通过调整支撑腿步点和上身姿态迅速找回重心，展现了良好的动态平衡能力。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;复杂环境适配：&lt;/strong&gt; 算法成功适配了斜坡及非平整地面，能够根据地形坡度实时调整落脚点高度与踝关节补偿。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;下载链接：&lt;a class=&#34;link&#34; href=&#34;https://sxttrt.github.io/RL/%e5%8f%8c%e8%b6%b3%e6%9c%ba%e5%99%a8%e4%ba%ba%e4%bb%bf%e7%9c%9fGIF%e5%90%88%e9%9b%86.zip&#34; &gt;双足机器人多场景仿真GIF合集.zip&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;2-核心探索结论&#34;&gt;2. 核心探索结论
 &lt;/h3&gt;&lt;table&gt;
   &lt;thead&gt;
@@ -925,30 +1000,6 @@ $$\text{reward_stand_still} = \exp(-(\text{pose_error} + 0.5\cdot\text{vel_error
       &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h3 id=&#34;3-附件文件&#34;&gt;3. 附件文件
-&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;项目源码仓库&lt;/strong&gt;：含所有核心模块代码（train.py、task_registry.py、terrain.py、pointfoot_rough_config.py等），详见：&lt;a class=&#34;link&#34; href=&#34;https://github.com/xxx/RL-Robot-Control&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;RL-Robot-Control（示例链接，需替换为实际仓库）&lt;/a&gt;；&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;ol start=&#34;2&#34;&gt;
-&lt;li&gt;&lt;strong&gt;模型文件&lt;/strong&gt;：双足机器人PPO策略ONNX格式文件（Isaac Gym训练导出，用于MuJoCo迁移）、倒立摆REINFORCE模型权重文件；&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;ol start=&#34;3&#34;&gt;
-&lt;li&gt;&lt;strong&gt;实验配置文件&lt;/strong&gt;：Isaac Gym/MuJoCo环境参数配置（含terrain.py参数、pointfoot_rough_config.py完整代码）；&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;ol start=&#34;4&#34;&gt;
-&lt;li&gt;&lt;strong&gt;实验图表素材&lt;/strong&gt;：所有训练奖励曲线、LQR参数对比图、机器人步态轨迹图的原始文件。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
 </description>
         </item>
         <item>
@@ -1179,10 +1230,9 @@ MathJax.config = {
 &lt;/ul&gt;
 &lt;h4 id=&#34;飞行测试成果预留图片与视频位置&#34;&gt;飞行测试成果（预留图片与视频位置）
 &lt;/h4&gt;  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
-    &lt;img src=&#34;https://sxttrt.github.io/uav/图11.png&#34; alt=&#34;无人机首飞实物&#34; style=&#34;max-width: 60%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/uav/fengmian.jpg&#34; alt=&#34;无人机首飞实物&#34; style=&#34;max-width: 60%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
     &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;图11：无人机首飞测试实物图&lt;/p&gt;
   &lt;/div&gt;
-&lt;!-- 优化后的视频播放与下载区域 --&gt;
 &lt;div style=&#34;text-align: center; margin: 30px 0;&#34;&gt;
   &lt;h4&gt;无人机首飞测试视频&lt;/h4&gt;
   &lt;iframe 
@@ -1193,7 +1243,6 @@ MathJax.config = {
     allowfullscreen&gt;
     您的浏览器不支持iframe播放，请直接下载视频查看
   &lt;/iframe&gt;
-  &lt;!-- 独立的醒目下载链接（适配所有浏览器） --&gt;
   &lt;div style=&#34;margin: 10px 0;&#34;&gt;
     &lt;a href=&#34;https://sxttrt.github.io/uav/视频1.mp4&#34; 
        target=&#34;_blank&#34; 
@@ -1202,7 +1251,7 @@ MathJax.config = {
       📥 下载首飞测试视频（MP4格式）
     &lt;/a&gt;
   &lt;/div&gt;
-  &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;视频1：无人机首飞测试完整视频（含姿态调整与稳定性验证）&lt;/p&gt;
+  &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;视频1：无人机首飞测试完整视频&lt;/p&gt;
 &lt;/div&gt;
 &lt;h2 id=&#34;四关键技术实现&#34;&gt;四、关键技术实现
 &lt;/h2&gt;&lt;h3 id=&#34;1-llm辅助机架设计流程&#34;&gt;1. LLM辅助机架设计流程
@@ -1291,10 +1340,17 @@ $$T \approx C_{t} \cdot \rho \cdot n^{2} \cdot D^{4}$$&lt;/p&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h4 id=&#34;论文录用展示&#34;&gt;论文录用展示
-&lt;/h4&gt;&lt;div style=&#34;display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 20px 0;&#34;&gt;
+&lt;/h4&gt;&lt;div style=&#34;display: flex; flex-wrap: wrap; gap: 20px; justify-content: 
+center; margin: 20px 0;&#34;&gt;
   &lt;div style=&#34;flex: 1 1 80%; text-align: center;&#34;&gt;
-    &lt;img src=&#34;https://sxttrt.github.io/uav/图12.png&#34; alt=&#34;Procedia CIRP论文录用证书&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/uav/论文1.jpg&#34; alt=&#34;Procedia CIRP论文录用证书&#34; style=&#34;max-width: 60%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
     &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;图12：《Procedia CIRP》论文录用证明&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div style=&#34;display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 20px 0;&#34;&gt;
+  &lt;div style=&#34;flex: 1 1 80%; text-align: center;&#34;&gt;
+    &lt;img src=&#34;https://sxttrt.github.io/uav/论文2.png&#34; alt=&#34;Procedia CIRP论文录用证书&#34; style=&#34;max-width: 60%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
+    &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;图13：论文首页&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;h2 id=&#34;七总结&#34;&gt;七、总结
@@ -1305,23 +1361,7 @@ $$T \approx C_{t} \cdot \rho \cdot n^{2} \cdot D^{4}$$&lt;/p&gt;
 &lt;li&gt;创新融合LLM自动化设计与模块化技术，相关研究成果已被《Procedia CIRP》录用，为无人机定制化生产提供了可行思路。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;项目通过实际开发验证了“LLM+智能制造”在无人机领域的应用价值，后续将围绕供电一致性、传感器融合、飞控功能升级、动力模块批量生产优化等方向持续迭代，进一步提升系统稳定性与实用性，同时可扩展为六旋翼、八旋翼等多类型平台，适配更多应用场景。&lt;/p&gt;
-&lt;h2 id=&#34;八附录预留补充位置&#34;&gt;八、附录（预留补充位置）
-&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;设计文件：机架/动力模块SolidWorks建模文件（含优化前后版本）、LLM设计提示词工程文档；&lt;/li&gt;
-&lt;li&gt;代码文件：STM32飞控PID控制代码、多飞控通信协议代码；&lt;/li&gt;
-&lt;li&gt;测试数据：动力性能测试报告、飞行姿态数据日志、动力模块优化前后性能对比数据；&lt;/li&gt;
-&lt;li&gt;其他补充：硬件选型清单、3D打印参数配置表、动力模块拓扑优化分析报告。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div style=&#34;display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 20px 0;&#34;&gt;
-  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
-    &lt;img src=&#34;https://sxttrt.github.io/uav/补充图片1.png&#34; alt=&#34;补充细节图1&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
-    &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;图13：电控系统接线图&lt;/p&gt;
-  &lt;/div&gt;
-  &lt;div style=&#34;flex: 1 1 45%; text-align: center;&#34;&gt;
-    &lt;img src=&#34;https://sxttrt.github.io/uav/补充图片2.png&#34; alt=&#34;补充细节图2&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
-    &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;图14：传感器数据处理流程图&lt;/p&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</description>
+</description>
         </item>
         <item>
         <title>基于Gen3-lite机械臂的绘画机器人系统</title>
@@ -1384,7 +1424,7 @@ MathJax.config = {
 &lt;li&gt;&lt;strong&gt;图像处理目标&lt;/strong&gt;：针对不同光照、不同复杂度的简单线描图像（如动物简笔画、几何图案），实现轮廓精准提取，通过形态学操作增强边缘连续性，去除纸张纹理、拍摄噪声等干扰因素；&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;路径规划目标&lt;/strong&gt;：将图像轮廓转化为连续、无冗余的机械臂运动轨迹，通过抬笔/落笔节点标记，减少机械臂无效动作，确保绘画流畅性；&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;机械臂控制目标&lt;/strong&gt;：基于雅可比转置法实现末端执行器力估计，通过PD控制器维持13N的稳定接触力，适配不同厚度纸张的绘画需求；&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;系统集成目标&lt;/strong&gt;：完成“图像扫描→轨迹生成→机械绘画”全流程自动化，单幅200个路径点以内的线描图绘画耗时≤5分钟，复刻偏差≤1mm。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;系统集成目标&lt;/strong&gt;：完成“图像扫描→轨迹生成→机械绘画”全流程自动化，单幅200个路径点以内的线描图绘画耗时≤5分钟。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;三核心任务实现&#34;&gt;三、核心任务实现
 &lt;/h2&gt;&lt;h3 id=&#34;任务一图像扫描与预处理基于opencv&#34;&gt;任务一：图像扫描与预处理（基于OpenCV）
@@ -1580,15 +1620,12 @@ $$\Delta z = K_p e_f + K_d \dot{e}&lt;em&gt;f$$
         <pubDate>Mon, 27 Jan 2025 00:00:00 +0000</pubDate>
         
         <guid>https://sxttrt.github.io/zh-cn/p/competition-mei/</guid>
-        <description>&lt;img src="https://sxttrt.github.io/competition/fengmian3.png" alt="Featured image of post 2025年美国大学生数学建模竞赛（MCM）B题成果详情（Honorable Mention）" /&gt;&lt;ul&gt;
-&lt;li&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;一竞赛与团队核心信息&#34;&gt;一、竞赛与团队核心信息
+        <description>&lt;img src="https://sxttrt.github.io/competition/fengmian3.png" alt="Featured image of post 2025年美国大学生数学建模竞赛（MCM）B题成果详情（Honorable Mention）" /&gt;&lt;h2 id=&#34;一竞赛与团队核心信息&#34;&gt;一、竞赛与团队核心信息
 &lt;/h2&gt;&lt;table&gt;
   &lt;thead&gt;
       &lt;tr&gt;
           &lt;th&gt;信息类别&lt;/th&gt;
-          &lt;th&gt;具体内容（源自论文Summary Sheet及正文）&lt;/th&gt;
+          &lt;th&gt;具体内容&lt;/th&gt;
       &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
@@ -1602,7 +1639,7 @@ $$\Delta z = K_p e_f + K_d \dot{e}&lt;em&gt;f$$
       &lt;/tr&gt;
       &lt;tr&gt;
           &lt;td&gt;&lt;strong&gt;获奖等级&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;国际二等奖（Honorable Mention）- 全球前20%-30%&lt;/td&gt;
+          &lt;td&gt;国际二等奖（Honorable Mention）&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
           &lt;td&gt;&lt;strong&gt;团队信息&lt;/strong&gt;&lt;/td&gt;
@@ -1614,7 +1651,7 @@ $$\Delta z = K_p e_f + K_d \dot{e}&lt;em&gt;f$$
       &lt;/tr&gt;
       &lt;tr&gt;
           &lt;td&gt;&lt;strong&gt;核心成果&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;25页全英文参赛论文（含完整建模逻辑、MATLAB求解、13篇权威参考文献）&lt;/td&gt;
+          &lt;td&gt;25页全英文参赛论文（含完整建模逻辑、MATLAB求解、13篇参考文献）&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
           &lt;td&gt;&lt;strong&gt;竞赛周期&lt;/strong&gt;&lt;/td&gt;
@@ -1644,7 +1681,6 @@ $$\Delta z = K_p e_f + K_d \dot{e}&lt;em&gt;f$$
       2. 生态危机：门登霍尔冰川年融化面积超35km²，2023-2024年因冰川融水引发两次洪水，近300栋建筑受损；&lt;br&gt;
       3. 基建压力：交通拥堵（城区拥堵时长增加1.5倍）、直升机观光噪音扰民，供水/垃圾系统濒临过载，当地拟设“无邮轮周六”缓解压力。
     &lt;/div&gt;
-    &lt;p style=&#34;margin-top: 8px; font-size: 14px; color: #666;&#34;&gt;图2：朱诺过度旅游问题示意图（数据源自论文及2024年朱诺市官方报告）&lt;/p&gt;
   &lt;/div&gt;
   &lt;!-- 夏威夷问题描述（替代图片） --&gt;
   &lt;div style=&#34;flex: 1 1 calc(50% - 12px); text-align: center; padding: 20px; border: 1px solid #eee; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);&#34;&gt;
@@ -1654,7 +1690,6 @@ $$\Delta z = K_p e_f + K_d \dot{e}&lt;em&gt;f$$
       2. 生态威胁：游客碳排放致海水升温，2015-2019年珊瑚白化面积增加40%，瓦胡岛近岸珊瑚死亡率达35%；&lt;br&gt;
       3. 局部压力：瓦胡岛日均游客超3万人次，交通瘫痪率较2019年上升28%，考艾岛却因基础设施不足难以承接更多游客。
     &lt;/div&gt;
-    &lt;p style=&#34;margin-top: 8px; font-size: 14px; color: #666;&#34;&gt;图3：夏威夷四岛旅游问题示意图（数据源自论文及夏威夷旅游局2023年报）&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;h2 id=&#34;三建模核心逻辑&#34;&gt;三、建模核心逻辑
@@ -1685,7 +1720,7 @@ $$\Delta z = K_p e_f + K_d \dot{e}&lt;em&gt;f$$
 针对夏威夷过度旅游问题，研究构建了多目标优化模型，重点分析瓦胡岛、毛伊县等四个地区。
 &lt;p&gt;首先调整基建压力相关公式：由于夏威夷港口排名数据缺失，改用海岸区域指标参与基建评估，计算得出夏威夷的基建得分为 1.5998；基于此，进一步构建四地的基建压力公式，其中年游客量最大值设定为 600 万，日游客量最大值为日均游客量的 2 倍。&lt;/p&gt;
 &lt;p&gt;收入函数的推导结合了当地旅游支出的总税率（17.962%）。居民满意度通过指数函数拟合失业情况与游客量的关系，瓦胡岛、考艾岛、毛伊县、夏威夷岛这四个地区的拟合参数各有不同。&lt;/p&gt;
-&lt;p&gt;环境压力方面聚焦珊瑚白化问题，建立了 “游客量 - 交通碳排放 - 海水升温 - 珊瑚白化率” 的四维动态系统：先通过游客量与交通碳排放的对数关系，得出海水温度上升量与游客量的对数成比例；再结合海水温度与珊瑚白化率的指数关系，利用 2015-2019 年的数据拟合，最终得到珊瑚白化率（即环境压力）的计算公式 —— 为 5.921 乘 10 的负八次方与游客量三次方的乘积。&lt;/p&gt;
+&lt;p&gt;环境压力方面聚焦珊瑚白化问题，建立了 “游客量 - 交通碳排放 - 海水升温 - 珊瑚白化率” 的四维动态系统：先通过游客量与交通碳排放的对数关系，得出海水温度上升量与游客量的对数成比例；再结合海水温度与珊瑚白化率的指数关系，利用 2015-2019 年的数据拟合，最终得到珊瑚白化率（即环境压力）的计算公式 —— 为 $5.921 \times 10^{-8}$ 与游客量 $V^3$ 的乘积。&lt;/p&gt;
 &lt;p&gt;最后，将基建压力、收入、居民满意度、环境压力这四项指标纳入多目标优化模型，构建目标函数（权重与朱诺模型保持一致），并结合各目的地的旅游收入上限、基建容量上限、珊瑚白化率可接受上限，分析目标得分与年游客量之间的关系。&lt;/p&gt;
 &lt;/div&gt;
 &lt;h4 id=&#34;2夏威夷四岛最优游客量图&#34;&gt;（2）夏威夷四岛最优游客量图
@@ -1951,33 +1986,29 @@ $$\Delta z = K_p e_f + K_d \dot{e}&lt;em&gt;f$$
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;任务四实物抓取视频展示&#34;&gt;任务四：实物抓取视频展示
-&lt;/h3&gt;&lt;p&gt;项目配套实物抓取演示视频，记录“语音指令→工具识别→机器人抓取”全流程，视频包含3个关键场景：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;场景1：语音输入“锤子”→YOLOv8检测锤子→GRCNN生成抓取点→UR机器人移动抓取；&lt;/li&gt;
-&lt;li&gt;场景2：语音输入“卷尺”→夹爪自动切换40%力度→平稳抓取无损坏；&lt;/li&gt;
-&lt;li&gt;场景3：多工具混合摆放→按语音标签筛选目标→精准抓取无误触。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;div&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;style&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;text-align: center; margin: 20px 0;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;video&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;width&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;80%&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;controls&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;poster&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;/project/robot/video-cover.png&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;source&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;src&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;/UR-Robot/video1.mp4&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;video/mp4&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   您的浏览器不支持HTML5视频播放，请下载视频查看：&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;href&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;UR-Robot/视频1.mp4&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;target&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;_blank&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;下载演示视频&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;video&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;style&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;font-size: 14px; color: #666; margin-top: 8px;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;视频1：声控机器人实物抓取演示（时长1分20秒）&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;div&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/h3&gt;&lt;p&gt;项目实物演示视频： 展示了在多工具混放的复杂环境下，机器人响应“锤子”语音指令，利用 YOLOv8 识别与 GRCNN 算法精准定位并一键完成自动化闭环抓取的全流程。&lt;/p&gt;
+&lt;div style=&#34;text-align: center; margin: 30px 0;&#34;&gt;
+  &lt;h4&gt;声控机器人实物抓取演示
+  &lt;/h4&gt;
+  &lt;iframe 
+    src=&#34;https://sxttrt.github.io/uav/视频1.mp4&#34; 
+    width=&#34;80%&#34; 
+    height=&#34;450px&#34; 
+    style=&#34;border: 1px solid #eee; border-radius: 4px; margin-bottom: 15px;&#34;
+    allowfullscreen&gt;
+    您的浏览器不支持iframe播放，请直接下载视频查看
+  &lt;/iframe&gt;
+  &lt;div style=&#34;margin: 10px 0;&#34;&gt;
+    &lt;a href=&#34;https://sxttrt.github.io/uav/视频1.mp4&#34; 
+       target=&#34;_blank&#34; 
+       download=&#34;无人机首飞测试视频.mp4&#34;  
+       style=&#34;display: inline-block; padding: 10px 25px; background: #2188ff; color: #fff; text-decoration: none; border-radius: 6px; font-size: 15px; font-weight: 500;&#34;&gt;
+      📥 下载声控机器人实物抓取视频（MP4格式）
+    &lt;/a&gt;
+  &lt;/div&gt;
+  &lt;p style=&#34;font-size: 14px; color: #666; margin-top: 8px;&#34;&gt;视频1：声控机器人实物抓取演示&lt;/p&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;四项目成果与附件&#34;&gt;四、项目成果与附件
+&lt;h2 id=&#34;四项目成果与附件&#34;&gt;四、项目成果与附件
 &lt;/h2&gt;&lt;h3 id=&#34;核心成果&#34;&gt;核心成果
 &lt;/h3&gt;&lt;table&gt;
   &lt;thead&gt;
@@ -2271,7 +2302,7 @@ $$\Delta z = K_p e_f + K_d \dot{e}&lt;em&gt;f$$
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;竞赛名称&lt;/strong&gt;：2024年全国大学生电子设计竞赛（广东赛区）暨2024年全国大学生电子设计竞赛广东赛区竞赛&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;获奖等级&lt;/strong&gt;：省级一等奖&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;竞赛题目&lt;/strong&gt;：H题 自动行驶小车（【本科组/高职高专组】，来源：H题_自动行驶小车.pdf）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;竞赛题目&lt;/strong&gt;：H题 自动行驶小车（本科组/高职高专组）&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;竞赛周期&lt;/strong&gt;：2024年7月29日8:00-8月1日20:00&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;团队成员&lt;/strong&gt;：刘承韬、王博彬、吴丰杨&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;指导教师&lt;/strong&gt;：陈亮名、尉进&lt;/li&gt;
@@ -2294,13 +2325,13 @@ $$\Delta z = K_p e_f + K_d \dot{e}&lt;em&gt;f$$
 &lt;h2 id=&#34;二项目演示与开源仓库&#34;&gt;二、项目演示与开源仓库
 &lt;/h2&gt;&lt;p&gt;&lt;a href=&#34;https://b23.tv/3AOoPXD&#34; target=&#34;_blank&#34;&gt;2024年电子设计竞赛H题省一等奖作品演示视频&lt;/a&gt;
 （视频为部分测试H题_自动行驶小车.pdf要求的任务：A→B停车、A→B→C→D→A路径、A→C→B→D→A路径、4圈连续行驶（视频中未停下））&lt;/p&gt;
-&lt;p&gt;项目已在gothub上开源：
+&lt;p&gt;项目已在gissthub上开源：
 &lt;a href=&#34;https://github.com/fynngwu/2024_TI_competition_H&#34; target=&#34;_blank&#34;&gt;2024 年电子设计竞赛 H 题自动行驶小车开源项目&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;三项目概述&#34;&gt;三、项目概述
 &lt;/h2&gt;&lt;p&gt;基于H题_自动行驶小车.pdf要求，开发以&lt;strong&gt;TI MSPM0系列MCU&lt;/strong&gt;为核心的自动行驶小车，核心约束与实现目标如下：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;硬件约束&lt;/strong&gt;：小车尺寸≤25cm（长）×15cm（宽）×15cm（高），仅用TI MSPM0系列MCU，不装摄像头（符合H题_自动行驶小车.pdf说明1）；&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;场地约束&lt;/strong&gt;：在220cm×120cm白色哑光场地行驶，沿1.8cm宽黑色半圆弧路径（半径40cm，含A/B/C/D四点，来源：H题_自动行驶小车.pdf图1）；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;硬件约束&lt;/strong&gt;：小车尺寸≤25cm（长）×15cm（宽）×15cm（高），仅用TI MSPM0系列MCU，不装摄像头；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;场地约束&lt;/strong&gt;：在220cm×120cm白色哑光场地行驶，沿1.8cm宽黑色半圆弧路径（半径40cm，含A/B/C/D四点）；&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;实现成果&lt;/strong&gt;：完成全部4项任务，其中任务4实际用时设计78s。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;blockquote&gt;
@@ -3099,13 +3130,12 @@ $$loss =-\frac{1}{m} \sum_{i=1}^{m}[y_i log(h_i)+(1-y_i)log(1-h_i)]$$&lt;br&gt;
 </description>
         </item>
         <item>
-        <title>关于</title>
-        <link>https://sxttrt.github.io/zh-cn/%E5%85%B3%E4%BA%8E/</link>
+        <title>搜索</title>
+        <link>https://sxttrt.github.io/zh-cn/search/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https://sxttrt.github.io/zh-cn/%E5%85%B3%E4%BA%8E/</guid>
-        <description>&lt;p&gt;This is a test page for i18n support.&lt;/p&gt;
-</description>
+        <guid>https://sxttrt.github.io/zh-cn/search/</guid>
+        <description></description>
         </item>
         
     </channel>

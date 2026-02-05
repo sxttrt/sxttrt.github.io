@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="A comprehensive record of the voice-controlled collaborative robot project, featuring DTW speech recognition, YOLOv8 object detection, GRCNN grasp planning, and UR robot control (includes hardware demonstration video).">
+<title>Design and Implementation of a Voice-Controlled Collaborative Robot System</title>
+
+<link rel='canonical' href='https://sxttrt.github.io/p/ur-robot/'>
+
+<link rel="stylesheet" href="/scss/style.min.c91073e1bef24baf3131464aee14e30bb1335275cee51563e55fb2a5e03eca69.css"><meta property='og:title' content="Design and Implementation of a Voice-Controlled Collaborative Robot System">
+<meta property='og:description' content="A comprehensive record of the voice-controlled collaborative robot project, featuring DTW speech recognition, YOLOv8 object detection, GRCNN grasp planning, and UR robot control (includes hardware demonstration video).">
+<meta property='og:url' content='https://sxttrt.github.io/p/ur-robot/'>
+<meta property='og:site_name' content='Liu Chengtao'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-12-30T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-12-30T00:00:00&#43;00:00'/><meta property='og:image' content='https://sxttrt.github.io/UR-Robot/fengmian.png' />
+<meta name="twitter:title" content="Design and Implementation of a Voice-Controlled Collaborative Robot System">
+<meta name="twitter:description" content="A comprehensive record of the voice-controlled collaborative robot project, featuring DTW speech recognition, YOLOv8 object detection, GRCNN grasp planning, and UR robot control (includes hardware demonstration video)."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://sxttrt.github.io/UR-Robot/fengmian.png' />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_4180be05c8c2e7f3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Liu Chengtao</a></h1>
+            <h2 class="site-description">Liu Chengtao | Undergraduate Works</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://space.bilibili.com/499786362?spm_id_from=333.1007.0.0'
+                        target="_blank"
+                        title="Bilibili"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.0.0-beta2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M488.6 104.1C505.3 122.2 513 143.8 511.9 169.8V372.2C511.5 398.6 502.7 420.3 485.4 437.3C468.2 454.3 446.3 463.2 419.9 464H92.02C65.57 463.2 43.81 454.2 26.74 436.8C9.682 419.4 .7667 396.5 0 368.2V169.8C.7667 143.8 9.682 122.2 26.74 104.1C43.81 87.75 65.57 78.77 92.02 78H121.4L96.05 52.19C90.3 46.46 87.42 39.19 87.42 30.4C87.42 21.6 90.3 14.34 96.05 8.603C101.8 2.868 109.1 0 117.9 0C126.7 0 134 2.868 139.8 8.603L213.1 78H301.1L375.6 8.603C381.7 2.868 389.2 0 398 0C406.8 0 414.1 2.868 419.9 8.603C425.6 14.34 428.5 21.6 428.5 30.4C428.5 39.19 425.6 46.46 419.9 52.19L394.6 78L423.9 78C450.3 78.77 471.9 87.75 488.6 104.1H488.6zM449.8 173.8C449.4 164.2 446.1 156.4 439.1 150.3C433.9 144.2 425.1 140.9 416.4 140.5H96.05C86.46 140.9 78.6 144.2 72.47 150.3C66.33 156.4 63.07 164.2 62.69 173.8V368.2C62.69 377.4 65.95 385.2 72.47 391.7C78.99 398.2 86.85 401.5 96.05 401.5H416.4C425.6 401.5 433.4 398.2 439.7 391.7C446 385.2 449.4 377.4 449.8 368.2L449.8 173.8zM185.5 216.5C191.8 222.8 195.2 230.6 195.6 239.7V273C195.2 282.2 191.9 289.9 185.8 296.2C179.6 302.5 171.8 305.7 162.2 305.7C152.6 305.7 144.7 302.5 138.6 296.2C132.5 289.9 129.2 282.2 128.8 273V239.7C129.2 230.6 132.6 222.8 138.9 216.5C145.2 210.2 152.1 206.9 162.2 206.5C171.4 206.9 179.2 210.2 185.5 216.5H185.5zM377 216.5C383.3 222.8 386.7 230.6 387.1 239.7V273C386.7 282.2 383.4 289.9 377.3 296.2C371.2 302.5 363.3 305.7 353.7 305.7C344.1 305.7 336.3 302.5 330.1 296.2C323.1 289.9 320.7 282.2 320.4 273V239.7C320.7 230.6 324.1 222.8 330.4 216.5C336.7 210.2 344.5 206.9 353.7 206.5C362.9 206.9 370.7 210.2 377 216.5H377z"/></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/sxttrt'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about-me/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About Me</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://sxttrt.github.io/" selected>English</option>
+                                
+                                    <option value="https://sxttrt.github.io/zh-cn/" >简体中文</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#i-project-overview">I. Project Overview</a></li>
+    <li><a href="#ii-background-and-objectives">II. Background and Objectives</a>
+      <ol>
+        <li><a href="#1-project-background">1. Project Background</a></li>
+        <li><a href="#2-core-objectives">2. Core Objectives</a></li>
+      </ol>
+    </li>
+    <li><a href="#iii-core-technical-implementation">III. Core Technical Implementation</a>
+      <ol>
+        <li><a href="#task-1-dtw-based-speech-recognition-module">Task 1: DTW-Based Speech Recognition Module</a>
+          <ol>
+            <li><a href="#1-algorithm-pipeline-and-preprocessing">1. Algorithm Pipeline and Preprocessing</a></li>
+            <li><a href="#2-recognition-performance">2. Recognition Performance</a></li>
+          </ol>
+        </li>
+        <li><a href="#task-2-tool-recognition-based-on-yolov8">Task 2: Tool Recognition Based on YOLOv8</a>
+          <ol>
+            <li><a href="#1-model-development-and-dataset-optimization">1. Model Development and Dataset Optimization</a></li>
+            <li><a href="#2-detection-performance">2. Detection Performance</a></li>
+          </ol>
+        </li>
+        <li><a href="#task-3-grcnn-grasp-planning-and-robot-control">Task 3: GRCNN Grasp Planning and Robot Control</a>
+          <ol>
+            <li><a href="#1-planar-grasp-point-generation-grcnn">1. Planar Grasp Point Generation (GRCNN)</a></li>
+            <li><a href="#2-coordinate-transformation-and-ur-control">2. Coordinate Transformation and UR Control</a></li>
+            <li><a href="#3-control-visualization">3. Control Visualization</a></li>
+          </ol>
+        </li>
+        <li><a href="#task-4-hardware-demonstration-video">Task 4: Hardware Demonstration Video</a></li>
+      </ol>
+    </li>
+    <li><a href="#iv-key-results-and-indicators">IV. Key Results and Indicators</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/ur-robot/">
+                
+                    <img src="/UR-Robot/fengmian.png" loading="lazy" alt="Featured image of post Design and Implementation of a Voice-Controlled Collaborative Robot System" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/project-accomplishments/" >
+                Project Accomplishments
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/ur-robot/">Design and Implementation of a Voice-Controlled Collaborative Robot System</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            A comprehensive record of the voice-controlled collaborative robot project, featuring DTW speech recognition, YOLOv8 object detection, GRCNN grasp planning, and UR robot control (includes hardware demonstration video).
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2024-12-30</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+        <footer class="article-translations">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+            <div>
+                
+                    <a href="https://sxttrt.github.io/zh-cn/p/ur-robot/" class="link">简体中文</a>
+                
+            </div>
+        </footer>
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="i-project-overview">I. Project Overview
+</h2><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Category</th>
+          <th style="text-align: left">Details</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Project Title</strong></td>
+          <td style="text-align: left">Design and Implementation of a Voice-Controlled Collaborative Robot System</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Project Lead</strong></td>
+          <td style="text-align: left">Chengtao Liu</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Timeline</strong></td>
+          <td style="text-align: left">October 2024 - December 2024</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Core Member</strong></td>
+          <td style="text-align: left">Chengtao Liu (Solo)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Supervisor</strong></td>
+          <td style="text-align: left">Yi Xiong (Intelligent Control Science Innovation Practice II)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Core Tasks</strong></td>
+          <td style="text-align: left">1. DTW-based speech recognition (tool keyword identification); 2. YOLOv8-based object detection (5 tool categories); 3. GRCNN-based planar grasp point generation; 4. UR robot &amp; gripper control (ur-rtde/minimalmodbus).</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Key Tools</strong></td>
+          <td style="text-align: left">Python, OpenCV, YOLOv8, GRCNN, ur-rtde (Robot Control), MinimalModbus (Gripper Control).</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Deliverables</strong></td>
+          <td style="text-align: left">1. Functional voice-controlled grasping system; 2. Trained YOLOv8 tool detection weights; 3. Hardware grasping demonstration video; 4. Full project codebase with GUI.</td>
+      </tr>
+  </tbody>
+</table></div>
+<h2 id="ii-background-and-objectives">II. Background and Objectives
+</h2><h3 id="1-project-background">1. Project Background
+</h3><p>In industrial assembly and warehouse sorting, traditional robots often require manual coordinate setting, which is cumbersome and lacks flexibility. Voice control, as a natural human-computer interaction (HCI) method, enables a fully automated &ldquo;Voice Command → Automated Recognition → Precise Grasping&rdquo; workflow, enhancing production efficiency while lowering the barrier for operators. This project focuses on &ldquo;tool grasping&rdquo; by integrating speech recognition (DTW), computer vision (YOLOv8/GRCNN), and robotics control to develop a lightweight, real-time, and controllable collaborative system for industrial environments, avoiding total reliance on &ldquo;black-box&rdquo; deep learning.</p>
+<h3 id="2-core-objectives">2. Core Objectives
+</h3><ul>
+<li><strong>Speech Recognition</strong>: Implement keyword recognition for 5 tool types (&ldquo;Hammer, Wrench, Screwdriver, Pliers, Tape Measure&rdquo;), achieving ≥90% accuracy for isolated words and ≥85% for keywords at the start of short phrases.</li>
+<li><strong>Object Recognition</strong>: Achieve a mAP50 of ≥93% using YOLOv8, ensuring robust detection across varied lighting and orientations in real-world lab settings.</li>
+<li><strong>Grasping Control</strong>: Generate effective grasp points with ≥90% accuracy via GRCNN and achieve a ≥85% hardware success rate for the UR robot. Implement adaptive gripper force (e.g., 40% for tape measures, 80% for metallic tools).</li>
+<li><strong>User Experience</strong>: Develop a visualization UI supporting one-click &ldquo;Voice Input → Image Recognition → Execution&rdquo; operations, accompanied by hardware demonstration videos.</li>
+</ul>
+<h2 id="iii-core-technical-implementation">III. Core Technical Implementation
+</h2><h3 id="task-1-dtw-based-speech-recognition-module">Task 1: DTW-Based Speech Recognition Module
+</h3><h4 id="1-algorithm-pipeline-and-preprocessing">1. Algorithm Pipeline and Preprocessing
+</h4><p>Adopted a three-step workflow—&ldquo;Template Recording → Signal Preprocessing → DTW Matching&rdquo;—to resolve temporal inconsistencies in speech signals:</p>
+<ul>
+<li><strong>Template Recording</strong>: Recorded 6 audio samples for each of the 5 keywords at different pitches and speeds (16,000Hz, Mono, 16-bit), generating 30 templates (Fig 1).</li>
+<li><strong>Signal Preprocessing</strong>:
+<ol>
+<li>Applied framing (20ms length, 10ms shift) and pre-emphasis to boost high-frequency signals.</li>
+<li>Implemented dual-threshold Voice Activity Detection (VAD) to isolate speech from silence.</li>
+<li>Extracted 13-dimensional Mel-Frequency Cepstral Coefficients (MFCC) to transform audio into feature vectors (Fig 2).</li>
+</ol>
+</li>
+<li><strong>DTW Matching</strong>: Real-time recording (2.5s duration, CHUNK=1024) is matched against templates by calculating Euclidean distance. The template with the minimum distance is selected as the result (e.g., &ldquo;Hammer&rdquo; distance ≈ 7585, Fig 3).</li>
+</ul>
+<h4 id="2-recognition-performance">2. Recognition Performance
+</h4><ul>
+<li>
+<p><strong>Preprocessing and Templates</strong>:</p>
+  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/UR-Robot/图1.png" alt="Audio templates and MFCC features" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666;">Fig 1: Audio templates (top) and MFCC feature files (bottom)</p>
+  </div>
+</li>
+<li>
+<p><strong>Results and Analysis</strong>:</p>
+<div style="text-align: center; margin: 15px 0;">
+  <img src="/UR-Robot/图3.png" alt="DTW distance and recognition result" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+  <p style="font-size: 14px; color: #666;">Fig 3: DTW distance calculation (Minimum distance corresponds to "Hammer")</p>
+</div>
+<div style="text-align: center; margin: 10px 0;">
+  <table style="max-width: 80%; margin: 0 auto; border-collapse: collapse; border: 1px solid #eee;">
+    <tr style="background-color: #f5f5f5;">
+      <th style="padding: 8px; border: 1px solid #eee; text-align: center;">Category</th>
+      <th style="padding: 8px; border: 1px solid #eee; text-align: center;">Hammer</th>
+      <th style="padding: 8px; border: 1px solid #eee; text-align: center;">Wrench</th>
+      <th style="padding: 8px; border: 1px solid #eee; text-align: center;">Screwdriver</th>
+      <th style="padding: 8px; border: 1px solid #eee; text-align: center;">Pliers</th>
+      <th style="padding: 8px; border: 1px solid #eee; text-align: center;">Tape Measure</th>
+    </tr>
+    <tr>
+      <td style="padding: 8px; border: 1px solid #eee; text-align: center;">Word Acc (30 trials)</td>
+      <td style="padding: 8px; border: 1px solid #eee; text-align: center;">30/30</td>
+      <td style="padding: 8px; border: 1px solid #eee; text-align: center;">30/30</td>
+      <td style="padding: 8px; border: 1px solid #eee; text-align: center;">30/30</td>
+      <td style="padding: 8px; border: 1px solid #eee; text-align: center;">28/30</td>
+      <td style="padding: 8px; border: 1px solid #eee; text-align: center;">29/30</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px; border: 1px solid #eee; text-align: center;">Phrase Acc (Start)</td>
+      <td style="padding: 8px; border: 1px solid #eee; text-align: center;">28/30</td>
+      <td style="padding: 8px; border: 1px solid #eee; text-align: center;">29/30</td>
+      <td style="padding: 8px; border: 1px solid #eee; text-align: center;">29/30</td>
+      <td style="padding: 8px; border: 1px solid #eee; text-align: center;">-/30</td>
+      <td style="padding: 8px; border: 1px solid #eee; text-align: center;">-/30</td>
+    </tr>
+  </table>
+  <p style="font-size: 14px; color: #666; margin-top: 8px;">Table 1: Speech recognition accuracy statistics (errors due to phonetic similarity between "Pliers" and "Tape Measure")</p>
+</div>
+</li>
+</ul>
+<h3 id="task-2-tool-recognition-based-on-yolov8">Task 2: Tool Recognition Based on YOLOv8
+</h3><h4 id="1-model-development-and-dataset-optimization">1. Model Development and Dataset Optimization
+</h4><ul>
+<li><strong>Model Selection</strong>: Selected YOLOv8 for its 12% precision improvement over YOLOv5 and robust community support, focusing on 5 tool categories.</li>
+<li><strong>Dataset Iteration</strong>:
+<ol>
+<li>Initial Dataset: 200 images with salt-and-pepper noise and rotation augmentation; mAP50 reached 88%, but real-world miss rates were high.</li>
+<li>Optimized Dataset: Filtered out cartoonish/handheld images and supplemented with 300 lab-captured physical tool images. Adopted an &ldquo;incremental training&rdquo; strategy.</li>
+<li>Knowledge Distillation: Used YOLOv8-L as a teacher model to transfer features to the YOLOv8-N student model, enhancing generalization.</li>
+</ol>
+</li>
+<li><strong>Final Results</strong>: The optimized model achieved a mAP50 of 95.2%, with detection precision for all tools exceeding 93% and miss rates dropping below 10% (Fig 4, 5).</li>
+</ul>
+<h4 id="2-detection-performance">2. Detection Performance
+</h4><ul>
+<li><strong>Training Metrics</strong>:
+  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/UR-Robot/图4.png" alt="YOLOv8 Training Loss" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666;">Fig 4: Training loss curve (convergence at ~0.5)</p>
+  </div>
+  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/UR-Robot/图5.png" alt="YOLOv8 Validation Metrics" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666;">Fig 5: Validation metrics (mAP50=95.2%, Precision=93.1%)</p>
+  </div>
+</li>
+</ul>
+<h3 id="task-3-grcnn-grasp-planning-and-robot-control">Task 3: GRCNN Grasp Planning and Robot Control
+</h3><h4 id="1-planar-grasp-point-generation-grcnn">1. Planar Grasp Point Generation (GRCNN)
+</h4><ul>
+<li><strong>Logic</strong>: Fused RGB+Depth information from an Intel RealSense camera. GRCNN generates a global grasp confidence map, which is then cropped based on YOLOv8 bounding boxes to extract optimal grasp parameters (position, angle, width):
+<ol>
+<li>Image Preprocessing: Cropped YOLOv8 regions (confidence ≥ 0.5) with a 20px padding to ensure tool integrity.</li>
+<li>Parameter Generation: Output grasp quality (q_img), angle (ang_img), and width (width_img) maps, locating local maxima for the grasp point (Fig 7).</li>
+<li>Optimization: Increased depth weighting for flat tools (e.g., wrenches) to eliminate invalid grasp candidates.</li>
+</ol>
+</li>
+</ul>
+<h4 id="2-coordinate-transformation-and-ur-control">2. Coordinate Transformation and UR Control
+</h4><ul>
+<li><strong>Mapping</strong>:
+<ol>
+<li>Pixel to Camera: Used RealSense intrinsics ($f_x, f_y, c_x, c_y$) and depth $Z$ to calculate 3D camera coordinates (Fig 8).</li>
+<li>Camera to Robot: Calibrated via a 5×5 checkerboard (24 points) to compute the hand-eye transformation matrix $T$.</li>
+</ol>
+</li>
+<li><strong>UR Control</strong>:
+<ul>
+<li>Utilized the <code>ur-rtde</code> library for TCP/IP communication. Implemented <code>move_L</code>/<code>move_J</code> for linear/joint motion (velocity = 0.2m/s, acceleration = 0.1m/s², tolerance 2mm).</li>
+</ul>
+</li>
+<li><strong>Gripper Control</strong>:
+<ul>
+<li>Used <code>MinimalModbus</code> via serial communication. Implemented adaptive force control: 80% for metallic tools (Hammer/Wrench) and 40% for plastic tools (Tape Measure) to prevent damage.</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-control-visualization">3. Control Visualization
+</h4><ul>
+<li><strong>Grasp Points and Transformation</strong>:
+  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/UR-Robot/图7.png" alt="GRCNN grasp point generation" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666;">Fig 7: Pliers grasp point (Blue box indicates optimal grasp at 0.57rad)</p>
+  </div>
+  <div style="flex: 1 1 45%; text-align: center;">
+    <img src="/UR-Robot/图8.png" alt="Coordinate transformation formula" style="max-width: 80%; border: 1px solid #eee; border-radius: 4px;">
+    <p style="font-size: 14px; color: #666;">Fig 8: Pixel-to-Robot coordinate transformation formula</p>
+  </div>
+</li>
+</ul>
+<h3 id="task-4-hardware-demonstration-video">Task 4: Hardware Demonstration Video
+</h3><p><strong>Hardware Demonstration:</strong> This video showcases the robot responding to the &ldquo;Hammer&rdquo; voice command within a cluttered multi-tool environment. It demonstrates the full automated closed-loop pipeline from YOLOv8 identification and GRCNN localization to precision grasping.</p>
+<div style="text-align: center; margin: 30px 0;">
+  <h4>Voice-Controlled Robot Grasping Demonstration</h4>
+  <iframe 
+    src="/uav/视频1.mp4" 
+    width="80%" 
+    height="450px" 
+    style="border: 1px solid #eee; border-radius: 4px; margin-bottom: 15px;"
+    allowfullscreen>
+    Your browser does not support iframes. Please download the video to view.
+  </iframe>
+  <div style="margin: 10px 0;">
+    <a href="/uav/视频1.mp4" 
+       target="_blank" 
+       download="Voice_Robot_Grasping.mp4"  
+       style="display: inline-block; padding: 10px 25px; background: #2188ff; color: #fff; text-decoration: none; border-radius: 6px; font-size: 15px; font-weight: 500;">
+      📥 Download Grasping Video (MP4)
+    </a>
+  </div>
+</div>
+<h2 id="iv-key-results-and-indicators">IV. Key Results and Indicators
+</h2><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Metric</th>
+          <th style="text-align: left">Performance</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Speech Recognition</strong></td>
+          <td style="text-align: left">Word Acc ≥ 93%; Phrase Acc (Keyword at Start) ≥ 85%.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Object Detection</strong></td>
+          <td style="text-align: left">YOLOv8 mAP50 = 95.2%; Miss rate ≤ 10% in real-world scenes.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Grasping Control</strong></td>
+          <td style="text-align: left">GRCNN grasp point validity ≥ 80%; UR hardware success rate ≥ 75%.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>System Response</strong></td>
+          <td style="text-align: left">Total time from command to grasp completion ≤ 10s (autonomous).</td>
+      </tr>
+  </tbody>
+</table></div>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/rl-control-project/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/RL/fengmian.png" loading="lazy" data-key="rl-control-project" data-hash="/RL/fengmian.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">RL-based Inverted Pendulum Control and Bipedal Robot System Construction</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/llm-uav-custom-design/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/uav/fengmian.jpg" loading="lazy" data-key="llm-uav-custom-design" data-hash="/uav/fengmian.jpg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Customized Design and Manufacturing of Multi-rotor UAVs Based on Large Language Models</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/painting-robot/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/gen3/fengmian.png" loading="lazy" data-key="painting-robot" data-hash="/gen3/fengmian.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Painting Robot System Based on the Kinova Gen3-lite Robotic Arm</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/gomoku-recognition/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/gomoku/fengmian.png" loading="lazy" data-key="gomoku-recognition" data-hash="/gomoku/fengmian.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Gomoku Recognition and Prediction System Based on Traditional Image Processing</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/ai-research/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/ai/fengmian.png" loading="lazy" data-key="ai-research" data-hash="/ai/fengmian.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Research on Classification and Image Processing Based on Traditional Machine Learning Algorithms</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2025 - 
+        
+        2026 刘承韬
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
