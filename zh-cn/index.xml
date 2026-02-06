@@ -701,7 +701,7 @@ $$K = [[-4.4267, 262.3615, -12.0165, 57.0248]]$$&lt;/p&gt;
   &lt;img src=&#34;https://sxttrt.github.io/RL/图2.png&#34; alt=&#34;Soft K-means不同聚类数重建效果&#34; style=&#34;max-width: 100%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
   &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图1：不同初始角效果&lt;/p&gt;
 &lt;/div&gt;
-&lt;h4 id=&#34;2-基于reinforce的倒立摆强化学习控制&#34;&gt;2. 基于REINFORCE的倒立摆强化学习控制（
+&lt;h4 id=&#34;2-基于reinforce的倒立摆强化学习控制&#34;&gt;2. 基于REINFORCE的倒立摆强化学习控制
 &lt;/h4&gt;&lt;h5 id=&#34;1算法设计与环境搭建&#34;&gt;（1）算法设计与环境搭建
 &lt;/h5&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;仿真环境&lt;/strong&gt;：基于Gymnasium的CartPole-v1环境，状态空间含4个连续变量（小车位置、小车速度、摆杆角度、摆杆角速度），动作空间为2个离散动作（向左/向右施力）；中止条件：小车位置超±2.4m或摆杆角度超±12°。&lt;/li&gt;
@@ -736,7 +736,7 @@ $$K = [[-4.4267, 262.3615, -12.0165, 57.0248]]$$&lt;/p&gt;
   &lt;img src=&#34;https://sxttrt.github.io/RL/图1.png&#34; alt=&#34;Soft K-means不同聚类数重建效果&#34; style=&#34;max-width: 80%; border: 1px solid #eee; border-radius: 4px;&#34;&gt;
   &lt;p style=&#34;font-size: 14px; color: #666;&#34;&gt;图3：mujoco中仿真效果&lt;/p&gt;
 &lt;/div&gt;
-&lt;h3 id=&#34;任务二双足机器人ppo强化学习控制文档1最优控制与设计final-project&#34;&gt;任务二：双足机器人PPO强化学习控制（文档1：《最优控制与设计》Final Project）
+&lt;h3 id=&#34;任务二双足机器人ppo强化学习控制&#34;&gt;任务二：双足机器人PPO强化学习控制
 &lt;/h3&gt;&lt;h4 id=&#34;1-系统架构与核心模块&#34;&gt;1. 系统架构与核心模块
 &lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;仿真平台&lt;/strong&gt;：
@@ -963,7 +963,7 @@ $$\text{reward_stand_still} = \exp(-(\text{pose_error} + 0.5\cdot\text{vel_error
 	
 	
 &gt;&lt;br&gt;
-&lt;em&gt;图4：双足机器人在平坦地形、非平整地形、斜坡的行走仿真效果（基于文档1）&lt;/em&gt;&lt;/p&gt;
+&lt;em&gt;图4：双足机器人在平坦地形、非平整地形、斜坡的行走仿真效果&lt;/em&gt;&lt;/p&gt;
 &lt;h2 id=&#34;四项目成果与附件&#34;&gt;四、项目成果与附件
 &lt;/h2&gt;&lt;h3 id=&#34;1-仿真成果展示&#34;&gt;1. 仿真成果展示
 &lt;/h3&gt;&lt;h4 id=&#34;11-倒立摆稳定控制&#34;&gt;1.1 倒立摆稳定控制
@@ -1038,7 +1038,7 @@ MathJax.config = {
       &lt;/tr&gt;
       &lt;tr&gt;
           &lt;td&gt;&lt;strong&gt;负责人&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;刘承韬&lt;/td&gt;
+          &lt;td&gt;刘承韬 、李培江&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
           &lt;td&gt;&lt;strong&gt;项目周期&lt;/strong&gt;&lt;/td&gt;
@@ -3006,7 +3006,7 @@ $$loss =-\frac{1}{m} \sum_{i=1}^{m}[y_i log(h_i)+(1-y_i)log(1-h_i)]$$&lt;br&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
           &lt;td&gt;&lt;strong&gt;核心成员&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;刘承韬（本人）、吴丰杨&lt;/td&gt;
+          &lt;td&gt;刘承韬&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
           &lt;td&gt;&lt;strong&gt;核心任务&lt;/strong&gt;&lt;/td&gt;
